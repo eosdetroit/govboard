@@ -8,6 +8,9 @@ import {
 } from "react-router-dom";
 
 import './App.css';
+import Header from './partials/Header';
+import Footer from './partials/Footer';
+import Home from './components/Home';
 
 class App extends React.Component {
   
@@ -16,11 +19,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header></header>
+        <header><Header /></header>
+        <Router>
         <Route exact path="/">
           <Home />
         </Route>
-        <footer></footer>
+        </Router>
+        <footer><Footer /></footer>
       </div>
     );
   }

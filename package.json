@@ -8,7 +8,12 @@
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.1",
+    "ual-anchor": "^0.4.1",
+    "ual-reactjs-renderer": "^0.2.0",
+    "ual-scatter": "^0.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

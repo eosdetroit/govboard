@@ -12,7 +12,7 @@ import Header from './partials/Header';
 import Footer from './partials/Footer';
 import Home from './components/Home';
 import Vote from './components/Vote';
-import Nominate from './components/Nominate';
+import Nomination from './components/Nomination';
 
 class App extends React.Component {
   
@@ -30,7 +30,7 @@ class App extends React.Component {
           <Vote />
         </Route>
         <Route exact path="/nominate">
-          <Nominate />
+          <Nomination />
         </Route>
         </Router>
         <footer><Footer /></footer>

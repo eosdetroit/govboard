@@ -11,6 +11,8 @@ import './App.css';
 import Header from './partials/Header';
 import Footer from './partials/Footer';
 import Home from './components/Home';
+import Vote from './components/Vote';
+import Nominate from './components/Nominate';
 
 class App extends React.Component {
   
@@ -23,6 +25,12 @@ class App extends React.Component {
         <Router>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route exact path="/vote">
+          <Vote />
+        </Route>
+        <Route exact path="/nominate">
+          <Nominate />
         </Route>
         </Router>
         <footer><Footer /></footer>

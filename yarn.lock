@@ -1744,6 +1744,13 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
+"@waxio/waxjs@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@waxio/waxjs/-/waxjs-0.0.11.tgz#046d77306c90534d26c8618aa3c9227de969f883"
+  integrity sha512-YnQxJ1PnE5Vhb98EsBQhjj28VJEIOm1IT0Ff4xTcA8S26IoTi0Vll1Tq9HglkjLA3WZU6BeIKWYqRzALAGHubA==
+  dependencies:
+    eosjs "^20.0.0"
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"

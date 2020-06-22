@@ -14,6 +14,7 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="footer-inner">
+      Footer
       </div>
     );
   }

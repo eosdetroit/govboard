@@ -3,11 +3,9 @@ import {
   BrowserRouter as Router,
   Route,
   Link, 
-  userParams,
   useRouteMatch
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
-import { Api, JsonRpc } from '@waxio/waxjs/dist';
 
 import './App.css';
 import logo from './assets/wax-logo-white.png'
@@ -16,20 +14,7 @@ import Home from './components/Home';
 import Vote from './components/Vote';
 import Nomination from './components/Nomination';
 
-const wax = new waxjs.WaxJS('https://wax.greymass.com');
-
-autoLogin();
-
-async function autoLogin() {
-        let isAutoLoginAvailable = await wax.isAutoLoginAvailable();
-        if (isAutoLoginAvailable) {
-            let userAccount = wax.userAccount;
-            let pubKeys = wax.pubKeys;
-        }
-        else {
-            console.log('Not auto-logged in');
-        }
-    };
+const wax = new waxjs.WaxJS('https://wax.greymass.com', null, null, false);
 
 class App extends React.Component {
     constructor(props){
@@ -41,6 +26,21 @@ class App extends React.Component {
       this.login = this.login.bind(this);
     }
 
+  componentDidMount(){
+    async function autoLogin() {
+        let isAutoLoginAvailable = await wax.isAutoLoginAvailable();
+        if (isAutoLoginAvailable) {
+            let userAccount = wax.userAccount;
+            let pubKeys = wax.pubKeys;
+        }
+        else {
+            console.log('Not auto-logged in');
+        }
+    };
+
+    return autoLogin();
+  }
+
   async login() {
   try {
         const userAccount = await wax.login();
@@ -50,9 +50,8 @@ class App extends React.Component {
           isLoggedIn: true,
           acct: userAccount
          });
-        console.log(this.state)
       } catch(e) {
-        document.getElementById('nav').append(e.message);
+        console.log(e.message);
       }
     }
 
@@ -71,6 +70,7 @@ class App extends React.Component {
             <>
             <Link to="/vote">Vote</Link>
             <Link to="/nominate">Nominate</Link>
+            <span className="acctName">Welcome, {this.state.acct}</span>
             </>
           :
           <>

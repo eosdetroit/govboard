@@ -3,6 +3,7 @@ import {
   Link,
   Redirect
 } from "react-router-dom";
+import { Api, JsonRpc } from '@waxio/waxjs/dist';
 
 import '../App.css';
 

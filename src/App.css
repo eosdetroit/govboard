@@ -20,6 +20,7 @@ header#nav .nav-wrapper {
 
 header#nav {
   background: rgba(25, 40, 56, 1);
+  color: #fff;
 }
 
 header#nav .logo {
@@ -75,7 +76,7 @@ header#nav nav a {
   color: #fff;
   text-decoration: none;
   font-size: 16px;
-  padding: 15px 5px;
+  padding: 15px 10px;
   display: inline-block;
   line-height: 45px;
 }
@@ -83,6 +84,10 @@ header#nav nav a {
 header#nav nav a:hover {
   color: #fff;
   background: #000;
+}
+
+header#nav nav .acctName {
+  padding-left: 20px;
 }
 
 .main-content {

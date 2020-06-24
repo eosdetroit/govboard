@@ -11,8 +11,8 @@ class Nomination extends React.Component {
 
   render() {
     return (
-      <div className="nomination">
-        Home
+      <div className="nomination main-content">
+        <h2>Nominate</h2>
       </div>
     );
   }

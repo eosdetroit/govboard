@@ -9,7 +9,7 @@ import '../App.css';
 class Home extends React.Component {
   constructor(props){
   	super(props);
-  	
+
   }
 
 
@@ -23,8 +23,8 @@ class Home extends React.Component {
                 )
     }
     return (
-      <div className="home">
-        Home
+      <div className="home main-content">
+        <h2>Home</h2>
       </div>
     );
   }

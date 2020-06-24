@@ -1,38 +1,122 @@
-.App {
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  padding: 0;
+  margin: 0;
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header, footer, div {
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+header#nav .nav-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+header#nav {
+  background: rgba(25, 40, 56, 1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header#nav .logo {
+  padding: 15px 0;
+  display: inline-block;
+  width: 60%;
+}
+
+header#nav .logo img {
+  vertical-align: middle;
+  max-width: 125px;
+  width: 100%;
+} 
+
+header#nav .logo a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header#nav .logo a:hover {
+  text-decoration: none;
+}
+
+header#nav nav {
+  display: inline-block;
+  width: 40%;
+  text-align: right;
+}
+
+header#nav nav button {
+  padding: 8px 36px 8px 8px;
+  background: url('./assets/wax-allaccess-badge-light.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center right;
+  color: #fff;
+  border: 0;
+}
+
+header#nav nav button:hover {
+  cursor: pointer;
+  border: 0;
+  color: #ebebeb;
+}
+
+header#nav nav button:focus {
+  cursor: pointer;
+  border: 0;
+  outline: none;
+}
+
+header#nav nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 15px 5px;
+  display: inline-block;
+  line-height: 45px;
+}
+
+header#nav nav a:hover {
+  color: #fff;
+  background: #000;
+}
+
+.main-content {
+  padding: 20px 0;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+footer {
+  background: #ebebeb;
+  padding: 20px 0;
+  border-top: 1px solid #333;
+}
+
+footer .footer-inner {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+footer ul {
+  list-style: none;
+  padding: 10px 0 0 4px;
+  margin: 0;
+}
+
+footer ul li {
+  padding: 3px 0;
+}
+
+footer ul a {
+  text-decoration: none;
+  color: #333;
+}
+
+footer ul a:hover {
+  color: #000;
 }

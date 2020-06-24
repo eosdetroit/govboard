@@ -13,8 +13,8 @@ class Vote extends React.Component {
 
   render() {
     return (
-      <div className="vote">
-        Vote
+      <div className="vote main-content">
+        <h2>Vote</h2>
       </div>
     );
   }

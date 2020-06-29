@@ -1,35 +1,44 @@
 import React from 'react';
 import {
-  Link
+  Route,
+  Switch,
+  Link,
+  useRouteMatch
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
 
 import CandidateGrid from "../partials/candidate-grid-template.js";
+import CandidateSingle from "../partials/candidateSingle";
 
 import '../App.css';
 
-const wax = new waxjs.WaxJS('https://wax.greymass.com', null, null, false);
+const wax = new waxjs.WaxJS('http://wax.greymass.com', null, null, false);
+
+let candidatePage = 1;
+let candidatesDisplayed = 10;
+let candidateLimit = 10;
+let candidateBound = 0;
 
 class Vote extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       candidates: [],
+      activeCandidate: []
     };
     this.GetCandidates = this.GetCandidates.bind(this);
+    this.CandidatePaginationNext = this.CandidatePaginationNext.bind(this);
+    this.CandidatePaginationPrev = this.CandidatePaginationPrev.bind(this);
   }
 
   async GetCandidates(){
       try {
-        const resp = await wax.rpc.get_table_rows({
-          json: true,              // Get the response as json
-          code: 'eosio',     // Contract that we target
-          scope: 'eosio',         // Account that owns the data
-          table: 'producers',        // Table name
-          limit: 50,               // Maximum number of rows that we want to get
-          reverse: false,         // Optional: Get reversed data
-          show_payer: false,      // Optional: Show ram payer
+        const resp = await wax.rpc.get_producers({              // Get the response as json
+          limit: candidatesDisplayed,
+          lower_bound: candidateBound,
+          json: false
         });
+        console.log(resp);
         this.setState({
           candidates: resp.rows
         });
@@ -38,16 +47,51 @@ class Vote extends React.Component {
       }
     }
 
+  async CandidatePaginationNext(){
+      candidatePage = candidatePage + 1;
+      candidatesDisplayed = 50*candidatePage;
+      candidateBound = candidatesDisplayed-candidateLimit;
+      console.log(candidateBound);
+      return this.GetCandidates();
+    }
+
+  async CandidatePaginationPrev(){
+    if (candidatePage > 1) {
+    candidatePage = candidatePage - 1;
+    candidatesDisplayed = 50*candidatePage;
+    candidateBound = candidatesDisplayed+candidateLimit;
+    return this.GetCandidates();
+    }
+  }   
+
+  viewCandidate = (candidateInfo) => {
+    this.setState({
+        activeCandidate: candidateInfo
+    });
+  }
+
   componentWillMount(){
     return this.GetCandidates();
   }
 
   render() {
     return (
+      <Switch>
       <div className="vote main-content">
+        <h2>Vote</h2>
+        <Route exact path="/candidates">
+        <div className="candidate-grid">
           {this.state.candidates.map((candidate, key) =>
-              <CandidateGrid data={candidate} key={candidate} />)}
+              <CandidateGrid callbackCandidate={this.viewCandidate} data={candidate} key={candidate.owner} />)}
+        <button onClick={this.CandidatePaginationPrev}>Prev</button>
+        <button onClick={this.CandidatePaginationNext}>Next</button>
+        </div>
+        </Route>
+        <Route path="/candidates/:owner">
+          <CandidateSingle data={this.state.activeCandidate} />
+        </Route>
       </div>
+      </Switch>
     );
   }
 }

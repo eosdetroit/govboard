@@ -19,7 +19,7 @@ class Home extends React.Component {
         
         return (
                 <>
-                <Redirect to='/vote' />
+                <Redirect to='/candidates' />
                 </>
                 )
     }

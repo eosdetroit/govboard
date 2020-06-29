@@ -96,6 +96,18 @@ header#nav nav .acctName {
   margin: 0 auto;
 }
 
+.candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.candidate-grid .candidate-single-grid {
+  border: 2px solid #333;
+  margin: 5px;
+  border-radius: 25px;
+  padding: 15px;
+}
+
 footer {
   background: #ebebeb;
   padding: 20px 0;

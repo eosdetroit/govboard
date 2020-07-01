@@ -35,8 +35,7 @@ class Vote extends React.Component {
       try {
         const resp = await wax.rpc.get_producers({              // Get the response as json
           limit: candidatesDisplayed,
-          lower_bound: candidateBound,
-          json: false
+          json: true
         });
         console.log(resp);
         this.setState({

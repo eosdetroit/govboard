@@ -15,7 +15,7 @@ class Home extends React.Component {
 
 
   render() {
-  if (this.props.isLoggedIn === true) {
+  if (this.props.activeUser != null) {
         
         return (
                 <>

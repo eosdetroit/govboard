@@ -68,7 +68,7 @@ class App extends React.Component {
         </div>
         </header>
         <Route exact path="/">
-          <Home />
+          <Home activeUser={this.state.activeUser} />
         </Route>
         <Route exact path="/candidates">
           <Vote />

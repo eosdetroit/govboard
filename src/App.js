@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link, 
+  useParams,
   useRouteMatch
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
@@ -70,11 +71,11 @@ class App extends React.Component {
         <Route exact path="/">
           <Home activeUser={this.state.activeUser} />
         </Route>
-        <Route exact path="/candidates">
-          <Vote />
+        <Route path="/candidates">
+          <Vote activeUser={this.state.activeUser} />
         </Route>
-        <Route exact path="/nominate">
-          <Nomination />
+        <Route path="/nominate">
+          <Nomination activeUser={this.state.activeUser} />
         </Route>
         <footer><Footer /></footer>
         </Router>

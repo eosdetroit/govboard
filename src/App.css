@@ -108,6 +108,35 @@ header#nav nav .acctName {
   padding: 15px;
 }
 
+.candidate-single {
+  display: grid;
+  grid-template-rows: [header]auto[body]auto[end];
+  grid-template-columns:[left]30%[right]70%[end];
+}
+
+.candidate-single .candidate-header {
+  grid-row-start: header;
+  grid-row-end: span body;
+  grid-column-start: left;
+  grid-column-end: span end;
+  padding-bottom: 30px;
+}
+
+.candidate-single .candidate-left-pane {
+  grid-row-start: body;
+  grid-row-end: span end;
+  grid-column-start: left;
+  grid-column-end: span right;
+}
+
+.candidate-single .candidate-right-pane {
+  grid-row-start: body;
+  grid-row-end: span end;
+  grid-column-start: right;
+  grid-column-end: span end;
+}
+
+
 footer {
   background: #ebebeb;
   padding: 20px 0;

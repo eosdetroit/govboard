@@ -75,7 +75,7 @@ class App extends React.Component {
           <Vote activeUser={this.state.activeUser} />
         </Route>
         <Route path="/nominate">
-          <Nomination activeUser={this.state.activeUser} />
+          <Nomination activeUser={this.state.activeUser} accountName={this.state.accountName} />
         </Route>
         <footer><Footer /></footer>
         </Router>

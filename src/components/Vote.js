@@ -13,7 +13,7 @@ import CandidateSingle from "../partials/candidateSingle";
 
 import '../App.css';
 
-const wax = new waxjs.WaxJS('http://wax.greymass.com', null, null, false);
+const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
 
 class Vote extends React.Component {
   constructor(props){

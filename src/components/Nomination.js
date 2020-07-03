@@ -6,17 +6,26 @@ import {
 
 import '../App.css';
 import * as waxjs from "@waxio/waxjs/dist";
+import { Api, JsonRpc, signatureProvider, RpcError } from 'eosjs';
 
 const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
+
+const rpc = new JsonRpc('https://testnet.waxsweden.org', { fetch });
+const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
 
 class Nomination extends React.Component {
   constructor(props){
   	super(props);
   	this.state = {
-  		activeUser: [this.props.activeUser],
+  		activeUser: this.props.activeUser,
   		isNominated: '',
-  		hasAccepted: false
-  	}
+  		hasAccepted: false,
+      nominee: ''
+  	};
+    this.nominateCandidate = this.nominateCandidate.bind(this);
+    this.acceptNomination = this.acceptNomination.bind(this);
+    this.declineNomination = this.declineNomination.bind(this);
+    this.updateNominee = this.updateNominee.bind(this);
   }
 
   async checkNominations() {
@@ -50,22 +59,25 @@ class Nomination extends React.Component {
   }
 
   async nominateCandidate() {
-  	try {
-      const result = await wax.api.transact({
-        actions: [{
+    console.log(this.state.nominee);
+    const transaction = {
+      actions: [{
           account: 'oig',
           name: 'nominate',
           authorization: [{
-            actor: this.props.accountName,
+            actor: this.state.activeUser.accountName,
             permission: 'active',
           }],
           data: {
-            nominator: this.props.accountName,
-            nomination: this.state.nominee,
+            nominator: this.state.activeUser.accountName,
+            nominee: this.state.nominee,
           },
-        }],
-        blocksBehind: 3,
-        expireSeconds: 30,
+      }]
+    } 
+    try {
+      const result = await this.state.activeUser.signTransaction(
+        transaction, {blocksBehind: 3,
+        expireSeconds: 30
       });
     } catch(e) {
       console.log(e);
@@ -74,7 +86,7 @@ class Nomination extends React.Component {
 
   async acceptNomination() {
   	try {
-      const result = await wax.api.transact({
+      const result = await api.transact({
         actions: [{
           account: 'oig',
           name: 'decide',
@@ -98,7 +110,7 @@ class Nomination extends React.Component {
 
   async declineNomination() {
   	try {
-      const result = await wax.api.transact({
+      const result = await api.transact({
         actions: [{
           account: 'oig',
           name: 'decide',
@@ -122,7 +134,7 @@ class Nomination extends React.Component {
 
   async updateNominee() {
   	try {
-      const result = await wax.api.transact({
+      const result = await api.transact({
         actions: [{
           account: 'oig',
           name: 'update_nominee',

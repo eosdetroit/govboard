@@ -1,8 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router,
-  Switch,
-  Route,
-  Link, withRouter, useParams
+import {
+  withRouter
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
 
@@ -75,6 +73,7 @@ class CandidateSingle extends React.Component {
         blocksBehind: 3,
         expireSeconds: 30,
       });
+      console.log(result);
     } catch(e) {
       console.log(e);
     }

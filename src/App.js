@@ -3,10 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link, 
-  useParams,
-  useRouteMatch
 } from "react-router-dom";
-import * as waxjs from "@waxio/waxjs/dist";
 
 import './App.css';
 import logo from './assets/wax-logo-white.png'

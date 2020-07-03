@@ -1,9 +1,6 @@
 import React from 'react';
-import {  BrowserRouter as Router,
-  Switch,
-  Route,
+import {
   Link,
-  useParams
 } from "react-router-dom";
 
 import '../App.css';

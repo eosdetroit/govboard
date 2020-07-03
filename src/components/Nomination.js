@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Link,
   Redirect
 } from "react-router-dom";
 
@@ -40,13 +39,13 @@ class Nomination extends React.Component {
             json: true
         });
         console.log(resp.rows);
-        if (resp.rows == ''){
+        if (resp.rows === ''){
       		console.log('No nominations!');
       	} else {
       		this.setState({
       			isNominated: true
       		});
-      		if (resp.rows[resp.rows.length - resp.rows.length].accepted == 1){
+      		if (resp.rows[resp.rows.length - resp.rows.length].accepted === 1){
       			this.setState({
       				hasAccepted: resp.rows[resp.rows.length - resp.rows.length].accepted
       			});
@@ -79,6 +78,7 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
+      console.log(result);
     } catch(e) {
       console.log(e);
     }
@@ -103,6 +103,7 @@ class Nomination extends React.Component {
         blocksBehind: 3,
         expireSeconds: 30,
       });
+      console.log(result);
     } catch(e) {
       console.log(e);
     }
@@ -127,6 +128,7 @@ class Nomination extends React.Component {
         blocksBehind: 3,
         expireSeconds: 30,
       });
+      console.log(result);
     } catch(e) {
       console.log(e);
     }
@@ -155,6 +157,7 @@ class Nomination extends React.Component {
         blocksBehind: 3,
         expireSeconds: 30,
       });
+      console.log(result);
     } catch(e) {
       console.log(e);
     }
@@ -176,7 +179,7 @@ class Nomination extends React.Component {
   }
 
   isNominated() {
-  	if (this.state.isNominated == true && this.state.hasAccepted == 0) {
+  	if (this.state.isNominated === true && this.state.hasAccepted === 0) {
   		return (
   			<div className="nomination-list">
       			<h3>{this.props.accountName}'s Nomination Status</h3>
@@ -185,7 +188,7 @@ class Nomination extends React.Component {
             <button onClick={this.declineNomination} className="btn accept">Decline</button>
       		</div>
   		);
-  	} else if (this.state.isNominated == true && this.state.hasAccepted == 1) {
+  	} else if (this.state.isNominated === true && this.state.hasAccepted === 1) {
   		return (
   			<div className="nomination-list">
       			<h3>{this.props.accountName}'s Nomination Status</h3>
@@ -218,7 +221,7 @@ class Nomination extends React.Component {
   }
 
   hasAccepted() {
-  	if (this.state.hasAccepted == 1){
+  	if (this.state.hasAccepted === 1){
   		return (
   			<div className="nomination-info-form">
 	  			<h3>Submit or Update Candidicy Information</h3>
@@ -255,7 +258,7 @@ class Nomination extends React.Component {
 
   render() {
   	console.log(this.props.activeUser);
-  	if (this.props.activeUser == null) {
+  	if (this.props.activeUser === null) {
         
         return (
                 <>

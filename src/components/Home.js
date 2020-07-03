@@ -1,19 +1,11 @@
 import React from 'react';
 import {
-  Link,
   Redirect
 } from "react-router-dom";
-import { Api, JsonRpc } from '@waxio/waxjs/dist';
 
 import '../App.css';
 
 class Home extends React.Component {
-  constructor(props){
-  	super(props);
-
-  }
-  
-
   render() {
   if (this.props.activeUser != null) {
         

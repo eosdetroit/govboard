@@ -5,12 +5,8 @@ import {
 
 import '../App.css';
 import * as waxjs from "@waxio/waxjs/dist";
-import { Api, JsonRpc, signatureProvider, RpcError } from 'eosjs';
 
 const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
-
-const rpc = new JsonRpc('https://testnet.waxsweden.org', { fetch });
-const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
 
 class Nomination extends React.Component {
   constructor(props){

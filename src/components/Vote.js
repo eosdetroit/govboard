@@ -108,6 +108,7 @@ class Vote extends React.Component {
   async CandidatePaginationPrev(){
     let candidatePage = this.state.candidatePage - 1;
     let candidatesDisplayed = this.state.candidateLimit + 2;
+    let realFloor = this.state.realFloor;
     try {
     if (this.state.candidatePage > 1) {
       let resp = await wax.rpc.get_table_rows({             
@@ -161,6 +162,10 @@ class Vote extends React.Component {
 
   render() {
     let upperSliceLimit = this.state.candidateLimit + this.state.sliceLimit;
+    console.log(this.state.candidateBound);
+    console.log(this.state.candidateFloor);
+    console.log(this.state.candidatePage);
+    console.log(this.state.candidateBound);
     return (
       <div className="vote main-content">
         <Switch>

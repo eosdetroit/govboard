@@ -157,6 +157,7 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
+      console.log(result);
     } catch(e) {
       console.log(e);
     }

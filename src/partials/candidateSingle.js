@@ -100,7 +100,7 @@ class CandidateSingle extends React.Component {
             <li>Twitter: {this.state.twitter}</li>
             <li>WeChat: {this.state.wechat}</li>
           </ul>
-          <button onClick={this.VoteCandidate}>Vote for {this.state.nomiee}</button>
+          <button onClick={this.VoteCandidate} className="btn">Vote for {this.state.nominee}</button>
           </div>
       </div>
     );

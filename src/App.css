@@ -107,6 +107,32 @@ header#nav nav .accName {
   margin: 5px;
   border-radius: 25px;
   padding: 15px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.candidate-grid .candidate-single-grid:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.candidate-grid .candidate-single-grid .candidate-account {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.candidate-grid .candidate-single-grid img {
+  max-width: 40%;
+  display: inline-block;
+}
+
+.candidate-grid .candidate-single-grid .btn {
+  position: relative;
+  z-index: 10;
+  margin: 8px auto 0;
+  display: block;
 }
 
 .candidate-single {
@@ -130,7 +156,7 @@ header#nav nav .accName {
   grid-row-end: span body;
   grid-column-start: left;
   grid-column-end: span end;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 .candidate-single .candidate-left-pane {
@@ -145,6 +171,11 @@ header#nav nav .accName {
   grid-row-end: span end;
   grid-column-start: right;
   grid-column-end: span end;
+}
+
+.candidate-single .candidate-right-pane ul {
+  padding-left: 30px;
+  margin: 5px 0 10px;
 }
 
 .nomination {

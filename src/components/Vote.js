@@ -1,10 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router,
+import {
   Switch,
   Route,
-  Link,
-  useRouteMatch,
-  useParams
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
 
@@ -62,7 +59,6 @@ class Vote extends React.Component {
       let candidatesDisplayed = this.state.candidateLimit + 2;
       let candidateBound = this.state.candidateBound;
       let candidateFloor = this.state.candidateFloor;
-      let realFloor = this.state.realFloor;
       try {
           if (candidatePage === 1){
           let resp = await wax.rpc.get_table_rows({             
@@ -112,9 +108,6 @@ class Vote extends React.Component {
   async CandidatePaginationPrev(){
     let candidatePage = this.state.candidatePage - 1;
     let candidatesDisplayed = this.state.candidateLimit + 2;
-    let candidateBound = this.state.candidateBound;
-    let candidateFloor = this.state.candidateFloor;
-    let realFloor = this.state.realFloor;
     try {
     if (this.state.candidatePage > 1) {
       let resp = await wax.rpc.get_table_rows({             
@@ -136,10 +129,7 @@ class Vote extends React.Component {
          }));
     }
     else {
-      let candidatePage = 1;
       let candidatesDisplayed = this.state.candidateLimit + 1;
-      let candidateBound = 0;
-      let candidateFloor = realFloor;
       let resp = await wax.rpc.get_table_rows({             
           code: 'eosio',
           scope: 'eosio',

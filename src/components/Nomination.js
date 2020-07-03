@@ -30,7 +30,8 @@ class Nomination extends React.Component {
             upper_bound: this.props.accountName,
             json: true
         });
-        if (resp == null){
+        console.log(resp.rows);
+        if (resp.rows == ''){
       		console.log('No nominations!');
       	} else {
       		this.setState({
@@ -62,8 +63,7 @@ class Nomination extends React.Component {
             nominator: this.props.accountName,
             nomination: this.state.nominee,
           },
-        }]
-      }, {
+        }],
         blocksBehind: 3,
         expireSeconds: 30,
       });
@@ -77,17 +77,17 @@ class Nomination extends React.Component {
       const result = await wax.api.transact({
         actions: [{
           account: 'oigoigoigoig',
-          name: 'update_nomination',
+          name: 'decide',
           authorization: [{
-            actor: this.props.activeUser,
+            actor: this.props.accountName,
             permission: 'active',
           }],
           data: {
-            nominee: this.props.activeUser,
+            nominee: this.props.accountName,
             decision: 1,
           },
         }]
-      }, {
+        }, {
         blocksBehind: 3,
         expireSeconds: 30,
       });
@@ -96,22 +96,22 @@ class Nomination extends React.Component {
     }
   }
 
-  async recjectNomination() {
+  async declineNomination() {
   	try {
       const result = await wax.api.transact({
         actions: [{
           account: 'oigoigoigoig',
-          name: 'update_nomination',
+          name: 'decide',
           authorization: [{
-            actor: this.props.activeUser,
+            actor: this.props.accountName,
             permission: 'active',
           }],
           data: {
-            nominee: this.props.activeUser,
+            nominee: this.props.accountName,
             decision: 0,
           },
         }]
-      }, {
+        }, {
         blocksBehind: 3,
         expireSeconds: 30,
       });
@@ -127,11 +127,11 @@ class Nomination extends React.Component {
           account: 'oigoigoigoig',
           name: 'update_nominee',
           authorization: [{
-            actor: this.props.activeUser,
+            actor: this.props.accountName,
             permission: 'active',
           }],
           data: {
-            nominee: this.props.activeUser,
+            nominee: this.props.accountName,
           	logo_256: this.state.logo_256,
           	description: this.state.description,
           	website: this.state.website,
@@ -139,8 +139,7 @@ class Nomination extends React.Component {
           	twitter: this.state.twitter,
           	wechat: this.state.wechat
           },
-        }]
-      }, {
+        }],
         blocksBehind: 3,
         expireSeconds: 30,
       });
@@ -171,6 +170,7 @@ class Nomination extends React.Component {
       			<h3>{this.props.accountName}'s Nominations</h3>
       			<p>Someone has nominated you for a WAX Office of the Inspector General position!</p>
       			<button onClick={this.acceptNomination}>Accept</button>
+            <button onClick={this.declineNomination}>Decline</button>
       		</div>
   		);
   	} else if (this.state.isNominated == true && this.state.hasAccepted == 1) {
@@ -243,11 +243,14 @@ class Nomination extends React.Component {
         <h2>Nominate</h2>
         {this.isNominated()}
         {this.hasAccepted()}
-    	<div className="nomination-form">
-			<h3>Nominate for election</h3>
-			<input type="text" name="nominee" placeholder="Nominee's WAX account name" onChange={this.handleInputChange} />
-    		<button onClick={this.nominateCandidate}>Nominate Candidate</button>
-    	</div>
+    	  <div className="nomination-form">
+			  <h3>Nominate for election</h3>
+			    <div className="form-row">
+            <label for="nominee">Nominee</label>
+            <input type="text" name="nominee" placeholder="Nominee's WAX account name" onChange={this.handleInputChange} />
+    		    <button onClick={this.nominateCandidate}>Nominate Candidate</button>
+    	    </div>
+        </div>
       </div>
     );
   }

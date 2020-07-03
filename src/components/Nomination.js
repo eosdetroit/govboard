@@ -82,7 +82,7 @@ class Nomination extends React.Component {
 
   async acceptNomination() {
   	try {
-      const result = await api.transact({
+      const transaction = {
         actions: [{
           account: 'oig',
           name: 'decide',
@@ -95,9 +95,10 @@ class Nomination extends React.Component {
             decision: 1,
           },
         }]
-        }, {
-        blocksBehind: 3,
-        expireSeconds: 30,
+      }
+      const result = await this.state.activeUser.signTransaction(
+        transaction, {blocksBehind: 3,
+        expireSeconds: 30
       });
       console.log(result);
     } catch(e) {
@@ -107,7 +108,7 @@ class Nomination extends React.Component {
 
   async declineNomination() {
   	try {
-      const result = await api.transact({
+      const transaction = {
         actions: [{
           account: 'oig',
           name: 'decide',
@@ -120,9 +121,10 @@ class Nomination extends React.Component {
             decision: 0,
           },
         }]
-        }, {
-        blocksBehind: 3,
-        expireSeconds: 30,
+      }
+      const result = await this.state.activeUser.signTransaction(
+        transaction, {blocksBehind: 3,
+        expireSeconds: 30
       });
       console.log(result);
     } catch(e) {
@@ -132,7 +134,7 @@ class Nomination extends React.Component {
 
   async updateNominee() {
   	try {
-      const result = await api.transact({
+      const transaction = {
         actions: [{
           account: 'oig',
           name: 'update_nominee',
@@ -142,16 +144,18 @@ class Nomination extends React.Component {
           }],
           data: {
             nominee: this.props.accountName,
-          	logo_256: this.state.logo_256,
-          	description: this.state.description,
-          	website: this.state.website,
-          	telegram: this.state.telegram,
-          	twitter: this.state.twitter,
-          	wechat: this.state.wechat
+            logo_256: this.state.logo_256,
+            description: this.state.description,
+            website: this.state.website,
+            telegram: this.state.telegram,
+            twitter: this.state.twitter,
+            wechat: this.state.wechat
           },
-        }],
-        blocksBehind: 3,
-        expireSeconds: 30,
+        }]
+      }
+      const result = await this.state.activeUser.signTransaction(
+        transaction, {blocksBehind: 3,
+        expireSeconds: 30
       });
       console.log(result);
     } catch(e) {

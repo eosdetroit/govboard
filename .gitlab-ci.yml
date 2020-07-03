@@ -11,7 +11,7 @@ build-test-deploy-testnet:
   script:
     - yarn install
     - yarn build
-    - rsync -avz build/ root@oig.wax.eosdetroit.io:/var/www/html
+    - rsync -avz build/ root@oig.wax.eosdetroit.io:/var/www/govboard
   stage: test
   artifacts:
     paths:

@@ -58,7 +58,7 @@ class App extends React.Component {
           <>
           <Link to="/candidates">Vote</Link>
           <Link to="/nominate">Nominate</Link>
-          <span>{this.state.accountName}</span>
+          <span className="accName">{this.state.accountName}</span>
           </>
           :
           <>

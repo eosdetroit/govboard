@@ -165,7 +165,7 @@ class Vote extends React.Component {
     console.log(this.state)
   }   
 
-  componentWillMount(){
+  componentDidMount(){
     return this.GetCandidates();
   }
 
@@ -175,15 +175,17 @@ class Vote extends React.Component {
       <div className="vote main-content">
         <Switch>
         <Route exact path="/candidates">
-        <h2>Vote</h2>
+        <h2>OIG Candidates</h2>
         <div className="candidate-grid">
 
           {this.state.candidates.slice(this.state.sliceLimit, upperSliceLimit).map((candidate, key) =>
               <CandidateGrid data={candidate} key={candidate.owner} />)}
 
         </div>
-        <button onClick={this.CandidatePaginationPrev}>Prev</button>
-        <button onClick={this.CandidatePaginationNext}>Next</button>
+        <div className="pagination-wrapper">
+          <button onClick={this.CandidatePaginationPrev} className="btn">Prev</button>
+          <button onClick={this.CandidatePaginationNext} className="btn">Next</button>
+        </div>
         </Route>
         <Route path="/candidates/:owner">
           <CandidateSingle />

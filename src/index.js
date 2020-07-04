@@ -30,7 +30,7 @@ console.log(anchor);
 console.log(waxcloud);
 
 ReactDOM.render(
-	<UALProvider chains={[waxMainnet]} authenticators={[scatter, anchor, waxcloud]} appName={'WAX OIG Governance Dashboard'}>
+	<UALProvider chains={[waxMainnet]} authenticators={[waxcloud, anchor, scatter]} appName={'WAX OIG Governance Dashboard'}>
     	<Router><UALConsumer /></Router>
   	</UALProvider>,
   	document.getElementById('root')

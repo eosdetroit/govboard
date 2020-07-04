@@ -15,7 +15,14 @@ class Nomination extends React.Component {
   		activeUser: this.props.activeUser,
   		isNominated: '',
   		hasAccepted: false,
-      nominee: ''
+      nominee: '',
+      name: '',
+      logo_256: '',
+      description: '',
+      twitter: '',
+      wechat: '',
+      telegram: '',
+
   	};
     this.nominateCandidate = this.nominateCandidate.bind(this);
     this.acceptNomination = this.acceptNomination.bind(this);
@@ -137,19 +144,20 @@ class Nomination extends React.Component {
       const transaction = {
         actions: [{
           account: 'oig',
-          name: 'update_nominee',
+          name: 'update',
           authorization: [{
             actor: this.props.accountName,
             permission: 'active',
           }],
           data: {
             nominee: this.props.accountName,
+            name: this.state.name,
             logo_256: this.state.logo_256,
-            description: this.state.description,
-            website: this.state.website,
+            descriptor: this.state.description,
             telegram: this.state.telegram,
             twitter: this.state.twitter,
-            wechat: this.state.wechat
+            wechat: this.state.wechat,
+            remove: false
           },
         }]
       }
@@ -226,16 +234,16 @@ class Nomination extends React.Component {
   			<div className="nomination-info-form">
 	  			<h3>Submit or Update Candidicy Information</h3>
   				<div className="form-row">
+            <label for="name">Full Name</label>
+            <input type="text" name="name" maxlength="256" placeholder="John Doe" onChange={this.handleInputChange} />
+        </div>
+          <div className="form-row">
   					<label for="logo_256">Picture</label>
   					<input type="file" name="logo_256" onChange={this.handleInputChange} />
 				</div>
 				<div className="form-row">
   					<label for="description">Candidicy Platform</label>
   					<textarea name="description" maxlength="2000" onChange={this.handleInputChange}></textarea>
-				</div>
-				<div className="form-row">
-  					<label for="website">Website or Announcement</label>
-  					<input type="text" name="website" maxlength="256" placeholder="http://yoururl.com" onChange={this.handleInputChange} />
 				</div>
 				<div className="form-row">
   					<label for="telegram">Telegram Handle</label>

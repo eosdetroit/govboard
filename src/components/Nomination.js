@@ -92,7 +92,7 @@ class Nomination extends React.Component {
           }],
           data: {
             nominee: this.props.accountName,
-            decision: 1,
+            decision: true,
           },
         }]
       }
@@ -118,7 +118,7 @@ class Nomination extends React.Component {
           }],
           data: {
             nominee: this.props.accountName,
-            decision: 0,
+            decision: false,
           },
         }]
       }

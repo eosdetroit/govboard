@@ -49,22 +49,38 @@ class App extends React.Component {
         <header id="nav">
         <div className="nav-wrapper">
         <div className="logo">
-          <Link to="/"><img src={logo} alt="WAX Logo" />&nbsp;<span className="logo-text">Office of Inspector General</span></Link>
+          <Link to="/">
+            <img src={logo} alt="WAX Logo" />
+            <span className="logo-text">&nbsp;Office of Inspector General</span></Link>
         </div>
-        <nav>
-          <Link to="/about">About</Link>
-        { this.state.activeUser ?
-          <>
-          <Link to="/candidates">Vote</Link>
-          <Link to="/nominate">Nominate</Link>
-          <span className="accName">{this.state.accountName}</span>
-          </>
-          :
-          <>
-          <button id="login" onClick={this.props.ual.showModal} >Login</button>
-          </>
-        }
-        </nav>
+          { this.state.activeUser ?
+            <nav>
+              <a href="#" id="menu-icon"></a>
+              <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/candidates">Vote</Link></li>
+                <li><Link to="/nominate">Nominate</Link></li>
+              </ul>
+            </nav>
+            :
+            <nav>
+              <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+              </ul>
+            </nav>
+          }
+        <div className="accName-wrapper">
+          { this.state.activeUser ?
+            <>
+              <span className="accName desktop">{this.state.accountName}</span>
+            </>
+            :
+            <>
+            </>
+          }
+        </div>
         </div>
         </header>
         <Route exact path="/">

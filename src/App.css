@@ -16,6 +16,9 @@ header, footer, div {
 header#nav .nav-wrapper {
   max-width: 1100px;
   margin: 0 auto;
+  display: grid;
+  grid-template-rows: [row]auto[end];
+  grid-template-columns:[logo]319px[nav]auto[accName]100px[end];
 }
 
 header#nav {
@@ -25,8 +28,10 @@ header#nav {
 
 header#nav .logo {
   padding: 15px 0;
-  display: inline-block;
-  width: 60%;
+  grid-row-start: row;
+  grid-row-end: span end;
+  grid-column-start: logo;
+  grid-column-end: span nav;
 }
 
 header#nav .logo img {
@@ -45,12 +50,28 @@ header#nav .logo a:hover {
 }
 
 header#nav nav {
-  display: inline-block;
-  width: 40%;
   text-align: right;
+  grid-row-start: row;
+  grid-row-end: span end;
+  grid-column-start: nav;
+  grid-column-end: span accName;
+  justify-self: end;
 }
 
-header#nav nav button {
+header#nav nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+header#nav nav ul li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+header#nav .login button {
   padding: 8px 36px 8px 8px;
   background: url('./assets/wax-allaccess-badge-light.png');
   background-size: contain;
@@ -60,19 +81,19 @@ header#nav nav button {
   border: 0;
 }
 
-header#nav nav button:hover {
+header#nav .login button:hover {
   cursor: pointer;
   border: 0;
   color: #ebebeb;
 }
 
-header#nav nav button:focus {
+header#nav .login button:focus {
   cursor: pointer;
   border: 0;
   outline: none;
 }
 
-header#nav nav a {
+header#nav nav ul li a {
   color: #fff;
   text-decoration: none;
   font-size: 16px;
@@ -86,9 +107,136 @@ header#nav nav a:hover {
   background: #000;
 }
 
-header#nav nav .accName {
+header#nav .accName-wrapper {
   padding-left: 10px;
+  grid-row-start: row;
+  grid-row-end: span end;
+  grid-column-start: accName;
+  grid-column-end: span end;
+}
+
+.accName-wrapper .accName {
+  display: block;
+  padding: 27px 0;
+}
+
+header#nav .login {
   display: inline-block;
+}
+
+@media (max-width: 769px) { 
+  header#nav nav a#menu-icon {
+    background: url("assets/menu-icon.svg");
+    background-repeat: no-repeat;
+  }
+
+  header#nav {
+    position: fixed;
+    width: 100%;
+  }
+
+  header#nav .nav-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: [row]auto[end];
+  grid-template-columns:[logo]200px[nav]auto[accName]40px[end];
+  }
+
+  header#nav .logo {
+    padding-left: 5px;
+  }
+
+  header#nav nav {
+    width: 40px;
+    height: 75px;
+    grid-column-start: accName;
+    grid-column-end: span end;
+  }
+
+  header#nav .accName-wrapper {
+    padding-left: 0;
+    padding-right: 5px;
+    grid-column-start: nav;
+    grid-column-end: span accName;
+    text-align: right;
+  }
+
+  header#nav nav a#menu-icon {
+    display:inline-block;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    padding: 16px 0;
+    background-position: center;
+  }
+
+  header#nav nav ul { 
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility .25s ease-in-out, opacity .25s ease-in-out;
+      -moz-transition: visibility .25s ease-in-out, opacity .25s ease-in-out;
+      -webkit-transition: visibility .25s ease-in-out, opacity .25s ease-in-out;
+    position: absolute;
+    padding: 0;
+    background: #fff;
+    right: 5px;
+    top: 74px;
+    width: 35%;
+    border-radius: 4px 0 4px 4px;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    text-align: center;
+    overflow: hidden;
+    z-index: 9999;
+  }
+
+  header#nav nav ul li {
+    text-align: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  header#nav nav ul li:hover {
+    background: #F78E1E;
+    color: #fff;
+    transition: background 0.4s, color 0.4s, border 0.4s;
+  }
+
+  header#nav nav ul li a {
+    color: #000;
+    transition: background 0.4s, color 0.4s, border 0.4s;
+    line-height: 25px;
+  }
+
+  header#nav nav ul li a:hover {
+    background: transparent;
+    color: #fff;
+    transition: background 0.4s, color 0.4s, border 0.4s;
+  }
+
+  header#nav nav:hover ul {
+    visibility: visible;
+    opacity: 1;
+      transition: opacity .25s ease-in-out;
+      -moz-transition: opacity .25s ease-in-out;
+      -webkit-transition: opacity .25s ease-in-out; 
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .footer-inner {
+    padding: 0 20px;
+  }
+
 }
 
 .main-content {

@@ -4,7 +4,6 @@ import {
 } from "react-router-dom";
 
 import '../App.css';
-import placeholder from '../assets/candidate-placeholder.jpg';
 
 class CandidateGrid extends React.Component {
 

@@ -5,7 +5,6 @@ import {
 import * as waxjs from "@waxio/waxjs/dist";
 
 import '../App.css';
-import placeholder from '../assets/candidate-placeholder.jpg';
 
 const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
 

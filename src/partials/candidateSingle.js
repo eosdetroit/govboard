@@ -31,9 +31,9 @@ class CandidateSingle extends React.Component {
   async fetchData(owner) {
      try {
       let resp = await wax.rpc.get_table_rows({             
-            code: 'eosio',
-            scope: 'eosio',
-            table: 'producers',
+            code: 'oig',
+            scope: 'oig',
+            table: 'nominees',
             limit: 1,
             lower_bound: owner,
             upper_bound: owner,
@@ -41,12 +41,12 @@ class CandidateSingle extends React.Component {
         });
         this.setState({
           nominee: resp.rows[resp.rows.length - resp.rows.length].owner,
-          logo_256: '',
-          description: '',
-          website: '',
-          telegram: '',
-          twitter: '',
-          wechat: ''
+          name: resp.rows[resp.rows.length - resp.rows.length].name,
+          logo_256: resp.rows[resp.rows.length - resp.rows.length].logo_256,
+          description: resp.rows[resp.rows.length - resp.rows.length].descriptor,
+          telegram: resp.rows[resp.rows.length - resp.rows.length].telegram,
+          twitter: resp.rows[resp.rows.length - resp.rows.length].twitter,
+          wechat: resp.rows[resp.rows.length - resp.rows.length].wechat
           });
           console.log(this.state);
           } catch(e) {
@@ -83,23 +83,42 @@ class CandidateSingle extends React.Component {
     return (
       <div className="candidate-single">
         <div className="candidate-header">
-          <h2>{this.state.nominee}</h2>
+          <h2>{this.state.name}</h2>
           <span><i>Candidate for WAX OIG</i></span>
         </div>
         <div className="candidate-left-pane">
-          <img src={placeholder} alt="" />
-          {/* <img src={this.state.logo_256} alt="{this.state.nominee}" /> */}
+          <img src={this.state.logo_256} alt="{this.state.nominee}" />
         </div>
         <div className="candidate-right-pane">
-          <p>{this.state.description}</p>
-          <p>Additional Information: {this.state.website}</p>
+          <p className="description">{this.state.description}</p>
           <strong>Social Media</strong>
           <ul>
-            <li>Telegram: {this.state.telegram}</li>
-            <li>Twitter: {this.state.twitter}</li>
-            <li>WeChat: {this.state.wechat}</li>
+            { this.state.twitter ? 
+              <>
+                <li>Telegram: {this.state.telegram}</li>
+              </>
+              :
+              <>
+              </>
+            }
+            { this.state.telegram ? 
+              <>
+                <li><a href={this.state.twitter} target="_blank" >Twitter</a></li>
+              </>
+            :
+            <>
+            </>
+            }
+            { this.state.wechat ? 
+              <>
+                <li><a href={this.state.wechat} target="_blank" >WeChat</a></li>
+              </>
+            :
+            <>
+            </>
+            }
           </ul>
-          <button onClick={this.VoteCandidate} className="btn">Vote for {this.state.nominee}</button>
+          <button onClick={this.VoteCandidate} className="btn">Vote for {this.state.name}</button>
           </div>
       </div>
     );

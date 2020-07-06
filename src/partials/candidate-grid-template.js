@@ -7,12 +7,13 @@ import '../App.css';
 import placeholder from '../assets/candidate-placeholder.jpg';
 
 class CandidateGrid extends React.Component {
+
   render() {
     return (
       <Link key={this.props.data.owner} to={'/candidates/' + this.props.data.owner} className="candidate-single-grid">
-        <span className="candidate-account">{this.props.data.owner}</span>
-        <img src={placeholder} alt="" />
-        <button onClick={this.VoteCandidate} className="btn">Vote for {this.props.data.owner}</button>
+        <span className="candidate-account">{this.props.data.name}</span>
+        <img src={this.props.data.logo_256} alt="" />
+        <button className="btn">Vote for {this.props.data.name}</button>
       </Link>
     );
   }

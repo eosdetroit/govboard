@@ -25,10 +25,6 @@ const waxcloud = new Wax([waxMainnet], { appName: 'WAX OIG Governance Dashboard'
 
 const UALConsumer = withUAL(App);
 
-console.log(scatter);
-console.log(anchor);
-console.log(waxcloud);
-
 ReactDOM.render(
 	<UALProvider chains={[waxMainnet]} authenticators={[waxcloud, anchor, scatter]} appName={'WAX OIG Governance Dashboard'}>
     	<Router><UALConsumer /></Router>

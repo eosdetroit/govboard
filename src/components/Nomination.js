@@ -41,16 +41,30 @@ class Nomination extends React.Component {
             upper_bound: this.props.accountName,
             json: true
         });
-        console.log(resp.rows);
         if (resp.rows === ''){
-      		console.log('No nominations!');
       	} else {
       		this.setState({
       			isNominated: true
       		});
       		if (resp.rows[resp.rows.length - resp.rows.length].accepted === 1){
-      			this.setState({
-      				hasAccepted: resp.rows[resp.rows.length - resp.rows.length].accepted
+      			let nomineeInfo = await wax.rpc.get_table_rows({ 
+              code: 'oig',
+              scope: 'oig',
+              table: 'nominees',
+              limit: 1,
+              lower_bound: this.props.accountName,
+              upper_bound: this.props.accountName,
+              json: true
+            });
+            console.log(nomineeInfo);
+            this.setState({
+		          name: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].name,
+              logo_256: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].logo_256,
+              description: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].descriptor,
+              telegram: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].telegram,
+              twitter: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].twitter,
+              wechat: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].wechat,
+              hasAccepted: resp.rows[resp.rows.length - resp.rows.length].accepted
       			});
       		}
       		console.log(this.state);
@@ -235,27 +249,27 @@ class Nomination extends React.Component {
 	  			<h3>Submit or Update Candidicy Information</h3>
   				<div className="form-row">
             <label for="name">Full Name</label>
-            <input type="text" name="name" maxlength="256" placeholder="John Doe" onChange={this.handleInputChange} />
+            <input type="text" name="name" value={this.state.name} maxlength="256" placeholder="John Doe" onChange={this.handleInputChange} />
         </div>
           <div className="form-row">
   					<label for="logo_256">Picture</label>
-  					<input type="text" placeholder="Url to image file on the web" name="logo_256" onChange={this.handleInputChange} />
+  					<input type="text" value={this.state.logo_256} placeholder="Url to image file on the web" name="logo_256" onChange={this.handleInputChange} />
 				</div>
 				<div className="form-row">
   					<label for="description">Candidicy Platform</label>
-  					<textarea name="description" maxlength="2000" onChange={this.handleInputChange}></textarea>
+  					<textarea name="description" value={this.state.description} maxlength="2000" onChange={this.handleInputChange}></textarea>
 				</div>
 				<div className="form-row">
   					<label for="telegram">Telegram Handle</label>
-  					<input type="text" name="telegram" maxlength="99" placeholder="@yourhandle" onChange={this.handleInputChange} />
+  					<input type="text" name="telegram" value={this.state.telegram} maxlength="99" placeholder="@yourhandle" onChange={this.handleInputChange} />
 				</div>
 				<div className="form-row">
   					<label for="twitter">Twitter Profile</label>
-  					<input type="text" name="twitter" maxlength="256" placeholder="http://twitter.com" onChange={this.handleInputChange} />
+  					<input type="text" name="twitter" value={this.state.twitter} maxlength="256" placeholder="http://twitter.com" onChange={this.handleInputChange} />
 				</div>
 				<div className="form-row">
   					<label for="wechat">WeChat Profile</label>
-  					<input type="text" name="wechat" maxlength="256" placeholder="http://wechat.com" onChange={this.handleInputChange} />
+  					<input type="text" name="wechat" value={this.state.wechat} maxlength="256" placeholder="http://wechat.com" onChange={this.handleInputChange} />
 				</div>
 				<button onClick={this.updateNominee} className="btn">Submit</button>
   			</div>

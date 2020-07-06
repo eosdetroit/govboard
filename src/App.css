@@ -164,6 +164,11 @@ header#nav nav .accName {
   grid-row-end: span end;
   grid-column-start: left;
   grid-column-end: span right;
+  padding-right: 15px;
+}
+
+.candidate-single .candidate-left-pane img {
+  width: 100%;
 }
 
 .candidate-single .candidate-right-pane {
@@ -173,9 +178,13 @@ header#nav nav .accName {
   grid-column-end: span end;
 }
 
+.candidate-single .candidate-right-pane .description {
+  margin-bottom: 20px;
+}
+
 .candidate-single .candidate-right-pane ul {
   padding-left: 30px;
-  margin: 5px 0 10px;
+  margin: 5px 0 20px;
 }
 
 .nomination {

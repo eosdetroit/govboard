@@ -95,6 +95,7 @@ class CandidateSingle extends React.Component {
         regTransaction, {blocksBehind: 3,
         expireSeconds: 30
       });
+      console.log(regResult);
       } else {
       const voteTransaction = {
         actions: [{
@@ -115,6 +116,7 @@ class CandidateSingle extends React.Component {
         voteTransaction, {blocksBehind: 3,
         expireSeconds: 30
       });
+      console.log(voteResult);
     }
     } catch(e) {
       console.log(e);

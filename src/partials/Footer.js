@@ -21,7 +21,9 @@ class Footer extends React.Component {
         <>
         </>
         }
-        <li><a href="https://wax.io">WAX Website</a></li>
+        <li><a href="https://www.notion.so/WAX-Office-of-Inspector-General-b519bd5514ac4da696e798c4df12b0a7" target="_blank" rel="noopener noreferrer">OIG Knowledgebase</a>
+        <li><a href="https://medium.com/@waxoig" target="_blank" rel="noopener noreferrer">OIG Medium Blog</a>
+        <li><a href="https://wax.io" target="_blank" rel="noopener noreferrer" >WAX Website</a></li>
       </ul>
       </div>
     );

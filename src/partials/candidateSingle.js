@@ -102,7 +102,7 @@ class CandidateSingle extends React.Component {
             }
             { this.state.telegram ? 
               <>
-                <li><a href={this.state.twitter} target="_blank" >Twitter</a></li>
+                <li><a href={this.state.twitter} target="_blank" rel="noopener noreferrer" >Twitter</a></li>
               </>
             :
             <>
@@ -110,7 +110,7 @@ class CandidateSingle extends React.Component {
             }
             { this.state.wechat ? 
               <>
-                <li><a href={this.state.wechat} target="_blank" >WeChat</a></li>
+                <li><a href={this.state.wechat} target="_blank" rel="noopener noreferrer" >WeChat</a></li>
               </>
             :
             <>

@@ -90,30 +90,12 @@ class CandidateSingle extends React.Component {
             limit: 100,
             json: true
       });
-      if (checkReg = '') {
+      if (checkReg == '') {
       const regResult = await this.props.activeUser.signTransaction(
         regTransaction, {blocksBehind: 3,
         expireSeconds: 30
       });
       } else {
-      /*const unregTransaction = {
-        actions: [{
-          account: 'decide',
-          name: 'unregvoter',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
-            treasury_symbol: '8,VOTE',
-          },
-        }]
-      };
-      const unregResult = await this.props.activeUser.signTransaction(
-        unregTransaction, {blocksBehind: 3,
-        expireSeconds: 30
-      }); */
       const voteTransaction = {
         actions: [{
           account: 'decide',

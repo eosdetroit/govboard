@@ -125,7 +125,7 @@ header#nav .login {
 }
 
 @media (max-width: 769px) { 
-  header#nav nav a#menu-icon {
+  header#nav nav button#menu-icon {
     background: url("assets/menu-icon.svg");
     background-repeat: no-repeat;
   }
@@ -162,12 +162,13 @@ header#nav .login {
     text-align: right;
   }
 
-  header#nav nav a#menu-icon {
+  header#nav nav button#menu-icon {
     display:inline-block;
     width: 40px;
     height: 40px;
     vertical-align: middle;
-    padding: 16px 0;
+    margin: 16px 0;
+    border: 0;
     background-position: center;
   }
 

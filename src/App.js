@@ -55,7 +55,7 @@ class App extends React.Component {
         </div>
           { this.state.activeUser ?
             <nav>
-              <a href="#" id="menu-icon"></a>
+              <button id="menu-icon"></button>
               <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>

@@ -48,7 +48,7 @@ class App extends React.Component {
         <header id="nav">
         <div className="nav-wrapper">
         <div className="logo">
-          <Link to="/"><img src={logo} alt="WAX Logo" />&nbsp;<span className="logo-text">Office of the Inspector General</span></Link>
+          <Link to="/"><img src={logo} alt="WAX Logo" />&nbsp;<span className="logo-text">Office of Inspector General</span></Link>
         </div>
         <nav>
         { this.state.activeUser ?

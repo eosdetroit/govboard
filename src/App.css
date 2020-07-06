@@ -124,12 +124,11 @@ header#nav .login {
   display: inline-block;
 }
 
-@media (max-width: 769px) { 
-  header#nav nav button#menu-icon {
-    background: url("assets/menu-icon.svg");
-    background-repeat: no-repeat;
-  }
+header#nav nav button#menu-icon {
+  display: none;
+}
 
+@media (max-width: 769px) { 
   header#nav {
     position: fixed;
     width: 100%;
@@ -170,6 +169,12 @@ header#nav .login {
     margin: 16px 0;
     border: 0;
     background-position: center;
+    background: url("assets/menu-icon.svg");
+    background-repeat: no-repeat;
+  }
+
+  header#nav nav button#menu-icon:hover {
+    cursor: pointer;
   }
 
   header#nav nav ul { 

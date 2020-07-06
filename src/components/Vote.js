@@ -39,10 +39,9 @@ class Vote extends React.Component {
             lower_bound: this.state.nextPage,
             json: true
           });
-          console.log(resp.rows);
           this.setState({
             candidates: resp.rows,
-            nextPage: resp.rows[resp.rows.length - resp.rows.length].owner,
+            nextPage: resp.rows[resp.rows.length - 20].owner,
             prevPage: resp.rows[resp.rows.length - resp.rows.length].owner,
             initialFloor: resp.rows[resp.rows.length - resp.rows.length].owner,
             candidatePage: 1,
@@ -161,7 +160,6 @@ class Vote extends React.Component {
   }
 
   render() {
-    let upperSliceLimit = this.state.candidateLimit + this.state.sliceLimit;
     return (
       <div className="vote main-content">
         <Switch>

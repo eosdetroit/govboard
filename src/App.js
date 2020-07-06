@@ -11,6 +11,7 @@ import Footer from './partials/Footer';
 import Home from './components/Home';
 import Vote from './components/Vote';
 import Nomination from './components/Nomination';
+import About from './components/About';
 
 class App extends React.Component {
     constructor(props){
@@ -51,6 +52,7 @@ class App extends React.Component {
           <Link to="/"><img src={logo} alt="WAX Logo" />&nbsp;<span className="logo-text">Office of Inspector General</span></Link>
         </div>
         <nav>
+          <Link to="/about">About</Link>
         { this.state.activeUser ?
           <>
           <Link to="/candidates">Vote</Link>
@@ -67,6 +69,9 @@ class App extends React.Component {
         </header>
         <Route exact path="/">
           <Home activeUser={this.state.activeUser} />
+        </Route>
+        <Route path="/about">
+          <About activeUser={this.state.activeUser} />
         </Route>
         <Route path="/candidates">
           <Vote activeUser={this.state.activeUser} />

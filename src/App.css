@@ -306,6 +306,23 @@ footer {
 footer .footer-inner {
   max-width: 980px;
   margin: 0 auto;
+  display: grid;
+  grid-template-rows: [row]auto[end];
+  grid-template-columns: [first]25%[second]25%[third]25%[fourth]25%[end];
+}
+
+footer .footer-col-1 {
+  grid-row-start: row;
+  grid-row-end: span end;
+  grid-column-start: first;
+  grid-column-end: span second;
+}
+
+footer .footer-col-2 {
+  grid-row-start: row;
+  grid-row-end: span end;
+  grid-column-start: second;
+  grid-column-end: span third;
 }
 
 footer ul {

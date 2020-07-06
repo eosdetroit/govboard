@@ -135,6 +135,7 @@ header#nav nav button#menu-icon {
   header#nav {
     position: fixed;
     width: 100%;
+    z-index: 1000;
   }
 
   header#nav .nav-wrapper {
@@ -239,7 +240,7 @@ header#nav nav button#menu-icon {
   }
 
   body .main-content {
-    padding: 20px;
+    padding: 85px 20px 20px 20px;
   }
 
   footer .footer-inner {

@@ -41,7 +41,7 @@ class Vote extends React.Component {
           });
           this.setState({
             candidates: resp.rows,
-            nextPage: resp.rows[resp.rows.length - 20].owner,
+            nextPage: resp.rows[resp.rows.length - resp.rows.length].owner,
             prevPage: resp.rows[resp.rows.length - resp.rows.length].owner,
             initialFloor: resp.rows[resp.rows.length - resp.rows.length].owner,
             candidatePage: 1,
@@ -177,7 +177,7 @@ class Vote extends React.Component {
         </div>
         </Route>
         <Route path="/candidates/:owner">
-          <CandidateSingle />
+          <CandidateSingle activeUser={this.props.activeUser} />
         </Route>
         </Switch>
       </div>

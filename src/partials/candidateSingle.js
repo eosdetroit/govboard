@@ -20,6 +20,8 @@ class CandidateSingle extends React.Component {
       twitter: '',
       wechat: ''
     }
+    this.UnvoteCandidate = this.UnvoteCandidate.bind(this);
+    this.VoteCandidate = this.VoteCandidate.bind(this);
   }
 
   componentDidMount = () => {
@@ -53,26 +55,85 @@ class CandidateSingle extends React.Component {
       }       // ...
   };
 
+  async UnvoteCandidate(){
+
+  }
+
   async VoteCandidate(){
-    try {
-      const result = await wax.api.transact({
+    const regTransaction = {
         actions: [{
-          account: 'oig',
-          name: 'castvote',
+          account: 'decide',
+          name: 'regvoter',
           authorization: [{
-            actor: this.props.activeUser,
+            actor: this.props.activeUser.accountName,
             permission: 'active',
           }],
           data: {
-            voter: this.props.activeUser,
-            nominee: this.state.nominee,
+            voter: this.props.activeUser.accountName,
+            treasury_symbol: '8,VOTE',
+            referrer: ''
           },
         }]
-      }, {
-        blocksBehind: 3,
-        expireSeconds: 30,
+      };
+    try {
+      let checkReg = await wax.rpc.get_table_rows({
+            code: 'decide',
+            scope: this.props.activeUser.accountName,
+            table: 'voters',
+            limit: 1,
+            json: true
       });
-      console.log(result);
+      let getBallot = await wax.rpc.get_table_rows({             
+            code: 'decide',
+            scope: 'decide',
+            table: 'ballots',
+            limit: 100,
+            json: true
+      });
+      if (checkReg = '') {
+      const regResult = await this.props.activeUser.signTransaction(
+        regTransaction, {blocksBehind: 3,
+        expireSeconds: 30
+      });
+      } else {
+      /*const unregTransaction = {
+        actions: [{
+          account: 'decide',
+          name: 'unregvoter',
+          authorization: [{
+            actor: this.props.activeUser.accountName,
+            permission: 'active',
+          }],
+          data: {
+            voter: this.props.activeUser.accountName,
+            treasury_symbol: '8,VOTE',
+          },
+        }]
+      };
+      const unregResult = await this.props.activeUser.signTransaction(
+        unregTransaction, {blocksBehind: 3,
+        expireSeconds: 30
+      }); */
+      const voteTransaction = {
+        actions: [{
+          account: 'decide',
+          name: 'castvote',
+          authorization: [{
+            actor: this.props.activeUser.accountName,
+            permission: 'active',
+          }],
+          data: {
+            voter: this.props.activeUser.accountName,
+            options: [this.state.nominee],
+            ballot_name: getBallot.rows[getBallot.rows.length - 1].ballot_name
+          },
+        }]
+      };      
+      const voteResult = await this.props.activeUser.signTransaction(
+        voteTransaction, {blocksBehind: 3,
+        expireSeconds: 30
+      });
+    }
     } catch(e) {
       console.log(e);
     }

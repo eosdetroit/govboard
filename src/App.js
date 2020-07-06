@@ -71,13 +71,14 @@ class App extends React.Component {
               </ul>
             </nav>
           }
-        <div className="accName-wrapper">
+        <div className="login-wrapper">
           { this.state.activeUser ?
             <>
               <span className="accName desktop">{this.state.accountName}</span>
             </>
             :
             <>
+              <button id="login" onClick={this.props.ual.showModal} >Login</button>
             </>
           }
         </div>

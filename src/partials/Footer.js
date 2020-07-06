@@ -12,8 +12,15 @@ class Footer extends React.Component {
       <div className="footer-inner">
       <h3>Helpful Links</h3>
       <ul>
-        <li><Link to="/candidates">Vote</Link></li>
-        <li><Link to="/nominate">Nominate</Link></li>
+        {this.props.activeUser ?
+        <>
+          <li><Link to="/candidates">Vote</Link></li>
+          <li><Link to="/nominate">Nominate</Link></li>
+        </>
+        :
+        <>
+        </>
+        }
         <li><a href="https://wax.io">WAX Website</a></li>
       </ul>
       </div>

@@ -74,7 +74,7 @@ class App extends React.Component {
         <Route path="/nominate">
           <Nomination activeUser={this.state.activeUser} accountName={this.state.accountName} />
         </Route>
-        <footer><Footer /></footer>
+        <footer><Footer activeUser={this.state.activeUser} /></footer>
         </Router>
       </div>
     );

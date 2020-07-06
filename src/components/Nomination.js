@@ -239,7 +239,7 @@ class Nomination extends React.Component {
         </div>
           <div className="form-row">
   					<label for="logo_256">Picture</label>
-  					<input type="file" name="logo_256" onChange={this.handleInputChange} />
+  					<input type="text" placeholder="Url to image file on the web" name="logo_256" onChange={this.handleInputChange} />
 				</div>
 				<div className="form-row">
   					<label for="description">Candidicy Platform</label>

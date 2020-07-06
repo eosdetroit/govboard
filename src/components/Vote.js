@@ -20,8 +20,8 @@ class Vote extends React.Component {
       activeCandidate: null,
       candidateBound: 0,
       candidateFloor: 0,
-      candidateLimit: 25,
-      candidatesDisplayed: 27,
+      candidateLimit: 10,
+      candidatesDisplayed: 30,
       candidatePage: 1,
     };
     this.GetCandidates = this.GetCandidates.bind(this);
@@ -41,7 +41,7 @@ class Vote extends React.Component {
           });
           this.setState({
             candidates: resp.rows,
-            candidateBound: resp.rows[resp.rows.length - 3].owner,
+            candidateBound: resp.rows[resp.rows.length - 20].owner,
             candidateFloor: resp.rows[resp.rows.length - resp.rows.length].owner,
             realFloor: resp.rows[resp.rows.length - resp.rows.length].owner,
             candidatePage: 1,

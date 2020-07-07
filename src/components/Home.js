@@ -39,7 +39,7 @@ class Home extends React.Component {
           <br></br>
           <b>July 31 2020:</b> Election period ends.
           <br></br>
-          <b>August 1 2020:</b>Appointed IG replaced with Elected IG.
+          <b>August 1 2020:</b> Appointed IG replaced with Elected IG.
           <br></br>
           <b>November 2020:</b> Election period to determine Interim IG.
           <br></br>

@@ -25,9 +25,18 @@ class Vote extends React.Component {
       candidatePage: 1,
     };
     this.GetCandidates = this.GetCandidates.bind(this);
+    this.GetLeaderboard = this.GetLeaderboard.bind(this);
     this.CandidatePaginationNext = this.CandidatePaginationNext.bind(this);
     this.CandidatePaginationPrev = this.CandidatePaginationPrev.bind(this);
   }
+
+  async GetLeaderboard() {
+    try {
+
+    } catch (e) {
+      console.log(e);
+    }
+  } 
 
   async GetCandidates(){
       try {
@@ -46,7 +55,7 @@ class Vote extends React.Component {
             initialFloor: resp.rows[resp.rows.length - resp.rows.length].owner,
             candidatePage: 1,
             sliceLimit: 0,
-            lastPagination: 'next'
+            lastPagination: 'next',
           });
           console.log(this.state);
       } catch(e) {
@@ -153,7 +162,7 @@ class Vote extends React.Component {
       console.log(e);
     }
     console.log(this.state)
-  }   
+  }  
 
   componentDidMount(){
     return this.GetCandidates();
@@ -164,6 +173,10 @@ class Vote extends React.Component {
       <div className="vote main-content">
         <Switch>
         <Route exact path="/candidates">
+        <h2>Election Information</h2>
+        <div className="election-info">
+
+        </div>
         <h2>OIG Candidates</h2>
         <div className="candidate-grid">
 
@@ -174,6 +187,16 @@ class Vote extends React.Component {
         <div className="pagination-wrapper">
           <button onClick={this.CandidatePaginationPrev} className="btn">Prev</button>
           <button onClick={this.CandidatePaginationNext} className="btn">Next</button>
+        </div>
+        <h2>Election Leaderboard</h2>
+        <div className="leaderboard">
+        <table>
+          <tr>
+            <th>Position</th>
+            <th>Account</th>
+            <th>Vote Count</th>
+          </tr>
+        </table>
         </div>
         </Route>
         <Route path="/candidates/:owner">

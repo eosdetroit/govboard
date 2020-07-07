@@ -266,14 +266,48 @@ header#nav nav button#menu-icon {
     padding: 85px 20px 20px 20px;
   }
 
-  footer .footer-inner {
+  body .nomination {
+  grid-template-rows: [header]auto[nomination]auto[update]auto[end];
+  grid-template-columns: [start]auto[end];
+  }
+
+  .nomination .nomination-header {
+  grid-column-start: start;
+  grid-column-end: span end;
+  grid-row-start: header;
+  grid-row-end: span nomination;
+}
+
+.nomination .nomination-left-pane {
+  grid-column-start: start;
+  grid-column-end: span end;
+  grid-row-start: nomination;
+  grid-row-end: span update;
+  padding-right: 0;
+}
+
+.nomination .nomination-left-pane .nomination-form {
+  padding-bottom: 15px;
+}
+
+.nomination .nomination-right-pane {
+  grid-column-start: start;
+  grid-column-end: span end;
+  grid-row-start: update;
+  grid-row-end: span end;
+  padding-left: 0;
+}
+
+body footer .footer-inner {
     padding: 0 20px;
+    grid-template-rows: [row]auto[end];
+    grid-template-columns: [first]50%[second]50%[end];
   }
 
 }
 
 .main-content {
-  padding: 20px 0;
+  padding: 20px;
   max-width: 980px;
   margin: 0 auto;
 }
@@ -487,6 +521,7 @@ footer {
 footer .footer-inner {
   max-width: 980px;
   margin: 0 auto;
+  padding: 0 20px;
   display: grid;
   grid-template-rows: [row]auto[end];
   grid-template-columns: [first]25%[second]25%[third]25%[fourth]25%[end];

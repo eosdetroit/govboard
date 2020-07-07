@@ -42,9 +42,11 @@ class Nomination extends React.Component {
             json: true
         });
         if (resp.rows === ''){
+
       	} else {
       		this.setState({
-      			isNominated: true
+      			isNominated: true,
+            hasAccepted: resp.rows[resp.rows.length - resp.rows.length].accepted
       		});
       		if (resp.rows[resp.rows.length - resp.rows.length].accepted === 1){
       			let nomineeInfo = await wax.rpc.get_table_rows({ 
@@ -57,6 +59,7 @@ class Nomination extends React.Component {
               json: true
             });
             console.log(nomineeInfo);
+            if (nomineeInfo.rows != ''){
             this.setState({
 		          name: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].name,
               logo_256: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].logo_256,
@@ -64,8 +67,8 @@ class Nomination extends React.Component {
               telegram: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].telegram,
               twitter: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].twitter,
               wechat: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].wechat,
-              hasAccepted: resp.rows[resp.rows.length - resp.rows.length].accepted
       			});
+            }
       		}
       		console.log(this.state);
       	}

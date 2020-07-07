@@ -42,6 +42,17 @@ class App extends React.Component {
       }
     }
 
+    renderLogoutBtn = () => {
+    const { ual: { activeUser, activeAuthenticator, logout } } = this.props
+    if (!!activeUser && !!activeAuthenticator) {
+      return (
+          <span className='logoutBtn' onClick={logout}>
+            {'Logout'}
+          </span>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -74,7 +85,9 @@ class App extends React.Component {
         <div className="login-wrapper">
           { this.state.activeUser ?
             <>
-              <span className="accName desktop">{this.state.accountName}</span>
+              <span className="accHeader">Account</span>
+              <span className="accName">{this.state.accountName}</span>
+              {this.renderLogoutBtn()}
             </>
             :
             <>

@@ -111,20 +111,43 @@ header#nav nav a:hover {
 
 header#nav .login-wrapper {
   padding-left: 10px;
+  padding-top: 8px;
   grid-row-start: row;
   grid-row-end: span end;
   grid-column-start: accName;
   grid-column-end: span end;
+  line-height: 16px;
+}
+
+.login-wrapper .accHeader {
+  width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .login-wrapper .accName  {
-  display: block;
-  padding: 27px 0;
+  width: 100%;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .login-wrapper button {
   padding: 27px 0;
   display: inline-block;
+}
+
+.login-wrapper .logoutBtn {
+  text-decoration: underline;
+  font-size: 10px;
+  width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.login-wrapper .logoutBtn:hover {
+  cursor: pointer;
 }
 
 header#nav nav button#menu-icon {

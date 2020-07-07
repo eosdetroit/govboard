@@ -100,6 +100,17 @@ class CandidateSingle extends React.Component {
       const voteTransaction = {
         actions: [{
           account: 'decide',
+          name: 'sync',
+          authorization: [{
+            actor: this.props.activeUser.accountName,
+            permission: 'active',
+          }],
+          data: {
+            voter: this.props.activeUser.accountName,
+          },
+        },
+        {
+          account: 'decide',
           name: 'castvote',
           authorization: [{
             actor: this.props.activeUser.accountName,
@@ -111,7 +122,7 @@ class CandidateSingle extends React.Component {
             ballot_name: getBallot.rows[getBallot.rows.length - 1].ballot_name
           },
         }]
-      };      
+      };
       const voteResult = await this.props.activeUser.signTransaction(
         voteTransaction, {blocksBehind: 3,
         expireSeconds: 30

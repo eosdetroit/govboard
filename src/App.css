@@ -306,6 +306,15 @@ body footer .footer-inner {
 
 }
 
+.required {
+  color: #ff0000;
+}
+
+.srv-validation-message {
+  color: #ff0000;
+  font-style: italic;
+}
+
 .main-content {
   padding: 20px;
   max-width: 980px;

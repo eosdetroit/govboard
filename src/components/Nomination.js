@@ -59,7 +59,7 @@ class Nomination extends React.Component {
               json: true
             });
             console.log(nomineeInfo);
-            if (nomineeInfo.rows != ''){
+            if (nomineeInfo.rows !== ''){
             this.setState({
 		          name: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].name,
               logo_256: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].logo_256,

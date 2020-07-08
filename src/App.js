@@ -28,7 +28,10 @@ class App extends React.Component {
       if (activeUser && !this.state.activeUser) {
         this.setState({ activeUser }, this.updateAccountName);
       } else if (!activeUser && this.state.activeUser) {
-        console.log('Reset State');
+        this.setState({
+            activeUser: null,
+            accountName: ''
+        })
       }
       console.log(this.state);
     }

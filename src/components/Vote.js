@@ -40,7 +40,16 @@ class Vote extends React.Component {
 
   async GetLeaderboard() {
     try {
-
+      let resp = await wax.rpc.get_table_rows({             
+        code: 'decide',
+        scope: 'decide',
+        table: 'ballots',
+        limit: 1,
+        lower_bound: this.state.ballot,
+        upper_bound: this.state.ballot,
+        json: true
+      });
+      let activeCandidates = resp.rows[resp.rows.length - 1].options.sort((a, b) => parseFloat(a.value) - parseFloat(b.value));
     } catch (e) {
       console.log(e);
     }
@@ -102,8 +111,7 @@ class Vote extends React.Component {
             scope: 'oig',
             table: 'nominees',
             limit: candidatesDisplayed,
-            lower_bound: nextPage
-            ,
+            lower_bound: nextPage,
             json: true
           });
           this.setState(prevState => ({
@@ -249,7 +257,7 @@ class Vote extends React.Component {
         </div>
         </Route>
         <Route path="/candidates/:owner">
-          <CandidateSingle activeUser={this.props.activeUser} />
+          <CandidateSingle activeUser={this.props.activeUser} ballot={this.state.ballot} />
         </Route>
         </Switch>
       </div>

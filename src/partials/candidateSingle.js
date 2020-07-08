@@ -18,11 +18,12 @@ class CandidateSingle extends React.Component {
       website: '',
       telegram: '',
       twitter: '',
-      wechat: ''
+      wechat: '',
+      votes: 0
     }
     this.UnvoteCandidate = this.UnvoteCandidate.bind(this);
     this.VoteCandidate = this.VoteCandidate.bind(this);
-  }
+    }
 
   componentDidMount = () => {
     const owner = this.props.match.params.owner;
@@ -40,6 +41,17 @@ class CandidateSingle extends React.Component {
             upper_bound: owner,
             json: true
         });
+      let voteCounts = await wax.rpc.get_table_rows({
+            code: 'decide',
+            scope: 'decide',
+            table: 'ballots',
+            limit: 1,
+            lower_bound: this.props.ballot,
+            upper_bound: this.props.ballot,
+            json: true
+          });
+      console.log(voteCounts);
+      /* const voteCount = voteCounts.rows.find(voteCount => voteCount.key == owner);*/
         this.setState({
           nominee: resp.rows[resp.rows.length - resp.rows.length].owner,
           name: resp.rows[resp.rows.length - resp.rows.length].name,
@@ -47,7 +59,8 @@ class CandidateSingle extends React.Component {
           description: resp.rows[resp.rows.length - resp.rows.length].descriptor,
           telegram: resp.rows[resp.rows.length - resp.rows.length].telegram,
           twitter: resp.rows[resp.rows.length - resp.rows.length].twitter,
-          wechat: resp.rows[resp.rows.length - resp.rows.length].wechat
+          wechat: resp.rows[resp.rows.length - resp.rows.length].wechat,
+          /* votes: voteCount.value */
           });
           console.log(this.state);
           } catch(e) {
@@ -142,7 +155,7 @@ class CandidateSingle extends React.Component {
           <span><i>Candidate for WAX OIG</i></span>
         </div>
         <div className="candidate-left-pane">
-          <img src={this.state.picture} alt="{this.state.nominee}" />
+          <img src={this.state.picture} alt={this.state.nominee} />
         </div>
         <div className="candidate-right-pane">
           <p className="description">{this.state.description}</p>

@@ -2,11 +2,24 @@
   padding: 0;
   margin: 0;
 }
+html {
+  height: 100%;
+}
 
 body {
   padding: 0;
   margin: 0;
   color: #333;
+  font-family: 'Muli', sans-serif;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
 }
 
 header, footer, div {
@@ -14,11 +27,9 @@ header, footer, div {
 }
 
 header#nav .nav-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
   display: grid;
   grid-template-rows: [row]auto[end];
-  grid-template-columns:[logo]319px[nav]auto[accName]100px[end];
+  grid-template-columns: [logo]55%[nav]35%[accName]10%[end];
 }
 
 header#nav {
@@ -27,11 +38,22 @@ header#nav {
 }
 
 header#nav .logo {
-  padding: 15px 0;
+  padding: 20px;
   grid-row-start: row;
   grid-row-end: span end;
   grid-column-start: logo;
   grid-column-end: span nav;
+}
+header#nav .header-link {
+  width: 100%;
+  display: inline-block;
+}
+
+header#nav .logo-text {
+  width: 100%;
+  white-space: nowrap;
+  vertical-align: middle;
+  font-size: 1.5em;
 }
 
 header#nav .logo img {
@@ -59,6 +81,7 @@ header#nav nav {
 }
 
 header#nav nav ul {
+  height: 100%;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -66,27 +89,22 @@ header#nav nav ul {
 }
 
 header#nav nav ul li {
+  height: 100%;
   display: inline-block;
   padding: 0;
   margin: 0;
 }
 
 header#nav .login-wrapper button {
-  padding: 8px 36px 8px 8px;
-  background: url('./assets/wax-allaccess-badge-light.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center right;
+  background-color: transparent;
   color: #fff;
   border: 0;
-  margin: 22px 0;
-  font-size: 16px;
-}
-
-header#nav .login-wrapper button:hover {
-  cursor: pointer;
-  border: 0;
-  color: #ebebeb;
+  font-size: 1.5em;
+  height: 100%;
+  width: 100%;
 }
 
 header#nav .login button:focus {
@@ -98,25 +116,25 @@ header#nav .login button:focus {
 header#nav nav ul li a {
   color: #fff;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 1.5em;
   padding: 15px 10px;
   display: inline-block;
-  line-height: 45px;
+  line-height: 3.4rem;
+  height: 64%;
 }
 
-header#nav nav a:hover {
+header#nav nav a:hover, #login:hover, .login-wrapper:hover {
   color: #fff;
   background: #000;
 }
 
 header#nav .login-wrapper {
-  padding-left: 10px;
-  padding-top: 8px;
   grid-row-start: row;
   grid-row-end: span end;
   grid-column-start: accName;
   grid-column-end: span end;
-  line-height: 16px;
+  text-align: center;
+  width: 80%
 }
 
 .login-wrapper .accHeader {
@@ -130,11 +148,6 @@ header#nav .login-wrapper {
 .login-wrapper .accName  {
   width: 100%;
   vertical-align: middle;
-  display: inline-block;
-}
-
-.login-wrapper button {
-  padding: 27px 0;
   display: inline-block;
 }
 
@@ -154,156 +167,8 @@ header#nav nav button#menu-icon {
   display: none;
 }
 
-@media (max-width: 769px) { 
-  header#nav {
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-  }
-
-  header#nav .nav-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-rows: [row]auto[end];
-  grid-template-columns:[logo]200px[nav]auto[accName]40px[end];
-  }
-
-  header#nav .logo {
-    padding-left: 5px;
-  }
-
-  header#nav nav {
-    width: 40px;
-    height: 75px;
-    grid-column-start: accName;
-    grid-column-end: span end;
-  }
-
-  header#nav .login-wrapper {
-    padding-left: 0;
-    padding-right: 5px;
-    grid-column-start: nav;
-    grid-column-end: span accName;
-    text-align: right;
-  }
-
-  header#nav nav button#menu-icon {
-    display:inline-block;
-    width: 40px;
-    height: 40px;
-    vertical-align: middle;
-    margin: 16px 0;
-    border: 0;
-    background-position: center;
-    background: url("assets/menu-icon.svg");
-    background-repeat: no-repeat;
-  }
-
-  header#nav nav button#menu-icon:hover {
-    cursor: pointer;
-  }
-
-  header#nav nav ul { 
-    opacity: 0;
-    visibility: hidden;
-    transition: visibility .25s ease-in-out, opacity .25s ease-in-out;
-      -moz-transition: visibility .25s ease-in-out, opacity .25s ease-in-out;
-      -webkit-transition: visibility .25s ease-in-out, opacity .25s ease-in-out;
-    position: absolute;
-    padding: 0;
-    background: #fff;
-    right: 5px;
-    top: 74px;
-    width: 35%;
-    border-radius: 4px 0 4px 4px;
-    border-left: 1px solid #000;
-    border-bottom: 1px solid #000;
-    border-right: 1px solid #000;
-    text-align: center;
-    overflow: hidden;
-    z-index: 9999;
-  }
-
-  header#nav nav ul li {
-    text-align: center;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-
-  header#nav nav ul li:hover {
-    background: #F78E1E;
-    color: #fff;
-    transition: background 0.4s, color 0.4s, border 0.4s;
-  }
-
-  header#nav nav ul li a {
-    color: #000;
-    transition: background 0.4s, color 0.4s, border 0.4s;
-    line-height: 25px;
-  }
-
-  header#nav nav ul li a:hover {
-    background: transparent;
-    color: #fff;
-    transition: background 0.4s, color 0.4s, border 0.4s;
-  }
-
-  header#nav nav:hover ul {
-    visibility: visible;
-    opacity: 1;
-      transition: opacity .25s ease-in-out;
-      -moz-transition: opacity .25s ease-in-out;
-      -webkit-transition: opacity .25s ease-in-out; 
-  }
-
-  .logo-text {
-    display: none;
-  }
-
-  body .main-content {
-    padding: 85px 20px 20px 20px;
-  }
-
-  body .nomination {
-  grid-template-rows: [header]auto[nomination]auto[update]auto[end];
-  grid-template-columns: [start]auto[end];
-  }
-
-  .nomination .nomination-header {
-  grid-column-start: start;
-  grid-column-end: span end;
-  grid-row-start: header;
-  grid-row-end: span nomination;
-}
-
-.nomination .nomination-left-pane {
-  grid-column-start: start;
-  grid-column-end: span end;
-  grid-row-start: nomination;
-  grid-row-end: span update;
-  padding-right: 0;
-}
-
-.nomination .nomination-left-pane .nomination-form {
-  padding-bottom: 15px;
-}
-
-.nomination .nomination-right-pane {
-  grid-column-start: start;
-  grid-column-end: span end;
-  grid-row-start: update;
-  grid-row-end: span end;
-  padding-left: 0;
-}
-
-body footer .footer-inner {
-    padding: 0 20px;
-    grid-template-rows: [row]auto[end];
-    grid-template-columns: [first]50%[second]50%[end];
-  }
-
+#login {
+  background: rgba(25, 40, 56, 1);
 }
 
 .required {
@@ -537,6 +402,9 @@ footer {
   background: #ebebeb;
   padding: 20px 0;
   border-top: 1px solid #333;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
 }
 
 footer .footer-inner {
@@ -579,4 +447,151 @@ footer ul a {
 
 footer ul a:hover {
   color: #000;
+}
+
+@media (max-width: 769px) { 
+  header#nav {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  header#nav .nav-wrapper {
+    max-width: 1100px;
+    margin-left: auto;
+    display: grid;
+    grid-template-rows: [row]auto[end];
+    grid-template-columns:[logo]200px[nav]auto[accName]40px[end];
+  }
+
+  header#nav .logo {
+    padding-left: 5px;
+  }
+
+  header#nav nav {
+    width: 40px;
+    height: 75px;
+    grid-column-start: accName;
+    grid-column-end: span end;
+  }
+
+  header#nav .login-wrapper {
+    padding-left: 0;
+    padding-right: 5px;
+    grid-column-start: nav;
+    grid-column-end: span accName;
+    text-align: right;
+  }
+
+  header#nav nav button#menu-icon {
+    display:inline-block;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin: 16px 0;
+    border: 0;
+    background-position: center;
+    background: url("assets/menu-icon.svg");
+    background-repeat: no-repeat;
+  }
+
+  header#nav nav button#menu-icon:hover {
+    cursor: pointer;
+  }
+
+  header#nav nav ul { 
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility .25s ease-in-out, opacity .25s ease-in-out;
+    -moz-transition: visibility .25s ease-in-out, opacity .25s ease-in-out;
+    -webkit-transition: visibility .25s ease-in-out, opacity .25s ease-in-out;
+    position: absolute;
+    padding: 0;
+    background: #fff;
+    right: 5px;
+    top: 74px;
+    width: 35%;
+    border-radius: 4px 0 4px 4px;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    text-align: center;
+    overflow: hidden;
+    z-index: 9999;
+  }
+
+  header#nav nav ul li {
+    text-align: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  header#nav nav ul li:hover {
+    background: #F78E1E;
+    color: #fff;
+    transition: background 0.4s, color 0.4s, border 0.4s;
+  }
+
+  header#nav nav ul li a {
+    color: #000;
+    transition: background 0.4s, color 0.4s, border 0.4s;
+    line-height: 25px;
+  }
+
+  header#nav nav ul li a:hover {
+    background: transparent;
+    color: #fff;
+    transition: background 0.4s, color 0.4s, border 0.4s;
+  }
+
+  header#nav nav:hover ul {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out; 
+  }
+
+  body .main-content {
+    padding: 85px 20px 20px 20px;
+  }
+
+  body .nomination {
+    grid-template-rows: [header]auto[nomination]auto[update]auto[end];
+    grid-template-columns: [start]auto[end];
+  }
+
+  .nomination .nomination-header {
+    grid-column-start: start;
+    grid-column-end: span end;
+    grid-row-start: header;
+    grid-row-end: span nomination;
+  }
+
+  .nomination .nomination-left-pane {
+    grid-column-start: start;
+    grid-column-end: span end;
+    grid-row-start: nomination;
+    grid-row-end: span update;
+    padding-right: 0;
+  }
+
+  .nomination .nomination-left-pane .nomination-form {
+    padding-bottom: 15px;
+  }
+
+  .nomination .nomination-right-pane {
+    grid-column-start: start;
+    grid-column-end: span end;
+    grid-row-start: update;
+    grid-row-end: span end;
+    padding-left: 0;
+  }
+
+  body footer .footer-inner {
+    padding: 0 20px;
+    grid-template-rows: [row]auto[end];
+    grid-template-columns: [first]50%[second]50%[end];
+  }
 }

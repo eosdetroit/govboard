@@ -60,9 +60,9 @@ class App extends React.Component {
         <header id="nav">
         <div className="nav-wrapper">
         <div className="logo">
-          <Link to="/">
+          <Link className="header-link" to="/">
             <img src={logo} alt="WAX Logo" />
-            <span className="logo-text">&nbsp;Office of Inspector General</span></Link>
+            <span className="logo-text">&nbsp;Office of Inspector General Dashboard</span></Link>
         </div>
           { this.state.activeUser ?
             <nav>

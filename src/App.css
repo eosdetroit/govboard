@@ -7,6 +7,7 @@ body {
   padding: 0;
   margin: 0;
   color: #333;
+  font-family: 'Muli', sans-serif;
 }
 
 header, footer, div {
@@ -18,7 +19,7 @@ header#nav .nav-wrapper {
   margin: 0 auto;
   display: grid;
   grid-template-rows: [row]auto[end];
-  grid-template-columns:[logo]319px[nav]auto[accName]100px[end];
+  grid-template-columns:[logo]70%[nav]auto[accName]100px[end];
 }
 
 header#nav {
@@ -27,11 +28,22 @@ header#nav {
 }
 
 header#nav .logo {
-  padding: 15px 0;
+  padding: 20px;
   grid-row-start: row;
   grid-row-end: span end;
   grid-column-start: logo;
   grid-column-end: span nav;
+}
+header#nav .header-link {
+  width: 100%;
+  display: inline-block;
+}
+
+header#nav .logo-text {
+  width: 100%;
+  white-space: nowrap;
+  vertical-align: middle;
+  font-size: 1.5em;
 }
 
 header#nav .logo img {
@@ -531,10 +543,6 @@ footer ul a:hover {
     transition: opacity .25s ease-in-out;
     -moz-transition: opacity .25s ease-in-out;
     -webkit-transition: opacity .25s ease-in-out; 
-  }
-
-  .logo-text {
-    display: none;
   }
 
   body .main-content {

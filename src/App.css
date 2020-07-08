@@ -83,6 +83,7 @@ header#nav nav {
 }
 
 header#nav nav ul {
+  height: 100%;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -90,27 +91,21 @@ header#nav nav ul {
 }
 
 header#nav nav ul li {
+  height: 100%;
   display: inline-block;
   padding: 0;
   margin: 0;
 }
 
 header#nav .login-wrapper button {
-  padding: 8px 36px 8px 8px;
-  background: url('./assets/wax-allaccess-badge-light.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center right;
+  background-color: transparent;
   color: #fff;
   border: 0;
-  margin: 22px 0;
-  font-size: 16px;
-}
-
-header#nav .login-wrapper button:hover {
-  cursor: pointer;
-  border: 0;
-  color: #ebebeb;
+  font-size: 1.5em;
+  
 }
 
 header#nav .login button:focus {
@@ -122,25 +117,26 @@ header#nav .login button:focus {
 header#nav nav ul li a {
   color: #fff;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 1.5em;
   padding: 15px 10px;
   display: inline-block;
   line-height: 45px;
+  height: 64%;
 }
 
-header#nav nav a:hover {
+header#nav nav a:hover, #login:hover, .login-wrapper:hover {
   color: #fff;
   background: #000;
 }
 
 header#nav .login-wrapper {
-  padding-left: 10px;
-  padding-top: 8px;
   grid-row-start: row;
   grid-row-end: span end;
   grid-column-start: accName;
   grid-column-end: span end;
   line-height: 16px;
+  padding: 24px 10px;
+  text-align: center;
 }
 
 .login-wrapper .accHeader {
@@ -154,11 +150,6 @@ header#nav .login-wrapper {
 .login-wrapper .accName  {
   width: 100%;
   vertical-align: middle;
-  display: inline-block;
-}
-
-.login-wrapper button {
-  padding: 27px 0;
   display: inline-block;
 }
 
@@ -176,6 +167,10 @@ header#nav .login-wrapper {
 
 header#nav nav button#menu-icon {
   display: none;
+}
+
+#login {
+  background: rgba(25, 40, 56, 1);
 }
 
 .required {

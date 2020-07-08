@@ -321,6 +321,18 @@ body footer .footer-inner {
   margin: 0 auto;
 }
 
+.vote table {
+  width: 100%;
+}
+
+.vote .leaderboard table {
+  text-align: left;
+}
+
+.vote .election-info, .vote .pagination-wrapper, .vote .leaderboard, .vote .election-info p {
+  margin-bottom: 20px;
+}
+
 .candidate-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));

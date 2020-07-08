@@ -2,10 +2,12 @@ import React from 'react';
 import {
   Redirect
 } from "react-router-dom";
+import {Spinner} from 'spin.js';
 
 import '../App.css';
 
 class Home extends React.Component {
+
   render() {
   if (this.props.activeUser != null) {
         
@@ -16,7 +18,7 @@ class Home extends React.Component {
                 )
     }
     return (
-      <div className="home main-content">
+      <div className="home main-content" id="main">
         <h1>OIG Election Process</h1>
         <br></br>
         <p>

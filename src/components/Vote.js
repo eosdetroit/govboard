@@ -23,9 +23,17 @@ class Vote extends React.Component {
       candidateLimit: 10,
       candidatesDisplayed: 30,
       candidatePage: 1,
+      ballot: '',
+      title: '',
+      description: '',
+      nmn_open: '',
+      nmn_close: '',
+      vote_open: '',
+      vote_close: ''
     };
     this.GetCandidates = this.GetCandidates.bind(this);
     this.GetLeaderboard = this.GetLeaderboard.bind(this);
+    this.GetElectionInfo = this.GetElectionInfo.bind(this);
     this.CandidatePaginationNext = this.CandidatePaginationNext.bind(this);
     this.CandidatePaginationPrev = this.CandidatePaginationPrev.bind(this);
   }
@@ -36,6 +44,25 @@ class Vote extends React.Component {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  async GetElectionInfo(){
+    let resp = await wax.rpc.get_table_rows({             
+      code: 'oig',
+      scope: 'oig',
+      table: 'elections',
+      json: true
+    });
+    let activeBallot = resp.rows[resp.rows.length - 1];
+    this.setState({
+      ballot: activeBallot.ballot,
+      title: activeBallot.title,
+      description: activeBallot.description,
+      nmn_open: activeBallot.nmn_open,
+      nmn_close: activeBallot.nmn_close,
+      vote_open: activeBallot.vote_open,
+      vote_close: activeBallot.vote_close
+    });
   } 
 
   async GetCandidates(){
@@ -65,7 +92,7 @@ class Vote extends React.Component {
 
   async CandidatePaginationNext() {
       let candidatePage = this.state.candidatePage + 1;
-      let candidatesDisplayed = this.state.candidateLimit;
+      let candidatesDisplayed = this.state.candidatesDisplayed;
       let nextPage = this.state.nextPage;
       let prevPage = this.state.prevPage;
       try {
@@ -173,11 +200,27 @@ class Vote extends React.Component {
       <div className="vote main-content">
         <Switch>
         <Route exact path="/candidates">
+        
         <h2>Election Information</h2>
         <div className="election-info">
-
+          
+          <h3>{this.state.ballot}</h3>
+          <p>{this.state.description}</p>
+          <table>
+            <tbody>
+              <tr>
+                <td><strong>Nominations begin:</strong> {this.state.nmn_open}</td>
+                <td><strong>Voting begins:</strong> {this.state.vote_open}</td>
+              </tr>
+              <tr>
+                <td><strong>Nominations end:</strong> {this.state.nmn_close}</td>
+                <td><strong>Voting ends:</strong> {this.state.vote_close}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <h2>OIG Candidates</h2>
+
+        <h2>Candidates</h2>
         <div className="candidate-grid">
 
           {this.state.candidates.map((candidate, key) =>
@@ -185,18 +228,24 @@ class Vote extends React.Component {
 
         </div>
         <div className="pagination-wrapper">
+          
           <button onClick={this.CandidatePaginationPrev} className="btn">Prev</button>
           <button onClick={this.CandidatePaginationNext} className="btn">Next</button>
+        
         </div>
+        
         <h2>Election Leaderboard</h2>
         <div className="leaderboard">
-        <table>
-          <tr>
-            <th>Position</th>
-            <th>Account</th>
-            <th>Vote Count</th>
-          </tr>
-        </table>
+          <table>
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th>Account</th>
+                <th>Vote Count</th>
+                <th></th>
+              </tr>
+            </thead>
+          </table>
         </div>
         </Route>
         <Route path="/candidates/:owner">

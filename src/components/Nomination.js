@@ -18,7 +18,7 @@ class Nomination extends React.Component {
   		hasAccepted: false,
       nominee: '',
       name: '',
-      logo_256: '',
+      picture: '',
       description: '',
       twitter: '',
       wechat: '',
@@ -64,7 +64,7 @@ class Nomination extends React.Component {
             if (nomineeInfo.rows !== ''){
             this.setState({
 		          name: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].name,
-              logo_256: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].logo_256,
+              picture: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].picture,
               description: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].descriptor,
               telegram: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].telegram,
               twitter: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].twitter,
@@ -172,7 +172,7 @@ class Nomination extends React.Component {
           data: {
             nominee: this.props.accountName,
             name: this.state.name,
-            logo_256: this.state.logo_256,
+            picture: this.state.picture,
             descriptor: this.state.description,
             telegram: this.state.telegram,
             twitter: this.state.twitter,
@@ -259,15 +259,16 @@ class Nomination extends React.Component {
   		return (
   			<div className="nomination-info-form">
 	  			<h3>Submit or Update Candidicy Information</h3>
+          <p>Note: You will not appear on the candidate list until you submit your initial candidate details. You can return to this page to update your details at any time during the nomination period.</p>
   				<div className="form-row">
             <label for="name">Full Name<span className="required">*</span></label>
             <input type="text" name="name" value={this.state.name} maxlength="99" required onBlur={() => this.validator.showMessageFor('name')} placeholder="John Doe" onChange={this.handleInputChange} />
             {this.validator.message('name', this.state.name, 'required|alpha_space|max:99')}
         </div>
           <div className="form-row">
-  					<label for="logo_256">Picture<span className="required">*</span></label>
-  					<input type="text" value={this.state.logo_256} placeholder="Url to image file on the web" maxlength="256" required onBlur={() => this.validator.showMessageFor('logo_256')} name="logo_256" onChange={this.handleInputChange} />
-				    {this.validator.message('logo_256', this.state.logo_256, 'required|url|max:256')}
+  					<label for="picture">Picture<span className="required">*</span></label>
+  					<input type="text" value={this.state.picture} placeholder="Url to image file on the web" maxlength="256" required onBlur={() => this.validator.showMessageFor('picture')} name="picture" onChange={this.handleInputChange} />
+				    {this.validator.message('picture', this.state.picture, 'required|url|max:256')}
         </div>
 				<div className="form-row">
   					<label for="description">Candidicy Platform<span className="required">*</span></label>

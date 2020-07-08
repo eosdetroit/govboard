@@ -13,7 +13,7 @@ class CandidateSingle extends React.Component {
     super(props);
     this.state = {
       nominee: '',
-      logo_256: '',
+      picture: '',
       description: '',
       website: '',
       telegram: '',
@@ -43,7 +43,7 @@ class CandidateSingle extends React.Component {
         this.setState({
           nominee: resp.rows[resp.rows.length - resp.rows.length].owner,
           name: resp.rows[resp.rows.length - resp.rows.length].name,
-          logo_256: resp.rows[resp.rows.length - resp.rows.length].logo_256,
+          picture: resp.rows[resp.rows.length - resp.rows.length].picture,
           description: resp.rows[resp.rows.length - resp.rows.length].descriptor,
           telegram: resp.rows[resp.rows.length - resp.rows.length].telegram,
           twitter: resp.rows[resp.rows.length - resp.rows.length].twitter,
@@ -142,7 +142,7 @@ class CandidateSingle extends React.Component {
           <span><i>Candidate for WAX OIG</i></span>
         </div>
         <div className="candidate-left-pane">
-          <img src={this.state.logo_256} alt="{this.state.nominee}" />
+          <img src={this.state.picture} alt="{this.state.nominee}" />
         </div>
         <div className="candidate-right-pane">
           <p className="description">{this.state.description}</p>

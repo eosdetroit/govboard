@@ -11,7 +11,7 @@ class CandidateGrid extends React.Component {
     return (
       <Link key={this.props.data.owner} to={'/candidates/' + this.props.data.owner} className="candidate-single-grid">
         <span className="candidate-account">{this.props.data.name}</span>
-        <img src={this.props.data.logo_256} alt="" />
+        <img src={this.props.data.picture} alt="" />
         <button className="btn">Vote for {this.props.data.name}</button>
       </Link>
     );

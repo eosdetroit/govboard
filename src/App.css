@@ -2,12 +2,24 @@
   padding: 0;
   margin: 0;
 }
+html {
+  height: 100%;
+}
 
 body {
   padding: 0;
   margin: 0;
   color: #333;
   font-family: 'Muli', sans-serif;
+  height: 100%;
+}
+
+.root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
 }
 
 header, footer, div {
@@ -397,6 +409,9 @@ footer {
   background: #ebebeb;
   padding: 20px 0;
   border-top: 1px solid #333;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
 }
 
 footer .footer-inner {

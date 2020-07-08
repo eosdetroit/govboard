@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Redirect
 } from "react-router-dom";
-import {Spinner} from 'spin.js';
 
 import '../App.css';
 

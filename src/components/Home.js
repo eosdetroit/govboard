@@ -41,17 +41,17 @@ class Home extends React.Component {
           <br></br>
           <b>August 1 2020:</b> Appointed IG replaced with Elected IG.
           <br></br>
-          <b>November 2020:</b> Election period to determine Interim IG.
+          <b>October 2020:</b> Election period to determine Interim IG.
           <br></br>
-          <b>December 1 2020:</b> Appointed IG replaced with Elected Interim IG.
+          <b>November 1 2020:</b> Appointed IG replaced with Elected Interim IG.
           <br></br>
-          <b>February 2021:</b> Election period to determine Elected IG.
+          <b>January 2021:</b> Election period to determine Elected IG.
           <br></br>
-          <b>March 1 2021:</b> Appointed IG replaced with Elected IG.
+          <b>February 1 2021:</b> Appointed IG replaced with Elected IG.
           <br></br>
-          <b>August 2021:</b> Election period with Elected IG.
+          <b>July 2021:</b> Election period with Elected IG.
           <br></br>
-          <b>September 1 2021:</b> Interim IG replaced with Elected IG.
+          <b>August 1 2021:</b> Interim IG replaced with Elected IG.
         </p>
       </div>
     );

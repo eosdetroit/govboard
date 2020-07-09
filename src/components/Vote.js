@@ -30,7 +30,7 @@ class Vote extends React.Component {
       nmn_close: '',
       vote_open: '',
       vote_close: '',
-      leaderCandidates: '',
+      leaderCandidates: [],
     };
     this.GetCandidates = this.GetCandidates.bind(this);
     this.GetElectionInfo = this.GetElectionInfo.bind(this);
@@ -61,7 +61,7 @@ class Vote extends React.Component {
             upper_bound: activeBallot.ballot,
             json: true
           });
-          let leaderCandidates = leaderResp.rows[leaderResp.rows.length - 1];
+          let leaderCandidates = leaderResp.rows[leaderResp.rows.length - leaderResp.rows.length].options;
           console.log(leaderCandidates);
           this.setState({
             ballot: activeBallot.ballot,
@@ -209,7 +209,84 @@ class Vote extends React.Component {
     return this.GetCandidates();
   }
 
+  async VoteCandidate(){
+    const regTransaction = {
+        actions: [{
+          account: 'decide',
+          name: 'regvoter',
+          authorization: [{
+            actor: this.props.activeUser.accountName,
+            permission: 'active',
+          }],
+          data: {
+            voter: this.props.activeUser.accountName,
+            treasury_symbol: '8,VOTE',
+            referrer: ''
+          },
+        }]
+      };
+    try {
+      let checkReg = await wax.rpc.get_table_rows({
+            code: 'decide',
+            scope: this.props.activeUser.accountName,
+            table: 'voters',
+            limit: 1,
+            json: true
+      });
+      let getBallot = await wax.rpc.get_table_rows({             
+            code: 'decide',
+            scope: 'decide',
+            table: 'ballots',
+            limit: 100,
+            json: true
+      });
+      if (checkReg === '') {
+      const regResult = await this.props.activeUser.signTransaction(
+        regTransaction, {blocksBehind: 3,
+        expireSeconds: 30
+      });
+      console.log(regResult);
+      } else {
+      const voteTransaction = {
+        actions: [{
+          account: 'decide',
+          name: 'sync',
+          authorization: [{
+            actor: this.props.activeUser.accountName,
+            permission: 'active',
+          }],
+          data: {
+            voter: this.props.activeUser.accountName,
+          },
+        },
+        {
+          account: 'decide',
+          name: 'castvote',
+          authorization: [{
+            actor: this.props.activeUser.accountName,
+            permission: 'active',
+          }],
+          data: {
+            voter: this.props.activeUser.accountName,
+            options: [this.state.nominee],
+            ballot_name: getBallot.rows[getBallot.rows.length - 1].ballot_name
+          },
+        }]
+      };
+      const voteResult = await this.props.activeUser.signTransaction(
+        voteTransaction, {blocksBehind: 3,
+        expireSeconds: 30
+      });
+      console.log(voteResult);
+    }
+    } catch(e) {
+      console.log(e);
+    }
+  }
+  
+
   render() {
+
     return (
       <div className="vote main-content">
         <Switch>
@@ -260,10 +337,9 @@ class Vote extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {/*
-              {this.state.leaderCandidates.map((leaderCandidate, key) =>
-              <tr><td></td><td>{leaderCandidate.key}</td><td>{leaderCandidate.value}</td><td></td></tr>)}
-              */}
+              {this.state.leaderCandidates.map(leaderCandidate =>
+                <tr key={leaderCandidate.key} ><td></td><td>{leaderCandidate.key}</td><td>{leaderCandidate.value}</td><td></td></tr>)}
+    
               </tbody>
             </table>
         </div>

@@ -51,7 +51,7 @@ class CandidateSingle extends React.Component {
             json: true
           });
       console.log(voteCounts);
-      const voteCount = voteCounts.rows.find(voteCount => voteCount.key == owner);
+      const voteCount === voteCounts.rows.find(voteCount => voteCount.key == owner);
         this.setState({
           nominee: resp.rows[resp.rows.length - resp.rows.length].owner,
           name: resp.rows[resp.rows.length - resp.rows.length].name,

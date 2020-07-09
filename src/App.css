@@ -14,12 +14,15 @@ body {
   height: 100%;
 }
 
-#root {
-  height: 100%;
+.main-wrapper {
+  min-height: 100%;
+  margin-bottom: -205px; 
 }
 
-.App {
-  height: 100%;
+.main-wrapper:after {
+  content: "";
+  display: block;
+  height: 205px;
 }
 
 header, footer, div {
@@ -47,6 +50,7 @@ header#nav .logo {
 header#nav .header-link {
   width: 100%;
   display: inline-block;
+  margin-top: 13px;
 }
 
 header#nav .logo-text {
@@ -134,7 +138,7 @@ header#nav .login-wrapper {
   grid-column-start: accName;
   grid-column-end: span end;
   text-align: center;
-  width: 80%
+  width: 80%;
 }
 
 .login-wrapper .accHeader {
@@ -143,6 +147,7 @@ header#nav .login-wrapper {
   display: inline-block;
   font-size: 11px;
   font-weight: 700;
+  margin-top: 25px;
 }
 
 .login-wrapper .accName  {
@@ -402,9 +407,8 @@ footer {
   background: #ebebeb;
   padding: 20px 0;
   border-top: 1px solid #333;
-  width: 100%;
-  bottom: 0;
-  position: fixed;
+  height: 205px;
+  
 }
 
 footer .footer-inner {

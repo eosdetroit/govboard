@@ -57,21 +57,23 @@ class Vote extends React.Component {
 
   async GetElectionInfo(){
     let resp = await wax.rpc.get_table_rows({             
+      limit: 1,
       code: 'oig',
       scope: 'oig',
-      table: 'elections',
+      table: 'election',
       json: true
     });
-    let activeBallot = resp.rows[resp.rows.length - 1];
+    console.log(resp);
     this.setState({
-      ballot: activeBallot.ballot,
-      title: activeBallot.title,
-      description: activeBallot.description,
-      nmn_open: activeBallot.nmn_open,
-      nmn_close: activeBallot.nmn_close,
-      vote_open: activeBallot.vote_open,
-      vote_close: activeBallot.vote_close
+      ballot: resp.ballot,
+      title: resp.title,
+      description: resp.description,
+      nmn_open: resp.nmn_open,
+      nmn_close: resp.nmn_close,
+      vote_open: resp.vote_open,
+      vote_close: resp.vote_close
     });
+    return this.GetLeaderboard();
   } 
 
   async GetCandidates(){
@@ -93,6 +95,7 @@ class Vote extends React.Component {
             sliceLimit: 0,
             lastPagination: 'next',
           });
+          return this.GetElectionInfo();
           console.log(this.state);
       } catch(e) {
         console.log(e);

@@ -59,46 +59,48 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Router>
-        <header id="nav">
-        <div className="nav-wrapper">
-        <div className="logo">
-          <Link className="header-link" to="/">
-            <img src={logo} alt="WAX Logo" />
-            <span className="logo-text">&nbsp;Office of Inspector General Dashboard</span></Link>
-        </div>
-          { this.state.activeUser ?
-            <nav>
-              <button id="menu-icon"></button>
-              <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/candidates">Vote</Link></li>
-                <li><Link to="/nominate">Nominate</Link></li>
-              </ul>
-            </nav>
-            :
-            <nav>
-              <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About</Link></li>
-              </ul>
-            </nav>
-          }
-        <div className="login-wrapper">
-          { this.state.activeUser ?
-            <>
-              <span className="accHeader">Account</span>
-              <span className="accName">{this.state.accountName}</span>
-              {this.renderLogoutBtn()}
-            </>
-            :
-            <>
-              <button id="login" onClick={this.props.ual.showModal} >Login</button>
-            </>
-          }
-        </div>
-        </div>
+        <div className="main-wrapper">
+          <Router>
+          <header id="nav">
+            <div className="nav-wrapper">
+              <div className="logo">
+                <Link className="header-link" to="/">
+                  <img src={logo} alt="WAX Logo" />
+                  <span className="logo-text">&nbsp;Office of Inspector General Dashboard</span>
+                </Link>
+              </div>
+              { this.state.activeUser ?
+              <nav>
+                <button id="menu-icon"></button>
+                <ul>
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/about">About</Link></li>
+                  <li><Link to="/candidates">Vote</Link></li>
+                  <li><Link to="/nominate">Nominate</Link></li>
+                </ul>
+              </nav>
+              :
+              <nav>
+                <ul>
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/about">About</Link></li>
+                </ul>
+              </nav>
+              }
+              <div className="login-wrapper">
+              { this.state.activeUser ?
+                <>
+                  <span className="accHeader">Account</span>
+                  <span className="accName">{this.state.accountName}</span>
+                  {this.renderLogoutBtn()}
+                </>
+                :
+                <>
+                <button id="login" onClick={this.props.ual.showModal} >Login</button>
+                </>
+              }
+            </div>
+          </div>
         </header>
         <Route exact path="/">
           <Home activeUser={this.state.activeUser} />
@@ -112,8 +114,9 @@ class App extends React.Component {
         <Route path="/nominate">
           <Nomination activeUser={this.state.activeUser} accountName={this.state.accountName} />
         </Route>
-        <footer><Footer activeUser={this.state.activeUser} /></footer>
         </Router>
+        </div>
+        <footer><Footer activeUser={this.state.activeUser} /></footer>
       </div>
     );
   }

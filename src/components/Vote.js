@@ -216,8 +216,8 @@ class Vote extends React.Component {
   }
 
   async castVote(event) {
+  
     const value = event.target.value;
-
     const regTransaction = {
         actions: [{
           account: 'decide',
@@ -338,10 +338,10 @@ class Vote extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.leaderCandidates.map(leaderCandidate =>
+              {this.state.leaderCandidates.map((leaderCandidate, index, key, value) =>
                 
                 <tr key={leaderCandidate.key} >
-                  <td></td>
+                  <td>{index + 1}</td>
                   <td></td>
                   <td>{leaderCandidate.key}</td>
                   <td><span className="vote-count">{leaderCandidate.value}S</span></td>

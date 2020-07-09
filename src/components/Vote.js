@@ -241,13 +241,6 @@ class Vote extends React.Component {
             limit: 1,
             json: true
       });
-      let getBallot = await wax.rpc.get_table_rows({             
-            code: 'decide',
-            scope: 'decide',
-            table: 'ballots',
-            limit: 100,
-            json: true
-      });
       if (checkReg === '') {
       const regResult = await this.props.activeUser.signTransaction(
         regTransaction, {blocksBehind: 3,

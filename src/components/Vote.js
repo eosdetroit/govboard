@@ -63,14 +63,19 @@ class Vote extends React.Component {
           });
           let leaderCandidates = leaderResp.rows[leaderResp.rows.length - leaderResp.rows.length].options;
           console.log(leaderCandidates);
+          let formattedNomOpen = new Date(activeBallot.nmn_open).toString();
+          let formattedNomClose = new Date(activeBallot.nmn_close).toString();
+          let formattedVoteOpen = new Date(activeBallot.vote_open).toString();
+          let formattedVoteClose = new Date(activeBallot.vote_close).toString();
+          console.log(formattedNomOpen);
           this.setState({
             ballot: activeBallot.ballot,
             title: activeBallot.title,
             description: activeBallot.description,
-            nmn_open: activeBallot.nmn_open,
-            nmn_close: activeBallot.nmn_close,
-            vote_open: activeBallot.vote_open,
-            vote_close: activeBallot.vote_close,
+            nmn_open: formattedNomOpen,
+            nmn_close: formattedNomClose,
+            vote_open: formattedVoteOpen,
+            vote_close: formattedVoteClose,
             leaderCandidates: leaderCandidates
           });
           console.log(this.state);

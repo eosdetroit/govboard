@@ -133,7 +133,7 @@ class CandidateSingle extends React.Component {
           data: {
             voter: this.props.activeUser.accountName,
             options: [this.state.nominee],
-            ballot_name: getBallot.rows[getBallot.rows.length - 1].ballot_name
+            ballot_name: getBallot.rows[getBallot.rows.length - getBallot.rows.length].ballot_name
           },
         }]
       };

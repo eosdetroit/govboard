@@ -19,7 +19,7 @@ class Home extends React.Component {
     return (
       <div className="home main-content" id="main">
         <div className="badge"><img class="oigLogo" src={oigLogo} alt="WAX OIG Logo" /></div>
-        <div class="bodyText">
+        <div className="bodyText">
           <h1>OIG Election Process</h1>
           <br></br>
           <p>

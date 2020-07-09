@@ -97,7 +97,6 @@ class Vote extends React.Component {
             lastPagination: 'next',
           });
           return this.GetElectionInfo();
-          console.log(this.state);
       } catch(e) {
         console.log(e);
       }

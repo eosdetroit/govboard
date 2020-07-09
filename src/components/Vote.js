@@ -50,6 +50,7 @@ class Vote extends React.Component {
         json: true
       });
       let activeCandidates = resp.rows[resp.rows.length - 1].options.sort((a, b) => parseFloat(a.value) - parseFloat(b.value));
+      console.log(activeCandidates);
     } catch (e) {
       console.log(e);
     }

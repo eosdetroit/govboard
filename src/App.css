@@ -297,7 +297,7 @@ header#nav nav button#menu-icon {
   width: 100%;
 }
 
-.candidate-single .candidate-left-pane .vote-count {
+.vote-count {
   text-transform: lowercase;
 }
 

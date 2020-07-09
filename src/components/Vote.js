@@ -34,6 +34,7 @@ class Vote extends React.Component {
     };
     this.GetCandidates = this.GetCandidates.bind(this);
     this.GetElectionInfo = this.GetElectionInfo.bind(this);
+    this.castVote = this.castVote.bind(this);
     this.CandidatePaginationNext = this.CandidatePaginationNext.bind(this);
     this.CandidatePaginationPrev = this.CandidatePaginationPrev.bind(this);
   }
@@ -214,7 +215,9 @@ class Vote extends React.Component {
     return this.GetCandidates();
   }
 
-  async VoteCandidate(){
+  async castVote(event) {
+    const value = event.target.value;
+
     const regTransaction = {
         actions: [{
           account: 'decide',
@@ -273,8 +276,8 @@ class Vote extends React.Component {
           }],
           data: {
             voter: this.props.activeUser.accountName,
-            options: [this.state.nominee],
-            ballot_name: getBallot.rows[getBallot.rows.length - 1].ballot_name
+            options: [value],
+            ballot_name: this.state.ballot
           },
         }]
       };
@@ -288,7 +291,6 @@ class Vote extends React.Component {
       console.log(e);
     }
   }
-  
 
   render() {
 
@@ -305,12 +307,12 @@ class Vote extends React.Component {
           <table>
             <tbody>
               <tr>
-                <td><strong>Nominations begin:</strong> {this.state.nmn_open}</td>
-                <td><strong>Voting begins:</strong> {this.state.vote_open}</td>
+                <td><strong>Nominations begin:</strong><br />{this.state.nmn_open}</td>
+                <td><strong>Voting begins:</strong><br />{this.state.vote_open}</td>
               </tr>
               <tr>
-                <td><strong>Nominations end:</strong> {this.state.nmn_close}</td>
-                <td><strong>Voting ends:</strong> {this.state.vote_close}</td>
+                <td><strong>Nominations end:</strong><br />{this.state.nmn_close}</td>
+                <td><strong>Voting ends:</strong><br />{this.state.vote_close}</td>
               </tr>
             </tbody>
           </table>
@@ -336,6 +338,7 @@ class Vote extends React.Component {
             <thead>
               <tr>
                 <th>Position</th>
+                <th>Candidate</th>
                 <th>Account</th>
                 <th>Vote Count</th>
                 <th></th>
@@ -343,7 +346,14 @@ class Vote extends React.Component {
             </thead>
             <tbody>
               {this.state.leaderCandidates.map(leaderCandidate =>
-                <tr key={leaderCandidate.key} ><td></td><td>{leaderCandidate.key}</td><td>{leaderCandidate.value}</td><td></td></tr>)}
+                
+                <tr key={leaderCandidate.key} >
+                  <td></td>
+                  <td></td>
+                  <td>{leaderCandidate.key}</td>
+                  <td><span className="vote-count">{leaderCandidate.value}S</span></td>
+                  <td><button value={leaderCandidate.key} onClick={this.castVote} className="btn">Vote</button></td>
+                </tr>)}
     
               </tbody>
             </table>

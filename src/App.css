@@ -14,9 +14,17 @@ body {
   height: 100%;
 }
 
+#root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+}
+
 .main-wrapper {
-  min-height: 100%;
-  margin-bottom: -205px; 
+  min-height: 100%; 
+  margin-bottom: -205px;
 }
 
 .main-wrapper:after {

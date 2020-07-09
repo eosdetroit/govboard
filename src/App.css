@@ -289,6 +289,10 @@ header#nav nav button#menu-icon {
   width: 100%;
 }
 
+.candidate-single .candidate-left-pane .vote-count {
+  text-transform: lowercase;
+}
+
 .candidate-single .candidate-right-pane {
   grid-row-start: body;
   grid-row-end: span end;

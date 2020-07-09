@@ -61,7 +61,7 @@ class Vote extends React.Component {
             upper_bound: activeBallot.ballot,
             json: true
           });
-          let leaderCandidates = leaderResp.rows[leaderResp.rows.length - leaderResp.rows.length].options;
+          let leaderCandidates = leaderResp.rows[leaderResp.rows.length - leaderResp.rows.length].options.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
           console.log(leaderCandidates);
           let formattedNomOpen = new Date(activeBallot.nmn_open).toString();
           let formattedNomClose = new Date(activeBallot.nmn_close).toString();

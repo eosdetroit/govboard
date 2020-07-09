@@ -157,7 +157,7 @@ class CandidateSingle extends React.Component {
         </div>
         <div className="candidate-left-pane">
           <img src={this.state.picture} alt={this.state.nominee} />
-          {this.state.votes}
+          <span className="vote-count">{this.state.votes}S</span>
         </div>
         <div className="candidate-right-pane">
           <p className="description">{this.state.description}</p>

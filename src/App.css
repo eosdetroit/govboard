@@ -141,6 +141,10 @@ header#nav .login-wrapper {
   width: 80%;
 }
 
+.badge {
+  text-align: center;
+}
+
 .oigLogo {
   width: 35%;
 }
@@ -197,7 +201,6 @@ header#nav nav button#menu-icon {
   padding: 20px;
   max-width: 980px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .vote table {

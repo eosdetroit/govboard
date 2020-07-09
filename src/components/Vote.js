@@ -29,54 +29,57 @@ class Vote extends React.Component {
       nmn_open: '',
       nmn_close: '',
       vote_open: '',
-      vote_close: ''
+      vote_close: '',
+      leaderCandidates: '',
     };
     this.GetCandidates = this.GetCandidates.bind(this);
-    this.GetLeaderboard = this.GetLeaderboard.bind(this);
     this.GetElectionInfo = this.GetElectionInfo.bind(this);
     this.CandidatePaginationNext = this.CandidatePaginationNext.bind(this);
     this.CandidatePaginationPrev = this.CandidatePaginationPrev.bind(this);
   }
 
-  async GetLeaderboard() {
-    try {
-      let resp = await wax.rpc.get_table_rows({             
-        code: 'decide',
-        scope: 'decide',
-        table: 'ballots',
-        limit: 1,
-        lower_bound: this.state.ballot,
-        upper_bound: this.state.ballot,
-        json: true
-      });
-      let activeCandidates = resp.rows[resp.rows.length - 1].options.sort((a, b) => parseFloat(a.value) - parseFloat(b.value));
-      console.log(activeCandidates);
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   async GetElectionInfo(){
-    let resp = await wax.rpc.get_table_rows({             
-      limit: 1,
-      code: 'oig',
-      scope: 'oig',
-      table: 'election',
-      json: true
-    });
-    console.log(resp);
-    this.setState({
-      ballot: resp.ballot,
-      title: resp.title,
-      description: resp.description,
-      nmn_open: resp.nmn_open,
-      nmn_close: resp.nmn_close,
-      vote_open: resp.vote_open,
-      vote_close: resp.vote_close
-    });
-    return this.GetLeaderboard();
-  } 
+    try {
+        let resp = await wax.rpc.get_table_rows({             
+          limit: 1,
+          code: 'oig',
+          scope: 'oig',
+          table: 'election',
+          json: true
+        });
+        let activeBallot = resp.rows[resp.rows.length - resp.rows.length];
+        console.log(activeBallot);
+        if (activeBallot === '') {
 
+        } else {
+          let leaderResp = await wax.rpc.get_table_rows({             
+            code: 'decide',
+            scope: 'decide',
+            table: 'ballots',
+            limit: 1,
+            lower_bound: activeBallot.ballot,
+            upper_bound: activeBallot.ballot,
+            json: true
+          });
+          let leaderCandidates = leaderResp.rows[leaderResp.rows.length - 1];
+          console.log(leaderCandidates);
+          this.setState({
+            ballot: activeBallot.ballot,
+            title: activeBallot.title,
+            description: activeBallot.description,
+            nmn_open: activeBallot.nmn_open,
+            nmn_close: activeBallot.nmn_close,
+            vote_open: activeBallot.vote_open,
+            vote_close: activeBallot.vote_close,
+            leaderCandidates: leaderCandidates
+          });
+          console.log(this.state);
+        }
+      } catch(e) {
+        console.log(e);
+      }
+    } 
+  
   async GetCandidates(){
       try {
           let resp = await wax.rpc.get_table_rows({             
@@ -100,7 +103,7 @@ class Vote extends React.Component {
       } catch(e) {
         console.log(e);
       }
-    }
+    } 
 
   async CandidatePaginationNext() {
       let candidatePage = this.state.candidatePage + 1;
@@ -256,7 +259,13 @@ class Vote extends React.Component {
                 <th></th>
               </tr>
             </thead>
-          </table>
+            <tbody>
+              {/*
+              {this.state.leaderCandidates.map((leaderCandidate, key) =>
+              <tr><td></td><td>{leaderCandidate.key}</td><td>{leaderCandidate.value}</td><td></td></tr>)}
+              */}
+              </tbody>
+            </table>
         </div>
         </Route>
         <Route path="/candidates/:owner">

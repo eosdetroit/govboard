@@ -18,7 +18,7 @@ class Home extends React.Component {
     }
     return (
       <div className="home main-content" id="main">
-        <img class="oigLogo" src={oigLogo} alt="WAX OIG Logo" />
+        <div className="badge"><img class="oigLogo" src={oigLogo} alt="WAX OIG Logo" /></div>
         <div class="bodyText">
           <h1>OIG Election Process</h1>
           <br></br>

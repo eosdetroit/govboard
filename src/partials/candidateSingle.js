@@ -50,8 +50,9 @@ class CandidateSingle extends React.Component {
             upper_bound: this.props.ballot,
             json: true
           });
-      console.log(voteCounts);
-      const voteCount = voteCounts.rows.find(voteCount => voteCount.key === owner);
+      console.log(voteCounts.rows);
+      const voteCount = voteCounts.rows[resp.rows.length - resp.rows.length].options.find(obj => obj.key == resp.rows[resp.rows.length - resp.rows.length].owner);
+      console.log(voteCount);      
         this.setState({
           nominee: resp.rows[resp.rows.length - resp.rows.length].owner,
           name: resp.rows[resp.rows.length - resp.rows.length].name,
@@ -156,6 +157,7 @@ class CandidateSingle extends React.Component {
         </div>
         <div className="candidate-left-pane">
           <img src={this.state.picture} alt={this.state.nominee} />
+          {this.state.votes}
         </div>
         <div className="candidate-right-pane">
           <p className="description">{this.state.description}</p>

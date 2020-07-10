@@ -375,7 +375,7 @@ class LeaderboardRow extends Vote {
           json: true
         });
         console.log(resp);
-        if (resp.rows != ''){
+        if (resp.rows !== ''){
           this.setState({
             name: resp.rows[resp.rows.length - resp.rows.length].name
           });

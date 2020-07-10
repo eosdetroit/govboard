@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Switch,
   Route,
+  Link,
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
 
@@ -338,16 +339,9 @@ class Vote extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.leaderCandidates.map((leaderCandidate, index, key, value) =>
-                
-                <tr key={leaderCandidate.key} >
-                  <td>{index + 1}</td>
-                  <td></td>
-                  <td>{leaderCandidate.key}</td>
-                  <td><span className="vote-count">{leaderCandidate.value}S</span></td>
-                  <td><button value={leaderCandidate.key} onClick={this.castVote} className="btn">Vote</button></td>
-                </tr>)}
-    
+              {this.state.leaderCandidates.slice(0, 9).map((leaderCandidate, key, index, value) =>
+                <LeaderboardRow data={leaderCandidate} index={index} key={leaderCandidate.key} />
+              )}
               </tbody>
             </table>
         </div>
@@ -362,3 +356,46 @@ class Vote extends React.Component {
 }
 
 export default Vote;
+
+class LeaderboardRow extends Vote {
+  constructor(props){
+        super(props);
+        console.log(this.props); // prints out whatever is inside props
+        this.GetCandidateName = this.GetCandidateName.bind(this);
+    }
+
+  async GetCandidateName(){
+    let resp = await wax.rpc.get_table_rows({             
+          code: 'oig',
+          scope: 'oig',
+          table: 'nominees',
+          limit: 1,
+          lower_bound: this.props.data.key,
+          upper_bound: this.props.data.key,
+          json: true
+        });
+        console.log(resp);
+        if (resp.rows != ''){
+          this.setState({
+            name: resp.rows[resp.rows.length - resp.rows.length].name
+          });
+        }
+  }
+
+  componentDidMount(){
+    return this.GetCandidateName();
+  }
+
+  render(){
+    const index = this.props.index.findIndex(x => x.key === this.props.data.key);
+    return (
+      <tr key={this.props.data.key} >
+                <td>{index + 1}</td>
+                <td><Link to={"/candidates/" + this.props.data.key}>{this.state.name}</Link></td>
+                <td>{this.props.data.key}</td>
+                <td><span className="vote-count">{this.props.data.value}S</span></td>
+                <td><button value={this.props.data.key} onClick={this.castVote} className="btn">Vote</button></td>
+            </tr>
+    )
+  }
+}

@@ -288,7 +288,7 @@ class Vote extends React.Component {
   }
 
   render() {
-    if (this.props.electionState === 0 && this.props.electionState === 1){
+    if (this.props.electionState === 0 || this.props.electionState === 1){
       return (
         <div className="vote main-content">
           <div className="election-info">

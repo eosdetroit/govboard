@@ -269,7 +269,8 @@ class Nomination extends React.Component {
           <div className="form-row">
   					<label for="picture">Picture<span className="required">*</span></label>
   					<input type="text" value={this.state.picture} placeholder="Url to image file on the web" maxlength="256" required onBlur={() => this.validator.showMessageFor('picture')} name="picture" onChange={this.handleInputChange} />
-				    {this.validator.message('picture', this.state.picture, 'required|url|max:256')}
+				    <i>Please use a square image (i.e. 250x250) for best results</i>
+            {this.validator.message('picture', this.state.picture, 'required|url|max:256')}
         </div>
 				<div className="form-row">
   					<label for="description">Candidicy Platform<span className="required">*</span></label>
@@ -288,7 +289,7 @@ class Nomination extends React.Component {
         </div>
 				<div className="form-row">
   					<label for="wechat">WeChat Profile</label>
-  					<input type="text" name="wechat" value={this.state.wechat} maxlength="256" placeholder="http://wechat.com" onChange={this.handleInputChange} />
+  					<input type="text" name="wechat" value={this.state.wechat} maxlength="256" placeholder="@yourhandle" onChange={this.handleInputChange} />
 				    {this.validator.message('wechat', this.state.wechat, 'url|max:256')}
         </div>
 				<button onClick={this.updateNominee} className="btn">Submit</button>

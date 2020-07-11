@@ -36,6 +36,7 @@ class Vote extends React.Component {
     this.GetCandidates = this.GetCandidates.bind(this);
     this.GetElectionInfo = this.GetElectionInfo.bind(this);
     this.castVote = this.castVote.bind(this);
+    this.renderLeaderboard = this.renderLeaderboard.bind(this);
     this.renderPagination = this.renderPagination.bind(this);
     this.CandidatePaginationNext = this.CandidatePaginationNext.bind(this);
     this.CandidatePaginationPrev = this.CandidatePaginationPrev.bind(this);
@@ -186,6 +187,32 @@ class Vote extends React.Component {
     }
   }
 
+  renderLeaderboard(){
+    if (this.state.electionState === 4){
+      return (
+        <div className="leaderboard">
+        <h2>Election Leaderboard</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th>Candidate</th>
+                <th>Account</th>
+                <th>Vote Count</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.leaderCandidates.slice(0, 10).map((leaderCandidate, key, index, value) =>
+                <LeaderboardRow data={leaderCandidate} index={index} key={leaderCandidate.key} />
+              )}
+              </tbody>
+            </table>
+        </div>
+      );
+    }
+  }
+
   componentDidMount(){
     return this.GetCandidates();
   }
@@ -270,7 +297,7 @@ class Vote extends React.Component {
           </div>
         </div>
       )
-    } else if (this.props.electionState === 4 || this.props.electionState === 5) {  
+    } else if (this.props.electionState === 5) {  
       return (
         <div className="vote main-content">
           <div className="election-info">
@@ -313,26 +340,9 @@ class Vote extends React.Component {
         </div>
     
         {this.renderPagination}
-        
-        <h2>Election Leaderboard</h2>
-        <div className="leaderboard">
-          <table>
-            <thead>
-              <tr>
-                <th>Position</th>
-                <th>Candidate</th>
-                <th>Account</th>
-                <th>Vote Count</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.state.leaderCandidates.slice(0, 10).map((leaderCandidate, key, index, value) =>
-                <LeaderboardRow data={leaderCandidate} index={index} key={leaderCandidate.key} />
-              )}
-              </tbody>
-            </table>
-        </div>
+
+        {this.renderLeaderboard}
+      
         </Route>
         <Route path="/candidates/:owner">
           <CandidateSingle activeUser={this.props.activeUser} ballot={this.state.ballot} />

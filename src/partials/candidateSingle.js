@@ -153,11 +153,11 @@ class CandidateSingle extends React.Component {
       <div className="candidate-single">
         <div className="candidate-header">
           <h2>{this.state.name}</h2>
-          <span><i>Candidate for WAX OIG</i></span>
+          <span><i>Candidate for WAX OIG</i></span><br />
+          <span className="vote-count"><i>{this.state.votes}S</i></span>
         </div>
         <div className="candidate-left-pane">
           <img src={this.state.picture} alt={this.state.nominee} />
-          <span className="vote-count">{this.state.votes}S</span>
         </div>
         <div className="candidate-right-pane">
           <p className="description">{this.state.description}</p>

@@ -36,6 +36,7 @@ class Vote extends React.Component {
     this.GetCandidates = this.GetCandidates.bind(this);
     this.GetElectionInfo = this.GetElectionInfo.bind(this);
     this.castVote = this.castVote.bind(this);
+    this.renderPagination = this.renderPagination.bind(this);
     this.CandidatePaginationNext = this.CandidatePaginationNext.bind(this);
     this.CandidatePaginationPrev = this.CandidatePaginationPrev.bind(this);
   }
@@ -97,13 +98,16 @@ class Vote extends React.Component {
             limit: this.state.candidatesDisplayed,
             json: true
           });
-          let activeCandidates = resp.rows.indexOf(x => x.is_active === 1);
-          console.log(activeCandidates);
-          let maxPage = (resp.rows.length / 10)
+          let displayPagination = 0;
+          if (resp.rows.length > 10) {
+            displayPagination = 1;
+          }
+          let maxPage = (resp.rows.length / 10);
           this.setState({
             candidates: resp.rows,
             candidatePage: 1,
             maxPage: maxPage,
+            displayPagination: displayPagination
           });
           return this.GetElectionInfo();
       } catch(e) {
@@ -169,6 +173,19 @@ class Vote extends React.Component {
     }
     console.log(this.state);
   }  
+
+  renderPagination(){
+    if (this.state.displayPagination === 1){
+      return (
+        <div className="pagination-wrapper">
+          <button onClick={this.CandidatePaginationPrev} className="btn">Prev</button>
+          <button onClick={this.CandidatePaginationNext} className="btn">Next</button>
+        </div>
+      );
+    } else {
+      // Do not render
+    }
+  }
 
   componentDidMount(){
     return this.GetCandidates();
@@ -295,12 +312,8 @@ class Vote extends React.Component {
               <CandidateGrid data={candidate} key={candidate.owner} />)}
 
         </div>
-        <div className="pagination-wrapper">
-          
-          <button onClick={this.CandidatePaginationPrev} className="btn">Prev</button>
-          <button onClick={this.CandidatePaginationNext} className="btn">Next</button>
-        
-        </div>
+    
+        {this.renderPagination}
         
         <h2>Election Leaderboard</h2>
         <div className="leaderboard">

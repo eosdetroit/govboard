@@ -4,6 +4,7 @@ import {
   Route,
   Link, 
 } from "react-router-dom";
+import * as waxjs from "@waxio/waxjs/dist";
 
 import './App.css';
 import logo from './assets/wax-logo-white.png'
@@ -13,6 +14,8 @@ import Vote from './components/Vote';
 import Nomination from './components/Nomination';
 import About from './components/About';
 
+const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
+
 class App extends React.Component {
     constructor(props){
       super(props);
@@ -21,6 +24,7 @@ class App extends React.Component {
         accountName: ''
       };
       this.updateAccountName = this.updateAccountName.bind(this);
+      this.checkElectionStatus = this.checkElectionStatus.bind(this);
     }
 
     componentDidUpdate() {
@@ -54,6 +58,25 @@ class App extends React.Component {
           </span>
       )
     }
+  }
+
+  async checkElectionStatus() {
+    let resp = await wax.rpc.get_table_rows({             
+      limit: 1,
+      code: 'oig',
+      scope: 'oig',
+      table: 'election',
+      json: true
+    });
+    console.log(resp.rows);
+    this.setState({
+      electionState: resp.rows[resp.rows.length - resp.rows.length].state,
+    });
+    console.log(this.state.electionState);
+  }
+
+  componentDidMount() {
+    return this.checkElectionStatus();
   }
 
   render() {
@@ -109,10 +132,10 @@ class App extends React.Component {
           <About activeUser={this.state.activeUser} />
         </Route>
         <Route path="/candidates">
-          <Vote activeUser={this.state.activeUser} />
+          <Vote activeUser={this.state.activeUser} electionState={this.state.electionState} />
         </Route>
         <Route path="/nominate">
-          <Nomination activeUser={this.state.activeUser} accountName={this.state.accountName} />
+          <Nomination activeUser={this.state.activeUser} electionState={this.state.electionState} accountName={this.state.accountName} />
         </Route>
         </Router>
         </div>

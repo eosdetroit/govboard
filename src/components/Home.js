@@ -8,14 +8,6 @@ import '../App.css';
 class Home extends React.Component {
 
   render() {
-  if (this.props.activeUser != null) {
-        
-        return (
-                <>
-                <Redirect to='/candidates' />
-                </>
-                )
-    }
     return (
       <div className="home main-content" id="main">
         <div className="badge"><img class="oigLogo" src={oigLogo} alt="WAX OIG Logo" /></div>

@@ -245,7 +245,25 @@ class Vote extends React.Component {
   }
 
   render() {
-
+    if (this.props.electionState === 0 && this.props.electionState === 1){
+      return (
+        <div className="vote main-content">
+          <div className="election-info">
+          <h2>Election Information</h2>
+          <p>There is currently no election running. Please check the <Link to="/">home page</Link> for upcoming elections.</p>
+          </div>
+        </div>
+      )
+    } else if (this.props.electionState === 4 || this.props.electionState === 5) {  
+      return (
+        <div className="vote main-content">
+          <div className="election-info">
+          <h2>Election Information</h2>
+          <p>The voting period for the current election has concluded. Please check back soon for announcement of the winner.</p>
+          </div>
+        </div>
+        );
+    } else {
     return (
       <div className="vote main-content">
         <Switch>
@@ -310,6 +328,7 @@ class Vote extends React.Component {
         </Switch>
       </div>
     );
+  }
   }
 }
 

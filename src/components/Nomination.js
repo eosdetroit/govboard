@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  Redirect
+  Redirect,
+  Link
 } from "react-router-dom";
 
 import '../App.css';
@@ -300,27 +301,50 @@ class Nomination extends React.Component {
   render() {
   	console.log(this.props.activeUser);
   	if (this.props.activeUser === null) {
-        
         return (
                 <>
                 <Redirect to='/' />
                 </>
                 )
-    }  		
-    return (	
-      <div className="nomination main-content">
-        <div className="nomination-header">
-          <h2>Nominate</h2>
+    } else if (this.props.electionState === 0 || this.props.electionState === 1 || this.props.electionState === 5) {
+      
+      return (
+        <div className="nomination main-content">
+          <div className="nomination-header">
+            <h2>Nominate</h2>
+            <p>There is currently no election running. Please check the <Link to="/">home page</Link> for upcoming elections.</p>
+          </div>
         </div>
-        <div className="nomination-left-pane">
-          {this.isNominated()}
-          {this.nominationForm()}
+      );
+    } else if (this.props.electionState === 3 || this.props.electionState === 4) {
+      
+      return (
+        <div className="nomination main-content">
+          <div className="nomination-header">
+            <h2>Nominate</h2>
+            <p>The nomination period for the current election has closed. <Link to="/candidates">Vote</Link> for your favorite candidate now!</p>
+          </div>
         </div>
-        <div className="nomination-right-pane">
-        {this.hasAccepted()}
+      );
+
+    } else if (this.props.electionState === 2) {
+      
+      return (	
+        <div className="nomination main-content">
+          <div className="nomination-header">
+            <h2>Nominate</h2>
+          </div>
+          <div className="nomination-left-pane">
+            {this.isNominated()}
+            {this.nominationForm()}
+          </div>
+          <div className="nomination-right-pane">
+            {this.hasAccepted()}
+          </div>
         </div>
-      </div>
-    );
+      );
+
+    }
   }
 }
 

@@ -7,7 +7,6 @@ import {
 import * as waxjs from "@waxio/waxjs/dist";
 
 import CandidateGrid from "../partials/candidate-grid-template.js";
-import ProducerGrid from "../partials/candidate-grid-template-producer-test.js";
 import CandidateSingle from "../partials/candidateSingle";
 
 import '../App.css';

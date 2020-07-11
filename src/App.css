@@ -40,7 +40,7 @@ header, footer, div {
 header#nav .nav-wrapper {
   display: grid;
   grid-template-rows: [row]auto[end];
-  grid-template-columns: [logo]55%[nav]35%[accName]10%[end];
+  grid-template-columns: [logo]45%[nav]55%[accName];
 }
 
 header#nav {
@@ -65,7 +65,7 @@ header#nav .logo-text {
   width: 100%;
   white-space: nowrap;
   vertical-align: middle;
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 header#nav .logo img {
@@ -83,13 +83,19 @@ header#nav .logo a:hover {
   text-decoration: none;
 }
 
-header#nav nav {
-  text-align: right;
+header#nav .menu-wrapper {
   grid-row-start: row;
   grid-row-end: span end;
   grid-column-start: nav;
   grid-column-end: span accName;
-  justify-self: end;
+  text-align: right;
+}
+
+header#nav nav {
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
 }
 
 header#nav nav ul {
@@ -114,10 +120,16 @@ header#nav .login-wrapper button {
   background-color: transparent;
   color: #fff;
   border: 0;
-  font-size: 1.5em;
+  font-size: 1.3em;
   height: 100%;
   width: 100%;
 }
+
+body header#nav .login-wrapper button:hover {
+    background: #000;
+    cursor: pointer;
+}
+
 
 header#nav .login button:focus {
   cursor: pointer;
@@ -128,25 +140,45 @@ header#nav .login button:focus {
 header#nav nav ul li a {
   color: #fff;
   text-decoration: none;
-  font-size: 1.5em;
-  padding: 0 10px;
+  font-size: 1.3em;
+  padding: 0 8px;
   display: inline-block;
   line-height: 7rem;
   height: 100%;
 }
 
-header#nav nav a:hover, #login:hover, .login-wrapper:hover {
+header#nav nav a:hover, #login:hover {
   color: #fff;
   background: #000;
 }
 
 header#nav .login-wrapper {
-  grid-row-start: row;
-  grid-row-end: span end;
-  grid-column-start: accName;
-  grid-column-end: span end;
   text-align: center;
-  width: 80%;
+  display: inline-block;
+  padding-right: 10px;
+}
+
+header#nav .login-wrapper.mobile {
+  display: none;
+}
+
+header#nav .login-li button {
+  font-size: 1.3em;
+  background: 0;
+  color: #fff;
+  padding: 0 10px;
+  display: inline-block;
+  line-height: 7rem;
+  border: 0;
+  cursor: pointer;
+}
+
+header#nav .login-li button:focus {
+  border: 0;
+}
+
+header#nav .login-li button:hover {
+  background: #000;
 }
 
 .badge {
@@ -162,26 +194,23 @@ header#nav .login-wrapper {
 }
 
 .login-wrapper .accHeader {
-  width: 100%;
   vertical-align: middle;
-  display: inline-block;
+  display: block;
   font-size: 11px;
   font-weight: 700;
-  margin-top: 30px;
+  margin-top: 32px;
 }
 
 .login-wrapper .accName  {
-  width: 100%;
   vertical-align: middle;
-  display: inline-block;
+  display: block;
 }
 
 .login-wrapper .logoutBtn {
   text-decoration: underline;
   font-size: 10px;
-  width: 100%;
   vertical-align: middle;
-  display: inline-block;
+  display: block;
 }
 
 .login-wrapper .logoutBtn:hover {
@@ -206,7 +235,7 @@ header#nav nav button#menu-icon {
 }
 
 .main-content {
-  padding: 20px;
+  padding: 20px 0 40px;
   max-width: 980px;
   margin: 0 auto;
 }
@@ -482,10 +511,18 @@ footer ul a:hover {
   header#nav .nav-wrapper {
     display: grid;
     grid-template-rows: [row]auto[end];
-    grid-template-columns: [logo]35%[nav]55%[accName]10%[end];
+    grid-template-columns: [logo]50%[nav]50%[accName];
   }
 
   header#nav .logo a.header-link .logo-text {
+    font-size: 1em;
+  }
+
+  body header#nav nav ul li a {
+    font-size: 1em;
+  }
+
+  body header#nav .login-li button {
     font-size: 1em;
   }
 
@@ -503,7 +540,7 @@ footer ul a:hover {
     margin-left: auto;
     display: grid;
     grid-template-rows: [row]auto[end];
-    grid-template-columns:[logo]200px[nav]auto[accName]75px[end];
+    grid-template-columns:[logo]200px[nav]auto[accName];
   }
 
   body header#nav .header-link {
@@ -518,18 +555,48 @@ footer ul a:hover {
     font-size: 0.75em;
   }
 
-  header#nav nav {
-    grid-column-start: accName;
-    grid-column-end: span end;
-  }
-
   header#nav .login-wrapper {
     padding-left: 0;
     padding-right: 5px;
-    grid-column-start: nav;
-    grid-column-end: span accName;
     text-align: right;
-    justify-self: end;
+    display: none;
+  }
+
+  header#nav .login-wrapper.mobile {
+    display: inline-block;
+    margin-top: 30px;
+  }
+
+  header#nav .login-wrapper.mobile .accHeader {
+    margin-top: 0;
+  }
+
+  body header#nav .login-wrapper button {
+    display: none;
+  }
+
+  body header#nav .login-li {
+    padding: 0;
+    display: block;
+  }
+  
+  body header#nav .login-li .login-btn {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+    line-height: 25px;
+    font-size: 1em;
+    font-family: inherit;
+    padding: 15px;
+    transition: background 0.4s, color 0.4s, border 0.4s;
+    color: #000;
+  }
+
+  body header#nav .login-btn:hover {
+    cursor: pointer;
+    transition: background 0.4s, color 0.4s, border 0.4s;
   }
 
   header#nav nav button#menu-icon {

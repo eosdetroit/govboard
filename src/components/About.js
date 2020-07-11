@@ -1,13 +1,15 @@
 import React from 'react';
 
 import '../App.css';
+import oigLogo from '../assets/waxOIGlogo.jpg';
 
 class About extends React.Component {
   render() {
     return (
       <div className="home main-content">
+        <div className="badge"><img class="oigLogo" src={oigLogo} alt="WAX OIG Logo" /></div>
         <h1>About</h1>
-        <br></br>
+        <br />
         <p>
           The Office of Inspector General (OIG) is a watchdog agency for the WAX network
           with the mission of evaluating WAX Guilds using an evolving heuristic. The OIG determines

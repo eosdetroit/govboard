@@ -93,36 +93,39 @@ class App extends React.Component {
                 </Link>
               </div>
               { this.state.activeUser ?
-              <nav>
-                <button id="menu-icon"></button>
-                <ul>
-                  <li><Link to="/">Home</Link></li>
-                  <li><Link to="/about">About</Link></li>
-                  <li><Link to="/candidates">Vote</Link></li>
-                  <li><Link to="/nominate">Nominate</Link></li>
-                </ul>
-              </nav>
-              :
-              <nav>
-                <ul>
-                  <li><Link to="/">Home</Link></li>
-                  <li><Link to="/about">About</Link></li>
-                </ul>
-              </nav>
-              }
-              <div className="login-wrapper">
-              { this.state.activeUser ?
-                <>
-                  <span className="accHeader">Account</span>
-                  <span className="accName">{this.state.accountName}</span>
-                  {this.renderLogoutBtn()}
-                </>
+                <div className="menu-wrapper">
+                  <div className="login-wrapper mobile">
+                    <span className="accHeader">Account</span>
+                    <span className="accName">{this.state.accountName}</span>
+                    {this.renderLogoutBtn()}
+                  </div>
+                  <nav>
+                    <button id="menu-icon"></button>
+                    <ul>
+                      <li><Link to="/">Home</Link></li>
+                      <li><Link to="/about">About</Link></li>
+                      <li><Link to="/candidates">Vote</Link></li>
+                      <li><Link to="/nominate">Nominate</Link></li>
+                    </ul>
+                  </nav>
+                  <div className="login-wrapper">
+                    <span className="accHeader">Account</span>
+                    <span className="accName">{this.state.accountName}</span>
+                    {this.renderLogoutBtn()}
+                  </div>
+                </div>
                 :
-                <>
-                <button id="login" onClick={this.props.ual.showModal} >Login</button>
-                </>
+                <div className="menu-wrapper">
+                  <nav>
+                    <button id="menu-icon"></button>
+                    <ul>
+                      <li><Link to="/">Home</Link></li>
+                      <li><Link to="/about">About</Link></li>
+                      <li className="login-li"><button id="login" className="login-btn" onClick={this.props.ual.showModal} >Login</button></li>
+                    </ul>
+                  </nav>
+                </div>
               }
-            </div>
           </div>
         </header>
         <Route exact path="/">

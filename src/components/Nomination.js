@@ -218,8 +218,8 @@ class Nomination extends React.Component {
   			<div className="nomination-list">
       			<h3>{this.props.accountName}'s Nomination Status</h3>
       			<p>Someone has nominated you for a WAX Office of the Inspector General position!</p>
-      			<button onClick={this.acceptNomination} className="btn">Accept</button>
-            <button onClick={this.declineNomination} className="btn accept">Decline</button>
+      			<button onClick={this.acceptNomination} className="btn accept">Accept</button>
+            <button onClick={this.declineNomination} className="btn decline">Decline</button>
       		</div>
   		);
   	} else if (this.state.isNominated === true && this.state.hasAccepted === 1) {

@@ -161,7 +161,14 @@ class CandidateSingle extends React.Component {
         </div>
         <div className="candidate-right-pane">
           <p className="description">{this.state.description}</p>
-          <strong>Social Media</strong>
+          { this.state.twitter || this.state.telegram || this.state.wechat ?
+            <>
+              <strong>Social Media</strong>
+            </>
+            :
+            <>
+            </>
+          }
           <ul>
             { this.state.twitter ? 
               <>

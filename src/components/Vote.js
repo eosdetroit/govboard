@@ -193,7 +193,7 @@ class Vote extends React.Component {
   }
 
   renderLeaderboard(){
-    if (this.state.electionState === 4){
+    if (this.props.electionState === 4){
       return (
         <div className="leaderboard">
         <h2>Election Leaderboard</h2>

@@ -125,47 +125,60 @@ class CandidateSingle extends React.Component {
         limit: 100,
         json: true
       });
-      const voteTransaction = {
-        actions: [
-          {
-            account: 'decide',
-            name: 'regvoter',
-            authorization: [{
-              actor: this.props.activeUser.accountName,
-              permission: 'active',
-            }],
-            data: {
-              voter: this.props.activeUser.accountName,
-              treasury_symbol: '8,VOTE',
-              referrer: this.props.activeUser.accountName
-            },
-          }, 
-          {
-            account: 'decide',
-            name: 'sync',
-            authorization: [{
-              actor: this.props.activeUser.accountName,
-              permission: 'active',
-            }],
-            data: {
-              voter: this.props.activeUser.accountName,
-            },
+      let checkReg = await wax.rpc.get_table_rows({
+        code: 'decide',
+        scope: this.props.activeUser.accountName,
+        table: 'voters',
+        limit: 1,
+        json: true
+      });
+      let actions = [
+        {
+          account: 'decide',
+          name: 'sync',
+          authorization: [{
+            actor: this.props.activeUser.accountName,
+            permission: 'active',
+          }],
+          data: {
+            voter: this.props.activeUser.accountName,
           },
-          {
-            account: 'decide',
-            name: 'castvote',
-            authorization: [{
-              actor: this.props.activeUser.accountName,
-              permission: 'active',
-            }],
-            data: {
-              voter: this.props.activeUser.accountName,
-              options: [this.state.nominee],
-              ballot_name: getBallot.rows[getBallot.rows.length - getBallot.rows.length].ballot_name
-            },
-          }
-        ]
+        },
+        {
+          account: 'decide',
+          name: 'castvote',
+          authorization: [{
+            actor: this.props.activeUser.accountName,
+            permission: 'active',
+          }],
+          data: {
+            voter: this.props.activeUser.accountName,
+            options: [this.state.nominee],
+            ballot_name: getBallot.rows[getBallot.rows.length - getBallot.rows.length].ballot_name
+          },
+        }
+      ]
+      console.log(checkReg);
+      if (checkReg === []) {
+        actions.unshift({
+          account: 'decide',
+          name: 'regvoter',
+          authorization: [{
+            actor: this.props.activeUser.accountName,
+            permission: 'active',
+          }],
+          data: {
+            voter: this.props.activeUser.accountName,
+            treasury_symbol: '8,VOTE',
+            referrer: this.props.activeUser.accountName
+          },
+        });
+      }
+
+      const voteTransaction = {
+        actions: actions
       };
+
       const voteResult = await this.props.activeUser.signTransaction(
         voteTransaction, {blocksBehind: 3,
         expireSeconds: 30

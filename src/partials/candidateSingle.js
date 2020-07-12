@@ -159,7 +159,7 @@ class CandidateSingle extends React.Component {
         }
       ]
       console.log(checkReg);
-      if (checkReg === []) {
+      if (checkReg && checkReg.rows === []) {
         actions.unshift({
           account: 'decide',
           name: 'regvoter',
@@ -174,7 +174,7 @@ class CandidateSingle extends React.Component {
           },
         });
       }
-
+      
       const voteTransaction = {
         actions: actions
       };

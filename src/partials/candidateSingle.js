@@ -137,7 +137,7 @@ class CandidateSingle extends React.Component {
             data: {
               voter: this.props.activeUser.accountName,
               treasury_symbol: '8,VOTE',
-              referrer: ''
+              referrer: this.props.activeUser.accountName
             },
           }, 
           {

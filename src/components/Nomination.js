@@ -8,7 +8,11 @@ import '../App.css';
 import SimpleReactValidator from 'simple-react-validator';
 import * as waxjs from "@waxio/waxjs/dist";
 
-const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
+
+//WAX_RPC_URL = 'https://testnet.waxsweden.org'
+const WAX_RPC_URL = 'https://wax.greymass.com'
+const wax = new waxjs.WaxJS(WAX_RPC_URL, null, null, false);
+
 
 class Nomination extends React.Component {
   constructor(props){

@@ -14,7 +14,11 @@ import Vote from './components/Vote';
 import Nomination from './components/Nomination';
 import About from './components/About';
 
-const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
+
+//WAX_RPC_URL = 'https://testnet.waxsweden.org'
+const WAX_RPC_URL = 'https://wax.greymass.com'
+const wax = new waxjs.WaxJS(WAX_RPC_URL, null, null, false);
+
 
 class App extends React.Component {
     constructor(props){

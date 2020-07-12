@@ -53,23 +53,25 @@ class CandidateSingle extends React.Component {
             upper_bound: this.props.ballot,
             json: true
           });
-     let voteCount = [];
+      let voteCount = [];
       if (voteCounts.rows !== ''){
         voteCount = voteCounts.rows[resp.rows.length - resp.rows.length].options.find(obj => obj.key === resp.rows[resp.rows.length - resp.rows.length].owner);
       }
-      this.setState({
-        nominee: resp.rows[resp.rows.length - resp.rows.length].owner,
-        name: resp.rows[resp.rows.length - resp.rows.length].name,
-        picture: resp.rows[resp.rows.length - resp.rows.length].picture,
-        description: resp.rows[resp.rows.length - resp.rows.length].descriptor,
-        telegram: resp.rows[resp.rows.length - resp.rows.length].telegram,
-        twitter: resp.rows[resp.rows.length - resp.rows.length].twitter,
-        wechat: resp.rows[resp.rows.length - resp.rows.length].wechat,
-        votes: voteCount.value
-      });
-    } catch(e) {
-      console.log(e);
-      }       
+      console.log(voteCount);      
+        this.setState({
+          nominee: resp.rows[resp.rows.length - resp.rows.length].owner,
+          name: resp.rows[resp.rows.length - resp.rows.length].name,
+          picture: resp.rows[resp.rows.length - resp.rows.length].picture,
+          description: resp.rows[resp.rows.length - resp.rows.length].descriptor,
+          telegram: resp.rows[resp.rows.length - resp.rows.length].telegram,
+          twitter: resp.rows[resp.rows.length - resp.rows.length].twitter,
+          wechat: resp.rows[resp.rows.length - resp.rows.length].wechat,
+          votes: voteCount.value
+          });
+          console.log(this.state);
+          } catch(e) {
+          console.log(e);
+      }       // ...
   };
 
   async UnvoteCandidate(){
@@ -93,6 +95,7 @@ class CandidateSingle extends React.Component {
         }]
       };
     try {
+      /*
       let checkReg = await wax.rpc.get_table_rows({
             code: 'decide',
             scope: this.props.activeUser.accountName,
@@ -114,31 +117,54 @@ class CandidateSingle extends React.Component {
       });
       console.log(regResult);
       } else {
+      */
+      let getBallot = await wax.rpc.get_table_rows({             
+        code: 'decide',
+        scope: 'decide',
+        table: 'ballots',
+        limit: 100,
+        json: true
+      });
       const voteTransaction = {
-        actions: [{
-          account: 'decide',
-          name: 'sync',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
+        actions: [
+          {
+            account: 'decide',
+            name: 'regvoter',
+            authorization: [{
+              actor: this.props.activeUser.accountName,
+              permission: 'active',
+            }],
+            data: {
+              voter: this.props.activeUser.accountName,
+              treasury_symbol: '8,VOTE',
+              referrer: ''
+            },
+          }, 
+          {
+            account: 'decide',
+            name: 'sync',
+            authorization: [{
+              actor: this.props.activeUser.accountName,
+              permission: 'active',
+            }],
+            data: {
+              voter: this.props.activeUser.accountName,
+            },
           },
-        },
-        {
-          account: 'decide',
-          name: 'castvote',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
-            options: [this.state.nominee],
-            ballot_name: getBallot.rows[getBallot.rows.length - getBallot.rows.length].ballot_name
-          },
-        }]
+          {
+            account: 'decide',
+            name: 'castvote',
+            authorization: [{
+              actor: this.props.activeUser.accountName,
+              permission: 'active',
+            }],
+            data: {
+              voter: this.props.activeUser.accountName,
+              options: [this.state.nominee],
+              ballot_name: getBallot.rows[getBallot.rows.length - getBallot.rows.length].ballot_name
+            },
+          }
+        ]
       };
       const voteResult = await this.props.activeUser.signTransaction(
         voteTransaction, {blocksBehind: 3,

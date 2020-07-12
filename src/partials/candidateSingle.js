@@ -79,7 +79,9 @@ class CandidateSingle extends React.Component {
   }
 
   async VoteCandidate(){
-    const regTransaction = {
+    try {
+      /*
+      const regTransaction = {
         actions: [{
           account: 'decide',
           name: 'regvoter',
@@ -94,8 +96,6 @@ class CandidateSingle extends React.Component {
           },
         }]
       };
-    try {
-      /*
       let checkReg = await wax.rpc.get_table_rows({
             code: 'decide',
             scope: this.props.activeUser.accountName,

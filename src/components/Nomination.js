@@ -10,7 +10,7 @@ import * as waxjs from "@waxio/waxjs/dist";
 
 
 //WAX_RPC_URL = 'https://testnet.waxsweden.org'
-WAX_RPC_URL = 'https://wax.greymass.com'
+const WAX_RPC_URL = 'https://wax.greymass.com'
 const wax = new waxjs.WaxJS(WAX_RPC_URL, null, null, false);
 
 

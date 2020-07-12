@@ -72,32 +72,22 @@ class Vote extends React.Component {
           let formattedNomClose = new Date(activeBallot.nmn_close).toString();
           let formattedVoteOpen = new Date(activeBallot.vote_open).toString();
           let formattedVoteClose = new Date(activeBallot.vote_close).toString();
-          if (leaderResp.rows !== ''){
-            let leaderCandidates = leaderResp.rows[leaderResp.rows.length - leaderResp.rows.length].options.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
-            this.setState({
-              ballot: activeBallot.ballot,
-              title: activeBallot.title,
-              description: activeBallot.description,
-              nmn_open: formattedNomOpen,
-              nmn_close: formattedNomClose,
-              vote_open: formattedVoteOpen,
-              vote_close: formattedVoteClose,
-              leaderCandidates: leaderCandidates
-            });
-          } else {
-            this.setState({
-              ballot: activeBallot.ballot,
-              title: activeBallot.title,
-              description: activeBallot.description,
-              nmn_open: formattedNomOpen,
-              nmn_close: formattedNomClose,
-              vote_open: formattedVoteOpen,
-              vote_close: formattedVoteClose,
-              leaderCandidates: []
-            });
+          let leaderCandidates = []
+          if (leaderResp.rows !== '') {
+            leaderCandidates = leaderResp.rows[leaderResp.rows.length - leaderResp.rows.length].options.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
           }
-          console.log(this.state);
+          this.setState({
+            ballot: activeBallot.ballot,
+            title: activeBallot.title,
+            description: activeBallot.description,
+            nmn_open: formattedNomOpen,
+            nmn_close: formattedNomClose,
+            vote_open: formattedVoteOpen,
+            vote_close: formattedVoteClose,
+            leaderCandidates: leaderCandidates
+          });
         }
+        console.log(this.state);
       } catch(e) {
         console.log(e);
       }

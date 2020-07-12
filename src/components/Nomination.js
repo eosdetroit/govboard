@@ -209,7 +209,11 @@ class Nomination extends React.Component {
     }
 
   componentDidMount() {
-  	return this.checkNominations();
+    if (this.props.electionState === 2){
+      return this.checkNominations();
+    } else {
+      
+    }
   }
 
   isNominated() {

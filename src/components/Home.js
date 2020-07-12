@@ -1,5 +1,5 @@
 import React from 'react';
-import oigLogo from '../assets/wwaxOIGTransparent-small.png';
+import oigLogo from '../assets/waxOIGTransparent-small.png';
 import '../App.css';
 
 class Home extends React.Component {
@@ -7,7 +7,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home main-content" id="main">
-        <div className="badge"><img class="oigLogo" src={oigLogo} alt="WAX OIG Logo" /></div>
+        <div className="badge"><img className="oigLogo" src={oigLogo} alt="WAX OIG Logo" /></div>
         <div className="bodyText">
           <h1>OIG Election Process</h1>
           <br></br>

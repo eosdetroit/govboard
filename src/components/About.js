@@ -7,7 +7,7 @@ class About extends React.Component {
   render() {
     return (
       <div className="home main-content">
-        <div className="badge"><img class="oigLogo" src={oigLogo} alt="WAX OIG Logo" /></div>
+        <div className="badge"><img className="oigLogo" src={oigLogo} alt="WAX OIG Logo" /></div>
         <h1>About</h1>
         <br />
         <p>

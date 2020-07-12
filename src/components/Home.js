@@ -1,5 +1,5 @@
 import React from 'react';
-import oigLogo from '../assets/waxOIGlogo.jpg'
+import oigLogo from '../assets/wwaxOIGTransparent-small.png';
 import '../App.css';
 
 class Home extends React.Component {

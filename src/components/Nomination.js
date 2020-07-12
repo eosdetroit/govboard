@@ -24,7 +24,6 @@ class Nomination extends React.Component {
       twitter: '',
       wechat: '',
       telegram: '',
-
   	};
     this.validator = new SimpleReactValidator();
     this.nominateCandidate = this.nominateCandidate.bind(this);

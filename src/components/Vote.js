@@ -11,7 +11,11 @@ import CandidateSingle from "../partials/candidateSingle";
 
 import '../App.css';
 
-const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
+
+//WAX_RPC_URL = 'https://testnet.waxsweden.org'
+WAX_RPC_URL = 'https://wax.greymass.com'
+const wax = new waxjs.WaxJS(WAX_RPC_URL, null, null, false);
+
 
 class Vote extends React.Component {
   constructor(props){

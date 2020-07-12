@@ -171,7 +171,6 @@ class CandidateSingle extends React.Component {
         expireSeconds: 30
       });
       console.log(voteResult);
-    }
     } catch(e) {
       console.log(e);
     }

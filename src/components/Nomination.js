@@ -112,7 +112,7 @@ class Nomination extends React.Component {
       const transaction = {
         actions: [{
           account: 'oig',
-          name: 'decide',
+          name: 'proclaim',
           authorization: [{
             actor: this.props.accountName,
             permission: 'active',
@@ -138,7 +138,7 @@ class Nomination extends React.Component {
       const transaction = {
         actions: [{
           account: 'oig',
-          name: 'decide',
+          name: 'proclaim',
           authorization: [{
             actor: this.props.accountName,
             permission: 'active',
@@ -165,7 +165,7 @@ class Nomination extends React.Component {
       const transaction = {
         actions: [{
           account: 'oig',
-          name: 'update',
+          name: 'nominf',
           authorization: [{
             actor: this.props.accountName,
             permission: 'active',

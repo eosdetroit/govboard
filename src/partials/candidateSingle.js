@@ -145,6 +145,14 @@ class CandidateSingle extends React.Component {
           },
         },
         {
+          account: 'oig',
+          name: 'updtstate',
+          authorization: [{
+            actor: this.props.activeUser.accountName,
+            permission: 'active',
+          }],
+        },
+        {
           account: 'decide',
           name: 'castvote',
           authorization: [{
@@ -158,7 +166,6 @@ class CandidateSingle extends React.Component {
           },
         }
       ]
-      console.log(checkReg);
       if (Array.isArray(checkReg.rows) && checkReg.rows.length === 0) {
         console.log('adding regvoter to actions');
         actions.unshift({

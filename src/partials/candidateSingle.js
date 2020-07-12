@@ -159,7 +159,7 @@ class CandidateSingle extends React.Component {
         }
       ]
       console.log(checkReg);
-      if (checkReg.rows === []) {
+      if (Array.isArray(emptyArray) && emptyArray.length) {
         console.log('adding regvoter to actions');
         actions.unshift({
           account: 'decide',

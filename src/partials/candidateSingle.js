@@ -6,7 +6,10 @@ import * as waxjs from "@waxio/waxjs/dist";
 
 import '../App.css';
 
-const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
+// const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
+
+const WAX_RPC_URL = 'https://wax.greymass.com'
+const wax = new waxjs.WaxJS(WAX_RPC_URL, null, null, false);
 
 class CandidateSingle extends React.Component {
   constructor(props){
@@ -50,23 +53,23 @@ class CandidateSingle extends React.Component {
             upper_bound: this.props.ballot,
             json: true
           });
-      console.log(voteCounts.rows);
-      const voteCount = voteCounts.rows[resp.rows.length - resp.rows.length].options.find(obj => obj.key === resp.rows[resp.rows.length - resp.rows.length].owner);
-      console.log(voteCount);      
-        this.setState({
-          nominee: resp.rows[resp.rows.length - resp.rows.length].owner,
-          name: resp.rows[resp.rows.length - resp.rows.length].name,
-          picture: resp.rows[resp.rows.length - resp.rows.length].picture,
-          description: resp.rows[resp.rows.length - resp.rows.length].descriptor,
-          telegram: resp.rows[resp.rows.length - resp.rows.length].telegram,
-          twitter: resp.rows[resp.rows.length - resp.rows.length].twitter,
-          wechat: resp.rows[resp.rows.length - resp.rows.length].wechat,
-          votes: voteCount.value
-          });
-          console.log(this.state);
-          } catch(e) {
-          console.log(e);
-      }       // ...
+     let voteCount = [];
+      if (voteCounts.rows !== ''){
+        voteCount = voteCounts.rows[resp.rows.length - resp.rows.length].options.find(obj => obj.key === resp.rows[resp.rows.length - resp.rows.length].owner);
+      }
+      this.setState({
+        nominee: resp.rows[resp.rows.length - resp.rows.length].owner,
+        name: resp.rows[resp.rows.length - resp.rows.length].name,
+        picture: resp.rows[resp.rows.length - resp.rows.length].picture,
+        description: resp.rows[resp.rows.length - resp.rows.length].descriptor,
+        telegram: resp.rows[resp.rows.length - resp.rows.length].telegram,
+        twitter: resp.rows[resp.rows.length - resp.rows.length].twitter,
+        wechat: resp.rows[resp.rows.length - resp.rows.length].wechat,
+        votes: voteCount.value
+      });
+    } catch(e) {
+      console.log(e);
+      }       
   };
 
   async UnvoteCandidate(){

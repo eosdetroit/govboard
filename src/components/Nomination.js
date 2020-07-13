@@ -139,7 +139,7 @@ class Nomination extends React.Component {
       });
       console.log(result);
     } catch(e) {
-      console.log(e);
+      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<span className="error">'+ e +'</span>');
     }
   }
 
@@ -165,7 +165,7 @@ class Nomination extends React.Component {
       });
       console.log(result);
     } catch(e) {
-      console.log(e);
+      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<span className="error">'+ e +'</span>');
     }
   }
 
@@ -230,7 +230,7 @@ class Nomination extends React.Component {
   isNominated() {
   	if (this.state.isNominated === true && this.state.hasAccepted === 0) {
   		return (
-  			<div className="nomination-list">
+  			<div className="nomination-list" id="nomlist">
       			<h3>{this.props.accountName}'s Nomination Status</h3>
       			<p>Someone has nominated you for a WAX Office of the Inspector General position!</p>
       			<button onClick={this.acceptNomination} className="btn accept">Accept</button>
@@ -239,7 +239,7 @@ class Nomination extends React.Component {
   		);
   	} else if (this.state.isNominated === true && this.state.hasAccepted === 1) {
   		return (
-  			<div className="nomination-list">
+  			<div className="nomination-list" id="nomlist">
       			<h3>{this.props.accountName}'s Nomination Status</h3>
       			<p>You've accepted your nomination. If you would like to change your mind, click decline below.</p>
       			<button onClick={this.declineNomination} className="btn decline">Decline</button>

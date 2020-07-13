@@ -291,6 +291,7 @@ header#nav nav button#menu-icon {
   width: 80%;
   display: inline-block;
   max-height: 215px;
+  height: 100%;
 }
 
 .candidate-grid .candidate-single-grid .btn {

@@ -4,7 +4,6 @@
   "private": true,
   "proxy": "http://localhost:3000",
   "dependencies": {
-    "@eosdacio/ual-wax": "^1.1.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -17,9 +16,10 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
     "simple-react-validator": "^1.5.0",
-    "ual-anchor": "^0.4.2",
-    "ual-reactjs-renderer": "^0.2.0",
-    "ual-scatter": "^0.3.0"
+    "@eosdacio/ual-wax": "^1.2.1",
+    "ual-anchor": "^0.5.0",
+    "ual-scatter": "^0.3.0",
+    "ual-reactjs-renderer": "^0.3.1"
   },
   "scripts": {
     "start": "react-scripts start",

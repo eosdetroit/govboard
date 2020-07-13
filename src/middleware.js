@@ -1,10 +1,3 @@
-
-import * as waxjs from "@waxio/waxjs/dist";
-
-const WAX_RPC_URL = 'https://wax.greymass.com'
-const wax = new waxjs.WaxJS(WAX_RPC_URL, null, null, false);
-
-
 export async function submitVote (activeUser, ballotName, voteOption) {
 try {
     let actions = [
@@ -60,7 +53,7 @@ try {
       actions: actions
     };
 
-    const voteResult = await activeUser.signTransaction(
+    await activeUser.signTransaction(
       voteTransaction, {
         blocksBehind: 3,
         expireSeconds: 30

@@ -5,9 +5,9 @@ import {
 import * as waxjs from "@waxio/waxjs/dist";
 
 import '../App.css';
+import { submitVote } from '../middleware.js';
 
 // const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
-
 const WAX_RPC_URL = 'https://wax.greymass.com'
 const wax = new waxjs.WaxJS(WAX_RPC_URL, null, null, false);
 
@@ -95,82 +95,7 @@ class CandidateSingle extends React.Component {
   }
 
   async VoteCandidate() {
-    try {
-      let checkReg = await wax.rpc.get_table_rows({
-        code: 'decide',
-        scope: this.props.activeUser.accountName,
-        table: 'voters',
-        limit: 1,
-        json: true
-      });
-      let actions = [
-        {
-          account: 'decide',
-          name: 'sync',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
-          },
-        },
-        {
-          account: 'oig',
-          name: 'updtstate',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-
-          }
-        },
-        {
-          account: 'decide',
-          name: 'castvote',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
-            options: [this.state.nominee],
-            ballot_name: this.state.ballot
-          },
-        }
-      ]
-      if (Array.isArray(checkReg.rows) && checkReg.rows.length === 0) {
-        console.log('adding regvoter to actions');
-        actions.unshift({
-          account: 'decide',
-          name: 'regvoter',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
-            treasury_symbol: '8,VOTE',
-            referrer: this.props.activeUser.accountName
-          },
-        });
-      }
-      console.log(actions);
-      console.log(this.props.activeUser);
-      const voteTransaction = {
-        actions: actions
-      };
-
-      const voteResult = await this.props.activeUser.signTransaction(
-        voteTransaction, {
-          blocksBehind: 3,
-          expireSeconds: 30
-      });
-      console.log(voteResult);
-    } catch(e) {
-      document.getElementById('castvote').append(e);
-    }
+    await submitVote(this.props.activeUser, this.state.ballot, this.state.nominee);
   }
 
   render() {

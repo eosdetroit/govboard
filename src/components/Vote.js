@@ -38,7 +38,6 @@ class Vote extends React.Component {
     };
     this.GetCandidates = this.GetCandidates.bind(this);
     this.GetElectionInfo = this.GetElectionInfo.bind(this);
-    this.castVote = this.castVote.bind(this);
     this.renderLeaderboard = this.renderLeaderboard.bind(this);
     this.renderPagination = this.renderPagination.bind(this);
     this.CandidatePaginationNext = this.CandidatePaginationNext.bind(this);
@@ -86,7 +85,6 @@ class Vote extends React.Component {
             leaderCandidates: leaderCandidates
           });
         }
-        console.log(this.state);
       } catch(e) {
         console.log(e);
       }
@@ -221,75 +219,6 @@ class Vote extends React.Component {
     return this.GetCandidates();
   }
 
-  async castVote(event) {
-    const value = event.target.value;
-    const regTransaction = {
-        actions: [{
-          account: 'decide',
-          name: 'regvoter',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
-            treasury_symbol: '8,VOTE',
-            referrer: ''
-          },
-        }]
-      };
-    try {
-      let checkReg = await wax.rpc.get_table_rows({
-            code: 'decide',
-            scope: this.props.activeUser.accountName,
-            table: 'voters',
-            limit: 1,
-            json: true
-      });
-      if (checkReg === '') {
-      const regResult = await this.props.activeUser.signTransaction(
-        regTransaction, {blocksBehind: 3,
-        expireSeconds: 30
-      });
-      console.log(regResult);
-      } else {
-      const voteTransaction = {
-        actions: [{
-          account: 'decide',
-          name: 'sync',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
-          },
-        },
-        {
-          account: 'decide',
-          name: 'castvote',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
-            options: [value],
-            ballot_name: this.state.ballot
-          },
-        }]
-      };
-      const voteResult = await this.props.activeUser.signTransaction(
-        voteTransaction, {blocksBehind: 3,
-        expireSeconds: 30
-      });
-      console.log(voteResult);
-    }
-    } catch(e) {
-      console.log(e);
-    }
-  }
-
   render() {
     if (this.props.electionState === 0 || this.props.electionState === 1){
       return (
@@ -394,7 +323,6 @@ class LeaderboardRow extends Vote {
                 <td><Link to={"/candidates/" + this.props.data.key}>{this.state.name}</Link></td>
                 <td>{this.props.data.key}</td>
                 <td><span className="vote-count">{this.props.data.value}S</span></td>
-                <td><button value={this.props.data.key} onClick={this.castVote} className="btn">Vote</button></td>
             </tr>
     )
   }

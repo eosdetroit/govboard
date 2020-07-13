@@ -7,14 +7,20 @@ const wax = new waxjs.WaxJS(WAX_RPC_URL, null, null, false);
 
 export async function submitVote (activeUser, ballotName, voteOption) {
 try {
-    let checkReg = await wax.rpc.get_table_rows({
-      code: 'decide',
-      scope: activeUser.accountName,
-      table: 'voters',
-      limit: 1,
-      json: true
-    });
     let actions = [
+        {
+            account: 'oig',
+            name: 'regvoter',
+            authorization: [{
+                actor: activeUser.accountName,
+                permission: 'active',
+            }],
+            data: {
+                voter: activeUser.accountName,
+                treasury_symbol: '8,VOTE',
+                referrer: activeUser.accountName
+            },
+        },
       {
         account: 'decide',
         name: 'sync',
@@ -49,23 +55,7 @@ try {
         },
       }
     ]
-    if (Array.isArray(checkReg.rows) && checkReg.rows.length === 0) {
-      actions.unshift({
-        account: 'decide',
-        name: 'regvoter',
-        authorization: [{
-          actor: activeUser.accountName,
-          permission: 'active',
-        }],
-        data: {
-          voter: activeUser.accountName,
-          treasury_symbol: '8,VOTE',
-          referrer: activeUser.accountName
-        },
-      });
-    }
-    console.log(actions);
-    console.log(activeUser);
+
     const voteTransaction = {
       actions: actions
     };
@@ -75,7 +65,6 @@ try {
         blocksBehind: 3,
         expireSeconds: 30
     });
-    console.log(voteResult);
   } catch(e) {
     document.getElementById('castvote').append(e);
   }

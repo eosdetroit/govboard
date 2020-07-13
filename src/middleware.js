@@ -58,9 +58,7 @@ try {
         blocksBehind: 3,
         expireSeconds: 30
     });
-    this.setState({
-      refresh: 1
-    })
+
   } catch(e) {
     document.getElementById('castvote').insertAdjacentHTML(
         'beforeend', '<div style="color: #FF0000">'+ e +'</div>');

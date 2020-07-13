@@ -95,7 +95,8 @@ class CandidateSingle extends React.Component {
         telegram: resp.rows[0].telegram,
         twitter: resp.rows[0].twitter,
         wechat: resp.rows[0].wechat,
-        votes: voteCount
+        votes: voteCount,
+        refresh: 0
       });
     } catch(e) {
       console.log(e);
@@ -108,6 +109,16 @@ class CandidateSingle extends React.Component {
 
   async VoteCandidate() {
     await submitVote(this.props.activeUser, this.state.ballot, this.state.nominee);
+    this.setState({
+      refresh: 1
+    })
+  }
+
+  componentDidUpdate = async () => {
+    const owner = this.props.match.params.owner;
+    if (this.state.refresh === 1) {
+      return this.fetchData(owner);
+    }
   }
 
   render() {

@@ -89,8 +89,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Router>
         <div className="main-wrapper">
-          <Router>
           <header id="nav">
             <div className="nav-wrapper">
               <div className="logo">
@@ -152,9 +152,9 @@ class App extends React.Component {
           <ErrorPage />
         </Route>
         </Switch>
-        </Router>
         </div>
         <footer><Footer activeUser={this.state.activeUser} /></footer>
+        </Router>
       </div>
     );
   }

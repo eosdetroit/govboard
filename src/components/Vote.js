@@ -73,7 +73,7 @@ class Vote extends React.Component {
           let leaderCandidates = [];
           if (Array.isArray(leaderResp.rows) && leaderResp.rows.length !== 0) {
             console.log(leaderResp.rows[0].options);
-            leaderCandidates = leaderResp.rows[0].options.sort((a, b) => parseFloat(b.value) - parseFloat(a.value)).filter(option => option.value > 0);
+            leaderCandidates = leaderResp.rows[0].options.filter(option => option.value !== '0.00000000 VOTE').sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
           }
           this.setState({
             ballot: activeBallot.ballot,

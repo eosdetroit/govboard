@@ -215,7 +215,7 @@ class Nomination extends React.Component {
 
         this.setState(prevState => ({
             [name]: value,
-            }), () => { console.log(this.state) }
+            }), () => { }
         );
     }
 
@@ -314,7 +314,6 @@ class Nomination extends React.Component {
 
 
   render() {
-  	console.log(this.props.activeUser);
   	if (this.props.activeUser === null) {
         return (
                 <>

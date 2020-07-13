@@ -78,46 +78,8 @@ class CandidateSingle extends React.Component {
 
   }
 
-  async VoteCandidate(){
+  async VoteCandidate() {
     try {
-      /*
-      const regTransaction = {
-        actions: [{
-          account: 'decide',
-          name: 'regvoter',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
-            treasury_symbol: '8,VOTE',
-            referrer: ''
-          },
-        }]
-      };
-      let checkReg = await wax.rpc.get_table_rows({
-            code: 'decide',
-            scope: this.props.activeUser.accountName,
-            table: 'voters',
-            limit: 1,
-            json: true
-      });
-      let getBallot = await wax.rpc.get_table_rows({             
-            code: 'decide',
-            scope: 'decide',
-            table: 'ballots',
-            limit: 100,
-            json: true
-      });
-      if (checkReg === '') {
-      const regResult = await this.props.activeUser.signTransaction(
-        regTransaction, {blocksBehind: 3,
-        expireSeconds: 30
-      });
-      console.log(regResult);
-      } else {
-      */
       let getBallot = await wax.rpc.get_table_rows({             
         code: 'decide',
         scope: 'decide',

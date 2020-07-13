@@ -2,8 +2,13 @@
   padding: 0;
   margin: 0;
 }
+
 html {
   height: 100%;
+}
+
+::-webkit-scrollbar {
+  display:none;
 }
 
 body {

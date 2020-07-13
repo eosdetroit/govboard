@@ -24,7 +24,8 @@ class CandidateSingle extends React.Component {
       wechat: '',
       votes: '0 VOTE',
       ballot: '',
-      redirect: 0
+      redirect: 0,
+      refresh: 0
     }
     this.UnvoteCandidate = this.UnvoteCandidate.bind(this);
     this.VoteCandidate = this.VoteCandidate.bind(this);
@@ -46,7 +47,10 @@ class CandidateSingle extends React.Component {
     } else {
       ballot = this.props.ballot;
     }
-    this.setState({ballot: ballot})
+    this.setState({
+      ballot: ballot,
+      refresh: 0
+    })
     this.fetchData(owner);
   }
 
@@ -95,12 +99,6 @@ class CandidateSingle extends React.Component {
       });
     } catch(e) {
       console.log(e);
-      if (e === "Error: Could not convert lower_bound string 'aahsdkjashdjk' to any of the following: uint64_t, valid name, or valid symbol (with or without the precision)") {
-        this.setState({
-          redirect: 1
-        });
-      }
-      console.log(this.state);
     }       
   };
 

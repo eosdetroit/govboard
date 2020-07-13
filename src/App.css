@@ -453,25 +453,25 @@ header#nav nav button#menu-icon {
 .btn.accept {
   background: #55AE3A;
   border: 2px solid #55AE3A;
-  margin: 3px 0;
+  margin: 3px;
 }
 
 .btn.accept:hover {
   background: #308014;
   border: 2px solid #308014;
-  margin: 3px 0;
+  margin: 3px;
 }
 
 .btn.decline {
   background: #cc0000;
   border: 2px solid #cc0000;
-  margin: 3px 0;
+  margin: 3px;
 }
 
 .btn.decline:hover {
   background: #b20000;
   border: 2px solid #b20000;
-  margin: 3px 0;
+  margin: 3px;
 }
 
 .btn:hover {

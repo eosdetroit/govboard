@@ -111,9 +111,9 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
-      document.getElementById('nomform').insertAdjacentHTML('beforeend', '<div style="color: green;">You succesfully nominated a candidate!</div>');
+      document.getElementById('nomform').insertAdjacentHTML('beforeend', '<div style="color: green;">You successfully nominated a candidate!</div>');
     } catch(e) {
-      document.getElementById('nomform').insertAdjacentHTML('beforeend', '<div style="color: #FF000;">'+ e +'</div>');
+      document.getElementById('nomform').insertAdjacentHTML('beforeend', '<div style="color: #FF0000;">'+ e +'</div>');
     }
   }
 
@@ -165,7 +165,8 @@ class Nomination extends React.Component {
       });
       document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<div style="color: green;">You have declined the nomination!</div>');
     } catch(e) {
-      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<div style="color: #FF0000;">'+ e +'</div>');
+      let formattedError = e.replace('Error: assertion failure with message: ', '');
+      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<div style="color: #FF0000;">'+ formattedError +'</div>');
     }
   }
 
@@ -196,7 +197,7 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
-      document.getElementById('updatenom').insertAdjacentHTML('beforeend', '<div style="color: green;">You have accepted your nomination!</div>');
+      document.getElementById('updatenom').insertAdjacentHTML('beforeend', '<div style="color: green;">You have updated your nomination info!</div>');
     } catch(e) {
       document.getElementById('updatenom').insertAdjacentHTML('beforeend', '<div style="color: #FF000;">'+ e +'</div>');
     }
@@ -272,7 +273,7 @@ class Nomination extends React.Component {
   hasAccepted() {
   	if (this.state.hasAccepted === 1){
   		return (
-  			<div className="nomination-info-form">
+  			<div className="nomination-info-form" id="updatenom">
 	  			<h3>Submit or Update Candidacy Information</h3>
           <p>Note: You will not appear on the candidate list until you submit your initial candidate details. You can return to this page to update your details at any time during the nomination period.</p>
   				<div className="form-row">
@@ -306,7 +307,7 @@ class Nomination extends React.Component {
   					<input type="text" name="wechat" value={this.state.wechat} maxLength="256" placeholder="@yourhandle" onChange={this.handleInputChange} />
 				    {this.validator.message('wechat', this.state.wechat, 'url|max:256')}
         </div>
-				<button onClick={this.updateNominee} className="btn" id="updatenom">Submit</button>
+				<button onClick={this.updateNominee} className="btn">Submit</button>
   			</div>
 		);
   	}

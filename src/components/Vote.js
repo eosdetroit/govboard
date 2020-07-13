@@ -316,26 +316,26 @@ class Vote extends React.Component {
         <Switch>
         <Route exact path="/candidates">
         
-        <h2>Election Information</h2>
+        <h1>Election Info</h1>
         <div className="election-info">
           
-          <h3>{this.state.ballot}</h3>
+          <h2>Ballot ID: {this.state.ballot}</h2>
           <p>{this.state.description}</p>
           <table>
             <tbody>
               <tr>
-                <td><strong>Nominations begin:</strong><br />{this.state.nmn_open}</td>
-                <td><strong>Voting begins:</strong><br />{this.state.vote_open}</td>
+                <td><p><strong>Nomination Phase begins:</strong><br />{this.state.nmn_open}</p></td>
+                <td><p><strong>Voting Phase begins:</strong><br />{this.state.vote_open}</p></td>
               </tr>
               <tr>
-                <td><strong>Nominations end:</strong><br />{this.state.nmn_close}</td>
-                <td><strong>Voting ends:</strong><br />{this.state.vote_close}</td>
+                <td><p><strong>Nomination Phase ends:</strong><br />{this.state.nmn_close}</p></td>
+                <td><p><strong>Voting Phase ends:</strong><br />{this.state.vote_close}</p></td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <h2>Candidates</h2>
+        <h1>Candidates</h1>
         <div className="candidate-grid">
 
           {this.state.candidates.slice(this.state.prevPage, this.state.nextPage).map((candidate, key) =>

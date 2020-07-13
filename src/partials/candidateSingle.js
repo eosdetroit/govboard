@@ -55,23 +55,23 @@ class CandidateSingle extends React.Component {
           });
       let voteCount = 0;
       if (Array.isArray(voteCounts.rows) && voteCounts.rows.length !== 0) {
-        voteCount = voteCounts.rows[resp.rows.length - resp.rows.length].options.find(obj => obj.key === resp.rows[resp.rows.length - resp.rows.length].owner);
+        voteCount = voteCounts.rows[0].options.find(obj => obj.key === resp.rows[0].owner);
       }
       console.log(voteCount);      
-        this.setState({
-          nominee: resp.rows[resp.rows.length - resp.rows.length].owner,
-          name: resp.rows[resp.rows.length - resp.rows.length].name,
-          picture: resp.rows[resp.rows.length - resp.rows.length].picture,
-          description: resp.rows[resp.rows.length - resp.rows.length].descriptor,
-          telegram: resp.rows[resp.rows.length - resp.rows.length].telegram,
-          twitter: resp.rows[resp.rows.length - resp.rows.length].twitter,
-          wechat: resp.rows[resp.rows.length - resp.rows.length].wechat,
-          votes: voteCount.value
-          });
-          console.log(this.state);
-          } catch(e) {
-          console.log(e);
-      }       // ...
+      this.setState({
+        nominee: resp.rows[0].owner,
+        name: resp.rows[0].name,
+        picture: resp.rows[0].picture,
+        description: resp.rows[0].descriptor,
+        telegram: resp.rows[0].telegram,
+        twitter: resp.rows[0].twitter,
+        wechat: resp.rows[0].wechat,
+        votes: voteCount.value
+      });
+      console.log(this.state);
+    } catch(e) {
+      console.log(e);
+    }       // ...
   };
 
   async UnvoteCandidate(){
@@ -80,13 +80,6 @@ class CandidateSingle extends React.Component {
 
   async VoteCandidate() {
     try {
-      let getBallot = await wax.rpc.get_table_rows({             
-        code: 'decide',
-        scope: 'decide',
-        table: 'ballots',
-        limit: 100,
-        json: true
-      });
       let checkReg = await wax.rpc.get_table_rows({
         code: 'decide',
         scope: this.props.activeUser.accountName,
@@ -124,7 +117,7 @@ class CandidateSingle extends React.Component {
           data: {
             voter: this.props.activeUser.accountName,
             options: [this.state.nominee],
-            ballot_name: getBallot.rows[getBallot.rows.length - getBallot.rows.length].ballot_name
+            ballot_name: this.props.ballot.ballot_name
           },
         }
       ]

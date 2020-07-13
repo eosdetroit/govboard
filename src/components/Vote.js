@@ -54,7 +54,7 @@ class Vote extends React.Component {
           table: 'election',
           json: true
         });
-        let activeBallot = resp.rows[resp.rows.length - resp.rows.length];
+        let activeBallot = resp.rows[0];
         if (activeBallot === '') {
 
         } else {
@@ -379,7 +379,7 @@ class LeaderboardRow extends Vote {
         console.log(resp);
         if (Array.isArray(resp.rows) && resp.rows.length !== 0){
           this.setState({
-            name: resp.rows[resp.rows.length - resp.rows.length].name
+            name: resp.rows[0].name
           });
         }
   }

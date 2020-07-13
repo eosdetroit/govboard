@@ -4,7 +4,6 @@ import {
   Redirect
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
-import ErrorPage from "../components/ErrorPage";
 
 import '../App.css';
 import { submitVote } from '../middleware.js';

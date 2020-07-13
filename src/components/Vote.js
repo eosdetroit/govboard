@@ -28,7 +28,6 @@ class Vote extends React.Component {
       candidateLimit: 10,
       candidatesDisplayed: 100,
       candidatePage: 0,
-      ballot: '',
       title: '',
       description: '',
       nmn_open: '',
@@ -77,7 +76,7 @@ class Vote extends React.Component {
             leaderCandidates = leaderResp.rows[0].options.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
           }
           this.setState({
-            ballot: activeBallot.ballot,
+            ballot: this.props.ballot,
             title: activeBallot.title,
             description: activeBallot.description,
             nmn_open: formattedNomOpen,
@@ -349,7 +348,7 @@ class Vote extends React.Component {
       
         </Route>
         <Route path="/candidates/:owner">
-          <CandidateSingle activeUser={this.props.activeUser} ballot={this.state.ballot} />
+          <CandidateSingle activeUser={this.props.activeUser} ballot={this.state.ballot} electionState={this.props.electionState} />
         </Route>
         </Switch>
       </div>

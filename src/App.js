@@ -76,8 +76,9 @@ class App extends React.Component {
     console.log(resp.rows);
     this.setState({
       electionState: resp.rows[resp.rows.length - resp.rows.length].state,
+      electionBallot: resp.rows[resp.rows.length - resp.rows.length].ballot,
     });
-    console.log(this.state.electionState);
+    console.log(this.state.electionBallot);
   }
 
   componentDidMount() {
@@ -140,7 +141,7 @@ class App extends React.Component {
           <About activeUser={this.state.activeUser} />
         </Route>
         <Route path="/candidates">
-          <Vote activeUser={this.state.activeUser} electionState={this.state.electionState} />
+          <Vote activeUser={this.state.activeUser} electionState={this.state.electionState} ballot={this.state.electionBallot} />
         </Route>
         <Route path="/nominate">
           <Nomination activeUser={this.state.activeUser} electionState={this.state.electionState} accountName={this.state.accountName} />

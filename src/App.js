@@ -2,7 +2,8 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link, 
+  Link,
+  Switch 
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
 
@@ -13,6 +14,7 @@ import Home from './components/Home';
 import Vote from './components/Vote';
 import Nomination from './components/Nomination';
 import About from './components/About';
+import ErrorPage from './components/ErrorPage';
 
 
 //WAX_RPC_URL = 'https://testnet.waxsweden.org'
@@ -133,6 +135,7 @@ class App extends React.Component {
               }
           </div>
         </header>
+        <Switch>
         <Route exact path="/">
           <Home activeUser={this.state.activeUser} />
         </Route>
@@ -145,6 +148,10 @@ class App extends React.Component {
         <Route path="/nominate">
           <Nomination activeUser={this.state.activeUser} electionState={this.state.electionState} accountName={this.state.accountName} />
         </Route>
+        <Route path="*">
+          <ErrorPage />
+        </Route>
+        </Switch>
         </Router>
         </div>
         <footer><Footer activeUser={this.state.activeUser} /></footer>

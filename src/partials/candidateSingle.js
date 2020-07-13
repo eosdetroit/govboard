@@ -1,8 +1,10 @@
 import React from 'react';
 import {
-  withRouter
+  withRouter,
+  Redirect
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
+import ErrorPage from "../components/ErrorPage";
 
 import '../App.css';
 import { submitVote } from '../middleware.js';
@@ -18,12 +20,12 @@ class CandidateSingle extends React.Component {
       nominee: '',
       picture: '',
       description: '',
-      website: '',
       telegram: '',
       twitter: '',
       wechat: '',
       votes: '0 VOTE',
-      ballot: ''
+      ballot: '',
+      redirect: 0
     }
     this.UnvoteCandidate = this.UnvoteCandidate.bind(this);
     this.VoteCandidate = this.VoteCandidate.bind(this);
@@ -50,14 +52,15 @@ class CandidateSingle extends React.Component {
   }
 
   async fetchData(owner) {
+     let ownerCheck = owner.substring(0, 12);
      try {
       let resp = await wax.rpc.get_table_rows({             
             code: 'oig',
             scope: 'oig',
             table: 'nominees',
             limit: 1,
-            lower_bound: owner,
-            upper_bound: owner,
+            lower_bound: ownerCheck,
+            upper_bound: ownerCheck,
             json: true
         });
   
@@ -71,7 +74,13 @@ class CandidateSingle extends React.Component {
             json: true
           });
       let voteCount = '0 VOTE';
-      if (this.props.electionState === 4 && Array.isArray(voteCounts.rows) && voteCounts.rows.length !== 0) {
+      if (Array.isArray(resp.rows) && resp.rows.length === 0) {
+        this.setState({
+          redirect: 1
+        });
+        console.log(this.state);
+      }
+      if (resp.rows !== [] && this.props.electionState === 4 && Array.isArray(voteCounts.rows) && voteCounts.rows.length !== 0) {
         console.log(voteCounts.rows[0].options);
         voteCount = voteCounts.rows[0].options.find(obj => obj.key === resp.rows[0].owner).value;
       }    
@@ -87,7 +96,13 @@ class CandidateSingle extends React.Component {
       });
     } catch(e) {
       console.log(e);
-    }       // ...
+      if (e === "Error: Could not convert lower_bound string 'aahsdkjashdjk' to any of the following: uint64_t, valid name, or valid symbol (with or without the precision)") {
+        this.setState({
+          redirect: 1
+        });
+      }
+      console.log(this.state);
+    }       
   };
 
   async UnvoteCandidate(){
@@ -99,6 +114,11 @@ class CandidateSingle extends React.Component {
   }
 
   render() {
+    if (this.state.redirect === 1) {
+      return (
+          <Redirect to='/404' />
+        );
+    }
     return (
       <div className="candidate-single">
         <div className="candidate-header">

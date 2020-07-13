@@ -477,7 +477,6 @@ footer {
 footer .footer-inner {
   max-width: 980px;
   margin: 0 auto;
-  padding: 0 20px;
   display: grid;
   grid-template-rows: [row]auto[end];
   grid-template-columns: [first]25%[second]25%[third]25%[fourth]25%[end];

@@ -21,8 +21,14 @@ class Home extends React.Component {
             to the 18 month schedule.
           </p>
           <br></br>
+          <p>
+            Each OIG election consists of a nomination phase, where nominees can accept or decline, and provide additional
+            information. This is followed by a voting phase, where WAX token holders can vote on one OIG candidate. After 
+            the voting phase is concluded, the winner will be determined as the candidate with the most votes on the ballot.
+          </p>
+          <br></br>
 
-          <h1>Election Timeline</h1>
+          <h1>Current Election Timeline</h1>
           <br></br>
           <p>
             <b>July 13 2020:</b> Begin candidate nominations.
@@ -32,7 +38,11 @@ class Home extends React.Component {
             <b>July 31 2020:</b> Election period ends.
             <br></br>
             <b>August 1 2020:</b> Appointed IG replaced with Elected IG.
-            <br></br>
+          </p>
+         <br></br>
+          <h1>Future Election Schedule</h1>
+          <br></br>
+          <p>
             <b>October 2020:</b> Election period to determine Interim IG.
             <br></br>
             <b>November 1 2020:</b> Appointed IG replaced with Elected Interim IG.

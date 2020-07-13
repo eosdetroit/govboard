@@ -35,6 +35,7 @@ class Vote extends React.Component {
       vote_open: '',
       vote_close: '',
       leaderCandidates: [],
+      ballot: ''
     };
     this.GetCandidates = this.GetCandidates.bind(this);
     this.GetElectionInfo = this.GetElectionInfo.bind(this);
@@ -113,7 +114,7 @@ class Vote extends React.Component {
             maxPage: maxPage,
             displayPagination: displayPagination
           });
-          return this.GetElectionInfo();
+          return await this.GetElectionInfo();
       } catch(e) {
         console.log(e);
       }
@@ -312,7 +313,6 @@ class Vote extends React.Component {
     } else {
     return (
       <div className="vote main-content">
-        <Switch>
         <Route exact path="/candidates">
         
         <h1>Election Info</h1>
@@ -350,7 +350,6 @@ class Vote extends React.Component {
         <Route path="/candidates/:owner">
           <CandidateSingle activeUser={this.props.activeUser} ballot={this.props.ballot} electionState={this.props.electionState} />
         </Route>
-        </Switch>
       </div>
     );
   }

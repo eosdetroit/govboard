@@ -23,15 +23,27 @@ class CandidateSingle extends React.Component {
       twitter: '',
       wechat: '',
       votes: '0 VOTE',
+      ballot: ''
     }
     this.UnvoteCandidate = this.UnvoteCandidate.bind(this);
     this.VoteCandidate = this.VoteCandidate.bind(this);
     }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const owner = this.props.match.params.owner;
+    //for some reason these props arent preserved on direct link to candidate
+    if (!this.props.ballot) {
+      let resp = await wax.rpc.get_table_rows({             
+        limit: 1,
+        code: 'oig',
+        scope: 'oig',
+        table: 'election',
+        json: true
+      });
+      let activeBallot = resp.rows[0];
+      this.setState({ballot: activeBallot.ballot})
+    }
     this.fetchData(owner);
-    console.log(this.props.ballot);
   }
 
   async fetchData(owner) {
@@ -45,6 +57,7 @@ class CandidateSingle extends React.Component {
             upper_bound: owner,
             json: true
         });
+  
       let voteCounts = await wax.rpc.get_table_rows({
             code: 'decide',
             scope: 'decide',
@@ -138,6 +151,7 @@ class CandidateSingle extends React.Component {
         });
       }
       console.log(actions);
+      console.log(this.props.activeUser);
       const voteTransaction = {
         actions: actions
       };

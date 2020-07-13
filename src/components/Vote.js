@@ -76,7 +76,7 @@ class Vote extends React.Component {
             leaderCandidates = leaderResp.rows[0].options.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
           }
           this.setState({
-            ballot: this.props.ballot,
+            ballot: activeBallot.ballot,
             title: activeBallot.title,
             description: activeBallot.description,
             nmn_open: formattedNomOpen,
@@ -312,7 +312,6 @@ class Vote extends React.Component {
     } else {
     return (
       <div className="vote main-content">
-        <Switch>
         <Route exact path="/candidates">
         
         <h1>Election Info</h1>
@@ -341,16 +340,15 @@ class Vote extends React.Component {
               <CandidateGrid data={candidate} key={candidate.owner} />)}
 
         </div>
-    
-        {this.renderPagination}
+        
+        {this.renderPagination()}
 
-        {this.renderLeaderboard}
+        {this.renderLeaderboard()}
       
         </Route>
         <Route path="/candidates/:owner">
-          <CandidateSingle activeUser={this.props.activeUser} ballot={this.state.ballot} electionState={this.props.electionState} />
+          <CandidateSingle activeUser={this.props.activeUser} ballot={this.props.ballot} electionState={this.props.electionState} />
         </Route>
-        </Switch>
       </div>
     );
   }
@@ -377,7 +375,7 @@ class LeaderboardRow extends Vote {
           json: true
         });
         console.log(resp);
-        if (resp.rows !== ''){
+        if (Array.isArray(resp.rows) && resp.rows.length !== 0){
           this.setState({
             name: resp.rows[resp.rows.length - resp.rows.length].name
           });

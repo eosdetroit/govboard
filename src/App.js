@@ -26,7 +26,6 @@ class App extends React.Component {
       this.state = {
         activeUser: null,
         accountName: '',
-        loading: true
       };
       this.updateAccountName = this.updateAccountName.bind(this);
       this.checkElectionStatus = this.checkElectionStatus.bind(this);

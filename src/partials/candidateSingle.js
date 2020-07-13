@@ -22,7 +22,7 @@ class CandidateSingle extends React.Component {
       telegram: '',
       twitter: '',
       wechat: '',
-      votes: '0 VOTE'
+      votes: '0 VOTE',
     }
     this.UnvoteCandidate = this.UnvoteCandidate.bind(this);
     this.VoteCandidate = this.VoteCandidate.bind(this);
@@ -31,6 +31,7 @@ class CandidateSingle extends React.Component {
   componentDidMount = () => {
     const owner = this.props.match.params.owner;
     this.fetchData(owner);
+    console.log(this.props.ballot);
   }
 
   async fetchData(owner) {

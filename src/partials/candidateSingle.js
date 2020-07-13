@@ -198,7 +198,14 @@ class CandidateSingle extends React.Component {
             </>
             }
           </ul>
-          <button onClick={this.VoteCandidate} className="btn">Vote for {this.state.name}</button>
+          { this.props.electionState === 4 ?
+            <>
+              <button onClick={this.VoteCandidate} className="btn">Vote for {this.state.name}</button>
+            </>
+            :
+            <>
+            </>
+          }
           </div>
       </div>
     );

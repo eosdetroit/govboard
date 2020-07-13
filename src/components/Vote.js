@@ -54,7 +54,7 @@ class Vote extends React.Component {
           table: 'election',
           json: true
         });
-        let activeBallot = resp.rows[0];
+        let activeBallot = resp.rows[resp.rows.length - resp.rows.length];
         if (activeBallot === '') {
 
         } else {
@@ -312,6 +312,7 @@ class Vote extends React.Component {
     } else {
     return (
       <div className="vote main-content">
+        <Switch>
         <Route exact path="/candidates">
         
         <h1>Election Info</h1>
@@ -349,6 +350,7 @@ class Vote extends React.Component {
         <Route path="/candidates/:owner">
           <CandidateSingle activeUser={this.props.activeUser} ballot={this.props.ballot} electionState={this.props.electionState} />
         </Route>
+        </Switch>
       </div>
     );
   }

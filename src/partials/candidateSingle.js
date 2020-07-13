@@ -123,7 +123,7 @@ class CandidateSingle extends React.Component {
             permission: 'active',
           }],
           data: {
-            
+
           }
         },
         {
@@ -169,7 +169,7 @@ class CandidateSingle extends React.Component {
       });
       console.log(voteResult);
     } catch(e) {
-      console.log(e);
+      document.getElementById('castvote').append(e);
     }
   }
 
@@ -220,9 +220,9 @@ class CandidateSingle extends React.Component {
             </>
             }
           </ul>
-          { this.props.electionState === 4 ?
+          { this.props.electionState === 4 && this.props.activeUser ?
             <>
-              <button onClick={this.VoteCandidate} className="btn">Vote for {this.state.name}</button>
+              <button onClick={this.VoteCandidate} className="btn" id="castvote">Vote for {this.state.name}</button>
             </>
             :
             <>

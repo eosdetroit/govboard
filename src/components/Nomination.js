@@ -113,7 +113,7 @@ class Nomination extends React.Component {
       });
       console.log(result);
     } catch(e) {
-      console.log(e);
+      document.getElementById('nomform').insertAdjacentHTML('beforeend', '<span className="error">'+ e +'</span>');;
     }
   }
 
@@ -198,7 +198,7 @@ class Nomination extends React.Component {
       });
       console.log(result);
     } catch(e) {
-      console.log(e);
+      document.getElementById('updatenom').insertAdjacentHTML('beforeend', '<span className="error">'+ e +'</span>');
     }
   } else {
       this.validator.showMessages();
@@ -259,7 +259,7 @@ class Nomination extends React.Component {
   nominationForm() {
     return (
         <div className="nomination-form">
-          <div className="form-row">
+          <div className="form-row" id="nomform">
             <h3>Nominate a Candidate</h3>
             <p>Enter the WAX account name of the person you would like to nominate.</p>
             <input type="text" name="nominee" className="inline-input" placeholder="Nominee's WAX account name" onChange={this.handleInputChange} />
@@ -306,7 +306,7 @@ class Nomination extends React.Component {
   					<input type="text" name="wechat" value={this.state.wechat} maxLength="256" placeholder="@yourhandle" onChange={this.handleInputChange} />
 				    {this.validator.message('wechat', this.state.wechat, 'url|max:256')}
         </div>
-				<button onClick={this.updateNominee} className="btn">Submit</button>
+				<button onClick={this.updateNominee} className="btn" id="updatenom">Submit</button>
   			</div>
 		);
   	}

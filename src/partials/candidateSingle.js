@@ -22,7 +22,7 @@ class CandidateSingle extends React.Component {
       telegram: '',
       twitter: '',
       wechat: '',
-      votes: 0
+      votes: '0 VOTE'
     }
     this.UnvoteCandidate = this.UnvoteCandidate.bind(this);
     this.VoteCandidate = this.VoteCandidate.bind(this);
@@ -53,11 +53,10 @@ class CandidateSingle extends React.Component {
             upper_bound: this.props.ballot,
             json: true
           });
-      let voteCount = 0;
+      let voteCount = '0 VOTE';
       if (Array.isArray(voteCounts.rows) && voteCounts.rows.length !== 0) {
-        voteCount = voteCounts.rows[0].options.find(obj => obj.key === resp.rows[0].owner);
-      }
-      console.log(voteCount);      
+        voteCount = voteCounts.rows[0].options.find(obj => obj.key === resp.rows[0].owner).value;
+      }    
       this.setState({
         nominee: resp.rows[0].owner,
         name: resp.rows[0].name,
@@ -66,9 +65,8 @@ class CandidateSingle extends React.Component {
         telegram: resp.rows[0].telegram,
         twitter: resp.rows[0].twitter,
         wechat: resp.rows[0].wechat,
-        votes: voteCount.value
+        votes: voteCount
       });
-      console.log(this.state);
     } catch(e) {
       console.log(e);
     }       // ...
@@ -117,7 +115,7 @@ class CandidateSingle extends React.Component {
           data: {
             voter: this.props.activeUser.accountName,
             options: [this.state.nominee],
-            ballot_name: this.props.ballot.ballot_name
+            ballot_name: this.props.ballot
           },
         }
       ]

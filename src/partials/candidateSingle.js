@@ -32,6 +32,7 @@ class CandidateSingle extends React.Component {
   componentDidMount = async () => {
     const owner = this.props.match.params.owner;
     //for some reason these props arent preserved on direct link to candidate
+    let ballot = '';
     if (!this.props.ballot) {
       let resp = await wax.rpc.get_table_rows({             
         limit: 1,
@@ -40,9 +41,11 @@ class CandidateSingle extends React.Component {
         table: 'election',
         json: true
       });
-      let activeBallot = resp.rows[0];
-      this.setState({ballot: activeBallot.ballot})
+      ballot = resp.rows[0].ballot;
+    } else {
+      ballot = this.props.ballot;
     }
+    this.setState({ballot: ballot})
     this.fetchData(owner);
   }
 
@@ -63,8 +66,8 @@ class CandidateSingle extends React.Component {
             scope: 'decide',
             table: 'ballots',
             limit: 1,
-            lower_bound: this.props.ballot,
-            upper_bound: this.props.ballot,
+            lower_bound: this.state.ballot,
+            upper_bound: this.state.ballot,
             json: true
           });
       let voteCount = '0 VOTE';
@@ -130,7 +133,7 @@ class CandidateSingle extends React.Component {
           data: {
             voter: this.props.activeUser.accountName,
             options: [this.state.nominee],
-            ballot_name: this.props.ballot
+            ballot_name: this.state.ballot
           },
         }
       ]

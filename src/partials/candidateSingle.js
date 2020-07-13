@@ -122,6 +122,9 @@ class CandidateSingle extends React.Component {
             actor: this.props.activeUser.accountName,
             permission: 'active',
           }],
+          data: {
+            
+          }
         },
         {
           account: 'decide',

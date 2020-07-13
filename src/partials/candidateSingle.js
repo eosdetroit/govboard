@@ -83,7 +83,7 @@ class CandidateSingle extends React.Component {
         });
         console.log(this.state);
       }
-      if (resp.rows !== [] && this.props.electionState === 4 && Array.isArray(voteCounts.rows) && voteCounts.rows.length !== 0) {
+      if (resp.rows.length !== 0 && this.props.electionState === 4 && Array.isArray(voteCounts.rows) && voteCounts.rows.length !== 0) {
         console.log(voteCounts.rows[0].options);
         voteCount = voteCounts.rows[0].options.find(obj => obj.key === resp.rows[0].owner).value;
       }    
@@ -114,7 +114,7 @@ class CandidateSingle extends React.Component {
     })
   }
 
-  componentDidUpdate = async () => {
+  componentDidUpdate() {
     const owner = this.props.match.params.owner;
     if (this.state.refresh === 1) {
       return this.fetchData(owner);
@@ -137,7 +137,7 @@ class CandidateSingle extends React.Component {
         <div className="candidate-left-pane">
           <img src={this.state.picture} alt={this.state.nominee} />
         </div>
-        <div className="candidate-right-pane" id="castvote">
+        <div className="candidate-right-pane">
           <p className="description">{this.state.description}</p>
           { this.state.twitter || this.state.telegram || this.state.wechat ?
             <>
@@ -181,6 +181,7 @@ class CandidateSingle extends React.Component {
             <>
             </>
           }
+          <div id="castvote"></div>
           </div>
       </div>
     );

@@ -111,9 +111,9 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
-      document.getElementById('nomform').insertAdjacentHTML('beforeend', '<div style="color: green;">You successfully nominated a candidate!</div>');
+      document.getElementById('nomform').innerHTML = 'You successfully nominated a candidate!';
     } catch(e) {
-      document.getElementById('nomform').insertAdjacentHTML('beforeend', '<div style="color: #FF0000;">'+ e +'</div>');
+      document.getElementById('nomform').innerHTML = e;
     }
   }
 
@@ -137,9 +137,15 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
-      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<div style="color: green;">You have accepted the nomination!</div>');
-    } catch(e) {
-      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<div style="color: #FF0000;">'+ e +'</div>');
+      let nomlist = document.getElementById('nomlist');
+      nomlist.classList.add("success");
+      nomlist.classList.remove("error");
+      nomlist.innerHTML = 'You have declined the nomination!';    
+      } catch(e) {
+      let nomlist = document.getElementById('nomlist');
+      nomlist.classList.add("error");
+      nomlist.classList.remove("success");
+      nomlist.innerHTML = e;
     }
   }
 
@@ -163,10 +169,16 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
-      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<div style="color: green;">You have declined the nomination!</div>');
+      let nomlist = document.getElementById('nomlist');
+      nomlist.classList.add("success");
+      nomlist.classList.remove("error");
+      nomlist.innerHTML = 'You have declined the nomination!';
     } catch(e) {
       let formattedError = e.replace('Error: assertion failure with message: ', '');
-      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<div style="color: #FF0000;">'+ formattedError +'</div>');
+      let nomlist = document.getElementById('nomlist');
+      nomlist.classList.add("error");
+      nomlist.classList.remove("success");
+      nomlist.innerHTML = formattedError;
     }
   }
 
@@ -197,9 +209,16 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
-      document.getElementById('updatenom').insertAdjacentHTML('beforeend', '<div style="color: green;">You have updated your nomination info!</div>');
+      let updatenom = document.getElementById('updatenom');
+      updatenom.classList.add("success");
+      updatenom.classList.remove("error");
+      updatenom.innerHTML = 'You have updated your nomination info!';
     } catch(e) {
-      document.getElementById('updatenom').insertAdjacentHTML('beforeend', '<div style="color: #FF000;">'+ e +'</div>');
+      let updatenom = document.getElementById('updatenom');
+      updatenom.classList.add("success");
+      updatenom.classList.remove("error");
+      updatenom.innerHTML = 'You have updated your nomination info!';
+      document.getElementById('updatenom').addClass().html( e );
     }
   } else {
       this.validator.showMessages();
@@ -231,27 +250,29 @@ class Nomination extends React.Component {
   isNominated() {
   	if (this.state.isNominated === true && this.state.hasAccepted === 0) {
   		return (
-  			<div className="nomination-list" id="nomlist">
-      			<h3>{this.props.accountName}'s Nomination Status</h3>
-      			<p>Someone has nominated you for a WAX Office of the Inspector General position!</p>
-      			<button onClick={this.acceptNomination} className="btn accept">Accept</button>
-            <button onClick={this.declineNomination} className="btn decline">Decline</button>
-      		</div>
+  			<div className="nomination-list">
+    			<h3>{this.props.accountName}'s Nomination Status</h3>
+    			<p>Someone has nominated you for a WAX Office of the Inspector General position!</p>
+    			<button onClick={this.acceptNomination} className="btn accept">Accept</button>
+          <button onClick={this.declineNomination} className="btn decline">Decline</button>
+    		  <div id="nomlist"></div>
+        </div>
   		);
   	} else if (this.state.isNominated === true && this.state.hasAccepted === 1) {
   		return (
-  			<div className="nomination-list" id="nomlist">
-      			<h3>{this.props.accountName}'s Nomination Status</h3>
-      			<p>You've accepted your nomination. If you would like to change your mind, click decline below.</p>
-      			<button onClick={this.declineNomination} className="btn decline">Decline</button>
-      		</div>
+  			<div className="nomination-list">
+    			<h3>{this.props.accountName}'s Nomination Status</h3>
+    			<p>You've accepted your nomination. If you would like to change your mind, click decline below.</p>
+    			<button onClick={this.declineNomination} className="btn decline">Decline</button>
+    		  <div id="nomlist"></div>
+        </div>
   		);
   	} else {
   		return (
   			<div className="nomination-list">
-          		<h3>{this.props.accountName}'s Nominations</h3>
-          		<p>You are not currently nominated for a WAX office of the Inspector General position. You can nominate yourself or someone else below.</p>
-          	</div>
+      		<h3>{this.props.accountName}'s Nominations</h3>
+      		<p>You are not currently nominated for a WAX office of the Inspector General position. You can nominate yourself or someone else below.</p>
+      	</div>
   		);
   	}
       
@@ -260,11 +281,12 @@ class Nomination extends React.Component {
   nominationForm() {
     return (
         <div className="nomination-form">
-          <div className="form-row" id="nomform">
+          <div className="form-row">
             <h3>Nominate a Candidate</h3>
             <p>Enter the WAX account name of the person you would like to nominate.</p>
             <input type="text" name="nominee" className="inline-input" placeholder="Nominee's WAX account name" onChange={this.handleInputChange} />
             <button onClick={this.nominateCandidate} className="btn inline-btn">Nominate</button>
+            <div id="nomform"></div>
           </div>
         </div>
       );
@@ -273,7 +295,7 @@ class Nomination extends React.Component {
   hasAccepted() {
   	if (this.state.hasAccepted === 1){
   		return (
-  			<div className="nomination-info-form" id="updatenom">
+  			<div className="nomination-info-form">
 	  			<h3>Submit or Update Candidacy Information</h3>
           <p>Note: You will not appear on the candidate list until you submit your initial candidate details. You can return to this page to update your details at any time during the nomination period.</p>
   				<div className="form-row">
@@ -285,7 +307,7 @@ class Nomination extends React.Component {
   					<label htmlFor="picture">Picture<span className="required">*</span></label>
   					<input type="text" value={this.state.picture} placeholder="Url to image file on the web" maxLength="256" required onBlur={() => this.validator.showMessageFor('picture')} name="picture" onChange={this.handleInputChange} />
 				    <i>Please use a square image (i.e. 250x250) for best results</i>
-            {this.validator.message('picture', this.state.picture, 'required|url|max:256')}
+            {this.validator.message('picture', this.state.picture, ['required' , {regex: "/^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/", max: 256}])}
         </div>
 				<div className="form-row">
   					<label htmlFor="description">Candidacy Platform<span className="required">*</span></label>
@@ -308,6 +330,7 @@ class Nomination extends React.Component {
 				    {this.validator.message('wechat', this.state.wechat, 'url|max:256')}
         </div>
 				<button onClick={this.updateNominee} className="btn">Submit</button>
+        <div className="error" id="updatenom"></div>
   			</div>
 		);
   	}

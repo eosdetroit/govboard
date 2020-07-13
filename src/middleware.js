@@ -53,14 +53,21 @@ try {
       actions: actions
     };
 
+
+
     await activeUser.signTransaction(
       voteTransaction, {
         blocksBehind: 3,
         expireSeconds: 30
     });
-
+    let castVote = document.getElementById('castvote');
+    castVote.classList.add("success");
+    castVote.classList.remove("error");
+    castVote.innerHTML = 'You successfully cast a vote!';
   } catch(e) {
-    document.getElementById('castvote').insertAdjacentHTML(
-        'beforeend', '<div style="color: #FF0000">'+ e +'</div>');
+    let castVote = document.getElementById('castvote');
+    castVote.classList.add("error");
+    castVote.classList.remove("success");
+    castVote.innerHTML = e;
   }
 }

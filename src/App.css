@@ -420,7 +420,10 @@ header#nav nav button#menu-icon {
 
 .error {
   color: #FF0000;
-  display: inline-block;
+}
+
+.success {
+  color: green;
 }
 
 .btn {

@@ -74,7 +74,7 @@ class Vote extends React.Component {
           let formattedVoteClose = new Date(activeBallot.vote_close + "Z").toString();
           let leaderCandidates = [];
           if (Array.isArray(leaderResp.rows) && leaderResp.rows.length !== 0) {
-            leaderCandidates = leaderResp.rows[leaderResp.rows.length - leaderResp.rows.length].options.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
+            leaderCandidates = leaderResp.rows[0].options.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
           }
           this.setState({
             ballot: activeBallot.ballot,
@@ -223,7 +223,6 @@ class Vote extends React.Component {
   }
 
   async castVote(event) {
-  
     const value = event.target.value;
     const regTransaction = {
         actions: [{

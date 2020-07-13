@@ -141,8 +141,9 @@ class CandidateSingle extends React.Component {
       };
 
       const voteResult = await this.props.activeUser.signTransaction(
-        voteTransaction, {blocksBehind: 3,
-        expireSeconds: 30
+        voteTransaction, {
+          blocksBehind: 3,
+          expireSeconds: 30
       });
       console.log(voteResult);
     } catch(e) {

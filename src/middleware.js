@@ -59,7 +59,7 @@ try {
         expireSeconds: 30
     });
   } catch(e) {
-    document.getElementById('leader-table').insertAdjacentHTML(
-        'beforebegin', '<span className="error">'+ e +'</span>');
+    document.getElementById('castvote').insertAdjacentHTML(
+        'beforeend', '<div className="error">'+ e +'</div>');
   }
 }

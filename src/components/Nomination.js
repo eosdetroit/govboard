@@ -56,7 +56,7 @@ class Nomination extends React.Component {
           });
           
       		if (resp.rows[resp.rows.length - resp.rows.length].accepted === 1) {
-      			let nomineeInfo = await wax.rpc.get_table_rows({ 
+      			let nomineeInfo = await wax.rpc.get_table_rows({
               code: 'oig',
               scope: 'oig',
               table: 'nominees',
@@ -66,15 +66,21 @@ class Nomination extends React.Component {
               json: true
             });
             console.log(nomineeInfo);
-            if (nomineeInfo.rows !== ''){
-            this.setState({
-		          name: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].name,
-              picture: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].picture,
-              description: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].descriptor,
-              telegram: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].telegram,
-              twitter: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].twitter,
-              wechat: nomineeInfo.rows[nomineeInfo.rows.length - nomineeInfo.rows.length].wechat,
-      			});
+            if (Array.isArray(nomineeInfo.rows) && nomineeInfo.rows.length !== 0) {
+                const name = 'name' in nomineeInfo.rows[0] ? nomineeInfo.rows[0].name : '';
+                const picture = 'picture' in nomineeInfo.rows[0] ? nomineeInfo.rows[0].picture : '';
+                const description = 'descriptor' in nomineeInfo.rows[0] ? nomineeInfo.rows[0].descriptor : '';
+                const telegram = 'telegram' in nomineeInfo.rows[0] ? nomineeInfo.rows[0].telegram : '';
+                const twitter = 'twitter' in nomineeInfo.rows[0] ? nomineeInfo.rows[0].twitter : '';
+                const wechat = 'wechat' in nomineeInfo.rows[0] ? nomineeInfo.rows[0].wechat : '';
+              this.setState({
+                name: name,
+                picture: picture,
+                description: description,
+                telegram: telegram,
+                twitter: twitter,
+                wechat: wechat,
+              });
             }
       		}
       		console.log(this.state);

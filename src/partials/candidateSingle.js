@@ -117,7 +117,7 @@ class CandidateSingle extends React.Component {
           data: {
             voter: this.props.activeUser.accountName,
             options: [this.state.nominee],
-            ballot_name: this.props.ballot.ballot_name
+            ballot_name: this.props.ballot
           },
         }
       ]
@@ -143,8 +143,9 @@ class CandidateSingle extends React.Component {
       };
 
       const voteResult = await this.props.activeUser.signTransaction(
-        voteTransaction, {blocksBehind: 3,
-        expireSeconds: 30
+        voteTransaction, {
+          blocksBehind: 3,
+          expireSeconds: 30
       });
       console.log(voteResult);
     } catch(e) {

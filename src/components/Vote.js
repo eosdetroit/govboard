@@ -73,7 +73,7 @@ class Vote extends React.Component {
           let formattedVoteOpen = new Date(activeBallot.vote_open + "Z").toString();
           let formattedVoteClose = new Date(activeBallot.vote_close + "Z").toString();
           let leaderCandidates = [];
-          if (leaderResp.rows != '') {
+          if (Array.isArray(leaderResp.rows) && leaderResp.rows.length !== 0) {
             leaderCandidates = leaderResp.rows[leaderResp.rows.length - leaderResp.rows.length].options.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
           }
           this.setState({

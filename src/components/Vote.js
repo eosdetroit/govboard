@@ -195,7 +195,7 @@ class Vote extends React.Component {
     if (this.props.electionState === 4){
       return (
         <div className="leaderboard">
-        <h2>Election Leaderboard</h2>
+        <h1>Election Leaderboard</h1>
           <table>
             <thead>
               <tr>

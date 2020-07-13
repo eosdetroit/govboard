@@ -255,9 +255,15 @@ header#nav nav button#menu-icon {
 
 .vote .leaderboard table {
   text-align: left;
+  margin-top: 10px;
 }
 
-.vote .election-info, .vote .pagination-wrapper, .vote .leaderboard, .vote .election-info p {
+.vote .leaderboard table tr td {
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+
+.vote .election-info, .vote .pagination-wrapper, .vote .candidate-grid, .vote .leaderboard, .vote .election-info p {
   margin-bottom: 20px;
 }
 

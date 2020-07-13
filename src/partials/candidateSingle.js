@@ -53,7 +53,7 @@ class CandidateSingle extends React.Component {
             upper_bound: this.props.ballot,
             json: true
           });
-      let voteCount = [];
+      let voteCount = 0;
       if (voteCounts.rows != ''){
         voteCount = voteCounts.rows[resp.rows.length - resp.rows.length].options.find(obj => obj.key === resp.rows[resp.rows.length - resp.rows.length].owner);
       }

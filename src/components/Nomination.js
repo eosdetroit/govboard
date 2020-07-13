@@ -196,9 +196,7 @@ class Nomination extends React.Component {
     }
   } else {
       this.validator.showMessages();
-        // rerender to show messages htmlFor the first time
-        // you can use the autohtmlForceUpdate option to do this automatically`
-      this.htmlForceUpdate();
+      this.forceUpdate();
   }
   }
 
@@ -226,7 +224,7 @@ class Nomination extends React.Component {
   		return (
   			<div className="nomination-list">
       			<h3>{this.props.accountName}'s Nomination Status</h3>
-      			<p>Someone has nominated you htmlFor a WAX Office of the Inspector General position!</p>
+      			<p>Someone has nominated you for a WAX Office of the Inspector General position!</p>
       			<button onClick={this.acceptNomination} className="btn accept">Accept</button>
             <button onClick={this.declineNomination} className="btn decline">Decline</button>
       		</div>
@@ -243,17 +241,17 @@ class Nomination extends React.Component {
   		return (
   			<div className="nomination-list">
           		<h3>{this.props.accountName}'s Nominations</h3>
-          		<p>You are not currently nominated htmlFor a WAX office of the Inspector General position. You can nominate yourself or someone else below.</p>
+          		<p>You are not currently nominated for a WAX office of the Inspector General position. You can nominate yourself or someone else below.</p>
           	</div>
   		);
   	}
       
   }
 
-  nominationhtmlForm() {
+  nominationForm() {
     return (
-        <div className="nomination-htmlForm">
-          <div className="htmlForm-row">
+        <div className="nomination-form">
+          <div className="form-row">
             <h3>Nominate a Candidate</h3>
             <p>Enter the WAX account name of the person you would like to nominate.</p>
             <input type="text" name="nominee" className="inline-input" placeholder="Nominee's WAX account name" onChange={this.handleInputChange} />
@@ -266,36 +264,36 @@ class Nomination extends React.Component {
   hasAccepted() {
   	if (this.state.hasAccepted === 1){
   		return (
-  			<div className="nomination-info-htmlForm">
+  			<div className="nomination-info-form">
 	  			<h3>Submit or Update Candidicy Information</h3>
           <p>Note: You will not appear on the candidate list until you submit your initial candidate details. You can return to this page to update your details at any time during the nomination period.</p>
-  				<div className="htmlForm-row">
+  				<div className="form-row">
             <label htmlFor="name">Full Name<span className="required">*</span></label>
-            <input type="text" name="name" value={this.state.name} maxLength="99" required onBlur={() => this.validator.showMessagehtmlFor('name')} placeholder="John Doe" onChange={this.handleInputChange} />
+            <input type="text" name="name" value={this.state.name} maxLength="99" required onBlur={() => this.validator.showMessageFor('name')} placeholder="John Doe" onChange={this.handleInputChange} />
             {this.validator.message('name', this.state.name, 'required|alpha_space|max:99')}
         </div>
-          <div className="htmlForm-row">
+          <div className="form-row">
   					<label htmlFor="picture">Picture<span className="required">*</span></label>
-  					<input type="text" value={this.state.picture} placeholder="Url to image file on the web" maxLength="256" required onBlur={() => this.validator.showMessagehtmlFor('picture')} name="picture" onChange={this.handleInputChange} />
-				    <i>Please use a square image (i.e. 250x250) htmlFor best results</i>
+  					<input type="text" value={this.state.picture} placeholder="Url to image file on the web" maxLength="256" required onBlur={() => this.validator.showMessageFor('picture')} name="picture" onChange={this.handleInputChange} />
+				    <i>Please use a square image (i.e. 250x250) for best results</i>
             {this.validator.message('picture', this.state.picture, 'required|url|max:256')}
         </div>
-				<div className="htmlForm-row">
-  					<label htmlFor="description">Candidicy PlathtmlForm<span className="required">*</span></label>
-  					<textarea name="description" value={this.state.description} required maxLength="2000" onBlur={() => this.validator.showMessagehtmlFor('username')} onChange={this.handleInputChange}></textarea>
+				<div className="form-row">
+  					<label htmlFor="description">Candidicy Platform<span className="required">*</span></label>
+  					<textarea name="description" value={this.state.description} required maxLength="2000" onBlur={() => this.validator.showMessageFor('username')} onChange={this.handleInputChange}></textarea>
 				    {this.validator.message('description', this.state.description, 'required|max:2000')}
         </div>
-				<div className="htmlForm-row">
+				<div className="form-row">
   					<label htmlFor="telegram">Telegram Handle</label>
   					<input type="text" name="telegram" value={this.state.telegram} maxLength="99" placeholder="@yourhandle" onChange={this.handleInputChange} />
 				    {this.validator.message('telegram', this.state.telegram, 'max:99')}
         </div>
-				<div className="htmlForm-row">
+				<div className="form-row">
   					<label htmlFor="twitter">Twitter Profile</label>
   					<input type="text" name="twitter" value={this.state.twitter} maxLength="256" placeholder="http://twitter.com" onChange={this.handleInputChange} />
 				    {this.validator.message('twitter', this.state.twitter, 'url|max:256')}
         </div>
-				<div className="htmlForm-row">
+				<div className="form-row">
   					<label htmlFor="wechat">WeChat Profile</label>
   					<input type="text" name="wechat" value={this.state.wechat} maxLength="256" placeholder="@yourhandle" onChange={this.handleInputChange} />
 				    {this.validator.message('wechat', this.state.wechat, 'url|max:256')}
@@ -321,7 +319,7 @@ class Nomination extends React.Component {
         <div className="nomination main-content">
           <div className="nomination-header">
             <h2>Nominate</h2>
-            <p>There is currently no election running. Please check the <Link to="/">home page</Link> htmlFor upcoming elections.</p>
+            <p>There is currently no election running. Please check the <Link to="/">home page</Link> for upcoming elections.</p>
           </div>
         </div>
       );
@@ -331,7 +329,7 @@ class Nomination extends React.Component {
         <div className="nomination main-content">
           <div className="nomination-header">
             <h2>Nominate</h2>
-            <p>The nomination period htmlFor the current election has closed. <Link to="/candidates">Vote</Link> htmlFor your favorite candidate now!</p>
+            <p>The nomination period for the current election has closed. <Link to="/candidates">Vote</Link> for your favorite candidate now!</p>
           </div>
         </div>
       );
@@ -345,7 +343,7 @@ class Nomination extends React.Component {
           </div>
           <div className="nomination-left-pane">
             {this.isNominated()}
-            {this.nominationhtmlForm()}
+            {this.nominationForm()}
           </div>
           <div className="nomination-right-pane">
             {this.hasAccepted()}

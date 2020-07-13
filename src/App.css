@@ -245,6 +245,10 @@ header#nav nav button#menu-icon {
   margin: 0 auto;
 }
 
+.main-content p {
+  font-size: 1.3em;
+}
+
 .vote table {
   width: 100%;
 }

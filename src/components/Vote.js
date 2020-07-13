@@ -219,7 +219,6 @@ class Vote extends React.Component {
     return this.GetCandidates();
   }
 
-
   render() {
     if (this.props.electionState === 0 || this.props.electionState === 1){
       return (

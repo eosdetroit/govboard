@@ -75,8 +75,8 @@ class App extends React.Component {
     });
     console.log(resp.rows);
     this.setState({
-      electionState: resp.rows[resp.rows.length - resp.rows.length].state,
-      electionBallot: resp.rows[resp.rows.length - resp.rows.length].ballot,
+      electionState: resp.rows[0].state,
+      electionBallot: resp.rows[0].ballot,
     });
     console.log(this.state.electionBallot);
   }

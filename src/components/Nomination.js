@@ -111,9 +111,9 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
-      console.log(result);
+      document.getElementById('nomform').insertAdjacentHTML('beforeend', '<div style="color: green;">You succesfully nominated a candidate!</div>');
     } catch(e) {
-      document.getElementById('nomform').insertAdjacentHTML('beforeend', '<span className="error">'+ e +'</span>');;
+      document.getElementById('nomform').insertAdjacentHTML('beforeend', '<div style="color: #FF000;">'+ e +'</div>');
     }
   }
 
@@ -137,9 +137,9 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
-      console.log(result);
+      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<div style="color: green;">You have accepted the nomination!</div>');
     } catch(e) {
-      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<span className="error">'+ e +'</span>');
+      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<div style="color: #FF0000;">'+ e +'</div>');
     }
   }
 
@@ -163,9 +163,9 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
-      console.log(result);
+      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<div style="color: green;">You have declined the nomination!</div>');
     } catch(e) {
-      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<span className="error">'+ e +'</span>');
+      document.getElementById('nomlist').insertAdjacentHTML('beforeend', '<div style="color: #FF0000;">'+ e +'</div>');
     }
   }
 
@@ -196,9 +196,9 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
-      console.log(result);
+      document.getElementById('updatenom').insertAdjacentHTML('beforeend', '<div style="color: green;">You have accepted your nomination!</div>');
     } catch(e) {
-      document.getElementById('updatenom').insertAdjacentHTML('beforeend', '<span className="error">'+ e +'</span>');
+      document.getElementById('updatenom').insertAdjacentHTML('beforeend', '<div style="color: #FF000;">'+ e +'</div>');
     }
   } else {
       this.validator.showMessages();

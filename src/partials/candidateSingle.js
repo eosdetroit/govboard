@@ -109,7 +109,7 @@ class CandidateSingle extends React.Component {
         <div className="candidate-left-pane">
           <img src={this.state.picture} alt={this.state.nominee} />
         </div>
-        <div className="candidate-right-pane">
+        <div className="candidate-right-pane" id="castvote">
           <p className="description">{this.state.description}</p>
           { this.state.twitter || this.state.telegram || this.state.wechat ?
             <>
@@ -147,7 +147,7 @@ class CandidateSingle extends React.Component {
           </ul>
           { this.props.electionState === 4 && this.props.activeUser ?
             <>
-              <button onClick={this.VoteCandidate} className="btn" id="castvote">Vote for {this.state.name}</button>
+              <button onClick={this.VoteCandidate} className="btn" >Vote for {this.state.name}</button>
             </>
             :
             <>

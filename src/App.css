@@ -418,6 +418,11 @@ header#nav nav button#menu-icon {
   font-weight: 700;
 }
 
+.error {
+  color: #FF0000;
+  display: inline-block;
+}
+
 .btn {
   background: #F78E1E;
   color: #fff;

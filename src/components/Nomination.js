@@ -273,37 +273,37 @@ class Nomination extends React.Component {
   	if (this.state.hasAccepted === 1){
   		return (
   			<div className="nomination-info-form">
-	  			<h3>Submit or Update Candidicy Information</h3>
+	  			<h3>Submit or Update Candidacy Information</h3>
           <p>Note: You will not appear on the candidate list until you submit your initial candidate details. You can return to this page to update your details at any time during the nomination period.</p>
   				<div className="form-row">
-            <label for="name">Full Name<span className="required">*</span></label>
-            <input type="text" name="name" value={this.state.name} maxlength="99" required onBlur={() => this.validator.showMessageFor('name')} placeholder="John Doe" onChange={this.handleInputChange} />
+            <label htmlFor="name">Full Name<span className="required">*</span></label>
+            <input type="text" name="name" value={this.state.name} maxLength="99" required onBlur={() => this.validator.showMessageFor('name')} placeholder="John Doe" onChange={this.handleInputChange} />
             {this.validator.message('name', this.state.name, 'required|alpha_space|max:99')}
         </div>
           <div className="form-row">
-  					<label for="picture">Picture<span className="required">*</span></label>
-  					<input type="text" value={this.state.picture} placeholder="Url to image file on the web" maxlength="256" required onBlur={() => this.validator.showMessageFor('picture')} name="picture" onChange={this.handleInputChange} />
+  					<label htmlFor="picture">Picture<span className="required">*</span></label>
+  					<input type="text" value={this.state.picture} placeholder="Url to image file on the web" maxLength="256" required onBlur={() => this.validator.showMessageFor('picture')} name="picture" onChange={this.handleInputChange} />
 				    <i>Please use a square image (i.e. 250x250) for best results</i>
             {this.validator.message('picture', this.state.picture, 'required|url|max:256')}
         </div>
 				<div className="form-row">
-  					<label for="description">Candidicy Platform<span className="required">*</span></label>
-  					<textarea name="description" value={this.state.description} required maxlength="2000" onBlur={() => this.validator.showMessageFor('username')} onChange={this.handleInputChange}></textarea>
+  					<label htmlFor="description">Candidacy Platform<span className="required">*</span></label>
+  					<textarea name="description" value={this.state.description} required maxLength="2000" onBlur={() => this.validator.showMessageFor('username')} onChange={this.handleInputChange}></textarea>
 				    {this.validator.message('description', this.state.description, 'required|max:2000')}
         </div>
 				<div className="form-row">
-  					<label for="telegram">Telegram Handle</label>
-  					<input type="text" name="telegram" value={this.state.telegram} maxlength="99" placeholder="@yourhandle" onChange={this.handleInputChange} />
+  					<label htmlFor="telegram">Telegram Handle</label>
+  					<input type="text" name="telegram" value={this.state.telegram} maxLength="99" placeholder="@yourhandle" onChange={this.handleInputChange} />
 				    {this.validator.message('telegram', this.state.telegram, 'max:99')}
         </div>
 				<div className="form-row">
-  					<label for="twitter">Twitter Profile</label>
-  					<input type="text" name="twitter" value={this.state.twitter} maxlength="256" placeholder="http://twitter.com" onChange={this.handleInputChange} />
+  					<label htmlFor="twitter">Twitter Profile</label>
+  					<input type="text" name="twitter" value={this.state.twitter} maxLength="256" placeholder="http://twitter.com" onChange={this.handleInputChange} />
 				    {this.validator.message('twitter', this.state.twitter, 'url|max:256')}
         </div>
 				<div className="form-row">
-  					<label for="wechat">WeChat Profile</label>
-  					<input type="text" name="wechat" value={this.state.wechat} maxlength="256" placeholder="@yourhandle" onChange={this.handleInputChange} />
+  					<label htmlFor="wechat">WeChat Profile</label>
+  					<input type="text" name="wechat" value={this.state.wechat} maxLength="256" placeholder="@yourhandle" onChange={this.handleInputChange} />
 				    {this.validator.message('wechat', this.state.wechat, 'url|max:256')}
         </div>
 				<button onClick={this.updateNominee} className="btn">Submit</button>

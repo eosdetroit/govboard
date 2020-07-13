@@ -107,7 +107,7 @@ class Nomination extends React.Component {
       }]
     } 
     try {
-      const result = await this.state.activeUser.signTransaction(
+      await this.state.activeUser.signTransaction(
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
@@ -133,7 +133,7 @@ class Nomination extends React.Component {
           },
         }]
       }
-      const result = await this.state.activeUser.signTransaction(
+      await this.state.activeUser.signTransaction(
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
@@ -159,7 +159,7 @@ class Nomination extends React.Component {
           },
         }]
       }
-      const result = await this.state.activeUser.signTransaction(
+      await this.state.activeUser.signTransaction(
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
@@ -192,7 +192,7 @@ class Nomination extends React.Component {
           },
         }]
       }
-      const result = await this.state.activeUser.signTransaction(
+      await this.state.activeUser.signTransaction(
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });

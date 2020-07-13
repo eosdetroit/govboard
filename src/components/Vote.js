@@ -54,7 +54,7 @@ class Vote extends React.Component {
           table: 'election',
           json: true
         });
-        let activeBallot = resp.rows[resp.rows.length - resp.rows.length];
+        let activeBallot = resp.rows[0];
         if (activeBallot === '') {
 
         } else {

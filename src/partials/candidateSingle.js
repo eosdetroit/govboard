@@ -54,7 +54,7 @@ class CandidateSingle extends React.Component {
             json: true
           });
       let voteCount = [];
-      if (voteCounts.rows !== ''){
+      if (voteCounts.rows != ''){
         voteCount = voteCounts.rows[resp.rows.length - resp.rows.length].options.find(obj => obj.key === resp.rows[resp.rows.length - resp.rows.length].owner);
       }
       console.log(voteCount);      
@@ -219,7 +219,7 @@ class CandidateSingle extends React.Component {
             </>
           }
           <ul>
-            { this.state.twitter ? 
+            { this.state.telegram ? 
               <>
                 <li>Telegram: {this.state.telegram}</li>
               </>
@@ -227,7 +227,7 @@ class CandidateSingle extends React.Component {
               <>
               </>
             }
-            { this.state.telegram ? 
+            { this.state.twitter ? 
               <>
                 <li><a href={this.state.twitter} target="_blank" rel="noopener noreferrer" >Twitter</a></li>
               </>
@@ -237,7 +237,7 @@ class CandidateSingle extends React.Component {
             }
             { this.state.wechat ? 
               <>
-                <li><a href={this.state.wechat} target="_blank" rel="noopener noreferrer" >WeChat</a></li>
+                <li>WeChat: {this.state.wechat}</li>
               </>
             :
             <>

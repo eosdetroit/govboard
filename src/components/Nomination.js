@@ -47,14 +47,15 @@ class Nomination extends React.Component {
             upper_bound: this.props.accountName,
             json: true
         });
-        if (resp.rows === ''){
+        if (Array.isArray(resp.rows) && resp.rows.length === 0){
 
       	} else {
       		this.setState({
       			isNominated: true,
             hasAccepted: resp.rows[resp.rows.length - resp.rows.length].accepted
-      		});
-      		if (resp.rows[resp.rows.length - resp.rows.length].accepted === 1){
+          });
+          
+      		if (resp.rows[resp.rows.length - resp.rows.length].accepted === 1) {
       			let nomineeInfo = await wax.rpc.get_table_rows({ 
               code: 'oig',
               scope: 'oig',

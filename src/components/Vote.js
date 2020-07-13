@@ -219,78 +219,7 @@ class Vote extends React.Component {
     return this.GetCandidates();
   }
 
-<<<<<<< HEAD
-=======
-  async castVote(event) {
-    const value = event.target.value;
-    const regTransaction = {
-        actions: [{
-          account: 'decide',
-          name: 'regvoter',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
-            treasury_symbol: '8,VOTE',
-            referrer: ''
-          },
-        }]
-      };
-    try {
-      let checkReg = await wax.rpc.get_table_rows({
-            code: 'decide',
-            scope: this.props.activeUser.accountName,
-            table: 'voters',
-            limit: 1,
-            json: true
-      });
-      if (checkReg === '') {
-      const regResult = await this.props.activeUser.signTransaction(
-        regTransaction, {blocksBehind: 3,
-        expireSeconds: 30
-      });
-      console.log(regResult);
-      } else {
-      const voteTransaction = {
-        actions: [{
-          account: 'decide',
-          name: 'sync',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
-          },
-        },
-        {
-          account: 'decide',
-          name: 'castvote',
-          authorization: [{
-            actor: this.props.activeUser.accountName,
-            permission: 'active',
-          }],
-          data: {
-            voter: this.props.activeUser.accountName,
-            options: [value],
-            ballot_name: this.state.ballot
-          },
-        }]
-      };
-      const voteResult = await this.props.activeUser.signTransaction(
-        voteTransaction, {blocksBehind: 3,
-        expireSeconds: 30
-      });
-      console.log(voteResult);
-    }
-    } catch(e) {
-      document.getElementById('leader-table').insertAdjacentHTML('beforebegin', '<span className="error">'+ e +'</span>');
-    }
-  }
 
->>>>>>> Success Messages
   render() {
     if (this.props.electionState === 0 || this.props.electionState === 1){
       return (

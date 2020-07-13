@@ -59,6 +59,6 @@ try {
         expireSeconds: 30
     });
   } catch(e) {
-    document.getElementById('castvote').append(e);
+    document.getElementById('leader-table').insertAdjacentHTML('beforebegin', '<span className="error">'+ e +'</span>');;
   }
 }

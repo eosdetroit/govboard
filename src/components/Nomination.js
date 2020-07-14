@@ -111,7 +111,7 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
-      if (this.state.nominee = this.props.activeUser.accountName); {
+      if (this.state.nominee === this.props.activeUser.accountName) {
         this.setState({
           isNominated: true,
           hasAccepted: 1

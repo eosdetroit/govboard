@@ -150,6 +150,10 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
+      this.setState({
+        isNominated: true,
+        hasAccepted: 1
+      });
       let nomlist = document.getElementById('nomlist');
       nomlist.classList.add("success");
       nomlist.classList.remove("error");

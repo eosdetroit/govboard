@@ -135,7 +135,6 @@ class App extends React.Component {
               }
           </div>
         </header>
-        <Switch>
         <Route exact path="/">
           <Home activeUser={this.state.activeUser} />
         </Route>
@@ -151,7 +150,6 @@ class App extends React.Component {
         <Route path="*">
           <ErrorPage />
         </Route>
-        </Switch>
         </div>
         <footer><Footer activeUser={this.state.activeUser} /></footer>
         </Router>

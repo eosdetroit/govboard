@@ -154,7 +154,7 @@ class CandidateSingle extends React.Component {
           <ul>
             { this.state.telegram ? 
               <>
-                <li>Telegram: {this.state.telegram}</li>
+                <li><a href={'https://t.me/' + this.state.telegram} target="_blank" rel="noopener noreferrer">Telegram</a></li>
               </>
               :
               <>
@@ -170,7 +170,7 @@ class CandidateSingle extends React.Component {
             }
             { this.state.wechat ? 
               <>
-                <li>WeChat: {this.state.wechat}</li>
+                <li><a href={'weixin://dl/profile/' + this.state.wechat} target="_blank" rel="noopener noreferrer" >WeChat</a></li>
               </>
             :
             <>

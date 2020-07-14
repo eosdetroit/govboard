@@ -166,7 +166,7 @@ class CandidateSingle extends React.Component {
             }
             { this.state.twitter ? 
               <>
-                <li><a href={this.state.twitter} target="_blank" rel="noopener noreferrer" >Twitter</a></li>
+                <li><a href={'https://twitter.com/' + this.state.twitter} target="_blank" rel="noopener noreferrer" >Twitter</a></li>
               </>
             :
             <>

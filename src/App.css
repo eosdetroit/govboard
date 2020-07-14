@@ -661,7 +661,7 @@ footer ul a:hover {
     padding: 0;
     background: #fff;
     right: 5px;
-    top: 104px;
+    top: 106px;
     height: auto;
     border-radius: 4px 0 4px 4px;
     border-left: 1px solid #000;
@@ -745,5 +745,21 @@ footer ul a:hover {
     padding: 0 20px;
     grid-template-rows: [row]auto[end];
     grid-template-columns: [first]50%[second]50%[end];
+  }
+}
+
+@media (max-width: 400px) {
+    header#nav {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  header#nav .nav-wrapper {
+    max-width: 1100px;
+    margin-left: auto;
+    display: grid;
+    grid-template-rows: [row]auto[end];
+    grid-template-columns:[logo]150px[nav]auto[accName];
   }
 }

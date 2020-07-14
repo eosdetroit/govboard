@@ -143,9 +143,9 @@ class CandidateSingle extends React.Component {
           <span className="vote-count"><i>{this.state.votes}S</i></span>
         </div>
         <div className="candidate-left-pane">
-          <img src={this.state.picture} alt={this.state.nominee} />
         </div>
         <div className="candidate-right-pane">
+        <img src={this.state.picture} alt={this.state.nominee} />
           <p className="description">{this.state.description}</p>
           { this.state.twitter || this.state.telegram || this.state.wechat ?
             <>

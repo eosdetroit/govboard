@@ -324,6 +324,7 @@ header#nav nav button#menu-icon {
   display: grid;
   grid-template-rows: [header]auto[body]auto[end];
   grid-template-columns:[left]30%[right]70%[end];
+  text-align: center;
 }
 
 .pagination-wrapper {
@@ -366,6 +367,8 @@ header#nav nav button#menu-icon {
   grid-row-end: span end;
   grid-column-start: right;
   grid-column-end: span end;
+  padding-left: 7em;
+  text-align: left;
 }
 
 .candidate-single .candidate-right-pane .description {
@@ -448,6 +451,8 @@ header#nav nav button#menu-icon {
   font-size: 16px;
   transition: background 0.4s, color 0.4s, border 0.4s;
   cursor: pointer;
+  margin-left: -2.3em;
+  font-size: 1.4em;
 }
 
 .btn.inline-btn {

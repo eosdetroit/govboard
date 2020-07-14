@@ -145,7 +145,7 @@ class App extends React.Component {
         <Route path="/candidates">
           <Vote activeUser={this.state.activeUser} electionState={this.state.electionState} ballot={this.state.electionBallot} />
         </Route>
-        <Route path="/nominate">
+        <Route exact path="/nominate">
           <Nomination activeUser={this.state.activeUser} electionState={this.state.electionState} accountName={this.state.accountName} />
         </Route>
         <Route path="*">

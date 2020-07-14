@@ -111,9 +111,22 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
+      if (this.state.nominee = this.props.activeUser.accountName); {
+        this.setState({
+          isNominated: true,
+          hasAccepted: 1
+        });
+      }
       document.getElementById('nomform').innerHTML = 'You successfully nominated a candidate!';
+      let nomform = document.getElementById('nomform');
+      nomform.classList.add("success");
+      nomform.classList.remove("error");
+      nomform.innerHTML = 'You successfully nominated a candidate!';    
     } catch(e) {
-      document.getElementById('nomform').innerHTML = e;
+      let nomform = document.getElementById('nomform');
+      nomform.classList.add("error");
+      nomform.classList.remove("success");
+      nomform.innerHTML = e; 
     }
   }
 
@@ -140,7 +153,7 @@ class Nomination extends React.Component {
       let nomlist = document.getElementById('nomlist');
       nomlist.classList.add("success");
       nomlist.classList.remove("error");
-      nomlist.innerHTML = 'You have declined the nomination!';    
+      nomlist.innerHTML = 'You have accepted the nomination!';    
       } catch(e) {
       let nomlist = document.getElementById('nomlist');
       nomlist.classList.add("error");
@@ -169,16 +182,20 @@ class Nomination extends React.Component {
         transaction, {blocksBehind: 3,
         expireSeconds: 30
       });
+      this.setState({
+        isNominated: false,
+        hasAccepted: 0
+      });
       let nomlist = document.getElementById('nomlist');
       nomlist.classList.add("success");
       nomlist.classList.remove("error");
       nomlist.innerHTML = 'You have declined the nomination!';
+      document.getElementById('nomform').innerHTML = '';
     } catch(e) {
-      let formattedError = e.replace('Error: assertion failure with message: ', '');
       let nomlist = document.getElementById('nomlist');
       nomlist.classList.add("error");
       nomlist.classList.remove("success");
-      nomlist.innerHTML = formattedError;
+      nomlist.innerHTML = e;
     }
   }
 
@@ -218,7 +235,6 @@ class Nomination extends React.Component {
       updatenom.classList.add("success");
       updatenom.classList.remove("error");
       updatenom.innerHTML = 'You have updated your nomination info!';
-      document.getElementById('updatenom').addClass().html( e );
     }
   } else {
       this.validator.showMessages();
@@ -255,7 +271,6 @@ class Nomination extends React.Component {
     			<p>Someone has nominated you for a WAX Office of the Inspector General position!</p>
     			<button onClick={this.acceptNomination} className="btn accept">Accept</button>
           <button onClick={this.declineNomination} className="btn decline">Decline</button>
-    		  <div id="nomlist"></div>
         </div>
   		);
   	} else if (this.state.isNominated === true && this.state.hasAccepted === 1) {
@@ -264,7 +279,6 @@ class Nomination extends React.Component {
     			<h3>{this.props.accountName}'s Nomination Status</h3>
     			<p>You've accepted your nomination. If you would like to change your mind, click decline below.</p>
     			<button onClick={this.declineNomination} className="btn decline">Decline</button>
-    		  <div id="nomlist"></div>
         </div>
   		);
   	} else {
@@ -374,6 +388,7 @@ class Nomination extends React.Component {
           </div>
           <div className="nomination-left-pane">
             {this.isNominated()}
+            <div id="nomlist"></div>
             {this.nominationForm()}
           </div>
           <div className="nomination-right-pane">

@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   Redirect,
-  Link
+  Link,
+  withRouter
 } from "react-router-dom";
 
 import '../App.css';
@@ -356,7 +357,7 @@ class Nomination extends React.Component {
 
 
   render() {
-  	if (this.props.activeUser === null) {
+  	if (this.props.activeUser === '') {
         return (
                 <>
                 <Redirect to='/' />
@@ -401,6 +402,8 @@ class Nomination extends React.Component {
         </div>
       );
 
+    } else {
+      return null;
     }
   }
 }

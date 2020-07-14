@@ -94,7 +94,6 @@ class CandidateSingle extends React.Component {
         twitter: resp.rows[0].twitter,
         wechat: resp.rows[0].wechat,
         votes: voteCount,
-        refresh: 1
       });
     } catch(e) {
       console.log(e);

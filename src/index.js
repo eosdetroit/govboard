@@ -4,7 +4,7 @@ import './index.css';
 import App  from './App';
 import * as serviceWorker from './serviceWorker';
 import { UALProvider, withUAL } from 'ual-reactjs-renderer';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router, Route, browserHistory} from 'react-router-dom';
 
 import { Scatter } from 'ual-scatter';
 import { Anchor } from 'ual-anchor';
@@ -38,7 +38,9 @@ const UALConsumer = withUAL(App);
 
 ReactDOM.render(
 	<UALProvider chains={[waxMainnet]} authenticators={[waxcloud, anchor, scatter]} appName={'WAX OIG Governance Dashboard'}>
-    	<Router><UALConsumer /></Router>
+    	<Router>
+          <UALConsumer />
+      </Router>
   	</UALProvider>,
   	document.getElementById('root')
 );

@@ -25,7 +25,6 @@ class CandidateSingle extends React.Component {
       votes: '0 VOTE',
       ballot: '',
       redirect: 0,
-      refresh: 0
     }
     this.UnvoteCandidate = this.UnvoteCandidate.bind(this);
     this.VoteCandidate = this.VoteCandidate.bind(this);
@@ -49,7 +48,6 @@ class CandidateSingle extends React.Component {
     }
     this.setState({
       ballot: ballot,
-      refresh: 0
     })
     this.fetchData(owner);
   }
@@ -96,7 +94,7 @@ class CandidateSingle extends React.Component {
         twitter: resp.rows[0].twitter,
         wechat: resp.rows[0].wechat,
         votes: voteCount,
-        refresh: 0
+        refresh: 1
       });
     } catch(e) {
       console.log(e);

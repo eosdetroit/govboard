@@ -504,15 +504,10 @@ footer {
   background: #ebebeb;
   padding: 20px 0;
   border-top: 1px solid #333;
-  height: 205px;
 }
 
 footer .footer-inner {
-  max-width: 980px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-rows: [row]auto[end];
-  grid-template-columns: [first]25%[second]25%[third]25%[fourth]25%[end];
+  text-align: center;
 }
 
 footer .footer-col-1 {
@@ -527,6 +522,12 @@ footer .footer-col-2 {
   grid-row-end: span end;
   grid-column-start: second;
   grid-column-end: span third;
+}
+
+footer .footer-image {
+  display:inline-block;
+  height: 6em;
+  padding: 2em;
 }
 
 footer ul {
@@ -755,9 +756,7 @@ footer ul a:hover {
   }
 
   body footer .footer-inner {
-    padding: 0 20px;
-    grid-template-rows: [row]auto[end];
-    grid-template-columns: [first]50%[second]50%[end];
+    text-align: center;
   }
 }
 

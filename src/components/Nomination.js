@@ -18,8 +18,8 @@ class Nomination extends React.Component {
   constructor(props){
   	super(props);
   	this.state = {
-  		activeUser: this.props.activeUser,
-  		isNominated: '',
+  		activeUser: '',
+      isNominated: '',
   		hasAccepted: false,
       nominee: '',
       name: '',
@@ -28,6 +28,7 @@ class Nomination extends React.Component {
       twitter: '',
       wechat: '',
       telegram: '',
+      redirect: 0
   	};
     this.validator = new SimpleReactValidator();
     this.nominateCandidate = this.nominateCandidate.bind(this);
@@ -262,10 +263,9 @@ class Nomination extends React.Component {
   componentDidMount() {
     if (this.props.electionState === 2){
       return this.checkNominations();
-    } else {
-      
     }
   }
+
 
   isNominated() {
   	if (this.state.isNominated === true && this.state.hasAccepted === 0) {
@@ -354,15 +354,9 @@ class Nomination extends React.Component {
   	}
   }
 
-
   render() {
-  	if (this.props.activeUser === '') {
-        return (
-                <>
-                <Redirect to='/' />
-                </>
-                )
-    } else if (this.props.electionState === 0 || this.props.electionState === 1 || this.props.electionState === 5) {
+
+    if (this.props.electionState === 0 || this.props.electionState === 1 || this.props.electionState === 5) {
       
       return (
         <div className="nomination main-content">
@@ -400,7 +394,6 @@ class Nomination extends React.Component {
           </div>
         </div>
       );
-
     } else {
       return null;
     }

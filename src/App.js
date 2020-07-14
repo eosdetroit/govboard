@@ -3,8 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Switch,
-  useHistory
+  Switch
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
 
@@ -109,7 +108,7 @@ class App extends React.Component {
                   <nav>
                     <button id="menu-icon"></button>
                     <ul>
-                      <li><Link to="/home">Home</Link></li>
+                      <li><Link to="/">Home</Link></li>
                       <li><Link to="/about">About</Link></li>
                       <li><Link to="/candidates">Vote</Link></li>
                       <li><Link to="/nominate">Nominate</Link></li>

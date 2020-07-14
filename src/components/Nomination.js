@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Redirect,
   Link,
-  withRouter
 } from "react-router-dom";
 
 import '../App.css';

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Redirect,
   Link,
 } from "react-router-dom";
 
@@ -18,7 +17,7 @@ class Nomination extends React.Component {
   constructor(props){
   	super(props);
   	this.state = {
-  		activeUser: '',
+  		activeUser: this.props.activeUser,
       isNominated: '',
   		hasAccepted: false,
       nominee: '',

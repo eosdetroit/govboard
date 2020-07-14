@@ -27,10 +27,12 @@ class App extends React.Component {
       this.state = {
         activeUser: null,
         accountName: '',
+        appInitialized: false
       };
       this.updateAccountName = this.updateAccountName.bind(this);
       this.checkElectionStatus = this.checkElectionStatus.bind(this);
     }
+
 
     componentDidUpdate() {
       const { ual: { activeUser } } = this.props;
@@ -49,6 +51,7 @@ class App extends React.Component {
       try {
         const accountName = await this.state.activeUser.getAccountName();
         this.setState({ accountName });
+        this.setState({ appInitialized: true })
       } catch (e) {
       console.warn(e);
       }
@@ -82,10 +85,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log('componentMounted!');
     return this.checkElectionStatus();
   }
 
   render() {
+    if (!this.state.appInitialized) return null;
     return (
       <div className="App">
         <div className="main-wrapper">
@@ -144,8 +149,7 @@ class App extends React.Component {
           <Vote activeUser={this.state.activeUser} electionState={this.state.electionState} ballot={this.state.electionBallot} />
         </Route>
         <Route exact path="/nominate">
-          <Nomination activeUser={this.state.activeUser} electionState={this.state.electionState} accountName={this.state.accountName} />
-        </Route>
+-          <Nomination activeUser={this.state.activeUser} electionState={this.state.electionState} accountName={this.state.accountName} />        </Route>
         <Route path="*">
           <ErrorPage />
         </Route>

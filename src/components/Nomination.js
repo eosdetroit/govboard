@@ -235,9 +235,9 @@ class Nomination extends React.Component {
       updatenom.innerHTML = 'You have updated your nomination info!';
     } catch(e) {
       let updatenom = document.getElementById('updatenom');
-      updatenom.classList.add("success");
-      updatenom.classList.remove("error");
-      updatenom.innerHTML = 'You have updated your nomination info!';
+      updatenom.classList.add("error");
+      updatenom.classList.remove("success");
+      updatenom.innerHTML = e.message;
     }
   } else {
       this.validator.showMessages();

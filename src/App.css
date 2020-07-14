@@ -253,6 +253,14 @@ header#nav nav button#menu-icon {
   font-size: 1.3em;
 }
 
+.main-content a {
+  color: #F78E1E;
+}
+
+.main-content a:hover {
+  color: #FA7B21;
+}
+
 .vote table {
   width: 100%;
 }

@@ -94,7 +94,7 @@ class App extends React.Component {
               <div className="logo">
                 <Link className="header-link" to="/">
                   <img src={logo} alt="WAX Logo" />
-                  <span className="logo-text">&nbsp;Office of Inspector General Dashboard</span>
+                  <span className="logo-text">&nbsp;<span className="desktop">Office of Inspector General</span><span className="mobile">OIG</span> Dashboard</span>
                 </Link>
               </div>
               { this.state.activeUser ?

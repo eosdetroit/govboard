@@ -186,6 +186,10 @@ header#nav .login-li button:hover {
   background: #000;
 }
 
+.mobile {
+  display: none;
+}
+
 .badge {
   text-align: center;
 }
@@ -540,6 +544,14 @@ footer ul a:hover {
 
   header#nav .logo a.header-link .logo-text {
     font-size: 1em;
+  }
+
+  .logo-text .desktop {
+    display: none;
+  }
+
+  .logo-text .mobile {
+    display: inline;
   }
 
   body header#nav nav ul li a {

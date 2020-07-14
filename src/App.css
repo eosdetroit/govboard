@@ -297,6 +297,7 @@ header#nav nav button#menu-icon {
   width: 80%;
   display: inline-block;
   max-height: 215px;
+  min-height: 215px;
   height: 100%;
 }
 

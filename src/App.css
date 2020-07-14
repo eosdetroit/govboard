@@ -45,7 +45,7 @@ header, footer, div {
 header#nav .nav-wrapper {
   display: grid;
   grid-template-rows: [row]auto[end];
-  grid-template-columns: [logo]45%[nav]55%[accName];
+  grid-template-columns: [logo]50%[nav]50%[accName];
 }
 
 header#nav {

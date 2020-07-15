@@ -4,6 +4,7 @@ import {
   Link,
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
+import { submitVote } from '../middleware.js'; 
 
 import CandidateGrid from "../partials/candidate-grid-template.js";
 import CandidateSingle from "../partials/candidateSingle";
@@ -195,6 +196,7 @@ class Vote extends React.Component {
       return (
         <div className="leaderboard">
         <h1>Election Leaderboard</h1>
+          <div id="castvote"></div>
           <table id="leader-table">
             <thead>
               <tr>
@@ -207,7 +209,7 @@ class Vote extends React.Component {
             </thead>
             <tbody>
               {this.state.leaderCandidates.slice(0, 10).map((leaderCandidate, key, index, value) =>
-                <LeaderboardRow data={leaderCandidate} index={index} key={leaderCandidate.key} />
+                <LeaderboardRow data={leaderCandidate} index={index} activeUser={this.props.activeUser} ballot={this.state.ballot}  key={leaderCandidate.key} />
               )}
               </tbody>
             </table>
@@ -292,7 +294,16 @@ class LeaderboardRow extends Vote {
         super(props);
         console.log(this.props); // prints out whatever is inside props
         this.GetCandidateName = this.GetCandidateName.bind(this);
+        this.VoteCandidate = this.VoteCandidate.bind(this);
     }
+
+  async VoteCandidate() {
+    await submitVote(this.props.activeUser, this.props.ballot, this.props.data.key);
+
+    /* this.setState({
+      refresh: 1
+    }); */
+  }
 
   async GetCandidateName(){
     let resp = await wax.rpc.get_table_rows({             
@@ -324,7 +335,8 @@ class LeaderboardRow extends Vote {
                 <td><Link to={"/candidates/" + this.props.data.key}>{this.state.name}</Link></td>
                 <td>{this.props.data.key}</td>
                 <td><span className="vote-count">{this.props.data.value}S</span></td>
-            </tr>
+                <td><button className="btn" onClick={this.VoteCandidate}>Vote</button></td>
+      </tr>
     )
   }
 }

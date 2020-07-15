@@ -90,7 +90,7 @@ class App extends React.Component {
   }
 
   render() {
-    /* if (!this.state.appInitialized) return null; */
+    if (!this.state.appInitialized) return null;
     return (
       <div className="App">
         <div className="main-wrapper">

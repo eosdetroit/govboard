@@ -845,26 +845,37 @@ footer ul a:hover {
   }
 
   td {
-    border: none;
     position: relative;
   }
 
   .leaderboard table tr:not(:last-child){
     border-bottom: 1px solid #ccc;
   }
+
+  .leaderboard table tr td {
+  position: relative;
+  padding: 5px 0;
+  }
   
-  .leaderboard table td { 
+  .leaderboard table tr td:not(:last-child) { 
     /* Behave  like a "row" */
     border: none;
-    position: relative;
     padding-left: 50%; 
+  }
+
+  .leaderboard table tr td:last-child {
+    text-align: center;
+  }
+
+  .leaderboard table tr td .btn {
+    padding: 7px 50px;
   }
 
   td:before { 
     /* Now like a table header */
     position: absolute;
     /* Top/left values mimic padding */
-    top: 6px;
+    top: 5px;
     left: 6px;
     width: 45%; 
     padding-right: 10px; 

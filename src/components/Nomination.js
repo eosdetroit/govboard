@@ -278,7 +278,7 @@ class Nomination extends React.Component {
   	} else if (this.state.isNominated === true && this.state.hasAccepted === 1) {
   		return (
   			<div className="nomination-list">
-    			<h3>{this.props.accountName}'s Nomination Status</h3>
+    			<h2>{this.props.accountName}'s Nomination Status</h2>
     			<p>You've accepted your nomination. If you would like to change your mind, click decline below.</p>
     			<button onClick={this.declineNomination} className="btn decline">Decline</button>
         </div>
@@ -286,7 +286,7 @@ class Nomination extends React.Component {
   	} else {
   		return (
   			<div className="nomination-list">
-      		<h3>{this.props.accountName}'s Nominations</h3>
+      		<h2>{this.props.accountName}'s Nominations</h2>
       		<p>You are not currently nominated for a WAX office of the Inspector General position. You can nominate yourself or someone else below.</p>
       	</div>
   		);
@@ -298,7 +298,7 @@ class Nomination extends React.Component {
     return (
         <div className="nomination-form">
           <div className="form-row">
-            <h3>Nominate a Candidate</h3>
+            <h2>Nominate a Candidate</h2>
             <p>Enter the WAX account name of the person you would like to nominate.</p>
             <input type="text" name="nominee" className="inline-input" placeholder="Nominee's WAX account name" onChange={this.handleInputChange} />
             <button onClick={this.nominateCandidate} className="btn inline-btn">Nominate</button>
@@ -312,42 +312,44 @@ class Nomination extends React.Component {
   	if (this.state.hasAccepted === 1){
   		return (
   			<div className="nomination-info-form">
-	  			<h3>Submit or Update Candidacy Information</h3>
+	  			<h2>Submit or Update Candidacy Information</h2>
           <p>Note: You will not appear on the candidate list until you submit your initial candidate details. You can return to this page to update your details at any time during the nomination period.</p>
   				<div className="form-row">
             <label htmlFor="name">Full Name<span className="required">*</span></label>
             <input type="text" name="name" value={this.state.name} maxLength="99" required onBlur={() => this.validator.showMessageFor('name')} placeholder="John Doe" onChange={this.handleInputChange} />
             {this.validator.message('name', this.state.name, 'required|alpha_space|max:99')}
-        </div>
+          </div>
           <div className="form-row">
   					<label htmlFor="picture">Picture<span className="required">*</span></label>
   					<input type="text" value={this.state.picture} placeholder="Url to image file on the web" maxLength="256" required onBlur={() => this.validator.showMessageFor('picture')} name="picture" onChange={this.handleInputChange} />
 				    <i>Please use a square image (i.e. 250x250) for best results</i>
             {this.validator.message('picture', this.state.picture, ['required' , {regex: /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/, max: 256}])}
-        </div>
-				<div className="form-row">
+          </div>
+				  <div className="form-row">
   					<label htmlFor="description">Candidacy Platform<span className="required">*</span></label>
   					<textarea name="description" value={this.state.description} required maxLength="2000" onBlur={() => this.validator.showMessageFor('username')} onChange={this.handleInputChange}></textarea>
 				    {this.validator.message('description', this.state.description, 'required|max:2000')}
-        </div>
-				<div className="form-row">
+          </div>
+				  <div className="form-row">
   					<label htmlFor="telegram">Telegram Handle</label>
   					<input type="text" name="telegram" value={this.state.telegram} maxLength="99" placeholder="Telegram username" onChange={this.handleInputChange} />
 				    {this.validator.message('telegram', this.state.telegram, 'max:99')}
-        </div>
-				<div className="form-row">
+          </div>
+				  <div className="form-row">
   					<label htmlFor="twitter">Twitter Profile</label>
   					<input type="text" name="twitter" value={this.state.twitter} maxLength="256" placeholder="Twitter handle" onChange={this.handleInputChange} />
 				    {this.validator.message('twitter', this.state.twitter, 'max:256')}
-        </div>
-				<div className="form-row">
+          </div>
+				  <div className="form-row">
   					<label htmlFor="wechat">WeChat Profile</label>
   					<input type="text" name="wechat" value={this.state.wechat} maxLength="256" placeholder="WeChat userid" onChange={this.handleInputChange} />
 				    {this.validator.message('wechat', this.state.wechat, 'max:256')}
+          </div>
+          <div className="form-row">
+				  <button onClick={this.updateNominee} className="submit btn">Submit</button>
+          <div className="error" id="updatenom"></div>
         </div>
-				<button onClick={this.updateNominee} className="submit btn">Submit</button>
-        <div className="error" id="updatenom"></div>
-  			</div>
+  		</div>
 		);
   	}
   }
@@ -379,6 +381,9 @@ class Nomination extends React.Component {
       
       return (	
         <div className="nomination main-content">
+          <div className="nomination-header">
+            <h1>Nominate</h1>
+          </div>
           <div className="nomination-left-pane">
             {this.isNominated()}
             <div id="nomlist"></div>

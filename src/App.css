@@ -404,12 +404,13 @@ header#nav nav button#menu-icon {
 }
 .candidate-right-pane > img {
   max-height: 14em;
+  max-width: 100%;
 }
 
 .nomination {
   display: grid;
   grid-template-rows: [header]auto[body]auto[end];
-  grid-template-columns: [left]50%[right]50%[end];
+  grid-template-columns: [left]45%[right]55%[end];
 }
 
 .nomination input[type="text"] {
@@ -428,6 +429,7 @@ header#nav nav button#menu-icon {
   grid-column-end: span end;
   grid-row-start: header;
   grid-row-end: span body;
+  padding: 0 0 1em 0;
 }
 
 .nomination-left-pane {
@@ -438,15 +440,26 @@ header#nav nav button#menu-icon {
   padding-right: 20px;
 }
 
-.nomination-left-pane p {
+.nomination p {
   margin: 0.5em;
+  text-align: left;
 }
+
+.nomination h2 {
+  text-align: left;
+}
+
 .nomination-right-pane {
   grid-column-start: right;
   grid-column-end: span end;
   grid-row-start: body;
   grid-row-end: span end;
   padding-left: 20px;
+  text-align: left;
+}
+
+.nomination-right-pane .nomination-info-form .form-row:last-of-type {
+  text-align: center;
 }
 
 .form-row {
@@ -463,10 +476,12 @@ header#nav nav button#menu-icon {
 
 .error {
   color: #FF0000;
+  text-align: left;
 }
 
 .success {
   color: green;
+  text-align: left;
 }
 
 .btn {
@@ -904,5 +919,10 @@ footer ul a:hover {
     display: grid;
     grid-template-rows: [row]auto[end];
     grid-template-columns:[logo]150px[nav]auto[accName];
+  }
+
+  .nomination-form .btn.inline-btn {
+    font-size: 1em;
+    padding: 11px;
   }
 }

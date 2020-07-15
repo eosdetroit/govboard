@@ -410,7 +410,6 @@ header#nav nav button#menu-icon {
   display: grid;
   grid-template-rows: [header]auto[body]auto[end];
   grid-template-columns: [left]50%[right]50%[end];
-  padding: 2em 0;
 }
 
 .nomination input[type="text"] {
@@ -816,6 +815,10 @@ footer ul a:hover {
   body .candidate-single .candidate-right-pane ul {
     list-style: none;
     padding: 0;
+  }
+
+  body .candidate-right-pane > .btn {
+    margin: 0;
   }
 
   body .candidate-single .candidate-right-pane .description {

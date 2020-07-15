@@ -359,7 +359,7 @@ class Nomination extends React.Component {
       return (
         <div className="nomination main-content">
           <div className="nomination-header">
-            <h2>Nominate</h2>
+            <h1>Nominate</h1>
             <p>There is currently no election running. Please check the <Link to="/">home page</Link> for upcoming elections.</p>
           </div>
         </div>
@@ -369,7 +369,7 @@ class Nomination extends React.Component {
       return (
         <div className="nomination main-content">
           <div className="nomination-header">
-            <h2>Nominate</h2>
+            <h1>Nominate</h1>
             <p>The nomination period for the current election has closed. <Link to="/candidates">Vote</Link> for your favorite candidate now!</p>
           </div>
         </div>
@@ -389,9 +389,7 @@ class Nomination extends React.Component {
           </div>
         </div>
       );
-    } else {
-      return null;
-    }
+    } 
   }
 }
 

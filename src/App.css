@@ -152,9 +152,9 @@ header#nav nav ul li a {
   height: 100%;
 }
 
-header#nav nav a:hover, #login:hover {
+header#nav nav a:hover {
   color: #fff;
-  background: #000;
+  background: #85b1bb;
 }
 
 header#nav .login-wrapper {

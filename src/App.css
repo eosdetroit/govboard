@@ -244,9 +244,9 @@ header#nav nav button#menu-icon {
 }
 
 .main-content {
-  padding: 20px 0 40px;
   max-width: 980px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .main-content p {
@@ -384,6 +384,7 @@ header#nav nav button#menu-icon {
   display: grid;
   grid-template-rows: [header]auto[body]auto[end];
   grid-template-columns: [left]50%[right]50%[end];
+  padding: 2em 0;
 }
 
 .nomination input[type="text"] {
@@ -412,16 +413,15 @@ header#nav nav button#menu-icon {
   padding-right: 20px;
 }
 
+.nomination-left-pane p {
+  margin: 0.5em;
+}
 .nomination-right-pane {
   grid-column-start: right;
   grid-column-end: span end;
   grid-row-start: body;
   grid-row-end: span end;
   padding-left: 20px;
-}
-
-.nomination-list {
-  padding: 10px 0;
 }
 
 .form-row {
@@ -451,7 +451,6 @@ header#nav nav button#menu-icon {
   font-size: 16px;
   transition: background 0.4s, color 0.4s, border 0.4s;
   cursor: pointer;
-  margin-left: -2.3em;
   font-size: 1.4em;
 }
 
@@ -468,7 +467,8 @@ header#nav nav button#menu-icon {
   width: 70%;
   box-sizing: border-box;
   height: auto;
-  padding: 8px 0px;
+  padding: 0.94em 0px;
+  vertical-align: top;
 }
 
 .btn.accept {
@@ -743,6 +743,9 @@ footer ul a:hover {
     padding-right: 0;
   }
 
+  .nomination-form {
+    margin-top: 1em;
+  }
   .nomination .nomination-left-pane .nomination-form {
     padding-bottom: 15px;
   }

@@ -379,9 +379,6 @@ class Nomination extends React.Component {
       
       return (	
         <div className="nomination main-content">
-          <div className="nomination-header">
-            <h2>Nominate</h2>
-          </div>
           <div className="nomination-left-pane">
             {this.isNominated()}
             <div id="nomlist"></div>

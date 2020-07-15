@@ -243,7 +243,6 @@ class Vote extends React.Component {
   }
 
   renderWinner(){
-    if(this.state.electionState === 5){
       return (
         <div>
         {this.state.leaderCandidates.slice(0, 1).map((leaderCandidate, key, index, value) =>
@@ -251,7 +250,6 @@ class Vote extends React.Component {
         </div>
       );
     }
-  }
 
   componentDidMount(){
     return this.GetCandidates();
@@ -439,6 +437,7 @@ class Winner extends Vote {
   render(){
     return (
       <div className="winner" key={this.props.data.key}>
+        <h2>Election Winner</h2>
         <img src={this.state.picture} alt={this.state.name} />
         <p>
           <h3>{this.state.name}</h3>

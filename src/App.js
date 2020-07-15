@@ -2,8 +2,7 @@ import React from 'react';
 import {
   Route,
   Link,
-  Switch,
-  Redirect
+  Switch
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
 

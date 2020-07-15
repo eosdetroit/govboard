@@ -77,7 +77,6 @@ class Vote extends React.Component {
           let formattedVoteClose = new Date(activeBallot.vote_close + "Z").toString();
           let leaderCandidates = [];
           if (Array.isArray(leaderResp.rows) && leaderResp.rows.length !== 0) {
-            console.log(leaderResp.rows[0].options);
             leaderCandidates = leaderResp.rows[0].options.filter(option => option.value !== '0.00000000 VOTE').sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
           }
           this.setState({
@@ -140,7 +139,6 @@ class Vote extends React.Component {
         } else if (this.state.maxPage - this.state.candidatePage < 1 && this.state.nextPage !== this.state.candidates.length) {
           let prevPage = this.state.prevPage + 10;
           let nextPage = this.state.candidates.length;
-          console.log()
           this.setState({
             nextPage: nextPage,
             prevPage: prevPage,

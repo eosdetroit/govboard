@@ -41,6 +41,7 @@ class Vote extends React.Component {
     this.GetElectionInfo = this.GetElectionInfo.bind(this);
     this.renderLeaderboard = this.renderLeaderboard.bind(this);
     this.renderPagination = this.renderPagination.bind(this);
+    this.renderElectionStatus = this.renderElectionStatus.bind(this);
     this.CandidatePaginationNext = this.CandidatePaginationNext.bind(this);
     this.CandidatePaginationPrev = this.CandidatePaginationPrev.bind(this);
   }
@@ -191,6 +192,28 @@ class Vote extends React.Component {
     }
   }
 
+  renderElectionStatus(){
+    if (this.props.electionState === 1){
+      return (
+        <div className="election-status"><strong>Election Status:</strong> Not Started</div>
+        )
+    } else if (this.props.electionState === 2){
+      return (
+        <div className="election-status"><strong>Election Status:</strong> Nominations Open</div>
+        )
+    } else if (this.props.electionState === 3){
+      return (
+        <div className="election-status"><strong>Election Status:</strong> Nominations Closed</div>
+        )
+    } else if (this.props.electionState === 4){
+      return (
+        <div className="election-status"><strong>Election Status:</strong> Voting Open</div>
+        )
+    } else {
+
+    }
+  }
+
   renderLeaderboard(){
     if (this.props.electionState === 4){
       return (
@@ -251,6 +274,9 @@ class Vote extends React.Component {
           
           <h2>Ballot ID: {this.state.ballot}</h2>
           <p>{this.state.description}</p>
+
+          {this.renderElectionStatus()}
+          
           <table>
             <tbody>
               <tr>

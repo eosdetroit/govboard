@@ -249,8 +249,9 @@ header#nav nav button#menu-icon {
   text-align: center;
 }
 
-.main-content p {
+.main-content p, .election-status {
   font-size: 1.3em;
+  margin-bottom: 1em;
 }
 
 .main-content a {
@@ -288,7 +289,7 @@ header#nav nav button#menu-icon {
 }
 
 .vote .election-info, .vote .pagination-wrapper, .vote .candidate-grid, .vote .leaderboard, .vote .election-info p {
-  margin-bottom: 20px;
+  margin-bottom: 1em;
 }
 
 .candidate-grid {

@@ -152,16 +152,12 @@ class App extends React.Component {
         </Route>
         <Route path="/candidates" render={() => {
             return (
-                this.state.activeUser ?
                 <Vote activeUser={this.state.activeUser} electionState={this.state.electionState} ballot={this.state.electionBallot} />
-                : <Redirect to="/" /> 
             )
           }}/>          
         <Route exact path="/nominate" render={() => {
             return (
-                this.state.activeUser ?
                 <Nomination activeUser={this.state.activeUser} electionState={this.state.electionState} accountName={this.state.accountName} />
-                : <Redirect to="/" /> 
             )
           }}/>
                   

@@ -6,6 +6,7 @@ import {
 import '../App.css';
 import SimpleReactValidator from 'simple-react-validator';
 import * as waxjs from "@waxio/waxjs/dist";
+import { withUAL } from 'ual-reactjs-renderer';
 
 
 //WAX_RPC_URL = 'https://testnet.waxsweden.org'
@@ -394,8 +395,10 @@ class Nomination extends React.Component {
           </div>
         </div>
       );
+    } else {
+      return null;
     } 
   }
 }
 
-export default Nomination;
+export default withUAL(Nomination);

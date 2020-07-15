@@ -8,6 +8,8 @@ import { submitVote } from '../middleware.js';
 
 import CandidateGrid from "../partials/candidate-grid-template.js";
 import CandidateSingle from "../partials/candidateSingle";
+import { withUAL } from 'ual-reactjs-renderer';
+
 
 import '../App.css';
 
@@ -313,7 +315,7 @@ class Vote extends React.Component {
   }
 }
 
-export default Vote;
+export default withUAL(Vote);
 
 class LeaderboardRow extends Vote {
   constructor(props){

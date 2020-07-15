@@ -4,9 +4,11 @@ import {
   Redirect
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
+import { withUAL } from 'ual-reactjs-renderer';
 
 import '../App.css';
 import { submitVote } from '../middleware.js';
+
 
 // const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
 const WAX_RPC_URL = 'https://wax.greymass.com'
@@ -198,4 +200,4 @@ class CandidateSingle extends React.Component {
   }
 }
 
-export default withRouter(CandidateSingle);
+export default withUAL(withRouter(CandidateSingle));

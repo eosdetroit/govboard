@@ -7,6 +7,9 @@ import * as waxjs from "@waxio/waxjs/dist";
 import { withUAL } from 'ual-reactjs-renderer';
 
 import '../App.css';
+import twitter from '../assets/twitter.svg';
+import telegram from '../assets/telegram.svg';
+import wechat from '../assets/wechat.svg';
 import { submitVote } from '../middleware.js';
 
 
@@ -152,16 +155,16 @@ class CandidateSingle extends React.Component {
           <p className="description">{this.state.description}</p>
           { this.state.twitter || this.state.telegram || this.state.wechat ?
             <>
-              <strong>Social Media</strong>
+              <h3>Social Media</h3>
             </>
             :
             <>
             </>
           }
-          <ul>
+          <div className="social-icons">
             { this.state.telegram ? 
               <>
-                <li><a href={'https://t.me/' + this.state.telegram} target="_blank" rel="noopener noreferrer">Telegram</a></li>
+                <a href={'https://t.me/' + this.state.telegram} target="_blank" rel="noopener noreferrer"><img src={telegram} alt="Candidate's Telegram profile" /></a>
               </>
               :
               <>
@@ -169,7 +172,7 @@ class CandidateSingle extends React.Component {
             }
             { this.state.twitter ? 
               <>
-                <li><a href={'https://twitter.com/' + this.state.twitter} target="_blank" rel="noopener noreferrer" >Twitter</a></li>
+                <a href={'https://twitter.com/' + this.state.twitter} target="_blank" rel="noopener noreferrer" ><img src={twitter} alt="Candidate's Twitter profile" /></a>
               </>
             :
             <>
@@ -177,13 +180,13 @@ class CandidateSingle extends React.Component {
             }
             { this.state.wechat ? 
               <>
-                <li><a href={'weixin://dl/profile/' + this.state.wechat} target="_blank" rel="noopener noreferrer" >WeChat</a></li>
+                <a href={'weixin://dl/profile/' + this.state.wechat} target="_blank" rel="noopener noreferrer" ><img src={wechat} alt="Candidate's WeChat profile" /></a>
               </>
             :
             <>
             </>
             }
-          </ul>
+            </div>
           { this.props.electionState === 4 && this.props.activeUser ?
             <>
               <button onClick={this.VoteCandidate} className="btn" >Vote For {this.state.name}</button>

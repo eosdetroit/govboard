@@ -289,7 +289,7 @@ header#nav nav button#menu-icon {
 }
 
 .vote .election-info, .vote .pagination-wrapper, .vote .candidate-grid, .vote .leaderboard, .vote .election-info p {
-  margin-bottom: 1em;
+  margin: 0.5em;
 }
 
 .candidate-grid {
@@ -377,10 +377,20 @@ header#nav nav button#menu-icon {
   width: 100%;
 }
 
-.candidate-single .candidate-body ul {
+.candidate-single .candidate-body .social-icons {
   margin: 5px 0 20px;
-  list-style: none;
+  display: block;
 }
+
+.candidate-single .candidate-information .social-icons a {
+  display: inline-block;
+  margin: 0 7px;
+}
+
+.candidate-single .candidate-information .social-icons a img {
+  max-width: 64px;
+}
+
 .candidate-body > img {
   max-height: 14em;
   max-width: 100%;

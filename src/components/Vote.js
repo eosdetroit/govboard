@@ -248,11 +248,12 @@ class Vote extends React.Component {
   }
 
   render() {
+    console.log(this.state.candidates);
     if (this.props.electionState === 0 || this.props.electionState === 1){
       return (
         <div className="vote main-content">
           <div className="election-info">
-          <h2>Election Information</h2>
+          <h1>Election Information</h1>
           <p>There is currently no election running. Please check the <Link to="/">home page</Link> for upcoming elections.</p>
           </div>
         </div>
@@ -261,7 +262,7 @@ class Vote extends React.Component {
       return (
         <div className="vote main-content">
           <div className="election-info">
-          <h2>Election Information</h2>
+          <h1>Election Information</h1>
           <p>The voting period for the current election has concluded. Please check back soon for announcement of the winner.</p>
           </div>
         </div>
@@ -278,7 +279,7 @@ class Vote extends React.Component {
           <p>{this.state.description}</p>
 
           {this.renderElectionStatus()}
-          
+
           <table>
             <tbody>
               <tr>
@@ -294,12 +295,18 @@ class Vote extends React.Component {
         </div>
 
         <h1>Candidates</h1>
-        <div className="candidate-grid">
+        {this.state.candidates !== [] ?
+          <div className="candidate-grid">
 
-          {this.state.candidates.slice(this.state.prevPage, this.state.nextPage).map((candidate, key) =>
-              <CandidateGrid data={candidate} key={candidate.owner} />)}
+            {this.state.candidates.slice(this.state.prevPage, this.state.nextPage).map((candidate, key) =>
+                <CandidateGrid data={candidate} key={candidate.owner} />)}
 
-        </div>
+          </div>
+          :
+          <>
+            <p>There are currently no candidates participating in this election.</p>
+          </>
+        }
         
         {this.renderPagination()}
 

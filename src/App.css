@@ -3,10 +3,39 @@
   margin: 0;
 }
 
+html {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  display:none;
+}
+
 body {
   padding: 0;
   margin: 0;
   color: #333;
+  font-family: 'Muli', sans-serif;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+}
+
+.main-wrapper {
+  min-height: 100%; 
+  margin-bottom: -205px;
+}
+
+.main-wrapper:after {
+  content: "";
+  display: block;
+  height: 205px;
 }
 
 header, footer, div {
@@ -14,19 +43,34 @@ header, footer, div {
 }
 
 header#nav .nav-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-rows: [row]auto[end];
+  grid-template-columns: [logo]50%[nav]50%[accName];
 }
 
 header#nav {
-  background: rgba(25, 40, 56, 1);
+  background: #183648;
   color: #fff;
 }
 
 header#nav .logo {
-  padding: 15px 0;
+  padding: 20px;
+  grid-row-start: row;
+  grid-row-end: span end;
+  grid-column-start: logo;
+  grid-column-end: span nav;
+}
+header#nav .header-link {
+  width: 100%;
   display: inline-block;
-  width: 60%;
+  margin-top: 13px;
+}
+
+header#nav .logo-text {
+  width: 100%;
+  white-space: nowrap;
+  vertical-align: middle;
+  font-size: 1.3em;
 }
 
 header#nav .logo img {
@@ -44,56 +88,208 @@ header#nav .logo a:hover {
   text-decoration: none;
 }
 
-header#nav nav {
-  display: inline-block;
-  width: 40%;
+header#nav .menu-wrapper {
+  grid-row-start: row;
+  grid-row-end: span end;
+  grid-column-start: nav;
+  grid-column-end: span accName;
   text-align: right;
 }
 
-header#nav nav button {
-  padding: 8px 36px 8px 8px;
-  background: url('./assets/wax-allaccess-badge-light.png');
+header#nav nav {
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+}
+
+header#nav nav ul {
+  height: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+header#nav nav ul li {
+  height: 100%;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+header#nav .login-wrapper button {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center right;
+  background-color: transparent;
   color: #fff;
   border: 0;
+  font-size: 1.3em;
+  height: 100%;
+  width: 100%;
 }
 
-header#nav nav button:hover {
-  cursor: pointer;
-  border: 0;
-  color: #ebebeb;
+body header#nav .login-wrapper button:hover {
+    background: #000;
+    cursor: pointer;
 }
 
-header#nav nav button:focus {
+
+header#nav .login button:focus {
   cursor: pointer;
   border: 0;
   outline: none;
 }
 
-header#nav nav a {
+header#nav nav ul li a {
   color: #fff;
   text-decoration: none;
-  font-size: 16px;
-  padding: 15px 10px;
+  font-size: 1.3em;
+  padding: 0 8px;
   display: inline-block;
-  line-height: 45px;
+  line-height: 7rem;
+  height: 100%;
 }
 
 header#nav nav a:hover {
   color: #fff;
+  background: #85b1bb;
+}
+
+header#nav .login-wrapper {
+  text-align: center;
+  display: inline-block;
+  padding-right: 10px;
+}
+
+header#nav .login-wrapper.mobile {
+  display: none;
+}
+
+header#nav .login-li button {
+  font-size: 1.3em;
+  background: 0;
+  color: #fff;
+  padding: 0 10px;
+  display: inline-block;
+  line-height: 7rem;
+  border: 0;
+  cursor: pointer;
+}
+
+header#nav .login-li button:focus {
+  border: 0;
+}
+
+header#nav .login-li button:hover {
   background: #000;
 }
 
-header#nav nav .acctName {
-  padding-left: 20px;
+.mobile {
+  display: none;
+}
+
+.badge {
+  text-align: center;
+}
+
+.oigLogo {
+  width: 35%;
+}
+
+.bodyText {
+  text-align: left;
+}
+
+.login-wrapper .accHeader {
+  vertical-align: middle;
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 32px;
+}
+
+.login-wrapper .accName  {
+  vertical-align: middle;
+  display: block;
+}
+
+.login-wrapper .logoutBtn {
+  text-decoration: underline;
+  font-size: 10px;
+  vertical-align: middle;
+  display: block;
+}
+
+.login-wrapper .logoutBtn:hover {
+  cursor: pointer;
+}
+
+header#nav nav button#menu-icon {
+  display: none;
+}
+
+#login {
+  background: rgba(25, 40, 56, 1);
+}
+
+.required {
+  color: #ff0000;
+}
+
+.srv-validation-message {
+  color: #ff0000;
+  font-style: italic;
 }
 
 .main-content {
-  padding: 20px 0;
   max-width: 980px;
-  margin: 0 auto;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.main-content p, .election-status {
+  font-size: 1.3em;
+  margin-bottom: 1em;
+}
+
+.main-content a {
+  color: #F78E1E;
+}
+
+.main-content a:hover {
+  color: #FA7B21;
+}
+
+.about > p, .about > h1 {
+  text-align: left;
+}
+
+.vote table {
+  width: 100%;
+}
+
+.vote .leaderboard table {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.vote .leaderboard table tr td {
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+
+.election-info {
+  margin: 1em 0;
+}
+
+.election-info > table {
+  text-align: left;
+}
+
+.vote .election-info, .vote .pagination-wrapper, .vote .candidate-grid, .vote .leaderboard, .vote .election-info p {
+  margin: 0.5em;
 }
 
 .candidate-grid {
@@ -106,17 +302,274 @@ header#nav nav .acctName {
   margin: 5px;
   border-radius: 25px;
   padding: 15px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.candidate-grid .candidate-single-grid:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.candidate-grid .candidate-single-grid .candidate-account {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.candidate-grid .candidate-single-grid img {
+  width: 80%;
+  display: inline-block;
+  max-height: 215px;
+  min-height: 215px;
+  height: 100%;
+}
+
+.candidate-grid .candidate-single-grid .btn {
+  position: relative;
+  z-index: 10;
+  margin: 8px auto 0;
+  display: block;
+}
+
+.candidate-right-pane > .btn {
+  margin-left: 2.5em;
+}
+
+.candidate-single {
+  text-align: center;
+}
+
+.pagination-wrapper {
+  text-align: center;
+  padding-top: 15px;
+}
+
+.pagination-wrapper .btn {
+  margin: 0 5px;
+  display: inline-block;
+}
+
+.candidate-single .candidate-header {
+  padding-bottom: 1em;
+}
+
+.vote-count {
+  text-transform: lowercase;
+}
+
+.candidate-single .candidate-body .description {
+  margin: 1em;
+  word-break: break-word;
+}
+
+#castvote {
+  margin: 1em;
+}
+
+.candidate-single .candidate-body .candidate-picture {
+  max-width: 25%;
+  max-height: 25%;
+  margin: 0 auto;
+}
+
+.candidate-single .candidate-body .candidate-picture img {
+  width: 100%;
+}
+
+.candidate-single .candidate-body .social-icons {
+  margin: 5px 0 20px;
+  display: block;
+}
+
+.candidate-single .candidate-information .social-icons a {
+  display: inline-block;
+  margin: 0 7px;
+}
+
+.candidate-single .candidate-information .social-icons a img {
+  max-width: 64px;
+}
+
+.candidate-body > img {
+  max-height: 14em;
+  max-width: 100%;
+}
+
+.nomination {
+  display: grid;
+  grid-template-rows: [header]auto[body]auto[end];
+  grid-template-columns: [left]45%[right]55%[end];
+}
+
+.nomination input[type="text"] {
+  height: 24px;
+  padding: 3px 0;
+  width: 100%;
+}
+
+.nomination textarea {
+  width: 100%;
+  height: 250px;
+}
+
+.nomination .nomination-header {
+  grid-column-start: left;
+  grid-column-end: span end;
+  grid-row-start: header;
+  grid-row-end: span body;
+  padding: 0 0 1em 0;
+  text-align: center;
+}
+
+.nomination .nomination-header p {
+  text-align: center;
+}
+
+.nomination-left-pane {
+  grid-column-start: left;
+  grid-column-end: span right;
+  grid-row-start: body;
+  grid-row-end: span end;
+  padding-right: 20px;
+}
+
+.nomination p {
+  margin: 0.5em;
+  text-align: left;
+}
+
+.nomination h2 {
+  text-align: left;
+}
+
+.nomination-right-pane {
+  grid-column-start: right;
+  grid-column-end: span end;
+  grid-row-start: body;
+  grid-row-end: span end;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.nomination-right-pane .nomination-info-form .form-row:last-of-type {
+  text-align: center;
+}
+
+.form-row {
+  padding: 5px 0;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 3px;
+  font-weight: 700;
+  text-align: left;
+  margin-top: 1em;
+}
+
+.error {
+  color: #FF0000;
+  text-align: left;
+}
+
+.success {
+  color: green;
+  text-align: left;
+}
+
+.btn {
+  background: #F78E1E;
+  color: #fff;
+  padding: 7px 15px;
+  border-radius: 25px;
+  border: 2px solid #F78E1E;
+  font-size: 16px;
+  transition: background 0.4s, color 0.4s, border 0.4s;
+  cursor: pointer;
+  font-size: 1.4em;
+}
+
+.submit {
+  margin-top: 1em;
+}
+
+.btn.inline-btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  display: inline-block;
+  width: 30%;
+  box-sizing: border-box;
+}
+
+.nomination input.inline-input {
+  display: inline-block;
+  width: 70%;
+  box-sizing: border-box;
+  height: auto;
+  padding: 0.94em 0px;
+  vertical-align: top;
+}
+
+.btn.accept {
+  background: #55AE3A;
+  border: 2px solid #55AE3A;
+  margin: 3px;
+}
+
+.btn.accept:hover {
+  background: #308014;
+  border: 2px solid #308014;
+  margin: 3px;
+}
+
+.btn.decline {
+  background: #cc0000;
+  border: 2px solid #cc0000;
+  margin: 3px;
+}
+
+.btn.decline:hover {
+  background: #b20000;
+  border: 2px solid #b20000;
+  margin: 3px;
+}
+
+.btn:hover {
+  background: #FA7B21;
+  border: 2px solid #FA7B21;
 }
 
 footer {
-  background: #ebebeb;
+  background: #cbdadf;
   padding: 20px 0;
   border-top: 1px solid #333;
+  margin-top: 1em;
 }
 
 footer .footer-inner {
-  max-width: 980px;
-  margin: 0 auto;
+  text-align: center;
+}
+
+footer .footer-col-1 {
+  grid-row-start: row;
+  grid-row-end: span end;
+  grid-column-start: first;
+  grid-column-end: span second;
+}
+
+footer .footer-col-2 {
+  grid-row-start: row;
+  grid-row-end: span end;
+  grid-column-start: second;
+  grid-column-end: span third;
+}
+
+footer .footer-image {
+  display:inline-block;
+  height: 6em;
+  padding: 2em;
 }
 
 footer ul {
@@ -136,4 +589,335 @@ footer ul a {
 
 footer ul a:hover {
   color: #000;
+}
+
+@media (max-width: 1100px) { 
+  header#nav .nav-wrapper {
+    display: grid;
+    grid-template-rows: [row]auto[end];
+    grid-template-columns: [logo]50%[nav]50%[accName];
+  }
+
+  header#nav .logo a.header-link .logo-text {
+    font-size: 1em;
+  }
+
+  .logo-text .desktop {
+    display: none;
+  }
+
+  .logo-text .mobile {
+    display: inline;
+  }
+
+  body header#nav nav ul li a {
+    font-size: 1em;
+  }
+
+  body header#nav .login-li button {
+    font-size: 1em;
+  }
+
+}
+
+@media (max-width: 769px) { 
+  header#nav {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  header#nav .nav-wrapper {
+    max-width: 1100px;
+    margin-left: auto;
+    display: grid;
+    grid-template-rows: [row]auto[end];
+    grid-template-columns:[logo]200px[nav]auto[accName];
+  }
+
+  body header#nav .header-link {
+    margin-top: 0;
+  }
+
+  header#nav .logo {
+    padding-left: 5px;
+  }
+
+  body header#nav .logo-text {
+    font-size: 0.75em;
+  }
+
+  header#nav .login-wrapper {
+    padding-left: 0;
+    padding-right: 5px;
+    text-align: right;
+    display: none;
+  }
+
+  header#nav .login-wrapper.mobile {
+    display: inline-block;
+    margin-top: 30px;
+  }
+
+  header#nav .login-wrapper.mobile .accHeader {
+    margin-top: 0;
+  }
+
+  body header#nav .login-wrapper button {
+    display: none;
+  }
+
+  body header#nav .login-li {
+    padding: 0;
+    display: block;
+  }
+  
+  body header#nav .login-li .login-btn {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+    line-height: 25px;
+    font-size: 1em;
+    font-family: inherit;
+    padding: 15px;
+    transition: background 0.4s, color 0.4s, border 0.4s;
+    color: #000;
+  }
+
+  body header#nav .login-btn:hover {
+    cursor: pointer;
+    transition: background 0.4s, color 0.4s, border 0.4s;
+  }
+
+  header#nav nav button#menu-icon {
+    display:inline-block;
+    width: 75px;
+    height: 75px;
+    margin: 15px 0;
+    border: 0;
+    background: url("assets/menu-icon.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  header#nav nav button#menu-icon:hover {
+    cursor: pointer;
+  }
+
+  body header#nav nav ul { 
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility .25s ease-in-out, opacity .25s ease-in-out;
+    -moz-transition: visibility .25s ease-in-out, opacity .25s ease-in-out;
+    -webkit-transition: visibility .25s ease-in-out, opacity .25s ease-in-out;
+    position: absolute;
+    padding: 0;
+    background: #fff;
+    right: 5px;
+    top: 106px;
+    height: auto;
+    border-radius: 4px 0 4px 4px;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    text-align: center;
+    overflow: hidden;
+    z-index: 9999;
+  }
+
+  header#nav nav ul li {
+    text-align: center;
+    padding: 15px;
+    margin: 0;
+    display: block;
+  }
+
+  header#nav nav ul li:hover {
+    background: #F78E1E;
+    color: #fff;
+    transition: background 0.4s, color 0.4s, border 0.4s;
+  }
+
+  header#nav nav ul li a {
+    color: #000;
+    transition: background 0.4s, color 0.4s, border 0.4s;
+    line-height: 25px;
+  }
+
+  header#nav nav ul li a:hover {
+    background: transparent;
+    color: #fff;
+    transition: background 0.4s, color 0.4s, border 0.4s;
+  }
+
+  header#nav nav:hover ul {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out; 
+  }
+
+  body .main-content {
+    padding: 125px 20px 20px 20px;
+    margin: 0;
+  }
+
+  body .nomination {
+    grid-template-rows: [header]auto[nomination]auto[update]auto[end];
+    grid-template-columns: [start]auto[end];
+  }
+
+  .nomination .nomination-header {
+    grid-column-start: start;
+    grid-column-end: span end;
+    grid-row-start: header;
+    grid-row-end: span nomination;
+  }
+
+  .nomination .nomination-left-pane {
+    grid-column-start: start;
+    grid-column-end: span end;
+    grid-row-start: nomination;
+    grid-row-end: span update;
+    padding-right: 0;
+  }
+
+  .nomination-form {
+    margin-top: 1em;
+  }
+  .nomination .nomination-left-pane .nomination-form {
+    padding-bottom: 15px;
+  }
+
+  .nomination .nomination-right-pane {
+    grid-column-start: start;
+    grid-column-end: span end;
+    grid-row-start: update;
+    grid-row-end: span end;
+    padding-left: 0;
+  }
+
+  body .candidate-single {
+    grid-template-rows: [header]auto[body]auto[end];
+    grid-template-columns: [start]100%[end];
+  }
+
+  body .candidate-single .candidate-header {
+    grid-row-start: header;
+    grid-row-end: span body;
+    grid-column-start: start;
+    grid-column-end: span end;
+  }
+
+  body .candidate-single .candidate-right-pane {
+    text-align: center;
+    grid-row-start: body;
+    grid-row-end: span end;
+    grid-column-start: start;
+    grid-column-end: span end;
+    padding-left: 0;
+  }
+
+  body .candidate-single .candidate-right-pane ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  body .candidate-right-pane > .btn {
+    margin: 0;
+  }
+
+  body .candidate-single .candidate-right-pane .description {
+    text-align: left;
+    max-width: auto;
+    margin: 0;
+    margin-left: 0;
+    word-break: break-word;
+    padding-top: 1em;
+  }
+
+  body footer .footer-inner {
+    text-align: center;
+  }
+
+  table, thead, tbody, th, td, tr { 
+    display: block; 
+  }
+
+  thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  td {
+    position: relative;
+  }
+
+  .leaderboard table tr:not(:last-child){
+    border-bottom: 1px solid #ccc;
+  }
+
+  .leaderboard table tr td {
+  position: relative;
+  padding: 5px 0;
+  }
+  
+  .leaderboard table tr td:not(:last-child) { 
+    /* Behave  like a "row" */
+    border: none;
+    padding-left: 50%; 
+  }
+
+  .leaderboard table tr td:last-child {
+    text-align: center;
+  }
+
+  .leaderboard table tr td .btn {
+    padding: 7px 50px;
+  }
+
+  td:before { 
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 5px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+  }
+  
+  /*
+  Label the data
+  */
+  .leaderboard table td:nth-of-type(1):before { content: "Position"; }
+  .leaderboard table td:nth-of-type(2):before { content: "Name"; }
+  .leaderboard table td:nth-of-type(3):before { content: "Account"; }
+  .leaderboard table td:nth-of-type(4):before { content: "Votes"; }
+}
+
+@media (max-width: 414px) {
+    header#nav {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  header#nav .nav-wrapper {
+    max-width: 1100px;
+    margin-left: auto;
+    display: grid;
+    grid-template-rows: [row]auto[end];
+    grid-template-columns:[logo]150px[nav]auto[accName];
+  }
+
+  .nomination-form .btn.inline-btn {
+    font-size: 1em;
+    padding: 11px;
+  }
 }

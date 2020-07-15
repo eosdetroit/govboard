@@ -1,0 +1,31 @@
+---
+stages:
+  - test
+  - prod
+
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+build-test-deploy-testnet:
+  script:
+    - yarn install
+    - yarn build
+    - rsync -avz build/ root@oig.wax.eosdetroit.io:/var/www/govboard
+  stage: test
+  artifacts:
+    paths:
+      - build/
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "testnet"'
+
+build-test-deploy-mainnet:
+  script:
+    - yarn install
+    - yard build
+  stage: test
+  artifacts:
+    paths:
+      - build/
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'

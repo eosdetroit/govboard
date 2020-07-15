@@ -9066,7 +9066,7 @@ react-dom@16.6.3:
     prop-types "^15.6.2"
     scheduler "^0.11.2"
 
-react-dom@^16.13.1:
+react-dom@^16.13.1, react-dom@^16.8.6:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"
   integrity sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag==
@@ -9080,6 +9080,14 @@ react-error-overlay@^6.0.7:
   version "6.0.7"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.7.tgz#1dcfb459ab671d53f660a991513cb2f0a0553108"
   integrity sha512-TAv1KJFh3RhqxNvhzxj6LeT5NWklP6rDr2a0jaTfsZ5wSZWHOGeqQyejUp3xxLfPt2UpyJEcVQB/zyPcmonNFA==
+
+react-full-page-loader-overlay@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/react-full-page-loader-overlay/-/react-full-page-loader-overlay-0.0.12.tgz#5352cb26fb24721e9ee73bf0ef5d3d694169bb6d"
+  integrity sha512-Oeobz+SOVIkxx8V8fQTXxdBv37413+NZD/femMpGtLFTSBFx3dcrj5bvOs7mYJMBtNXvHiBmo+7WwiTQLmQKUw==
+  dependencies:
+    react "^16.8.6"
+    react-dom "^16.8.6"
 
 react-icons@3.4.0:
   version "3.4.0"
@@ -9198,7 +9206,7 @@ react@16.8.1:
     prop-types "^15.6.2"
     scheduler "^0.13.1"
 
-react@^16.13.1:
+react@^16.13.1, react@^16.8.6:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
   integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
@@ -9911,6 +9919,11 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
+
+simple-react-validator@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/simple-react-validator/-/simple-react-validator-1.5.0.tgz#f6024e5be60ba297887a55c8e5e9b85f7ed5c803"
+  integrity sha512-q7OwGKcH0c5Na23UymGFvX8sLqouB8maSVOwBcnV07hykeBue/E8045ezJpu+XE9TJwVVEzx5BFuKQrJEFtYHA==
 
 simple-swizzle@^0.2.2:
   version "0.2.2"

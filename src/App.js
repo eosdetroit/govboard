@@ -2,7 +2,8 @@ import React from 'react';
 import {
   Route,
   Link,
-  Switch
+  Switch,
+  Redirect
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
 
@@ -27,7 +28,8 @@ class App extends React.Component {
       this.state = {
         activeUser: null,
         accountName: '',
-        appInitialized: false
+        appInitialized: false,
+        error: ''
       };
       this.updateAccountName = this.updateAccountName.bind(this);
       this.checkElectionStatus = this.checkElectionStatus.bind(this);
@@ -42,7 +44,14 @@ class App extends React.Component {
         this.setState({
             activeUser: null,
             accountName: ''
-        })
+        });
+      }
+
+      if (this.props.ual.activeAuthenticator && activeUser && this.state.appInitialized === false) {
+        this.setState({ appInitialized: true });
+      } else if (this.props.ual.error && this.state.appInitialized === false) {
+        this.setState({ appInitialized: true, error: this.props.ual.message });
+        //TODO: render error message
       }
       console.log(this.state);
     }
@@ -51,22 +60,21 @@ class App extends React.Component {
       try {
         const accountName = await this.state.activeUser.getAccountName();
         this.setState({ accountName });
-        this.setState({ appInitialized: true })
       } catch (e) {
       console.warn(e);
       }
     }
 
     renderLogoutBtn = () => {
-    const { ual: { activeUser, activeAuthenticator, logout } } = this.props
-    if (!!activeUser && !!activeAuthenticator) {
-      return (
-          <span className='logoutBtn' onClick={logout}>
-            {'Logout'}
-          </span>
-      )
+      const { ual: { activeUser, activeAuthenticator, logout } } = this.props
+      if (activeUser && activeAuthenticator) {
+        return (
+            <span className='logoutBtn' onClick={logout}>
+              {'Logout'}
+            </span>
+        )
+      }
     }
-  }
 
   async checkElectionStatus() {
     let resp = await wax.rpc.get_table_rows({             
@@ -76,7 +84,6 @@ class App extends React.Component {
       table: 'election',
       json: true
     });
-    console.log(resp.rows);
     this.setState({
       electionState: resp.rows[0].state,
       electionBallot: resp.rows[0].ballot,
@@ -85,12 +92,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentMounted!');
-    return this.checkElectionStatus();
+    this.checkElectionStatus();
   }
 
   render() {
-    if (!this.state.appInitialized) return null;
     return (
       <div className="App">
         <div className="main-wrapper">
@@ -145,11 +150,21 @@ class App extends React.Component {
         <Route exact path="/about">
           <About activeUser={this.state.activeUser} />
         </Route>
-        <Route path="/candidates">
-          <Vote activeUser={this.state.activeUser} electionState={this.state.electionState} ballot={this.state.electionBallot} />
-        </Route>
-        <Route exact path="/nominate">
-          <Nomination activeUser={this.state.activeUser} electionState={this.state.electionState} accountName={this.state.accountName} />        </Route>
+        <Route path="/candidates" render={() => {
+            return (
+                this.state.activeUser ?
+                <Vote activeUser={this.state.activeUser} electionState={this.state.electionState} ballot={this.state.electionBallot} />
+                : <Redirect to="/" /> 
+            )
+          }}/>          
+        <Route exact path="/nominate" render={() => {
+            return (
+                this.state.activeUser ?
+                <Nomination activeUser={this.state.activeUser} electionState={this.state.electionState} accountName={this.state.accountName} />
+                : <Redirect to="/" /> 
+            )
+          }}/>
+                  
         <Route path="*">
           <ErrorPage />
         </Route>

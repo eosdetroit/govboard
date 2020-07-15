@@ -3,7 +3,6 @@ import {
   Route,
   Link,
   Switch,
-  Redirect
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
 

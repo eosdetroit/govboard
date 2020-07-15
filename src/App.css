@@ -393,6 +393,11 @@ header#nav nav button#menu-icon {
   margin-left: -10em;
 }
 
+#castvote {
+  margin: 1em;
+  margin-left:3em;
+}
+
 .candidate-single .candidate-right-pane ul {
   padding-left: 30px;
   margin: 5px 0 20px;

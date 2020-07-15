@@ -754,6 +754,7 @@ footer ul a:hover {
 
   body .main-content {
     padding: 125px 20px 20px 20px;
+    margin: 0;
   }
 
   body .nomination {
@@ -789,6 +790,41 @@ footer ul a:hover {
     grid-row-start: update;
     grid-row-end: span end;
     padding-left: 0;
+  }
+
+  body .candidate-single {
+    grid-template-rows: [header]auto[body]auto[end];
+    grid-template-columns: [start]100%[end];
+  }
+
+  body .candidate-single .candidate-header {
+    grid-row-start: header;
+    grid-row-end: span body;
+    grid-column-start: start;
+    grid-column-end: span end;
+  }
+
+  body .candidate-single .candidate-right-pane {
+    text-align: center;
+    grid-row-start: body;
+    grid-row-end: span end;
+    grid-column-start: start;
+    grid-column-end: span end;
+    padding-left: 0;
+  }
+
+  body .candidate-single .candidate-right-pane ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  body .candidate-single .candidate-right-pane .description {
+    text-align: left;
+    max-width: auto;
+    margin: 0;
+    margin-left: 0;
+    word-break: break-word;
+    padding-top: 1em;
   }
 
   body footer .footer-inner {

@@ -432,6 +432,8 @@ header#nav nav button#menu-icon {
   display: block;
   margin-bottom: 3px;
   font-weight: 700;
+  text-align: left;
+  margin-top: 1em;
 }
 
 .error {
@@ -452,6 +454,10 @@ header#nav nav button#menu-icon {
   transition: background 0.4s, color 0.4s, border 0.4s;
   cursor: pointer;
   font-size: 1.4em;
+}
+
+.submit {
+  margin-top: 1em;
 }
 
 .btn.inline-btn {

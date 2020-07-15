@@ -345,7 +345,7 @@ class Nomination extends React.Component {
   					<input type="text" name="wechat" value={this.state.wechat} maxLength="256" placeholder="WeChat userid" onChange={this.handleInputChange} />
 				    {this.validator.message('wechat', this.state.wechat, 'url|max:256')}
         </div>
-				<button onClick={this.updateNominee} className="btn">Submit</button>
+				<button onClick={this.updateNominee} className="submit btn">Submit</button>
         <div className="error" id="updatenom"></div>
   			</div>
 		);

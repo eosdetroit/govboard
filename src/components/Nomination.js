@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Link,
-  Redirect
 } from "react-router-dom";
 
 import '../App.css';
@@ -357,13 +356,6 @@ class Nomination extends React.Component {
   }
 
   render() {
-    if (this.props.activeUser === null) {
-      return (
-        <>
-          <Redirect to="/" />
-        </>
-      )
-    }
 
     if (this.props.electionState === 0 || this.props.electionState === 1 || this.props.electionState === 5) {
       

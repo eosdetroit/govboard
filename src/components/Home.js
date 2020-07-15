@@ -31,9 +31,9 @@ class Home extends React.Component {
           <h1>Current Election Timeline</h1>
           <br></br>
           <p>
-            <b>July 14 2020:</b> Begin candidate nominations.
+            <b>July 15 2020:</b> Begin candidate nominations.
             <br></br>
-            <b>July 21 2020:</b> End nominations and begin election period.
+            <b>July 23 2020:</b> End nominations and begin election period.
             <br></br>
             <b>July 31 2020:</b> Election period ends.
             <br></br>

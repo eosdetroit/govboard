@@ -332,6 +332,10 @@ header#nav nav button#menu-icon {
   display: block;
 }
 
+.candidate-right-pane > .btn {
+  margin-left: 2.5em;
+}
+
 .candidate-single {
   display: grid;
   grid-template-rows: [header]auto[body]auto[end];
@@ -354,7 +358,7 @@ header#nav nav button#menu-icon {
   grid-row-end: span body;
   grid-column-start: left;
   grid-column-end: span end;
-  padding-bottom: 20px;
+  padding-bottom: 1em;
 }
 
 .candidate-single .candidate-left-pane {
@@ -379,17 +383,22 @@ header#nav nav button#menu-icon {
   grid-row-end: span end;
   grid-column-start: right;
   grid-column-end: span end;
-  padding-left: 7em;
+  padding-left: 3em;
   text-align: left;
 }
 
 .candidate-single .candidate-right-pane .description {
-  margin-bottom: 20px;
+  margin: 1em;
+  max-width: 35em;
+  margin-left: -10em;
 }
 
 .candidate-single .candidate-right-pane ul {
   padding-left: 30px;
   margin: 5px 0 20px;
+}
+.candidate-right-pane > img {
+  max-height: 14em;
 }
 
 .nomination {

@@ -833,9 +833,54 @@ footer ul a:hover {
   body footer .footer-inner {
     text-align: center;
   }
+
+  table, thead, tbody, th, td, tr { 
+    display: block; 
+  }
+
+  thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  td {
+    border: none;
+    position: relative;
+  }
+
+  tr:not(:last-child){
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .leaderboard table td { 
+    /* Behave  like a "row" */
+    border: none;
+    position: relative;
+    padding-left: 50%; 
+  }
+
+  td:before { 
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+  }
+  
+  /*
+  Label the data
+  */
+  .leaderboard table td:nth-of-type(1):before { content: "Position"; }
+  .leaderboard table td:nth-of-type(2):before { content: "Name"; }
+  .leaderboard table td:nth-of-type(3):before { content: "Account"; }
+  .leaderboard table td:nth-of-type(4):before { content: "Votes"; }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 414px) {
     header#nav {
     position: fixed;
     width: 100%;

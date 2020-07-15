@@ -46,6 +46,7 @@ class Vote extends React.Component {
     this.renderElectionStatus = this.renderElectionStatus.bind(this);
     this.CandidatePaginationNext = this.CandidatePaginationNext.bind(this);
     this.CandidatePaginationPrev = this.CandidatePaginationPrev.bind(this);
+    this.renderWinner = this.renderWinner.bind(this);
   }
 
   async GetElectionInfo(){
@@ -243,13 +244,23 @@ class Vote extends React.Component {
     }
   }
 
+  renderWinner(){
+    if(this.state.electionState === 5){
+      return (
+        <div>
+        {this.state.leaderCandidates.slice(0, 1).map((leaderCandidate, key, index, value) =>
+          <Winner data={leaderCandidate} index={index} ballot={this.state.ballot}  key={leaderCandidate.key} /> )}
+        </div>
+      );
+    }
+  }
+
   componentDidMount(){
     return this.GetCandidates();
   }
 
   render() {
-    console.log(this.state.candidates);
-    if (this.props.electionState === 0 || this.props.electionState === 1){
+    if (this.props.electionState === 0 ){
       return (
         <div className="vote main-content">
           <div className="election-info">
@@ -257,16 +268,39 @@ class Vote extends React.Component {
           <p>There is currently no election running. Please check the <Link to="/">home page</Link> for upcoming elections.</p>
           </div>
         </div>
-      )
-    } else if (this.props.electionState === 5) {  
+      );
+    } else if (this.props.electionState === 1) {  
       return (
         <div className="vote main-content">
+        
+          <h1>Election Info</h1>
           <div className="election-info">
-          <h1>Election Information</h1>
-          <p>The voting period for the current election has concluded. Please check back soon for announcement of the winner.</p>
+          
+          <h2>Ballot ID: {this.state.ballot}</h2>
+          <p>{this.state.description}</p>
+
+          {this.renderElectionStatus()}
           </div>
+
+        <p>Please check back during the scheduled time to nominate a candidate.</p>
         </div>
         );
+    } else if (this.props.electionState === 5) {
+      return (
+        <div className="vote main-content">
+        
+          <h1>Election Info</h1>
+          <div className="election-info">
+          
+          <h2>Ballot ID: {this.state.ballot}</h2>
+          <p>{this.state.description}</p>
+
+          {this.renderElectionStatus()}
+          </div>
+
+          {this.renderWinner()}
+        </div>
+      );
     } else {
     return (
       <div className="vote main-content">
@@ -372,6 +406,48 @@ class LeaderboardRow extends Vote {
                 <td><span className="vote-count">{this.props.data.value}S</span></td>
                 <td><button className="btn" onClick={this.VoteCandidate}>Vote</button></td>
       </tr>
+    )
+  }
+}
+
+class Winner extends Vote {
+  constructor(props){
+    super(props);
+    this.GetCandidateInfo = this.GetCandidateInfo.bind(this);
+  }
+  async GetCandidateInfo(){
+    let resp = await wax.rpc.get_table_rows({             
+      code: 'oig',
+      scope: 'oig',
+      table: 'nominees',
+      limit: 1,
+      lower_bound: this.props.data.key,
+      upper_bound: this.props.data.key,
+      json: true
+    });
+    console.log(resp);
+    if (Array.isArray(resp.rows) && resp.rows.length !== 0){
+      this.setState({
+        name: resp.rows[0].name,
+        picture: resp.rows[0].picture
+      });
+    }
+  }
+
+  componentDidMount(){
+    return this.GetCandidateInfo();
+  }
+
+  render(){
+    return (
+      <div className="winner" key={this.props.data.key}>
+        <img src={this.state.picture} alt={this.state.name} />
+        <p>
+          <h3>{this.state.name}</h3>
+        </p>
+        <p>{this.props.data.key}</p>
+        <p>{this.props.data.value}</p>
+      </div>
     )
   }
 }

@@ -338,9 +338,6 @@ header#nav nav button#menu-icon {
 }
 
 .candidate-single {
-  display: grid;
-  grid-template-rows: [header]auto[body]auto[end];
-  grid-template-columns:[left]30%[right]70%[end];
   text-align: center;
 }
 
@@ -355,55 +352,36 @@ header#nav nav button#menu-icon {
 }
 
 .candidate-single .candidate-header {
-  grid-row-start: header;
-  grid-row-end: span body;
-  grid-column-start: left;
-  grid-column-end: span end;
   padding-bottom: 1em;
-}
-
-.candidate-single .candidate-left-pane {
-  grid-row-start: body;
-  grid-row-end: span end;
-  grid-column-start: left;
-  grid-column-end: span right;
-  padding-right: 15px;
-}
-
-.candidate-single .candidate-left-pane img {
-  width: 100%;
-  max-height: 267px;
 }
 
 .vote-count {
   text-transform: lowercase;
 }
 
-.candidate-single .candidate-right-pane {
-  grid-row-start: body;
-  grid-row-end: span end;
-  grid-column-start: right;
-  grid-column-end: span end;
-  padding-left: 3em;
-  text-align: left;
-}
-
-.candidate-single .candidate-right-pane .description {
+.candidate-single .candidate-body .description {
   margin: 1em;
-  max-width: 35em;
-  margin-left: -10em;
+  word-break: break-word;
 }
 
 #castvote {
   margin: 1em;
-  margin-left:3em;
 }
 
-.candidate-single .candidate-right-pane ul {
-  padding-left: 30px;
-  margin: 5px 0 20px;
+.candidate-single .candidate-body .candidate-picture {
+  max-width: 50%;
+  margin: 0 auto;
 }
-.candidate-right-pane > img {
+
+.candidate-single .candidate-body .candidate-picture img {
+  width: 100%;
+}
+
+.candidate-single .candidate-body ul {
+  margin: 5px 0 20px;
+  list-style: none;
+}
+.candidate-body > img {
   max-height: 14em;
   max-width: 100%;
 }

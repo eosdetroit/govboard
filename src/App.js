@@ -90,7 +90,7 @@ class App extends React.Component {
   }
 
   render() {
-    if (!this.state.appInitialized) return null;
+    /* if (!this.state.appInitialized) return null; */
     return (
       <div className="App">
         <div className="main-wrapper">
@@ -149,7 +149,7 @@ class App extends React.Component {
           <Vote activeUser={this.state.activeUser} electionState={this.state.electionState} ballot={this.state.electionBallot} />
         </Route>
         <Route exact path="/nominate">
--          <Nomination activeUser={this.state.activeUser} electionState={this.state.electionState} accountName={this.state.accountName} />        </Route>
+          <Nomination activeUser={this.state.activeUser} electionState={this.state.electionState} accountName={this.state.accountName} />        </Route>
         <Route path="*">
           <ErrorPage />
         </Route>

@@ -369,7 +369,8 @@ header#nav nav button#menu-icon {
 }
 
 .candidate-single .candidate-body .candidate-picture {
-  max-width: 50%;
+  max-width: 25%;
+  max-height: 25%;
   margin: 0 auto;
 }
 

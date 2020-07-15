@@ -30,14 +30,14 @@ const waxTestnet = {
 }
 */
 
-const scatter = new Scatter([waxMainnet], { appName: 'WAX OIG Governance Dashboard' });
-const anchor = new Anchor([waxMainnet], { appName: 'WAX OIG Governance Dashboard' });
-const waxcloud = new Wax([waxMainnet], { appName: 'WAX OIG Governance Dashboard' });
+const scatter = new Scatter([waxMainnet], { appName: 'govboard' });
+const anchor = new Anchor([waxMainnet], { appName: 'govboard' });
+const waxcloud = new Wax([waxMainnet], { appName: 'govboard' });
 
 const UALConsumer = withUAL(App);
 
 ReactDOM.render(
-	<UALProvider chains={[waxMainnet]} authenticators={[waxcloud, anchor, scatter]} appName={'WAX OIG Governance Dashboard'}>
+	<UALProvider chains={[waxMainnet]} authenticators={[waxcloud, anchor, scatter]} appName={'govboard'}>
     	<Router>
           <UALConsumer />
       </Router>

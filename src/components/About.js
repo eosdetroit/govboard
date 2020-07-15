@@ -6,7 +6,7 @@ import oigLogo from '../assets/waxOIGTransparent-small.png';
 class About extends React.Component {
   render() {
     return (
-      <div className="home main-content">
+      <div className="about main-content">
         <div className="badge"><img className="oigLogo" src={oigLogo} alt="WAX OIG Logo" /></div>
         <h1>About</h1>
         <br />

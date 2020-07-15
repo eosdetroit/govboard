@@ -357,7 +357,7 @@ class Nomination extends React.Component {
 
   render() {
 
-    if (this.props.electionState === 0 || this.props.electionState === 1 || this.props.electionState === 5) {
+    if (this.props.electionState === 0 && this.props.activeUser !== null || this.props.electionState === 1 && this.props.activeUser !== null || this.props.electionState === 5 && this.props.activeUser !== null) {
       
       return (
         <div className="nomination main-content">
@@ -367,7 +367,7 @@ class Nomination extends React.Component {
           </div>
         </div>
       );
-    } else if (this.props.electionState === 3 || this.props.electionState === 4) {
+    } else if (this.props.electionState === 3 && this.props.activeUser !== null || this.props.electionState === 4 && this.props.activeUser !== null) {
       
       return (
         <div className="nomination main-content">
@@ -378,7 +378,7 @@ class Nomination extends React.Component {
         </div>
       );
 
-    } else if (this.props.electionState === 2) {
+    } else if (this.props.electionState === 2 && this.props.activeUser !== null) {
       
       return (	
         <div className="nomination main-content">
@@ -396,7 +396,14 @@ class Nomination extends React.Component {
         </div>
       );
     } else {
-      return null;
+      return (
+      <div className="nomination main-content">
+        <div className="nomination-header">
+          <h1>Nominate</h1>
+          <p>Please login to view the nomination page.</p>
+        </div>
+      </div>
+      )
     } 
   }
 }

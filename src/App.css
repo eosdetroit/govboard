@@ -413,12 +413,17 @@ header#nav nav button#menu-icon {
   height: 250px;
 }
 
-.nomination-header {
+.nomination .nomination-header {
   grid-column-start: left;
   grid-column-end: span end;
   grid-row-start: header;
   grid-row-end: span body;
   padding: 0 0 1em 0;
+  text-align: center;
+}
+
+.nomination .nomination-header p {
+  text-align: center;
 }
 
 .nomination-left-pane {

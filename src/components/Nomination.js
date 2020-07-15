@@ -338,12 +338,12 @@ class Nomination extends React.Component {
 				<div className="form-row">
   					<label htmlFor="twitter">Twitter Profile</label>
   					<input type="text" name="twitter" value={this.state.twitter} maxLength="256" placeholder="Twitter handle" onChange={this.handleInputChange} />
-				    {this.validator.message('twitter', this.state.twitter, 'url|max:256')}
+				    {this.validator.message('twitter', this.state.twitter, 'max:256')}
         </div>
 				<div className="form-row">
   					<label htmlFor="wechat">WeChat Profile</label>
   					<input type="text" name="wechat" value={this.state.wechat} maxLength="256" placeholder="WeChat userid" onChange={this.handleInputChange} />
-				    {this.validator.message('wechat', this.state.wechat, 'url|max:256')}
+				    {this.validator.message('wechat', this.state.wechat, 'max:256')}
         </div>
 				<button onClick={this.updateNominee} className="submit btn">Submit</button>
         <div className="error" id="updatenom"></div>

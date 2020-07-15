@@ -849,7 +849,7 @@ footer ul a:hover {
     position: relative;
   }
 
-  tr:not(:last-child){
+  .leaderboard table tr:not(:last-child){
     border-bottom: 1px solid #ccc;
   }
   

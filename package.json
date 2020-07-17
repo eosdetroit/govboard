@@ -20,8 +20,7 @@
     "simple-react-validator": "^1.5.0",
     "ual-anchor": "^0.5.0",
     "ual-reactjs-renderer": "^0.3.1",
-    "ual-scatter": "^0.3.0",
-    "ual-ledger": "^0.2.0"
+    "ual-scatter": "^0.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

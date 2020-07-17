@@ -9,7 +9,6 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import { Scatter } from 'ual-scatter';
 import { Anchor } from 'ual-anchor';
 import { Wax } from '@eosdacio/ual-wax';
-import { Ledger } from 'ual-ledger';
 
 const waxMainnet = {
   chainId: '1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4',
@@ -31,16 +30,14 @@ const waxTestnet = {
 }
 */
 
-const APP_NAME = 'govboard';
+const scatter = new Scatter([waxMainnet], { appName: 'govboard' });
+const anchor = new Anchor([waxMainnet], { appName: 'govboard' });
+const waxcloud = new Wax([waxMainnet], { appName: 'govboard' });
 
-const scatter = new Scatter([waxMainnet], { appName: APP_NAME });
-const anchor = new Anchor([waxMainnet], { appName: APP_NAME });
-const waxcloud = new Wax([waxMainnet], { appName: APP_NAME });
-const ledger = new Ledger([waxMainnet], { appName: APP_NAME })
 const UALConsumer = withUAL(App);
 
 ReactDOM.render(
-	<UALProvider chains={[waxMainnet]} authenticators={[waxcloud, anchor, scatter, ledger ]} appName={APP_NAME}>
+	<UALProvider chains={[waxMainnet]} authenticators={[waxcloud, anchor, scatter]} appName={'govboard'}>
     	<Router>
           <UALConsumer />
       </Router>

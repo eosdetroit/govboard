@@ -33,13 +33,13 @@ const waxTestnet = {
 
 const APP_NAME = 'govboard';
 const scatter = new Scatter([waxMainnet], { appName: APP_NAME });
-const anchor = new Anchor([waxMainnet], { appName: APP_NAME, disableGreymassFuel: true });
+const anchor = new Anchor([waxMainnet], { appName: APP_NAME });
 const waxcloud = new Wax([waxMainnet], { appName: APP_NAME });
 const UALConsumer = withUAL(App);
 
 
 ReactDOM.render(
-	<UALProvider chains={[waxMainnet]} authenticators={[waxcloud, anchor, scatter]} appName={'govboard'}>
+	<UALProvider chains={[waxMainnet]} authenticators={[waxcloud, anchor, scatter]} appName={APP_NAME}>
     	<Router>
           <UALConsumer />
       </Router>

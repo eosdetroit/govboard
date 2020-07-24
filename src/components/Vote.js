@@ -364,10 +364,6 @@ class LeaderboardRow extends Vote {
 
   async VoteCandidate() {
     await submitVote(this.props.activeUser, this.props.ballot, this.props.data.key);
-
-    /* this.setState({
-      refresh: 1
-    }); */
   }
 
   async GetCandidateName(){

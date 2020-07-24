@@ -4407,6 +4407,15 @@ eosjs@20.0.0:
     eosjs-ecc "4.0.4"
     text-encoding "0.7.0"
 
+eosjs@20.0.3, eosjs@^20.0.0, eosjs@^20.0.3:
+  version "20.0.3"
+  resolved "https://registry.yarnpkg.com/eosjs/-/eosjs-20.0.3.tgz#f3ac1fa119b76dd07bf2825ad27342f6502a533b"
+  integrity sha512-h0WSxsDo7AHz5IzpbQDrzyT/CYmbBDtFiiolTdtGd2FdKXEa6LDER4WbNp4qxCY7kD65KeG3knkGmOOFGbPJxw==
+  dependencies:
+    babel-runtime "6.26.0"
+    eosjs-ecc "4.0.7"
+    text-encoding "0.7.0"
+
 eosjs@21.0.1-rc1:
   version "21.0.1-rc1"
   resolved "https://registry.yarnpkg.com/eosjs/-/eosjs-21.0.1-rc1.tgz#671f38bf04cfa0786ef9fef4cab10aa5ca049cde"
@@ -4415,15 +4424,6 @@ eosjs@21.0.1-rc1:
     "@types/elliptic" "6.4.10"
     babel-runtime "6.26.0"
     elliptic "6.5.0"
-    text-encoding "0.7.0"
-
-eosjs@^20.0.0, eosjs@^20.0.3:
-  version "20.0.3"
-  resolved "https://registry.yarnpkg.com/eosjs/-/eosjs-20.0.3.tgz#f3ac1fa119b76dd07bf2825ad27342f6502a533b"
-  integrity sha512-h0WSxsDo7AHz5IzpbQDrzyT/CYmbBDtFiiolTdtGd2FdKXEa6LDER4WbNp4qxCY7kD65KeG3knkGmOOFGbPJxw==
-  dependencies:
-    babel-runtime "6.26.0"
-    eosjs-ecc "4.0.7"
     text-encoding "0.7.0"
 
 errno@^0.1.3, errno@~0.1.7:
@@ -10967,15 +10967,14 @@ ual-anchor@^0.5.0:
     eosjs "^20.0.3"
     universal-authenticator-library "0.3.0"
 
-ual-ledger@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/ual-ledger/-/ual-ledger-0.2.0.tgz#4ef4a75f173a395ddf294bf68026c90628bcbd96"
-  integrity sha512-l8jBBXIwut3TPVP+CTBjqJRoqOGXM1x6cTmhaX43pm9hfHuHwo4rxysrEgYXkEu7+/8G+KzBaot6XhGf2p0TyA==
+ual-ledger@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/ual-ledger/-/ual-ledger-0.3.0.tgz#2e81398ca59a100e972307affd07fd5219116355"
+  integrity sha512-sqB44P9O5PWkef+Le90WcVMm858UAyT13sj8jdE+bSLaxlcffv4xsfQRg0+iQsqN6RfPtEH7WsJrB998gtaIIw==
   dependencies:
-    eosjs "20.0.0"
+    eosjs "20.0.3"
     eosjs-ledger-signature-provider "0.1.2"
-    universal-authenticator-library "0.2.0"
-    uuid "3.3.2"
+    universal-authenticator-library "0.3.0"
 
 ual-reactjs-renderer@^0.3.1:
   version "0.3.1"
@@ -11059,11 +11058,6 @@ unique-slug@^2.0.0:
   integrity sha512-zoWr9ObaxALD3DOPfjPSqxt4fnZiWblxHIgeWqW8x7UqDzEtHEQLzji2cuJYQFCU6KmoJikOYAZlrTHHebjx2w==
   dependencies:
     imurmurhash "^0.1.4"
-
-universal-authenticator-library@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/universal-authenticator-library/-/universal-authenticator-library-0.2.0.tgz#6b609e5a3d6c8c2ad209ccc9f06f4bb6be4bc807"
-  integrity sha512-uukf31lXIB/nRaiO/Z1Aag48ZLWtiX3kd05XIz6QWwjuQbprLOzgesGgMeVxQNTCgTDHGxwtE/mzkZ+5R1x8qw==
 
 universal-authenticator-library@0.3.0, universal-authenticator-library@^0.3.0:
   version "0.3.0"
@@ -11186,11 +11180,6 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
-
-uuid@3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
-  integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
 
 uuid@^3.0.1, uuid@^3.3.2:
   version "3.4.0"

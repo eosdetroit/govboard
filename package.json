@@ -5,12 +5,8 @@
   "proxy": "http://localhost:3000",
   "dependencies": {
     "@eosdacio/ual-wax": "^1.2.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^10.4.7",
-    "@testing-library/user-event": "^7.1.2",
     "@waxio/waxjs": "^0.0.11",
     "eosjs": "^20.0.3",
-    "jsdom-global": "^3.0.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-full-page-loader-overlay": "^0.0.12",
@@ -45,6 +41,6 @@
     ]
   },
   "devDependencies": {
-    "jest": "^24.9.0"
+    "cypress": "^4.11.0"
   }
 }

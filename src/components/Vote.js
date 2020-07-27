@@ -13,11 +13,7 @@ import { withUAL } from 'ual-reactjs-renderer';
 
 import '../App.css';
 
-
-//WAX_RPC_URL = 'https://testnet.waxsweden.org'
-const WAX_RPC_URL = 'https://wax.greymass.com'
-const wax = new waxjs.WaxJS(WAX_RPC_URL, null, null, false);
-
+const wax = new waxjs.WaxJS(process.env.REACT_APP_WAX_RPC, null, null, false);
 
 class Vote extends React.Component {
   constructor(props){

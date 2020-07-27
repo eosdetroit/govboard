@@ -13,9 +13,7 @@ import wechat from '../assets/wechat.svg';
 import { submitVote } from '../middleware.js';
 
 
-// const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
-const WAX_RPC_URL = 'https://wax.greymass.com'
-const wax = new waxjs.WaxJS(WAX_RPC_URL, null, null, false);
+const wax = new waxjs.WaxJS(process.env.REACT_APP_WAX_RPC, null, null, false);
 
 class CandidateSingle extends React.Component {
   constructor(props){

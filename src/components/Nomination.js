@@ -299,7 +299,7 @@ class Nomination extends React.Component {
           <div className="form-row">
             <h2>Nominate a Candidate</h2>
             <p>Enter the WAX account name of the person you would like to nominate.</p>
-            <input type="text" name="nominee" className="inline-input" placeholder="Nominee's WAX account name" onChange={this.handleInputChange} />
+            <input id="nomination-input" type="text" name="nominee" className="inline-input" placeholder="Nominee's WAX account name" onChange={this.handleInputChange} />
             <button onClick={this.nominateCandidate} className="btn inline-btn">Nominate</button>
             <div id="nomform"></div>
           </div>

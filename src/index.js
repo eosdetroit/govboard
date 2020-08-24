@@ -19,16 +19,14 @@ const waxChain = {
   }]
 }
 
-const APP_NAME = process.env.REACT_APP_NAME;
-
-const scatter = new Scatter([waxChain], { appName: APP_NAME });
-const anchor = new Anchor([waxChain], { appName: APP_NAME });
-const waxcloud = new Wax([waxChain], { appName: APP_NAME });
+const scatter = new Scatter([waxChain], { appName: 'govboard' });
+const anchor = new Anchor([waxChain], { appName: 'govboard' });
+const waxcloud = new Wax([waxChain], { appName: 'govboard' });
 const UALConsumer = withUAL(App);
 
 
 ReactDOM.render(
-	<UALProvider chains={[waxChain]} authenticators={[waxcloud, anchor, scatter ]} appName={APP_NAME}>
+	<UALProvider chains={[waxChain]} authenticators={[waxcloud, anchor, scatter ]} appName='govboard'>
     	<Router>
           <UALConsumer />
       </Router>

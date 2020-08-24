@@ -353,7 +353,6 @@ export default withUAL(Vote);
 class LeaderboardRow extends Vote {
   constructor(props){
         super(props);
-        console.log(this.props); // prints out whatever is inside props
         this.GetCandidateName = this.GetCandidateName.bind(this);
         this.VoteCandidate = this.VoteCandidate.bind(this);
     }

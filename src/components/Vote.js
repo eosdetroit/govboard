@@ -13,11 +13,7 @@ import { withUAL } from 'ual-reactjs-renderer';
 
 import '../App.css';
 
-
-//WAX_RPC_URL = 'https://testnet.waxsweden.org'
-const WAX_RPC_URL = 'https://wax.greymass.com'
-const wax = new waxjs.WaxJS(WAX_RPC_URL, null, null, false);
-
+const wax = new waxjs.WaxJS(process.env.REACT_APP_WAX_RPC, null, null, false);
 
 class Vote extends React.Component {
   constructor(props){
@@ -357,17 +353,12 @@ export default withUAL(Vote);
 class LeaderboardRow extends Vote {
   constructor(props){
         super(props);
-        console.log(this.props); // prints out whatever is inside props
         this.GetCandidateName = this.GetCandidateName.bind(this);
         this.VoteCandidate = this.VoteCandidate.bind(this);
     }
 
   async VoteCandidate() {
     await submitVote(this.props.activeUser, this.props.ballot, this.props.data.key);
-
-    /* this.setState({
-      refresh: 1
-    }); */
   }
 
   async GetCandidateName(){

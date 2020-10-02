@@ -10,34 +10,23 @@ import { Scatter } from 'ual-scatter';
 import { Anchor } from 'ual-anchor';
 import { Wax } from '@eosdacio/ual-wax';
 
-const waxMainnet = {
-  chainId: '1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4',
+const waxChain = {
+  chainId: process.env.REACT_APP_WAX_CHAINID,
   rpcEndpoints: [{
-    protocol: 'https',
-    host: 'wax.greymass.com',
-    port: '443',
+    protocol: process.env.REACT_APP_WAX_PROTOCOL,
+    host: process.env.REACT_APP_WAX_HOST,
+    port: process.env.REACT_APP_WAX_PORT,
   }]
 }
 
-/*
-const waxTestnet = {
-  chainId: 'f16b1833c747c43682f4386fca9cbb327929334a762755ebec17f6f23c9b8a12',
-  rpcEndpoints: [{
-    protocol: 'https',
-    host: 'testnet.waxsweden.org',
-    port: '443',
-  }]
-}
-*/
-
-const scatter = new Scatter([waxMainnet], { appName: 'govboard' });
-const anchor = new Anchor([waxMainnet], { appName: 'govboard' });
-const waxcloud = new Wax([waxMainnet], { appName: 'govboard' });
-
+const scatter = new Scatter([waxChain], { appName: 'govboard' });
+const anchor = new Anchor([waxChain], { appName: 'govboard' });
+const waxcloud = new Wax([waxChain], { appName: 'govboard' });
 const UALConsumer = withUAL(App);
 
+
 ReactDOM.render(
-	<UALProvider chains={[waxMainnet]} authenticators={[waxcloud, anchor, scatter]} appName={'govboard'}>
+	<UALProvider chains={[waxChain]} authenticators={[waxcloud, anchor, scatter ]} appName='govboard'>
     	<Router>
           <UALConsumer />
       </Router>

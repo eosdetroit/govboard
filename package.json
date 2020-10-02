@@ -4,9 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3000",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@eosdacio/ual-wax": "^1.2.1",
     "@waxio/waxjs": "^0.0.11",
     "eosjs": "^20.0.3",
     "react": "^16.13.1",
@@ -16,10 +14,10 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
     "simple-react-validator": "^1.5.0",
-    "@eosdacio/ual-wax": "^1.2.1",
     "ual-anchor": "^0.5.0",
-    "ual-scatter": "^0.3.0",
-    "ual-reactjs-renderer": "^0.3.1"
+    "ual-ledger": "^0.3.0",
+    "ual-reactjs-renderer": "^0.3.1",
+    "ual-scatter": "^0.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress": "4.12.1"
   }
 }

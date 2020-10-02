@@ -10,7 +10,7 @@ class Home extends React.Component {
         <div className="badge"><img className="oigLogo" src={oigLogo} alt="WAX OIG Logo" /></div>
         <div className="bodyText">
           <h1>OIG Election Process</h1>
-          <br></br>
+          <br />
           <p>
             The OIG was started by 3 WAX-appointed inspector generals that currently serve the office. 
             Each Appointed IG is slated to serve at minimum a 9 month tenure; July 2020 will be the 9th OIG 
@@ -20,40 +20,36 @@ class Home extends React.Component {
             one caveat in that an Interim IG needs to be elected to serve a 9 month term in order to migrate 
             to the 18 month schedule.
           </p>
-          <br></br>
+          <br />
           <p>
             Each OIG election consists of a nomination phase, where nominees can accept or decline, and provide additional
             information. This is followed by a voting phase, where WAX token holders can vote on one OIG candidate. After 
             the voting phase is concluded, the winner will be determined as the candidate with the most votes on the ballot.
           </p>
-          <br></br>
+          <br />
 
           <h1>Current Election Timeline</h1>
-          <br></br>
+          <br />
           <p>
-            <b>July 15 2020:</b> Begin candidate nominations.
-            <br></br>
-            <b>July 23 2020:</b> End nominations and begin election period.
-            <br></br>
-            <b>July 31 2020:</b> Election period ends.
-            <br></br>
-            <b>August 1 2020:</b> Appointed IG replaced with Elected IG.
+            <strong>October 1st, 2020 0:00:00 UTC:</strong> Begin candidate nominations.
+            <br />
+            <strong>October 11th, 2020 0:00:00 UTC:</strong> End nominations and begin election period.
+            <br />
+            <strong>October 18th, 2020 23:59:59 UTC:</strong> Election period ends.
+            <br />
+            <strong>November 1st, 2020 00:00:00 UTC:</strong> Appointed IG replaced with Elected IG.
           </p>
-         <br></br>
+         <br />
           <h1>Future Election Schedule</h1>
-          <br></br>
+          <br />
           <p>
-            <b>October 2020:</b> Election period to determine Interim IG.
-            <br></br>
-            <b>November 1 2020:</b> Appointed IG replaced with Elected Interim IG.
-            <br></br>
             <b>January 2021:</b> Election period to determine Elected IG.
-            <br></br>
-            <b>February 1 2021:</b> Appointed IG replaced with Elected IG.
-            <br></br>
-            <b>July 2021:</b> Election period with Elected IG.
-            <br></br>
-            <b>August 1 2021:</b> Interim IG replaced with Elected IG.
+            <br />
+            <b>February 1 2021:</b>Final Appointed IG replaced with Elected IG.
+            <br />
+            <b>July 2021:</b> Election period to replace first Elected IG.
+            <br />
+            <b>August 1 2021:</b> First Elected IG replaced with new Elected IG.
           </p>
         </div>
       </div>

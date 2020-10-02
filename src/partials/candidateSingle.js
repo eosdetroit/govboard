@@ -13,9 +13,7 @@ import wechat from '../assets/wechat.svg';
 import { submitVote } from '../middleware.js';
 
 
-// const wax = new waxjs.WaxJS('https://testnet.waxsweden.org', null, null, false);
-const WAX_RPC_URL = 'https://wax.greymass.com'
-const wax = new waxjs.WaxJS(WAX_RPC_URL, null, null, false);
+const wax = new waxjs.WaxJS(process.env.REACT_APP_WAX_RPC, null, null, false);
 
 class CandidateSingle extends React.Component {
   constructor(props){
@@ -32,7 +30,6 @@ class CandidateSingle extends React.Component {
       redirect: 0,
       refresh: 1
     }
-    this.UnvoteCandidate = this.UnvoteCandidate.bind(this);
     this.VoteCandidate = this.VoteCandidate.bind(this);
     }
 
@@ -113,10 +110,6 @@ class CandidateSingle extends React.Component {
     }       
   };
 
-  async UnvoteCandidate(){
-
-  }
-
   async VoteCandidate() {
     await submitVote(this.props.activeUser, this.state.ballot, this.state.nominee);
     console.log(this.state.refresh);
@@ -164,7 +157,7 @@ class CandidateSingle extends React.Component {
           <div className="social-icons">
             { this.state.telegram ? 
               <>
-                <a href={'https://t.me/' + this.state.telegram} target="_blank" rel="noopener noreferrer"><img src={telegram} alt="Candidate's Telegram profile" /></a>
+                <a href={'https://t.me/' + this.state.telegram} target="_blank" rel="noopener noreferrer" className="telegram"><img src={telegram} alt="Candidate's Telegram profile" /></a>
               </>
               :
               <>
@@ -172,7 +165,7 @@ class CandidateSingle extends React.Component {
             }
             { this.state.twitter ? 
               <>
-                <a href={'https://twitter.com/' + this.state.twitter} target="_blank" rel="noopener noreferrer" ><img src={twitter} alt="Candidate's Twitter profile" /></a>
+                <a href={'https://twitter.com/' + this.state.twitter} target="_blank" rel="noopener noreferrer" className="twitter" ><img src={twitter} alt="Candidate's Twitter profile" /></a>
               </>
             :
             <>
@@ -180,7 +173,7 @@ class CandidateSingle extends React.Component {
             }
             { this.state.wechat ? 
               <>
-                <a href={'weixin://dl/profile/' + this.state.wechat} target="_blank" rel="noopener noreferrer" ><img src={wechat} alt="Candidate's WeChat profile" /></a>
+                <a href={'weixin://dl/profile/' + this.state.wechat} target="_blank" rel="noopener noreferrer" className="wechat" ><img src={wechat} alt="Candidate's WeChat profile" /></a>
               </>
             :
             <>

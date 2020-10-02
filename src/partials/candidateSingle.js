@@ -30,7 +30,6 @@ class CandidateSingle extends React.Component {
       redirect: 0,
       refresh: 1
     }
-    this.UnvoteCandidate = this.UnvoteCandidate.bind(this);
     this.VoteCandidate = this.VoteCandidate.bind(this);
     }
 

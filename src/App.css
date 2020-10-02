@@ -362,6 +362,7 @@ header#nav nav button#menu-icon {
 .candidate-single .candidate-body .description {
   margin: 1em;
   word-break: break-word;
+  text-align: left;
 }
 
 #castvote {

@@ -37,7 +37,7 @@ class Home extends React.Component {
             <br />
             <strong>October 18th, 2020 23:59:59 UTC:</strong> Election period ends.
             <br />
-            <strong>November 1st, 2020 00:00:00 UTC:</strong> Appointed IG replaced with Elected IG.
+            <strong>November 1st, 2020 00:00:00 UTC:</strong> Appointed IG replaced with Elected Interim IG.
           </p>
          <br />
           <h1>Future Election Schedule</h1>
@@ -47,9 +47,9 @@ class Home extends React.Component {
             <br />
             <b>February 1 2021:</b>Final Appointed IG replaced with Elected IG.
             <br />
-            <b>July 2021:</b> Election period to replace first Elected IG.
+            <b>July 2021:</b> Election period to replace first Interim IG.
             <br />
-            <b>August 1 2021:</b> First Elected IG replaced with new Elected IG.
+            <b>August 1 2021:</b> Interim IG replaced with Elected IG.
           </p>
         </div>
       </div>

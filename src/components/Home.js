@@ -16,9 +16,7 @@ class Home extends React.Component {
             Each Appointed IG is slated to serve at minimum a 9 month tenure; July 2020 will be the 9th OIG 
             Report, and thus time to start rotating in Elected IGs using a stake-weighted voting system. 
             Appointed IGs will leave office on a 3 month rolling basis, and be replaced by Elected IGs who
-            will serve an 18 month tenure and be put up for election on a 6 month rolling basis. There is 
-            one caveat in that an Interim IG needs to be elected to serve a 9 month term in order to migrate 
-            to the 18 month schedule.
+            will serve an 18 month tenure and be put up for election on a 6 month rolling basis.
           </p>
           <br />
           <p>

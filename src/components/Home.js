@@ -31,22 +31,18 @@ class Home extends React.Component {
           <h1>Current Election Timeline</h1>
           <br />
           <p>
-            <strong>October 1st, 2020 0:00:00 UTC:</strong> Begin candidate nominations.
+            <strong>January 8th, 2020 0:00:00 UTC:</strong> Begin candidate nominations.
             <br />
-            <strong>October 11th, 2020 0:00:00 UTC:</strong> End nominations and begin election period.
+            <strong>January 18th, 2020 0:00:00 UTC:</strong> End nominations and begin election period.
             <br />
-            <strong>October 18th, 2020 23:59:59 UTC:</strong> Election period ends.
+            <strong>January 24th, 2021 23:59:59 UTC:</strong> Election period ends.
             <br />
-            <strong>November 1st, 2020 00:00:00 UTC:</strong> Appointed IG replaced with Elected Interim IG.
+            <strong>February 1st, 2021 00:00:00 UTC:</strong> Appointed IG replaced with Elected IG.
           </p>
          <br />
           <h1>Future Election Schedule</h1>
           <br />
           <p>
-            <b>January 2021:</b> Election period to determine Elected IG.
-            <br />
-            <b>February 1 2021:</b>Final Appointed IG replaced with Elected IG.
-            <br />
             <b>July 2021:</b> Election period to replace first Interim IG.
             <br />
             <b>August 1 2021:</b> Interim IG replaced with Elected IG.

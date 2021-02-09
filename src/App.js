@@ -130,6 +130,7 @@ class App extends React.Component {
                     <ul>
                       <li><Link to="/">Home</Link></li>
                       <li><Link to="/about">About</Link></li>
+                      <li><Link to="/candidates">Candidates</Link></li>
                       <li className="login-li"><button id="login" className="login-btn" onClick={this.props.ual.showModal} >Login</button></li>
                     </ul>
                   </nav>

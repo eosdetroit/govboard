@@ -1,13 +1,20 @@
+/** @jsx jsx */
+
 import React from 'react';
 import {
   Route,
-  Link,
-  Switch
+  Switch,
+  NavLink
 } from "react-router-dom";
-import * as waxjs from "@waxio/waxjs/dist";
+import { Navbar } from 'react-bootstrap';
 
-import './App.css';
-import logo from './assets/wax-logo-white.png'
+import * as waxjs from "@waxio/waxjs/dist";
+import { jsx } from '@emotion/react';
+import * as GLOBAL_STYLE from './theme';
+
+import waxLogo from './assets/wax-primary-logo.png';
+import Hamburguer from './assets/hamburguer.svg';
+import BlueBee from './assets/blueBee.svg';
 import Footer from './partials/Footer';
 import Home from './components/Home';
 import Vote from './components/Vote';
@@ -62,17 +69,17 @@ class App extends React.Component {
 
     renderLogoutBtn = () => {
       const { ual: { activeUser, activeAuthenticator, logout } } = this.props
-      if (activeUser && activeAuthenticator) {
+       if (activeUser && activeAuthenticator) {
         return (
-            <span className='logoutBtn' onClick={logout}>
+            <GLOBAL_STYLE.Button tiny text onClick={logout}>
               {'Logout'}
-            </span>
+            </GLOBAL_STYLE.Button>
         )
       }
     }
 
   async checkElectionStatus() {
-    let resp = await wax.rpc.get_table_rows({             
+    let resp = await wax.rpc.get_table_rows({
       limit: 1,
       code: 'oig',
       scope: 'oig',
@@ -91,78 +98,202 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="main-wrapper">
-          <header id="nav">
-            <div className="nav-wrapper">
-              <div className="logo">
-                <Link className="header-link" to="/">
-                  <img src={logo} alt="WAX Logo" />
-                  <span className="logo-text">&nbsp;<span className="desktop">Office of Inspector General</span><span className="mobile">OIG</span> Dashboard</span>
-                </Link>
-              </div>
-              { this.state.activeUser ?
-                <div className="menu-wrapper">
-                  <div className="login-wrapper mobile">
-                    <span className="accHeader">Account</span>
-                    <span className="accName">{this.state.accountName}</span>
-                    {this.renderLogoutBtn()}
-                  </div>
-                  <nav>
-                    <button id="menu-icon"></button>
-                    <ul>
-                      <li><Link to="/">Home</Link></li>
-                      <li><Link to="/about">About</Link></li>
-                      <li><Link to="/candidates">Vote</Link></li>
-                      <li><Link to="/nominate">Nominate</Link></li>
-                    </ul>
-                  </nav>
-                  <div className="login-wrapper">
-                    <span className="accHeader">Account</span>
-                    <span className="accName">{this.state.accountName}</span>
-                    {this.renderLogoutBtn()}
-                  </div>
-                </div>
-                :
-                <div className="menu-wrapper">
-                  <nav>
-                    <button id="menu-icon"></button>
-                    <ul>
-                      <li><Link to="/">Home</Link></li>
-                      <li><Link to="/about">About</Link></li>
-                      <li><Link to="/candidates">Candidates</Link></li>
-                      <li className="login-li"><button id="login" className="login-btn" onClick={this.props.ual.showModal} >Login</button></li>
-                    </ul>
-                  </nav>
-                </div>
-              }
-          </div>
-        </header>
-        <Switch>
-        <Route exact path="/">
-          <Home activeUser={this.state.activeUser} />
-        </Route>
-        <Route exact path="/about">
-          <About activeUser={this.state.activeUser} />
-        </Route>
-        <Route path="/candidates" render={() => {
-            return (
-                <Vote activeUser={this.state.activeUser} electionState={this.state.electionState} ballot={this.state.electionBallot} />
-            )
-          }}/>          
-        <Route exact path="/nominate" render={() => {
-            return (
-                <Nomination activeUser={this.state.activeUser} electionState={this.state.electionState} accountName={this.state.accountName} />
-            )
-          }}/>
-                  
-        <Route path="*">
-          <ErrorPage />
-        </Route>
-        </Switch>
+        <div className="App">
+            <div>
+                <header
+                    css={{
+                        paddingLeft: GLOBAL_STYLE.spacing.xs,
+                        paddingRight: GLOBAL_STYLE.spacing.xs,
+                        [GLOBAL_STYLE.mediaQuery.largeMobileUp]: {
+                            paddingLeft: GLOBAL_STYLE.spacing.s,
+                            paddingRight: GLOBAL_STYLE.spacing.s,
+                        },
+                        '& .navbar': {
+                            zIndex: '9999',
+                            display: 'flex',
+                            flexDirection: 'row',
+                            paddingRight: 0,
+                            paddingLeft: 0,
+                        },
+                        '& .brand': {
+                            display: 'flex',
+                            alignItems: 'center',
+                            textDecoration: 'none',
+                        },
+                        '& .logo': {
+                            width: '40px',
+                            objectFit: 'contain',
+                            marginRight: GLOBAL_STYLE.spacing.xxs,
+                            [GLOBAL_STYLE.mediaQuery.largeMobileUp]: {
+                                width: '70px',
+                            },
+                            [GLOBAL_STYLE.mediaQuery.desktopUp]: {
+                                width: '100px',
+                            },
+                        },
+                        '& .title': {
+                            margin: '0',
+                            fontWeight: 400,
+                            [GLOBAL_STYLE.mediaQuery.mobileOnly]: {
+                                display: 'none',
+                            },
+                        },
+                        '& .titleMobile': {
+                            margin: '0',
+                            fontWeight: 400,
+                            [GLOBAL_STYLE.mediaQuery.largeMobileUp]: {
+                                display: 'none',
+                            },
+                        },
+                        '& .navbar-toggler-icon': {
+                            height: '60px',
+                            minWidth: '60px',
+                            backgroundImage: `url(${Hamburguer})`,
+                            backgroundRepeat: 'no-repeat',
+                            backgroundSize: '60px',
+                        },
+                        '& .toggleButton': {
+                            border: 'none',
+                            padding: '0',
+                        },
+                        '& .link': {
+                            textDecoration: 'none',
+                            color: GLOBAL_STYLE.colors.blue02,
+                            margin: `0 0 ${GLOBAL_STYLE.spacing.l} 0`,
+                            '&:hover': {
+                                color: GLOBAL_STYLE.colors.blue01,
+                                transition: 'color 0.3s ease-in-out',
+                            },
+                            [GLOBAL_STYLE.mediaQuery.desktopUp]: {
+                                margin: `0 0 0 ${GLOBAL_STYLE.spacing.m}`,
+                                '&:last-of-type': {
+                                    marginRight: GLOBAL_STYLE.spacing.m,
+                                },
+                            },
+                            h5: {
+                                fontWeight: '400',
+                                margin: '0',
+                            },
+                        },
+                        '& .link--active': {
+                            color: GLOBAL_STYLE.colors.blue01,
+                        },
+                        '& .collapseSection': {
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            padding: `${GLOBAL_STYLE.spacing.s} 0`,
+                            [GLOBAL_STYLE.mediaQuery.desktopUp]: {
+                                flexDirection: 'row',
+                                justifyContent: 'flex-end',
+                            },
+                            '&:not(.show)': {
+                                display: 'none',
+                            },
+                        },
+                        '& .blueBee': {
+                            height: '30px',
+                            objectFit: 'contain',
+                            marginBottom: GLOBAL_STYLE.spacing.s,
+                            [GLOBAL_STYLE.mediaQuery.desktopUp]: {
+                                height: '40px',
+                                margin: `0 ${GLOBAL_STYLE.spacing.s} 0 0`,
+                            },
+                        },
+                    }}
+                >
+                    <Navbar collapseOnSelect expand="xl" class="navbar">
+                        <Navbar.Brand className="brand" href="/">
+                            <img src={waxLogo} className="logo" alt="WAX Logo" />
+                            <GLOBAL_STYLE.H6 className="title">Office of Inspector General Dashboard</GLOBAL_STYLE.H6>
+                            <GLOBAL_STYLE.H6 className="titleMobile">OIG Dashboard</GLOBAL_STYLE.H6>
+                        </Navbar.Brand>
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav" className="toggleButton" />
+                        <Navbar.Collapse id="responsive-navbar-nav" className="collapseSection">
+                            <NavLink to="/about" className="link" activeClassName="link--active">
+                                <GLOBAL_STYLE.H5>About</GLOBAL_STYLE.H5>
+                            </NavLink>
+                            {this.state.activeUser ? (
+                                <React.Fragment>
+                                    <NavLink to="/candidates" className="link" activeClassName="link--active">
+                                        <GLOBAL_STYLE.H5>Vote</GLOBAL_STYLE.H5>
+                                    </NavLink>
+                                    <NavLink to="/nominate" className="link" activeClassName="link--active">
+                                        <GLOBAL_STYLE.H5>Nominate</GLOBAL_STYLE.H5>
+                                    </NavLink>
+                                    <img src={BlueBee} className="blueBee" alt="Drawed bee with blue stroke" />
+                                    <div
+                                        css={{
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            alignItems: 'center',
+                                            '& .accountName': {
+                                                marginBottom: GLOBAL_STYLE.spacing.xxs,
+                                                color: GLOBAL_STYLE.colors.blue01,
+                                                fontWeight: '600',
+                                            },
+                                        }}
+                                    >
+                                        <p className="accountName">{this.state.accountName}</p>
+                                        {this.renderLogoutBtn()}
+                                    </div>
+                                </React.Fragment>
+                            ) : (
+                                <React.Fragment>
+                                    <NavLink to="/candidates" className="link" activeClassName="link--active">
+                                        <GLOBAL_STYLE.H5>Candidates</GLOBAL_STYLE.H5>
+                                    </NavLink>
+                                    <img src={BlueBee} className="blueBee" alt="Drawed bee with blue stroke" />
+                                    <GLOBAL_STYLE.Button text id="login" onClick={this.props.ual.showModal}>
+                                        Login
+                                    </GLOBAL_STYLE.Button>
+                                </React.Fragment>
+                            )}
+                        </Navbar.Collapse>
+                    </Navbar>
+                </header>
+                <Switch>
+                    <Route exact path="/">
+                        <Home activeUser={this.state.activeUser} />
+                    </Route>
+                    <Route exact path="/about">
+                        <About activeUser={this.state.activeUser} />
+                    </Route>
+                    <Route
+                        path="/candidates"
+                        render={() => {
+                            return (
+                                <Vote
+                                    activeUser={this.state.activeUser}
+                                    electionState={this.state.electionState}
+                                    ballot={this.state.electionBallot}
+                                />
+                            );
+                        }}
+                    />
+                    <Route
+                        exact
+                        path="/nominate"
+                        render={() => {
+                            return (
+                                <Nomination
+                                    activeUser={this.state.activeUser}
+                                    electionState={this.state.electionState}
+                                    accountName={this.state.accountName}
+                                />
+                            );
+                        }}
+                    />
+
+                    <Route path="*">
+                        <ErrorPage />
+                    </Route>
+                </Switch>
+            </div>
+            <footer>
+                <Footer activeUser={this.state.activeUser} />
+            </footer>
         </div>
-        <footer><Footer activeUser={this.state.activeUser} /></footer>
-      </div>
     );
   }
 }

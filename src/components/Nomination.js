@@ -3,7 +3,6 @@ import {
   Link,
 } from "react-router-dom";
 
-import '../App.css';
 import SimpleReactValidator from 'simple-react-validator';
 import * as waxjs from "@waxio/waxjs/dist";
 import { withUAL } from 'ual-reactjs-renderer';
@@ -37,7 +36,7 @@ class Nomination extends React.Component {
 
   async checkNominations() {
   	try {
-        let resp = await wax.rpc.get_table_rows({             
+        let resp = await wax.rpc.get_table_rows({
             code: 'oig',
             scope: 'oig',
             table: 'nominations',
@@ -53,7 +52,7 @@ class Nomination extends React.Component {
       			isNominated: true,
             hasAccepted: resp.rows[0].accepted
           });
-          
+
       		if (resp.rows[0].accepted === 1) {
       			let nomineeInfo = await wax.rpc.get_table_rows({
               code: 'oig',
@@ -86,7 +85,7 @@ class Nomination extends React.Component {
       	}
         } catch(e) {
           console.log(e);
-      }     
+      }
   }
 
   async nominateCandidate() {
@@ -103,7 +102,7 @@ class Nomination extends React.Component {
             nominee: this.state.nominee,
           },
       }]
-    } 
+    }
     try {
       await this.state.activeUser.signTransaction(
         transaction, {blocksBehind: 3,
@@ -119,12 +118,12 @@ class Nomination extends React.Component {
       let nomform = document.getElementById('nomform');
       nomform.classList.add("success");
       nomform.classList.remove("error");
-      nomform.innerHTML = 'You successfully nominated a candidate!';    
+      nomform.innerHTML = 'You successfully nominated a candidate!';
     } catch(e) {
       let nomform = document.getElementById('nomform');
       nomform.classList.add("error");
       nomform.classList.remove("success");
-      nomform.innerHTML = e; 
+      nomform.innerHTML = e;
     }
   }
 
@@ -155,7 +154,7 @@ class Nomination extends React.Component {
       let nomlist = document.getElementById('nomlist');
       nomlist.classList.add("success");
       nomlist.classList.remove("error");
-      nomlist.innerHTML = 'You have accepted the nomination!';    
+      nomlist.innerHTML = 'You have accepted the nomination!';
       } catch(e) {
       let nomlist = document.getElementById('nomlist');
       nomlist.classList.add("error");
@@ -290,7 +289,7 @@ class Nomination extends React.Component {
       	</div>
   		);
   	}
-      
+
   }
 
   nominationForm() {
@@ -356,7 +355,7 @@ class Nomination extends React.Component {
   render() {
 
     if ((this.props.electionState === 0 && this.props.activeUser !== null) || (this.props.electionState === 1 && this.props.activeUser !== null) || (this.props.electionState === 5 && this.props.activeUser !== null)) {
-      
+
       return (
         <div className="nomination main-content">
           <div className="nomination-header">
@@ -366,7 +365,7 @@ class Nomination extends React.Component {
         </div>
       );
     } else if ((this.props.electionState === 3 && this.props.activeUser !== null) || (this.props.electionState === 4 && this.props.activeUser !== null)) {
-      
+
       return (
         <div className="nomination main-content">
           <div className="nomination-header">
@@ -377,8 +376,8 @@ class Nomination extends React.Component {
       );
 
     } else if (this.props.electionState === 2 && this.props.activeUser !== null) {
-      
-      return (	
+
+      return (
         <div className="nomination main-content">
           <div className="nomination-header">
             <h1>Nominate</h1>
@@ -402,7 +401,7 @@ class Nomination extends React.Component {
         </div>
       </div>
       )
-    } 
+    }
   }
 }
 

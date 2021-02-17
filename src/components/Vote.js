@@ -4,14 +4,11 @@ import {
   Link,
 } from "react-router-dom";
 import * as waxjs from "@waxio/waxjs/dist";
-import { submitVote } from '../middleware.js'; 
+import { submitVote } from '../middleware.js';
 
 import CandidateGrid from "../partials/candidate-grid-template.js";
 import CandidateSingle from "../partials/candidateSingle";
 import { withUAL } from 'ual-reactjs-renderer';
-
-
-import '../App.css';
 
 const wax = new waxjs.WaxJS(process.env.REACT_APP_WAX_RPC, null, null, false);
 
@@ -47,7 +44,7 @@ class Vote extends React.Component {
 
   async GetElectionInfo(){
     try {
-        let resp = await wax.rpc.get_table_rows({             
+        let resp = await wax.rpc.get_table_rows({
           limit: 1,
           code: 'oig',
           scope: 'oig',
@@ -58,7 +55,7 @@ class Vote extends React.Component {
         if (activeBallot === '') {
 
         } else {
-          let leaderResp = await wax.rpc.get_table_rows({             
+          let leaderResp = await wax.rpc.get_table_rows({
             code: 'decide',
             scope: 'decide',
             table: 'ballots',
@@ -89,11 +86,11 @@ class Vote extends React.Component {
       } catch(e) {
         console.log(e);
       }
-    } 
-  
+    }
+
   async GetCandidates(){
       try {
-          let resp = await wax.rpc.get_table_rows({             
+          let resp = await wax.rpc.get_table_rows({
             code: 'oig',
             scope: 'oig',
             table: 'nominees',
@@ -116,7 +113,7 @@ class Vote extends React.Component {
       } catch(e) {
         console.log(e);
       }
-    } 
+    }
 
   async CandidatePaginationNext() {
       if (this.state.ceilingReached === 1){
@@ -174,7 +171,7 @@ class Vote extends React.Component {
       });
     }
     console.log(this.state);
-  }  
+  }
 
   renderPagination(){
     if (this.state.displayPagination === 1){
@@ -261,13 +258,13 @@ class Vote extends React.Component {
           </div>
         </div>
       );
-    } else if (this.props.electionState === 1) {  
+    } else if (this.props.electionState === 1) {
       return (
         <div className="vote main-content">
-        
+
           <h1>Election Info</h1>
           <div className="election-info">
-          
+
           <h2>Ballot ID: {this.state.ballot}</h2>
           <p>{this.state.description}</p>
 
@@ -280,10 +277,10 @@ class Vote extends React.Component {
     } else if (this.props.electionState === 5) {
       return (
         <div className="vote main-content">
-        
+
           <h1>Election Info</h1>
           <div className="election-info">
-          
+
           <h2>Ballot ID: {this.state.ballot}</h2>
           <p>{this.state.description}</p>
 
@@ -297,10 +294,10 @@ class Vote extends React.Component {
     return (
       <div className="vote main-content">
         <Route exact path="/candidates">
-        
+
         <h1>Election Info</h1>
         <div className="election-info">
-          
+
           <h2>Ballot ID: {this.state.ballot}</h2>
           <p>{this.state.description}</p>
 
@@ -333,11 +330,11 @@ class Vote extends React.Component {
             <p>There are currently no candidates participating in this election.</p>
           </>
         }
-        
+
         {this.renderPagination()}
 
         {this.renderLeaderboard()}
-      
+
         </Route>
         <Route path="/candidates/:owner">
           <CandidateSingle activeUser={this.props.activeUser} ballot={this.props.ballot} electionState={this.props.electionState} />
@@ -362,7 +359,7 @@ class LeaderboardRow extends Vote {
   }
 
   async GetCandidateName(){
-    let resp = await wax.rpc.get_table_rows({             
+    let resp = await wax.rpc.get_table_rows({
           code: 'oig',
           scope: 'oig',
           table: 'nominees',
@@ -403,7 +400,7 @@ class Winner extends Vote {
     this.GetCandidateInfo = this.GetCandidateInfo.bind(this);
   }
   async GetCandidateInfo(){
-    let resp = await wax.rpc.get_table_rows({             
+    let resp = await wax.rpc.get_table_rows({
       code: 'oig',
       scope: 'oig',
       table: 'nominees',

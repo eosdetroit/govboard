@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 export default function RenderIGCard(props){
     
     return (
         <div>
-            <img src={props.igInfo.picture} style={{maxWidth: 500}}></img>
+            <img src={props.igInfo.picture} style={{maxWidth: 500}} alt="IG"></img>
             <h5><label>Name: </label>{props.igInfo.name}</h5>
             <h5><label>Account: </label>{props.igInfo.account}</h5>
             <h5><label>Description: </label>{props.igInfo.descriptor}</h5>

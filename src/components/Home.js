@@ -10,6 +10,7 @@ import oigLogo from '../assets/waxOIGTransparent-small.png';
 
 import { jsx } from '@emotion/react';
 import * as GLOBAL_STYLE from '../theme';
+import IGinfo from './IGInfo';
 
 class Home extends React.Component {
 
@@ -189,6 +190,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
+                <IGinfo/>
             </div>
         );
   }

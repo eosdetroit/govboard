@@ -1,6 +1,7 @@
 import React from 'react';
 
 import oigLogo from '../assets/waxOIGTransparent-small.png';
+import RenderIGInfo from './IGInfo';
 
 class About extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class About extends React.Component {
           improve Guild rating accuracy, identify and remove operational inefficiencies, and promote healthy
           competition among Guilds.
         </p>
+        <RenderIGInfo/>
       </div>
     );
   }

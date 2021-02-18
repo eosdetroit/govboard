@@ -106,6 +106,7 @@ export const H3 = (props) => (
             fontWeight: 700,
             color: colors.blue01,
             maxWidth: textMaxWidth,
+            marginTop: spacing.m,
         }}
         {...props}
     />
@@ -120,6 +121,7 @@ export const H4 = (props) => (
             fontWeight: 400,
             color: colors.blue01,
             maxWidth: textMaxWidth,
+            marginTop: spacing.s,
         }}
         {...props}
     />
@@ -134,6 +136,7 @@ export const H5 = (props) => (
             fontWeight: 400,
             color: colors.blue01,
             maxWidth: textMaxWidth,
+            marginTop: spacing.s,
         }}
         {...props}
     />
@@ -148,6 +151,7 @@ export const H6 = (props) => (
             fontWeight: 600,
             color: colors.blue01,
             maxWidth: textMaxWidth,
+            marginTop: spacing.s,
         }}
         {...props}
     />
@@ -162,6 +166,7 @@ export const P = (props) => (
             fontWeight: 400,
             color: colors.blue02,
             maxWidth: textMaxWidth,
+            marginTop: spacing.xxs,
         }}
         {...props}
     />
@@ -176,6 +181,7 @@ export const PBOLD = (props) => (
             fontWeight: 700,
             color: colors.blue02,
             maxWidth: textMaxWidth,
+            marginTop: spacing.xxs,
         }}
         {...props}
     />
@@ -190,6 +196,7 @@ export const PTINY = (props) => (
             fontWeight: 400,
             color: colors.blue02,
             maxWidth: textMaxWidth,
+            marginTop: spacing.xxs,
         }}
         {...props}
     />

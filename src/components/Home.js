@@ -40,6 +40,7 @@ class Home extends React.Component {
                             marginRight: GLOBAL_STYLE.spacing.s,
                             marginLeft: GLOBAL_STYLE.spacing.s,
                             width: '80vw',
+                            maxWidth: 1024,
                             objectFit: 'contain',
                         },
                         '& .bees': {

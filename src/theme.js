@@ -4,18 +4,19 @@
 import { jsx } from '@emotion/react';
 
 export const colors = {
-    'blue01': '#193648',
-    'blue02': '#3B5B66',
-    'blue03': '#8EB0BA',
-    'blue04': '#CBDADF',
-    'orange01': '#DB7B0B',
-    'orange02': '#E18A00',
-    'orange03': '#E4A71B',
-    'orange04': '#EDC542',
-    'grey01': '#373E42',
-    'grey02': '#5C6469',
-    'white01': '#FFFFFF',
-    'white02': '#F8F7F4',
+    blue01: '#193648',
+    blue02: '#3B5B66',
+    blue03: '#8EB0BA',
+    blue04: '#CBDADF',
+    blue05: '#EBF1F3',
+    orange01: '#DB7B0B',
+    orange02: '#E18A00',
+    orange03: '#E4A71B',
+    orange04: '#EDC542',
+    grey01: '#373E42',
+    grey02: '#5C6469',
+    white01: '#FFFFFF',
+    white02: '#F8F7F4',
 };
 
 export const textMaxWidth = '575px';
@@ -31,7 +32,9 @@ export const spacing = {
 };
 
 export const border = {
-    'radius-01': '3px'
+    'radius01': '4px',
+    'radius02': '8px',
+    'radius03': '16px'
 }
 
 const breakpoints = [576, 768, 992, 1200];
@@ -55,7 +58,7 @@ export const Button = (props) => (
             fontFamily: `'Mulish', sans-serif`,
             fontSize: props.tiny ? '16px' : '18px',
             fontWeight: 400,
-            borderRadius: 8,
+            borderRadius: border.radius02,
             transition: `background-color 0.3s ease-in-out`,
             '&:hover': {
                 backgroundColor: props.primary ? colors.orange02 : props.text? colors.blue04 : colors.blue03,

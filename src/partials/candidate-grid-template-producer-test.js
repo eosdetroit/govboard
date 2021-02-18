@@ -3,8 +3,6 @@ import {
   Link,
 } from "react-router-dom";
 
-import '../App.css';
-
 class ProducerGrid extends React.Component {
 
   render() {

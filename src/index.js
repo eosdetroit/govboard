@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App  from './App';
 import * as serviceWorker from './serviceWorker';
 import { UALProvider, withUAL } from 'ual-reactjs-renderer';
@@ -9,6 +8,11 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import { Scatter } from 'ual-scatter';
 import { Anchor } from 'ual-anchor';
 import { Wax } from '@eosdacio/ual-wax';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { Global, css } from '@emotion/react';
+import normalize from 'normalize.css';
 
 const waxChain = {
   chainId: process.env.REACT_APP_WAX_CHAINID,
@@ -26,12 +30,13 @@ const UALConsumer = withUAL(App);
 
 
 ReactDOM.render(
-	<UALProvider chains={[waxChain]} authenticators={[waxcloud, anchor, scatter ]} appName='govboard'>
-    	<Router>
-          <UALConsumer />
-      </Router>
-  	</UALProvider>,
-  	document.getElementById('root')
+    <UALProvider chains={[waxChain]} authenticators={[waxcloud, anchor, scatter]} appName="govboard">
+        <Global styles={css`${normalize}`}/>
+        <Router>
+            <UALConsumer />
+        </Router>
+    </UALProvider>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

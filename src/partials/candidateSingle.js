@@ -6,7 +6,6 @@ import {
 import * as waxjs from "@waxio/waxjs/dist";
 import { withUAL } from 'ual-reactjs-renderer';
 
-import '../App.css';
 import twitter from '../assets/twitter.svg';
 import telegram from '../assets/telegram.svg';
 import wechat from '../assets/wechat.svg';
@@ -38,7 +37,7 @@ class CandidateSingle extends React.Component {
     //for some reason these props arent preserved on direct link to candidate
     let ballot = '';
     if (!this.props.ballot) {
-      let resp = await wax.rpc.get_table_rows({             
+      let resp = await wax.rpc.get_table_rows({
         limit: 1,
         code: 'oig',
         scope: 'oig',
@@ -58,7 +57,7 @@ class CandidateSingle extends React.Component {
   async fetchData(owner) {
      let ownerCheck = owner.substring(0, 12);
      try {
-      let resp = await wax.rpc.get_table_rows({             
+      let resp = await wax.rpc.get_table_rows({
             code: 'oig',
             scope: 'oig',
             table: 'nominees',
@@ -67,7 +66,7 @@ class CandidateSingle extends React.Component {
             upper_bound: ownerCheck,
             json: true
         });
-  
+
       let voteCounts = await wax.rpc.get_table_rows({
             code: 'decide',
             scope: 'decide',
@@ -84,7 +83,7 @@ class CandidateSingle extends React.Component {
         console.log(this.state);
       }
       let voteCount = '0 VOTE';
-      if (resp.rows.length !== 0 && this.props.electionState === 4 
+      if (resp.rows.length !== 0 && this.props.electionState === 4
         && Array.isArray(voteCounts.rows) && voteCounts.rows.length !== 0) {
         console.log(voteCounts.rows[0].options);
         voteCount = voteCounts.rows[0].options.find(obj => obj.key === resp.rows[0].owner).value;
@@ -107,7 +106,7 @@ class CandidateSingle extends React.Component {
       });
     } catch(e) {
       console.log(e);
-    }       
+    }
   };
 
   async VoteCandidate() {
@@ -155,7 +154,7 @@ class CandidateSingle extends React.Component {
             </>
           }
           <div className="social-icons">
-            { this.state.telegram ? 
+            { this.state.telegram ?
               <>
                 <a href={'https://t.me/' + this.state.telegram} target="_blank" rel="noopener noreferrer" className="telegram"><img src={telegram} alt="Candidate's Telegram profile" /></a>
               </>
@@ -163,7 +162,7 @@ class CandidateSingle extends React.Component {
               <>
               </>
             }
-            { this.state.twitter ? 
+            { this.state.twitter ?
               <>
                 <a href={'https://twitter.com/' + this.state.twitter} target="_blank" rel="noopener noreferrer" className="twitter" ><img src={twitter} alt="Candidate's Twitter profile" /></a>
               </>
@@ -171,7 +170,7 @@ class CandidateSingle extends React.Component {
             <>
             </>
             }
-            { this.state.wechat ? 
+            { this.state.wechat ?
               <>
                 <a href={'weixin://dl/profile/' + this.state.wechat} target="_blank" rel="noopener noreferrer" className="wechat" ><img src={wechat} alt="Candidate's WeChat profile" /></a>
               </>

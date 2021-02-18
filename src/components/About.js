@@ -1,6 +1,5 @@
 import React from 'react';
 
-import '../App.css';
 import oigLogo from '../assets/waxOIGTransparent-small.png';
 
 class About extends React.Component {

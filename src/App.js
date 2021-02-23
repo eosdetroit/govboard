@@ -202,7 +202,7 @@ class App extends React.Component {
                         },
                     }}
                 >
-                    <Navbar collapseOnSelect expand="xl" class="navbar">
+                    <Navbar collapseOnSelect expand="xl" className="navbar">
                         <Navbar.Brand className="brand" href="/">
                             <img src={waxLogo} className="logo" alt="WAX Logo" />
                             <GLOBAL_STYLE.H6 className="title">Office of Inspector General Dashboard</GLOBAL_STYLE.H6>

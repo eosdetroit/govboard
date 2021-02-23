@@ -2,6 +2,7 @@
 /* eslint jsx-a11y/heading-has-content: 0 */
 
 import { jsx } from '@emotion/react';
+import { Link } from 'react-router-dom';
 
 export const colors = {
     blue01: '#193648',
@@ -20,6 +21,11 @@ export const colors = {
 };
 
 export const textMaxWidth = '575px';
+export const headerHeightDesktopUp = '104px';
+export const headerHeight = '76px';
+export const footerHeightTabletUp = '112px';
+export const footerHeightLargeMobileUp = '136px';
+export const footerHeight = '216px';
 
 export const spacing = {
     'xxs': '8px',
@@ -61,7 +67,7 @@ export const Button = (props) => (
             borderRadius: border.radius02,
             transition: `background-color 0.3s ease-in-out`,
             '&:hover': {
-                backgroundColor: props.primary ? colors.orange02 : props.text? colors.blue04 : colors.blue03,
+                backgroundColor: props.primary ? colors.orange02 : props.text ? colors.blue04 : colors.blue03,
                 cursor: 'pointer',
             }
         }}
@@ -95,6 +101,7 @@ export const H2 = (props) => (
             fontWeight: 700,
             color: colors.blue01,
             maxWidth: textMaxWidth,
+            marginTop: spacing.m,
         }}
         {...props}
     />
@@ -200,6 +207,39 @@ export const PTINY = (props) => (
             color: colors.blue02,
             maxWidth: textMaxWidth,
             marginTop: spacing.xxs,
+        }}
+        {...props}
+    />
+);
+
+export const InlineLink =  (props) => (
+    <Link
+        css={{
+            color: colors.orange01,
+            transition: `all 0.3s ease-in-out`,
+            '&:hover': { color: colors.orange02 },
+        }}
+        {...props}
+    />
+);
+
+export const PageContent = (props) => (
+    <div
+        css={{
+            padding: `${spacing.l} ${spacing.s}`,
+            minHeight: `calc(100vh - ${headerHeight} - ${footerHeight})`,
+            [mediaQuery.largeMobileUp]: {
+                minHeight: `calc(100vh - ${headerHeight} - ${footerHeightLargeMobileUp})`,
+            },
+            [mediaQuery.tabletUp]: {
+                minHeight: `calc(100vh - ${headerHeight} - ${footerHeightTabletUp})`,
+            },
+            [mediaQuery.desktopUp]: {
+                minHeight: `calc(100vh - ${headerHeightDesktopUp} - ${footerHeightTabletUp})`,
+            },
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
         }}
         {...props}
     />

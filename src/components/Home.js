@@ -128,6 +128,7 @@ class Home extends React.Component {
                         },
                         '& .oigLogo': {
                             width: '30vw',
+                            maxWidth: 500,
                             objectFit: 'contain',
                             marginTop: GLOBAL_STYLE.spacing.s,
                         },

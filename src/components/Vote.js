@@ -426,7 +426,7 @@ class Vote extends React.Component {
                     <Route exact path="/candidates">
                         <div
                             css={{
-                                [GLOBAL_STYLE.mediaQuery.tabletLandscapeUp]: {
+                                [GLOBAL_STYLE.mediaQuery.desktopUp]: {
                                     display: 'flex',
                                     flexDirection: 'row',
                                     justifyContent: 'space-evenly',
@@ -435,7 +435,7 @@ class Vote extends React.Component {
                                     textAlign: 'center',
                                 },
                                 '& .column': {
-                                    [GLOBAL_STYLE.mediaQuery.tabletLandscapeUp]: {
+                                    [GLOBAL_STYLE.mediaQuery.desktopUp]: {
                                         marginRight: GLOBAL_STYLE.spacing.l,
                                     }
                                 }

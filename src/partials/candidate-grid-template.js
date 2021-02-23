@@ -22,10 +22,8 @@ class CandidateGrid extends React.Component {
                     columnGap: GLOBAL_STYLE.spacing.s,
                     rowGap: GLOBAL_STYLE.spacing.xs,
                     marginBottom: GLOBAL_STYLE.spacing.s,
-                    padding: GLOBAL_STYLE.spacing.xs,               
-                    [GLOBAL_STYLE.mediaQuery.tabletLandscapeUp]: {
-                        width: 600,
-                    },
+                    padding: GLOBAL_STYLE.spacing.xs,
+                    maxWidth: 700,
                     '& .image': {
                         width: '100%',
                         objectFit: 'cover',
@@ -40,7 +38,7 @@ class CandidateGrid extends React.Component {
                         justifyContent: 'center',
                         gridColumnStart: 2,
                         gridRowStart: 1,
-                        gridColumnEnd: 2,
+                        gridColumnEnd: 3,
                         gridRowEnd: 2,
                     },
                     '& .owner, & .voteCount': {
@@ -49,9 +47,16 @@ class CandidateGrid extends React.Component {
                     '& .voteButton': {
                         gridColumnStart: 1,
                         gridRowStart: 2,
-                        gridColumnEnd: 1,
-                        gridRowEnd: 2,
+                        gridColumnEnd: 2,
+                        gridRowEnd: 3,
                     },
+                    '& .candidateLink': {
+                        gridColumnStar: 2,
+                        gridColumnEnd: 3,
+                        gridRowStart: 2,
+                        gridRowEnd: 3,
+                        alignSelf: 'flex-start',
+                    }
                 }}
             >
                 <img className="image" src={this.props.data.picture} alt="" />

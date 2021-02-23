@@ -18,6 +18,7 @@ export const colors = {
     grey02: '#5C6469',
     white01: '#FFFFFF',
     white02: '#F8F7F4',
+    red: '#DB0B0B',
 };
 
 export const textMaxWidth = '575px';
@@ -28,30 +29,30 @@ export const footerHeightLargeMobileUp = '136px';
 export const footerHeight = '216px';
 
 export const spacing = {
-    'xxs': '8px',
-    'xs': '16px',
-    's': '24px',
-    'm': '32px',
-    'l': '40px',
-    'xl': '62px',
-    'xxl': '80px',
+    xxs: '8px',
+    xs: '16px',
+    s: '24px',
+    m: '32px',
+    l: '40px',
+    xl: '62px',
+    xxl: '80px',
 };
 
 export const border = {
-    'radius01': '4px',
-    'radius02': '8px',
-    'radius03': '16px'
-}
+    radius01: '4px',
+    radius02: '8px',
+    radius03: '16px',
+};
 
 const breakpoints = [576, 768, 992, 1200];
 
 export const mediaQuery = {
-    'mobileOnly': `@media (max-width: ${breakpoints[0] - 1}px)`,
-    'largeMobileOnly': `@media (max-width: ${breakpoints[1] - 1}px)`,
-    'largeMobileUp': `@media (min-width: ${breakpoints[0]}px)`,
-    'tabletUp': `@media (min-width: ${breakpoints[1]}px)`,
-    'tabletLandscapeUp': `@media (min-width: ${breakpoints[2]}px)`,
-    'desktopUp': `@media (min-width: ${breakpoints[3]}px)`,
+    mobileOnly: `@media (max-width: ${breakpoints[0] - 1}px)`,
+    largeMobileOnly: `@media (max-width: ${breakpoints[1] - 1}px)`,
+    largeMobileUp: `@media (min-width: ${breakpoints[0]}px)`,
+    tabletUp: `@media (min-width: ${breakpoints[1]}px)`,
+    tabletLandscapeUp: `@media (min-width: ${breakpoints[2]}px)`,
+    desktopUp: `@media (min-width: ${breakpoints[3]}px)`,
 };
 
 export const Button = (props) => (
@@ -69,7 +70,7 @@ export const Button = (props) => (
             '&:hover': {
                 backgroundColor: props.primary ? colors.orange02 : props.text ? colors.blue04 : colors.blue03,
                 cursor: 'pointer',
-            }
+            },
         }}
         {...props}
     />
@@ -98,22 +99,22 @@ export const CustomLink = (props) => (
     />
 );
 
- export const H1 = (props) => (
-     <h1
-         css={{
-             fontFamily: `'Mulish', sans-serif`,
-             fontSize: 48,
-             lineHeight: '130%',
-             fontWeight: 700,
-             color: colors.blue01,
-             maxWidth: textMaxWidth,
-             [mediaQuery.mobileOnly]: {
-                 fontSize: 32,
-             }
-         }}
-         {...props}
-     />
- );
+export const H1 = (props) => (
+    <h1
+        css={{
+            fontFamily: `'Mulish', sans-serif`,
+            fontSize: 48,
+            lineHeight: '130%',
+            fontWeight: 700,
+            color: colors.blue01,
+            maxWidth: textMaxWidth,
+            [mediaQuery.mobileOnly]: {
+                fontSize: 32,
+            },
+        }}
+        {...props}
+    />
+);
 
 export const H2 = (props) => (
     <h2
@@ -235,7 +236,7 @@ export const PTINY = (props) => (
     />
 );
 
-export const InlineLink =  (props) => (
+export const InlineLink = (props) => (
     <Link
         css={{
             color: colors.orange01,
@@ -264,6 +265,62 @@ export const PageContent = (props) => (
             flexDirection: 'column',
             alignItems: 'center',
         }}
+        {...props}
+    />
+);
+
+export const Fieldset = (props) => (
+    <div
+        css={{
+            display: 'flex',
+            flexDirection: 'column',
+            marginBottom: spacing.s,
+        }}
+        {...props}
+    />
+);
+
+export const Label = (props) => (
+    <PTINY
+        css={{
+            marginBottom: 0,
+            whiteSpace: 'nowrap',
+        }}
+        {...props}
+    />
+);
+const inputTextCSS = {
+    backgroundColor: 'transparent',
+    borderRadius: border.radius02,
+    border: `1px solid ${colors.blue04}`,
+    padding: spacing.xxs,
+    color: colors.blue01,
+    boxShadow: 'none',
+    outline: 'none',
+    transition: `all 0.3s ease-in-out`,
+    maxWidth: 300,
+    '&::placeholder': {
+        color: colors.blue03,
+    },
+    '&:active, &:focus': {
+        border: `1px solid ${colors.orange02}`,
+    },
+};
+export const Input = (props) => (
+    <input
+        css={inputTextCSS}
+        {...props}
+    />
+);
+export const Textarea = (props) => (
+    <textarea
+       css={inputTextCSS}
+        {...props}
+    />
+);
+export const InputMessage = (props) => (
+    <PTINY
+       css={{marginBottom: 0}}
         {...props}
     />
 );

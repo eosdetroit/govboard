@@ -91,6 +91,7 @@ export const CustomLink = (props) => (
                 backgroundColor: props.primary ? colors.orange02 : props.text ? colors.blue04 : colors.blue03,
                 cursor: 'pointer',
                 color: props.primary ? '#413418' : props.text ? colors.blue02 : colors.blue01,
+                textDecoration: 'none',
             },
         }}
         {...props}

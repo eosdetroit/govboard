@@ -262,6 +262,7 @@ class Vote extends React.Component {
             <div
                 css={{
                     textAlign: 'center',
+                    marginBottom: GLOBAL_STYLE.spacing.s,
                     '& .label': {
                         marginBottom: 0,
                     },

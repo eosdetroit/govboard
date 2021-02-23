@@ -1,9 +1,6 @@
 /** @jsx jsx */
 
 import React from 'react';
-import {
-  Link,
-} from "react-router-dom";
 import { jsx } from '@emotion/react';
 import { submitVote } from '../middleware.js';
 
@@ -16,26 +13,18 @@ class CandidateGrid extends React.Component {
 
     render() {
         return (
-            <Link
+            <div
                 key={this.props.data.owner}
-                to={'/candidates/' + this.props.data.owner}
                 css={{
                     display: 'grid',
-                    gridTemplateColumns: '35% auto',
+                    gridTemplateColumns: '45% auto',
                     gridTemplateRows: '1fr 20%',
                     columnGap: GLOBAL_STYLE.spacing.s,
                     rowGap: GLOBAL_STYLE.spacing.xs,
                     marginBottom: GLOBAL_STYLE.spacing.s,
-                    padding: GLOBAL_STYLE.spacing.xs,
-                    borderRadius: GLOBAL_STYLE.border.radius03,
-                    transition: 'all 0.3s ease-in-out',
-                    '&:hover': {
-                        textDecoration: 'none',
-                        backgroundColor: GLOBAL_STYLE.colors.blue05,
-                    },
+                    padding: GLOBAL_STYLE.spacing.xs,               
                     [GLOBAL_STYLE.mediaQuery.tabletLandscapeUp]: {
                         width: 600,
-                        justifyContent: 'center',
                     },
                     '& .image': {
                         width: '100%',
@@ -57,9 +46,6 @@ class CandidateGrid extends React.Component {
                     '& .owner, & .voteCount': {
                         marginTop: 0,
                     },
-                    '& .voteCount': {
-                      alignSelf: 'flex-end',
-                    },
                     '& .voteButton': {
                         gridColumnStart: 1,
                         gridRowStart: 2,
@@ -77,7 +63,10 @@ class CandidateGrid extends React.Component {
                 <GLOBAL_STYLE.Button className="voteButton" onClick={this.VoteCandidate}>
                     Vote for {this.props.data.name}
                 </GLOBAL_STYLE.Button>
-            </Link>
+                <GLOBAL_STYLE.CustomLink text className="candidateLink" to={'/candidates/' + this.props.data.owner}>
+                    Learn more about {this.props.data.name}
+                </GLOBAL_STYLE.CustomLink>
+            </div>
         );
     }
 }

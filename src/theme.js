@@ -75,6 +75,29 @@ export const Button = (props) => (
     />
 );
 
+export const CustomLink = (props) => (
+    <Link
+        css={{
+            color: props.primary ? '#413418' : props.text ? colors.blue02 : colors.blue01,
+            backgroundColor: props.primary ? colors.orange02 : props.text ? 'transparent' : colors.blue04,
+            padding: `${spacing.xxs} ${spacing.xs}`,
+            border: 'none',
+            fontFamily: `'Mulish', sans-serif`,
+            fontSize: props.tiny ? '16px' : '18px',
+            fontWeight: 400,
+            borderRadius: border.radius02,
+            transition: `background-color 0.3s ease-in-out`,
+            '&:hover': {
+                backgroundColor: props.primary ? colors.orange02 : props.text ? colors.blue04 : colors.blue03,
+                cursor: 'pointer',
+                color: props.primary ? '#413418' : props.text ? colors.blue02 : colors.blue01,
+                textDecoration: 'none',
+            },
+        }}
+        {...props}
+    />
+);
+
  export const H1 = (props) => (
      <h1
          css={{

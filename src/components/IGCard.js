@@ -1,16 +1,17 @@
 /** @jsx jsx */
 
 import { jsx } from '@emotion/react';
+
 import * as GLOBAL_STYLE from '../theme';
+
+import {formatDate, formatTime} from '../utils/utils';
 
 const IMAGE_WIDTH = 250;
 
-const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-US', options);
-};
+
 
 export default function RenderIGCard(props) {
+    console.log(props.igInfo.term);
     return (
         <div
             css={{
@@ -108,11 +109,11 @@ export default function RenderIGCard(props) {
                 </div>
                 <div className="igData">
                     <GLOBAL_STYLE.PTINY className="label">Term began</GLOBAL_STYLE.PTINY>
-                    {formatDate(props.igInfo.term[0])}
+                    {formatDate(props.igInfo.term[0])} - {formatTime(props.igInfo.term[0])}
                 </div>
                 <div className="igData">
                     <GLOBAL_STYLE.PTINY className="label">Term ends</GLOBAL_STYLE.PTINY>
-                    {formatDate(props.igInfo.term[1])}
+                    {formatDate(props.igInfo.term[1])} - {formatTime(props.igInfo.term[1])}
                 </div>
             </div>
         </div>

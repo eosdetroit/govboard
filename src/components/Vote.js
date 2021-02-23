@@ -510,14 +510,25 @@ class Winner extends Vote {
 
     render() {
         return (
-            <div className="winner" key={this.props.data.key}>
-                <h2>Election Winner</h2>
-                <img src={this.state.picture} alt={this.state.name} />
-                <p>
-                    <h3>{this.state.name}</h3>
-                </p>
-                <p>{this.props.data.key}</p>
-                <p>{this.props.data.value}</p>
+            <div className="winner" key={this.props.data.key}
+                css={{
+                    textAlign: 'center',
+                    '& h3': {
+                        marginTop: GLOBAL_STYLE.spacing.xs,
+                    }
+                }}
+            >
+                <GLOBAL_STYLE.H2>Election Winner</GLOBAL_STYLE.H2>
+                <img
+                    css={{
+                        width: 250,
+                        objectFit: 'contain',
+                    }}
+                    src={this.state.picture} alt={this.state.name}
+                />
+                <GLOBAL_STYLE.H3>{this.state.name}</GLOBAL_STYLE.H3>
+                <GLOBAL_STYLE.H5>{this.props.data.key}</GLOBAL_STYLE.H5>
+                <GLOBAL_STYLE.H5>{this.props.data.value}S</GLOBAL_STYLE.H5>
             </div>
         );
     }

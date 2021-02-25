@@ -16,8 +16,11 @@ import ItemPolygon from '../assets/blueBee.svg';
 
 const wax = new waxjs.WaxJS(process.env.REACT_APP_WAX_RPC, null, null, false);
 
+
+
 class Vote extends React.Component {
     constructor(props) {
+
         super(props);
         this.state = {
             candidates: [],
@@ -76,19 +79,23 @@ class Vote extends React.Component {
                         (a, b) => parseFloat(b.value) - parseFloat(a.value)
                     );
                 }
-                let newCandidates = [];
-                this.state.candidates.forEach((candidate, index) => {
-                    leaderCandidates.forEach((ballot) => {
-                        if (ballot.key === candidate.owner) {
-                            let newCandidate = { ...candidate, value: ballot.value };
-                            newCandidates.push(newCandidate);
-                        }
+
+                if(this.state.electionState === 4){
+                    let newCandidates = [];
+                
+                    this.state.candidates.forEach((candidate, index) => {
+                        leaderCandidates.forEach((ballot) => {
+                            if (ballot.key === candidate.owner) {
+                                let newCandidate = { ...candidate, value: ballot.value };
+                                newCandidates.push(newCandidate);
+                            }
+                        });
                     });
-                });
-                newCandidates.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
-                this.setState({
-                    candidates: newCandidates,
-                });
+                    newCandidates.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
+                    this.setState({
+                        candidates: newCandidates,
+                    });
+                }
 
                 this.setState({
                     ballot: activeBallot.ballot,
@@ -116,10 +123,11 @@ class Vote extends React.Component {
                 limit: this.state.candidatesDisplayed,
                 json: true,
             });
-            let displayPagination = 0;
+            let displayPagination = 1;
             if (resp.rows.length > 10) {
                 displayPagination = 1;
             }
+            console.log(resp.rows);
             let maxPage = resp.rows.length / 10;
             this.setState({
                 candidates: resp.rows,
@@ -223,6 +231,8 @@ class Vote extends React.Component {
                 return <GLOBAL_STYLE.H2 className="electionState">Nominations Closed</GLOBAL_STYLE.H2>;
             case 4:
                 return <GLOBAL_STYLE.H2 className="electionState">Voting Open</GLOBAL_STYLE.H2>;
+            case 5:
+                return <GLOBAL_STYLE.H2 className="electionState">Voting Ended</GLOBAL_STYLE.H2>;
             default:
                 return;
         }
@@ -379,6 +389,7 @@ class Vote extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         if (this.props.electionState === 0) {
             return (
                 <GLOBAL_STYLE.PageContent>
@@ -421,6 +432,7 @@ class Vote extends React.Component {
                 </GLOBAL_STYLE.PageContent>
             );
         } else {
+            console.log(this.state.candidates);
             return (
                 <GLOBAL_STYLE.PageContent>
                     <Route exact path="/candidates">
@@ -448,13 +460,15 @@ class Vote extends React.Component {
                                 {this.renderElectionDates()}
                             </div>
                             <div>
-                                <GLOBAL_STYLE.H2>Candidates</GLOBAL_STYLE.H2>
+                                <div id="castvote">
+                                </div>
+                                {this.state.electionState < 3 ? "" : <GLOBAL_STYLE.H2>Candidates</GLOBAL_STYLE.H2>}
                                 {this.state.candidates !== [] ? (
                                     <React.Fragment>
                                         {this.state.candidates
                                             .slice(this.state.prevPage, this.state.nextPage)
                                             .map((candidate, key) => (
-                                                <CandidateGrid data={candidate} key={candidate.owner} />
+                                                <CandidateGrid data={candidate} ballot={this.props.ballot} activeUser={this.props.activeUser} />
                                             ))}
                                     </React.Fragment>
                                 ) : (

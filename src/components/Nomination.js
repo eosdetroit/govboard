@@ -338,6 +338,7 @@ class Nomination extends React.Component {
                         },
                     }}
                 >
+
                     <GLOBAL_STYLE.Input
                         id="nomination-input"
                         type="text"
@@ -350,6 +351,7 @@ class Nomination extends React.Component {
                         Nominate
                     </GLOBAL_STYLE.Button>
                 </div>
+                <div id="nomform"/>
             </div>
         );
     }

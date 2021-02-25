@@ -7,8 +7,16 @@ import { submitVote } from '../middleware.js';
 import * as GLOBAL_STYLE from '../theme';
 
 class CandidateGrid extends React.Component {
+
+    constructor(props) {
+        super(props);
+        
+        this.VoteCandidate = this.VoteCandidate.bind(this);
+    }
     async VoteCandidate() {
-        await submitVote(this.props.activeUser, this.props.ballot, this.props.candidate.owner);
+        console.log(this.props);
+        if(!this.props.activeUser) return;
+        await submitVote(this.props.activeUser, this.props.ballot, this.props.data.owner);
     }
 
     render() {

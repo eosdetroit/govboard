@@ -1,5 +1,6 @@
 export async function submitVote (activeUser, ballotName, voteOption) {
 try {
+    console.log(ballotName);
     let actions = [
         {
             account: 'oig',

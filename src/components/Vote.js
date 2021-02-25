@@ -79,8 +79,19 @@ class Vote extends React.Component {
                         (a, b) => parseFloat(b.value) - parseFloat(a.value)
                     );
                 }
+                let election = await wax.rpc.get_table_rows({
+                    limit: 1,
+                    code: 'oig',
+                    scope: 'oig',
+                    table: 'election',
+                    json: true
+                });
 
-                if(this.state.electionState === 4){
+                let electionState = election.rows[0].state;
+
+                console.log(this.state.electionState);
+                if(electionState === 4){
+
                     let newCandidates = [];
                 
                     this.state.candidates.forEach((candidate, index) => {

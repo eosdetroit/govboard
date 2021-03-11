@@ -303,14 +303,18 @@ class Vote extends React.Component {
         return (
             <div
                 css={{
+                    maxWidth: 400,
                     [GLOBAL_STYLE.mediaQuery.tabletLandscapeUp]: {
                         width: 400,
                     },
                     '& .electionStep': {
                         borderBottom: `1px solid ${GLOBAL_STYLE.colors.blue04}`,
                         padding: `${GLOBAL_STYLE.spacing.xxs} 0`,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
                         [GLOBAL_STYLE.mediaQuery.tabletLandscapeUp]: {
-                            display: 'flex',
+                            flexDirection: 'row',
                             justifyContent: 'space-between',
                         },
                     },
@@ -449,8 +453,10 @@ class Vote extends React.Component {
                     <Route exact path="/candidates">
                         <div
                             css={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
                                 [GLOBAL_STYLE.mediaQuery.desktopUp]: {
-                                    display: 'flex',
                                     flexDirection: 'row',
                                     justifyContent: 'space-evenly',
                                 },
@@ -458,10 +464,13 @@ class Vote extends React.Component {
                                     textAlign: 'center',
                                 },
                                 '& .column': {
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
                                     [GLOBAL_STYLE.mediaQuery.desktopUp]: {
                                         marginRight: GLOBAL_STYLE.spacing.l,
-                                    }
-                                }
+                                    },
+                                },
                             }}
                         >
                             <div className="column">

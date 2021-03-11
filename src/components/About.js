@@ -28,7 +28,7 @@ class About extends React.Component {
             >
                 <img className="oigLogo" src={oigLogo} alt="WAX OIG Logo" />
                 <div>
-                    <GLOBAL_STYLE.H3>The The Office of Inspector General (OIG)</GLOBAL_STYLE.H3>
+                    <GLOBAL_STYLE.H3>The Office of Inspector General (OIG)</GLOBAL_STYLE.H3>
                     <GLOBAL_STYLE.P>
                         The OIG is a watchdog agency for the WAX network staffed by a committee of 3 elected inspector
                         generals (IGs) who publish a rating report ranking the Guilds on a monthly basis.

@@ -7,7 +7,7 @@ import * as GLOBAL_STYLE from '../theme';
 
 import notionLogo from '../assets/notion.svg';
 import mediumLogo from '../assets/medium.svg';
-import waxLogo from '../assets/wax-primary-logo.png';
+import waxLogo from '../assets/powered-by-WAX.svg';
 import builtWithLove from '../assets/builtWithLove.svg';
 
 class Footer extends React.Component {

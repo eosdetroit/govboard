@@ -1,34 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App  from './App';
 import * as serviceWorker from './serviceWorker';
 import { UALProvider, withUAL } from 'ual-reactjs-renderer';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 import { Scatter } from 'ual-scatter';
 import { Anchor } from 'ual-anchor';
 import { Wax } from '@eosdacio/ual-wax';
 
-const waxMainnet = {
-  chainId: '1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4',
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { Global, css } from '@emotion/react';
+import normalize from 'normalize.css';
+
+const waxChain = {
+  chainId: process.env.REACT_APP_WAX_CHAINID,
   rpcEndpoints: [{
-    protocol: 'https',
-    host: 'chain.wax.io',
-    port: '443',
+    protocol: process.env.REACT_APP_WAX_PROTOCOL,
+    host: process.env.REACT_APP_WAX_HOST,
+    port: process.env.REACT_APP_WAX_PORT,
   }]
 }
 
-const scatter = new Scatter([waxMainnet], { appName: 'WAX OIG Governance Dashboard' });
-const anchor = new Anchor([waxMainnet], { appName: 'WAX OIG Governance Dashboard' });
-const waxcloud = new Wax([waxMainnet], { appName: 'WAX OIG Governance Dashboard' });
-
+const scatter = new Scatter([waxChain], { appName: 'govboard' });
+const anchor = new Anchor([waxChain], { appName: 'govboard' });
+const waxcloud = new Wax([waxChain], { appName: 'govboard' });
 const UALConsumer = withUAL(App);
 
+
 ReactDOM.render(
-	<UALProvider chains={[waxMainnet]} authenticators={[scatter, anchor, waxcloud]} appName={'WAX OIG Governance Dashboard'}>
-    	<UALConsumer />
-  	</UALProvider>,
-  	document.getElementById('root')
+    <UALProvider chains={[waxChain]} authenticators={[waxcloud, anchor, scatter]} appName="govboard">
+        <Global styles={css`${normalize}`}/>
+        <Router>
+            <UALConsumer />
+        </Router>
+    </UALProvider>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

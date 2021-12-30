@@ -25,10 +25,6 @@ jobs:
         with:
           node-version: 12.x
       - name: Install dependencies
-        run: npm install    
-      - name: Test
-        run: npm run test
-        env:
-          CI: true
+        run: npm install
       - name: Generate build for production
         run: npm run build:prod

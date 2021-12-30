@@ -20,11 +20,19 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
-      - name: Use Node.js 12.x
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 16.x
       - name: Install dependencies
         run: npm install
       - name: Generate build for production
         run: npm run build:prod
+      - name: Deploy to IPFS
+        uses: aquiladev/ipfs-action@v1
+          with:
+            path: ./build
+            service: pinata
+            pinataKey: ${{ secrets.PINATA_KEY }}
+            pinataSecret: ${{ secrets.PINATA_SECRET }}
+            pinataPinName: wax-govboard

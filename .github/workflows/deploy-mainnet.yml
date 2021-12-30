@@ -25,9 +25,9 @@ jobs:
         with:
           node-version: 16.x
       - name: Install dependencies
-        run: npm install
-      - name: Generate build for production
-        run: npm run build:prod
+        run: yarn install
+      - name: Generate build for wax-main-net
+        run: yarn run build:prod
       - name: Deploy to IPFS
         uses: aquiladev/ipfs-action@v0.1.6
         with:

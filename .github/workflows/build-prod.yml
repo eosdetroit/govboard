@@ -30,9 +30,9 @@ jobs:
         run: npm run build:prod
       - name: Deploy to IPFS
         uses: aquiladev/ipfs-action@v1
-          with:
-            path: ./build
-            service: pinata
-            pinataKey: ${{ secrets.PINATA_KEY }}
-            pinataSecret: ${{ secrets.PINATA_SECRET }}
-            pinataPinName: wax-govboard
+        with:
+          path: ./build
+          service: pinata
+          pinataKey: ${{ secrets.PINATA_KEY }}
+          pinataSecret: ${{ secrets.PINATA_SECRET }}
+          pinataPinName: wax-govboard

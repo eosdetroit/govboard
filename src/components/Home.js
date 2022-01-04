@@ -103,7 +103,7 @@ class Home extends React.Component {
                             />
                             <div className="nextElectionDate">
                                 <GLOBAL_STYLE.H4 className="electionDateHeadline">Next elections</GLOBAL_STYLE.H4>
-                                <GLOBAL_STYLE.H1 className="electionMonth">July 2021</GLOBAL_STYLE.H1>
+                                <GLOBAL_STYLE.H1 className="electionMonth">January 2022</GLOBAL_STYLE.H1>
                             </div>
                             <img
                                 src={BeePack}

@@ -35,4 +35,4 @@ jobs:
           service: pinata
           pinataKey: ${{ secrets.PINATA_KEY }}
           pinataSecret: ${{ secrets.PINATA_SECRET }}
-          pinataPinName: wax-govboard-testnet
+          pinataPinName: wax-govboard-testnet@v0.1.6

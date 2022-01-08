@@ -163,7 +163,7 @@ class CandidateSingle extends React.Component {
                 }}
             >
                 <GLOBAL_STYLE.H2>{this.state.name}</GLOBAL_STYLE.H2>
-                <GLOBAL_STYLE.H4>{this.state.votes}S</GLOBAL_STYLE.H4>
+                <GLOBAL_STYLE.H4>{this.state.votes}Loading Votes...</GLOBAL_STYLE.H4>
                 <img className="image" src={this.state.picture} alt={this.state.nominee} />
                 {this.props.electionState === 4 && this.props.activeUser ? (
                     <React.Fragment>
